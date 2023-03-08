@@ -6,6 +6,10 @@ const resolvers = {
     hello: () => 'world',
     ping: () => 'pong',
 
+    searchMovies: async (_: any, req: { query: string, page: number }, { dataSources }: MyContext) => {
+      return dataSources.movieAPI.searchMovies(req.query, req.page);
+    },
+
     genres: async (_: any, __: any, { dataSources }: MyContext) => {
       return dataSources.movieAPI.getGenres();
     },

@@ -12,7 +12,7 @@ export type MovieAPIOptions = DataSourceConfig & {
 };
 
 export class MovieAPI extends RESTDataSource {
-  private apiVesion: string;
+  private apiVersion: string;
   private apiKey: string;
   private readAccessToken: string;
   private sessionId?: string;
@@ -33,25 +33,46 @@ export class MovieAPI extends RESTDataSource {
     }
 
     this.baseURL = options.baseURL;
-    this.apiVesion = options.apiVersion;
+    this.apiVersion = options.apiVersion;
     this.apiKey = encodeURIComponent(options.apiKey);
     this.readAccessToken = options.readAccessToken;
     this.sessionId = options.sessionId;
   }
 
+  async getPopularMovies(page: number = 1) {
+    const data = await this.get(`/${this.apiVersion}/movie/popular`, {
+      params: {
+        page: encodeURIComponent(page)
+      }
+    });
+
+    return data;
+  }
+
+  async searchMovies(query: string, page: number = 1) {
+    console.log(encodeURIComponent("The Dark Knight"));
+    const data = await this.get(`/${this.apiVersion}/search/movie`, {
+      params: {
+        api_key: this.apiKey,
+        query,
+        page: page.toString()
+      }
+    });
+    return data;
+  }
+
   async getGenres(): Promise<Genre[]> {
-    const data = await this.get<{ genres: Genre[] }>(`/${this.apiVesion}/genre/movie/list`);
+    const data = await this.get<{ genres: Genre[] }>(`/${this.apiVersion}/genre/movie/list`);
     return data.genres;
   }
 
   async getMoviesByGenre(genreIds: number[], page: number = 1): Promise<PaginatedResults<Movie>> {
-    const data = await this.get<PaginatedResults<Movie>>(`/${this.apiVesion}/discover/movie?`, {
+    const data = await this.get<PaginatedResults<Movie>>(`/${this.apiVersion}/discover/movie?`, {
       params: {
-        with_genres: encodeURIComponent(genreIds.join(',')),
-        page: encodeURIComponent(page)
+        with_genres: genreIds.join(','),
+        page: page.toString()
       }
     });
-    console.log(data);
     return data;
   }
 

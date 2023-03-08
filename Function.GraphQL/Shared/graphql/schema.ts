@@ -4,12 +4,24 @@ type Query {
   hello: String
   ping: String
   
+  searchMovies(query: String!, page: Int): PaginatedMovies
+
   genres: [Genre]
   moviesByGenre(genreIds: [Int], page: Int): PaginatedMovies
 }
 
+################
+# Custom Types #
+################
+
+
+
+##################
+# Movie DB Types #
+##################
 
 # Genre Types
+
 type Genre {
   id: Int!
   name: String!
@@ -24,14 +36,14 @@ type PaginatedMovies {
 
 type Movie {
   adult: Boolean!
-  backdrop_path: String!
+  backdrop_path: String
   genre_ids: [Int]
   id: Int!
   original_language: String!
   original_title: String!
   overview: String!
   popularity: Float!
-  poster_path: String!
+  poster_path: String
   release_date: String!
   title: String!
   video: Boolean!
@@ -41,9 +53,10 @@ type Movie {
 
 
 # Movie Types
+
 type MovieDetails {
   adult: Boolean!
-  backdrop_path: String!
+  backdrop_path: String
   budget: Int!
   genres: [Genre]
   homepage: String!
@@ -53,7 +66,7 @@ type MovieDetails {
   original_title: String!
   overview: String!
   popularity: Float!
-  poster_path: String!
+  poster_path: String
   production_companies: [ProductionCompany]
   production_countries: [ProductionCountry]
   release_date: String!
@@ -88,6 +101,7 @@ type SpokenLanguages {
 
 
 # Trailer Types
+
 type Trailer {
   id: String!
   iso_639_1: String!
