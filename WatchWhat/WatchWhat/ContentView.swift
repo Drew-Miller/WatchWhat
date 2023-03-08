@@ -6,8 +6,18 @@
 //
 
 import SwiftUI
+import Apollo
+
+let apolloClient = ApolloClient(url: URL(string: "http://localhost:7071/graphql")!)
 
 struct ContentView: View {
+    init() {
+        apolloClient.fetch(query: WatchWhatSchema.GenresQuery()) { result in
+          guard let data = try? result.get().data else { return }
+            print(data.genres) // Luke Skywalker
+        }
+    }
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")

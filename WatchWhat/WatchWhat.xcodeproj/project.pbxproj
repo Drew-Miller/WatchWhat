@@ -22,6 +22,29 @@
 		56C232F629B8FAA90010A733 /* genres.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 56C232F229B8FAA90010A733 /* genres.graphql */; };
 		56C232F729B8FAA90010A733 /* movieById.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 56C232F329B8FAA90010A733 /* movieById.graphql */; };
 		56C2332929B8FD670010A733 /* apollo-codegen-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 56C2332829B8FD660010A733 /* apollo-codegen-config.json */; };
+		56C233D629B91BFB0010A733 /* MovieByIdQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233BE29B91BFB0010A733 /* MovieByIdQuery.graphql.swift */; };
+		56C233D729B91BFB0010A733 /* SearchMoviesQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233BF29B91BFB0010A733 /* SearchMoviesQuery.graphql.swift */; };
+		56C233D829B91BFB0010A733 /* PopularMoviesQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C029B91BFB0010A733 /* PopularMoviesQuery.graphql.swift */; };
+		56C233D929B91BFB0010A733 /* GenresQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C129B91BFB0010A733 /* GenresQuery.graphql.swift */; };
+		56C233DA29B91BFB0010A733 /* MoviesByGenreQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C229B91BFB0010A733 /* MoviesByGenreQuery.graphql.swift */; };
+		56C233DB29B91BFB0010A733 /* ProductionCountry.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C529B91BFB0010A733 /* ProductionCountry.graphql.swift */; };
+		56C233DC29B91BFB0010A733 /* Recommendation.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C629B91BFB0010A733 /* Recommendation.graphql.swift */; };
+		56C233DD29B91BFB0010A733 /* Movie.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C729B91BFB0010A733 /* Movie.graphql.swift */; };
+		56C233DE29B91BFB0010A733 /* MovieDetails.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C829B91BFB0010A733 /* MovieDetails.graphql.swift */; };
+		56C233DF29B91BFB0010A733 /* PaginatedRecommendations.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233C929B91BFB0010A733 /* PaginatedRecommendations.graphql.swift */; };
+		56C233E029B91BFB0010A733 /* Crew.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233CA29B91BFB0010A733 /* Crew.graphql.swift */; };
+		56C233E129B91BFB0010A733 /* SpokenLanguages.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233CB29B91BFB0010A733 /* SpokenLanguages.graphql.swift */; };
+		56C233E229B91BFB0010A733 /* Query.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233CC29B91BFB0010A733 /* Query.graphql.swift */; };
+		56C233E329B91BFB0010A733 /* Trailer.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233CD29B91BFB0010A733 /* Trailer.graphql.swift */; };
+		56C233E429B91BFB0010A733 /* Credits.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233CE29B91BFB0010A733 /* Credits.graphql.swift */; };
+		56C233E529B91BFB0010A733 /* Genre.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233CF29B91BFB0010A733 /* Genre.graphql.swift */; };
+		56C233E629B91BFB0010A733 /* Cast.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D029B91BFB0010A733 /* Cast.graphql.swift */; };
+		56C233E729B91BFB0010A733 /* PaginatedMovies.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D129B91BFB0010A733 /* PaginatedMovies.graphql.swift */; };
+		56C233E829B91BFB0010A733 /* TrailerResults.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D229B91BFB0010A733 /* TrailerResults.graphql.swift */; };
+		56C233E929B91BFB0010A733 /* ProductionCompany.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D329B91BFB0010A733 /* ProductionCompany.graphql.swift */; };
+		56C233EA29B91BFB0010A733 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D429B91BFB0010A733 /* SchemaConfiguration.swift */; };
+		56C233EB29B91BFB0010A733 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D529B91BFB0010A733 /* SchemaMetadata.graphql.swift */; };
+		56C233ED29B91C0B0010A733 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +84,29 @@
 		56C232F229B8FAA90010A733 /* genres.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = genres.graphql; sourceTree = "<group>"; };
 		56C232F329B8FAA90010A733 /* movieById.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = movieById.graphql; sourceTree = "<group>"; };
 		56C2332829B8FD660010A733 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
+		56C233BE29B91BFB0010A733 /* MovieByIdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieByIdQuery.graphql.swift; sourceTree = "<group>"; };
+		56C233BF29B91BFB0010A733 /* SearchMoviesQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesQuery.graphql.swift; sourceTree = "<group>"; };
+		56C233C029B91BFB0010A733 /* PopularMoviesQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularMoviesQuery.graphql.swift; sourceTree = "<group>"; };
+		56C233C129B91BFB0010A733 /* GenresQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresQuery.graphql.swift; sourceTree = "<group>"; };
+		56C233C229B91BFB0010A733 /* MoviesByGenreQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesByGenreQuery.graphql.swift; sourceTree = "<group>"; };
+		56C233C529B91BFB0010A733 /* ProductionCountry.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionCountry.graphql.swift; sourceTree = "<group>"; };
+		56C233C629B91BFB0010A733 /* Recommendation.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recommendation.graphql.swift; sourceTree = "<group>"; };
+		56C233C729B91BFB0010A733 /* Movie.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.graphql.swift; sourceTree = "<group>"; };
+		56C233C829B91BFB0010A733 /* MovieDetails.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetails.graphql.swift; sourceTree = "<group>"; };
+		56C233C929B91BFB0010A733 /* PaginatedRecommendations.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedRecommendations.graphql.swift; sourceTree = "<group>"; };
+		56C233CA29B91BFB0010A733 /* Crew.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crew.graphql.swift; sourceTree = "<group>"; };
+		56C233CB29B91BFB0010A733 /* SpokenLanguages.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpokenLanguages.graphql.swift; sourceTree = "<group>"; };
+		56C233CC29B91BFB0010A733 /* Query.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.graphql.swift; sourceTree = "<group>"; };
+		56C233CD29B91BFB0010A733 /* Trailer.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trailer.graphql.swift; sourceTree = "<group>"; };
+		56C233CE29B91BFB0010A733 /* Credits.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credits.graphql.swift; sourceTree = "<group>"; };
+		56C233CF29B91BFB0010A733 /* Genre.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.graphql.swift; sourceTree = "<group>"; };
+		56C233D029B91BFB0010A733 /* Cast.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cast.graphql.swift; sourceTree = "<group>"; };
+		56C233D129B91BFB0010A733 /* PaginatedMovies.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedMovies.graphql.swift; sourceTree = "<group>"; };
+		56C233D229B91BFB0010A733 /* TrailerResults.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailerResults.graphql.swift; sourceTree = "<group>"; };
+		56C233D329B91BFB0010A733 /* ProductionCompany.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductionCompany.graphql.swift; sourceTree = "<group>"; };
+		56C233D429B91BFB0010A733 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
+		56C233D529B91BFB0010A733 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
+		56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +198,9 @@
 		56C232EB29B8F9440010A733 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				56C233BC29B91BFB0010A733 /* Operations */,
+				56C233C329B91BFB0010A733 /* Schema */,
+				56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */,
 				56C232EC29B8F9610010A733 /* schema.graphqls */,
 				56C232EE29B8FA0D0010A733 /* popular.graphql */,
 				56C232F129B8FAA80010A733 /* searchMovies.graphql */,
@@ -160,6 +209,58 @@
 				56C232F029B8FAA80010A733 /* moviesByGenre.graphql */,
 			);
 			path = GraphQL;
+			sourceTree = "<group>";
+		};
+		56C233BC29B91BFB0010A733 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				56C233BD29B91BFB0010A733 /* Queries */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		56C233BD29B91BFB0010A733 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				56C233BE29B91BFB0010A733 /* MovieByIdQuery.graphql.swift */,
+				56C233BF29B91BFB0010A733 /* SearchMoviesQuery.graphql.swift */,
+				56C233C029B91BFB0010A733 /* PopularMoviesQuery.graphql.swift */,
+				56C233C129B91BFB0010A733 /* GenresQuery.graphql.swift */,
+				56C233C229B91BFB0010A733 /* MoviesByGenreQuery.graphql.swift */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		56C233C329B91BFB0010A733 /* Schema */ = {
+			isa = PBXGroup;
+			children = (
+				56C233C429B91BFB0010A733 /* Objects */,
+				56C233D429B91BFB0010A733 /* SchemaConfiguration.swift */,
+				56C233D529B91BFB0010A733 /* SchemaMetadata.graphql.swift */,
+			);
+			path = Schema;
+			sourceTree = "<group>";
+		};
+		56C233C429B91BFB0010A733 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				56C233C529B91BFB0010A733 /* ProductionCountry.graphql.swift */,
+				56C233C629B91BFB0010A733 /* Recommendation.graphql.swift */,
+				56C233C729B91BFB0010A733 /* Movie.graphql.swift */,
+				56C233C829B91BFB0010A733 /* MovieDetails.graphql.swift */,
+				56C233C929B91BFB0010A733 /* PaginatedRecommendations.graphql.swift */,
+				56C233CA29B91BFB0010A733 /* Crew.graphql.swift */,
+				56C233CB29B91BFB0010A733 /* SpokenLanguages.graphql.swift */,
+				56C233CC29B91BFB0010A733 /* Query.graphql.swift */,
+				56C233CD29B91BFB0010A733 /* Trailer.graphql.swift */,
+				56C233CE29B91BFB0010A733 /* Credits.graphql.swift */,
+				56C233CF29B91BFB0010A733 /* Genre.graphql.swift */,
+				56C233D029B91BFB0010A733 /* Cast.graphql.swift */,
+				56C233D129B91BFB0010A733 /* PaginatedMovies.graphql.swift */,
+				56C233D229B91BFB0010A733 /* TrailerResults.graphql.swift */,
+				56C233D329B91BFB0010A733 /* ProductionCompany.graphql.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,8 +406,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				56C232EF29B8FA0D0010A733 /* popular.graphql in Sources */,
+				56C233E629B91BFB0010A733 /* Cast.graphql.swift in Sources */,
+				56C233E429B91BFB0010A733 /* Credits.graphql.swift in Sources */,
+				56C233E229B91BFB0010A733 /* Query.graphql.swift in Sources */,
+				56C233DD29B91BFB0010A733 /* Movie.graphql.swift in Sources */,
+				56C233EA29B91BFB0010A733 /* SchemaConfiguration.swift in Sources */,
 				56012BA029B832D900E2E5A9 /* ContentView.swift in Sources */,
+				56C233ED29B91C0B0010A733 /* WatchWhatSchema.graphql.swift in Sources */,
+				56C233E329B91BFB0010A733 /* Trailer.graphql.swift in Sources */,
+				56C233DA29B91BFB0010A733 /* MoviesByGenreQuery.graphql.swift in Sources */,
+				56C233E129B91BFB0010A733 /* SpokenLanguages.graphql.swift in Sources */,
+				56C233E929B91BFB0010A733 /* ProductionCompany.graphql.swift in Sources */,
+				56C233DE29B91BFB0010A733 /* MovieDetails.graphql.swift in Sources */,
+				56C233D929B91BFB0010A733 /* GenresQuery.graphql.swift in Sources */,
+				56C233EB29B91BFB0010A733 /* SchemaMetadata.graphql.swift in Sources */,
+				56C233D629B91BFB0010A733 /* MovieByIdQuery.graphql.swift in Sources */,
+				56C233DC29B91BFB0010A733 /* Recommendation.graphql.swift in Sources */,
+				56C233E829B91BFB0010A733 /* TrailerResults.graphql.swift in Sources */,
+				56C233E529B91BFB0010A733 /* Genre.graphql.swift in Sources */,
+				56C233E729B91BFB0010A733 /* PaginatedMovies.graphql.swift in Sources */,
+				56C233DF29B91BFB0010A733 /* PaginatedRecommendations.graphql.swift in Sources */,
+				56C233DB29B91BFB0010A733 /* ProductionCountry.graphql.swift in Sources */,
+				56C233D729B91BFB0010A733 /* SearchMoviesQuery.graphql.swift in Sources */,
+				56C233D829B91BFB0010A733 /* PopularMoviesQuery.graphql.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,
+				56C233E029B91BFB0010A733 /* Crew.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
