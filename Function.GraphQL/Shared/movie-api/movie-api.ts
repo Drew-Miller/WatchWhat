@@ -1,7 +1,7 @@
 import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
-import { Genre, Movie, PaginatedResults } from "./dtos";
+import { Credits, Genre, Movie, MovieDetails, PaginatedResults, Recommendation, Results, Trailer } from "./dtos";
 
 export type MovieAPIOptions = DataSourceConfig & {
   apiVersion: string,
@@ -39,13 +39,12 @@ export class MovieAPI extends RESTDataSource {
     this.sessionId = options.sessionId;
   }
 
-  async getPopularMovies(page: number = 1) {
+  async popularMovies(page: number = 1) {
     const data = await this.get(`/${this.apiVersion}/movie/popular`, {
       params: {
-        page: encodeURIComponent(page)
+        page: page.toString()
       }
     });
-
     return data;
   }
 
@@ -61,18 +60,38 @@ export class MovieAPI extends RESTDataSource {
     return data;
   }
 
-  async getGenres(): Promise<Genre[]> {
+  async genres(): Promise<Genre[]> {
     const data = await this.get<{ genres: Genre[] }>(`/${this.apiVersion}/genre/movie/list`);
     return data.genres;
   }
 
-  async getMoviesByGenre(genreIds: number[], page: number = 1): Promise<PaginatedResults<Movie>> {
+  async moviesByGenre(genreIds: number[], page: number = 1): Promise<PaginatedResults<Movie>> {
     const data = await this.get<PaginatedResults<Movie>>(`/${this.apiVersion}/discover/movie?`, {
       params: {
         with_genres: genreIds.join(','),
         page: page.toString()
       }
     });
+    return data;
+  }
+
+  async movie(id: number): Promise<MovieDetails> {
+    const data = await this.get<MovieDetails>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}`);
+    return data;
+  }
+
+  async credits(id: number): Promise<Credits> {
+    const data = await this.get<Credits>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}/credits`);
+    return data;
+  }
+
+  async videos(id: number): Promise<Results<Trailer>> {
+    const data = await this.get<Results<Trailer>>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}/videos`);
+    return data;
+  }
+
+  async recommendations(id: number): Promise<PaginatedResults<Recommendation>> {
+    const data = await this.get<PaginatedResults<Recommendation>>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}/recommendations`);
     return data;
   }
 

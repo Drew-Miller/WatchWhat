@@ -3,11 +3,18 @@ export const typeDefs = `#graphql
 type Query {
   hello: String
   ping: String
+
+  popularMovies(page: Int): PaginatedMovies!
   
-  searchMovies(query: String!, page: Int): PaginatedMovies
+  searchMovies(query: String!, page: Int): PaginatedMovies!
 
   genres: [Genre]
-  moviesByGenre(genreIds: [Int], page: Int): PaginatedMovies
+  moviesByGenre(genreIds: [Int], page: Int): PaginatedMovies!
+
+  movie(id: Int!): MovieDetails!
+  credits(id: Int!): Credits!
+  videos(id: Int!): TrailerResults!
+  recommendations(id: Int!): PaginatedRecommendations!
 }
 
 ################
@@ -19,6 +26,7 @@ type Query {
 ##################
 # Movie DB Types #
 ##################
+
 
 # Genre Types
 
@@ -83,7 +91,7 @@ type MovieDetails {
 
 type ProductionCompany {
   id: Int!
-  logo_path: String!
+  logo_path: String
   name: String!
   origin_country: String!
 }
@@ -100,7 +108,50 @@ type SpokenLanguages {
 }
 
 
+# Credits Types
+
+type Cast {
+  adult: Boolean!
+  cast_id: Int!
+  character: String!
+  credit_id: String!
+  gender: Int!
+  id: Int!
+  known_for_department: String!
+  name: String!
+  order: Int!
+  original_name: String!
+  popularity: Float!
+  profile_path: String
+}
+
+type Crew {
+  adult: Boolean!
+  credit_id: String!
+  department: String!
+  gender: Int!
+  id: Int!
+  job: String!
+  known_for_department: String!
+  name: String!
+  original_name: String!
+  popularity: Float!
+  profile_path: String
+}
+
+type Credits {
+  cast: [Cast]
+  crew: [Crew]
+  id: Int!
+}
+
+
 # Trailer Types
+
+type TrailerResults {
+  id: Int!
+  results: [Trailer]
+}
 
 type Trailer {
   id: String!
@@ -116,10 +167,30 @@ type Trailer {
 }
 
 
-# Wrapped Results
-# type Results {
-#   id: Int!
-#   results: [Resultable]
-# }
+# Recommendation Types
+
+type Recommendation {
+  adult: Boolean!
+  backdrop_path: String
+  genre_ids: [Int]
+  id: Int!
+  media_type: String!
+  original_language: String!
+  original_title: String!
+  overview: String!
+  popularity: Float!
+  poster_path: String
+  release_date: String!
+  title: String!
+  video: Boolean!
+  vote_average: Float!
+}
+
+type PaginatedRecommendations {
+  page: Int!
+  results: [Recommendation]
+  total_pages: Int!
+  total_results: Int!
+}
 
 `;
