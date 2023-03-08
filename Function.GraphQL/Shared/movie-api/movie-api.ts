@@ -66,7 +66,7 @@ export class MovieAPI extends RESTDataSource {
   }
 
   async moviesByGenre(genreIds: number[], page: number = 1): Promise<PaginatedResults<Movie>> {
-    const data = await this.get<PaginatedResults<Movie>>(`/${this.apiVersion}/discover/movie?`, {
+    const data = await this.get<PaginatedResults<Movie>>(`/${this.apiVersion}/discover/movie`, {
       params: {
         with_genres: genreIds.join(','),
         page: page.toString()
