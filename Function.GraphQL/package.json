@@ -1,0 +1,24 @@
+{
+  "name": "function.graphql",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@apollo/datasource-rest": "^5.0.2",
+    "@apollo/server": "^4.4.1",
+    "@as-integrations/azure-functions": "^0.0.0",
+    "graphql": "^16.6.0",
+    "http-status-codes": "^2.2.0"
+  },
+  "devDependencies": {
+    "@azure/functions": "^3.0.0",
+    "@types/node": "^16.x",
+    "typescript": "^4.0.0"
+  }
+}

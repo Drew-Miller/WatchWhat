@@ -1,0 +1,401 @@
+{
+   "page":1,
+   "results":[
+      {
+         "adult":false,
+         "backdrop_path":"/mqsPyyeDCBAghXyjbw4TfEYwljw.jpg",
+         "genre_ids":[
+            28,
+            18,
+            36,
+            10752
+         ],
+         "id":49046,
+         "original_language":"de",
+         "original_title":"Im Westen nichts Neues",
+         "overview":"Paul Baumer and his friends Albert and Muller, egged on by romantic dreams of heroism, voluntarily enlist in the German army. Full of excitement and patriotic fervour, the boys enthusiastically march into a war they believe in. But once on the Western Front, they discover the soul-destroying horror of World War I.",
+         "popularity":2367.397,
+         "poster_path":"/hYqOjJ7Gh1fbqXrxlIao1g8ZehF.jpg",
+         "release_date":"2022-10-07",
+         "title":"All Quiet on the Western Front",
+         "video":false,
+         "vote_average":7.9,
+         "vote_count":557
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/odJ4hx6g6vBt4lBWKFD1tI8WS4x.jpg",
+         "genre_ids":[
+            28,
+            18
+         ],
+         "id":361743,
+         "original_language":"en",
+         "original_title":"Top Gun: Maverick",
+         "overview":"After more than thirty years of service as one of the Navy’s top aviators, and dodging the advancement in rank that would ground him, Pete “Maverick” Mitchell finds himself training a detachment of TOP GUN graduates for a specialized mission the likes of which no living pilot has ever seen.",
+         "popularity":1511.669,
+         "poster_path":"/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
+         "release_date":"2022-05-24",
+         "title":"Top Gun: Maverick",
+         "video":false,
+         "vote_average":8.3,
+         "vote_count":4614
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/akYTfFvYkFGJReFxXM841NidlAa.jpg",
+         "genre_ids":[
+            80,
+            18
+         ],
+         "id":1033107,
+         "original_language":"en",
+         "original_title":"Wild Is the Wind",
+         "overview":"When two corrupt police officers investigate the brutal murder of a young girl, tensions come to a head in their small, racially-segregated town.",
+         "popularity":1349.638,
+         "poster_path":"/rITxQBtnMpneZf8QzH1dqONQocx.jpg",
+         "release_date":"2022-10-28",
+         "title":"Wild Is the Wind",
+         "video":false,
+         "vote_average":5.8,
+         "vote_count":26
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/mMA2YNddowV8MZtxpbn0a7Yilum.jpg",
+         "genre_ids":[
+            10752,
+            36,
+            28,
+            18
+         ],
+         "id":928123,
+         "original_language":"zh",
+         "original_title":"长津湖之水门桥",
+         "overview":"In the follow-up to \"The Battle At Lake Changjin\", brothers Wu Qianli and Wu Wanli undertake a new task for the People's Volunteer Army, defending a bridge part of the American troops' escape route from the advancing Chinese.",
+         "popularity":1302.722,
+         "poster_path":"/ugiL6wIhl1OfPyv1gqLkTe45jLl.jpg",
+         "release_date":"2022-02-01",
+         "title":"The Battle at Lake Changjin: Water Gate Bridge",
+         "video":false,
+         "vote_average":6.4,
+         "vote_count":23
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/2iGUavwv86Hubv3V5Iq4qEQXDfE.jpg",
+         "genre_ids":[
+            18,
+            53,
+            27
+         ],
+         "id":848058,
+         "original_language":"es",
+         "original_title":"Cerdita",
+         "overview":"A bullied overweight teenager sees a glimpse of hope when her tormentors are brutally abducted by a mesmerizing stranger.",
+         "popularity":1202.438,
+         "poster_path":"/8EIQAvJjXdbNDMmBtHtgGqbc09V.jpg",
+         "release_date":"2022-10-07",
+         "title":"Piggy",
+         "video":false,
+         "vote_average":6.7,
+         "vote_count":174
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/u6WzMRpTkGzIlfsPNtDfIBfEy9z.jpg",
+         "genre_ids":[
+            80,
+            18,
+            9648,
+            53
+         ],
+         "id":848791,
+         "original_language":"en",
+         "original_title":"The Stranger",
+         "overview":"Two strangers strike up a conversation on a long journey. One is a suspect in an unsolved missing person’s case and the other an undercover operative on his trail. Their uneasy friendship becomes the core of this tightly wrought thriller, which is based on the true story of one of the largest investigations and undercover operations in Australia.",
+         "popularity":1171.051,
+         "poster_path":"/ydbm5Ad1nyZq7eywWsw82Wxdsgg.jpg",
+         "release_date":"2022-10-06",
+         "title":"The Stranger",
+         "video":false,
+         "vote_average":6.1,
+         "vote_count":95
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/tSxbUnrnWlR5dQvUgqMI7sACmFD.jpg",
+         "genre_ids":[
+            14,
+            28,
+            18
+         ],
+         "id":779782,
+         "original_language":"en",
+         "original_title":"The School for Good and Evil",
+         "overview":"Best friends Sophie and Agatha navigate an enchanted school for young heroes and villains — and find themselves on opposing sides of the battle between good and evil.",
+         "popularity":1147.802,
+         "poster_path":"/6oZeEu1GDILdwezmZ5e2xWISf1C.jpg",
+         "release_date":"2022-10-19",
+         "title":"The School for Good and Evil",
+         "video":false,
+         "vote_average":7.3,
+         "vote_count":513
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/ghsPsvM0sEztdNT4kUlTsBF2LEF.jpg",
+         "genre_ids":[
+            18,
+            28,
+            53
+         ],
+         "id":852046,
+         "original_language":"fr",
+         "original_title":"Athena",
+         "overview":"Hours after the tragic death of their youngest brother in unexplained circumstances, three siblings have their lives thrown into chaos.",
+         "popularity":1072.201,
+         "poster_path":"/7WfAuzUtztPJ9rDEzmjx0I4NIDw.jpg",
+         "release_date":"2022-09-09",
+         "title":"Athena",
+         "video":false,
+         "vote_average":6.6,
+         "vote_count":339
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/3G8xATwPSnkvkxFGquKnG2xobp7.jpg",
+         "genre_ids":[
+            80,
+            18
+         ],
+         "id":884363,
+         "original_language":"es",
+         "original_title":"Togo",
+         "overview":"Togo just wants to watch his neighbors' homes, wash their cars and clean up their sidewalks. But the drug traffickers want more from him.",
+         "popularity":946.181,
+         "poster_path":"/5YZ8JKV8i437z6O4YQ2IEzcSlsD.jpg",
+         "release_date":"2022-10-05",
+         "title":"Togo",
+         "video":false,
+         "vote_average":6.5,
+         "vote_count":53
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/3Ykwi0ObNpqy5gAwhddmxKWs1dp.jpg",
+         "genre_ids":[
+            53,
+            18
+         ],
+         "id":848526,
+         "original_language":"fr",
+         "original_title":"Arsenault & Fils",
+         "overview":"Follows the Arsenaults, a small-time poach family in Témiscouata, Quebec.",
+         "popularity":805.592,
+         "poster_path":"/2symxAMYXpJ9mJ8YOc2b5ZEKIAQ.jpg",
+         "release_date":"2022-06-17",
+         "title":"Family Game",
+         "video":false,
+         "vote_average":5.1,
+         "vote_count":5
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/jv3UA95sQZkJYRVFsoGoxy3ixcL.jpg",
+         "genre_ids":[
+            10749,
+            18,
+            35
+         ],
+         "id":962232,
+         "original_language":"pt",
+         "original_title":"Depois do Universo",
+         "overview":"While waiting for a kidney transplant, a young pianist finds an unexpected connection with her doctor — and the courage to fulfill her musical dreams.",
+         "popularity":737.695,
+         "poster_path":"/AlAP6WRSBuf5cP8OgpHTF45BPUp.jpg",
+         "release_date":"2022-10-27",
+         "title":"Beyond the Universe",
+         "video":false,
+         "vote_average":8,
+         "vote_count":86
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/hYZ4a0JvPETdfgJJ9ZzyFufq8KQ.jpg",
+         "genre_ids":[
+            28,
+            18,
+            878
+         ],
+         "id":629176,
+         "original_language":"en",
+         "original_title":"Samaritan",
+         "overview":"Thirteen year old Sam Cleary  suspects that his mysteriously reclusive neighbor Mr. Smith is actually the legendary vigilante Samaritan, who was reported dead 20 years ago. With crime on the rise and the city on the brink of chaos, Sam makes it his mission to coax his neighbor out of hiding to save the city from ruin.",
+         "popularity":706.641,
+         "poster_path":"/vwq5iboxYoaSpOmEQrhq9tHicq7.jpg",
+         "release_date":"2022-08-25",
+         "title":"Samaritan",
+         "video":false,
+         "vote_average":6.9,
+         "vote_count":1370
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/rgZ3hdzgMgYgzvBfwNEVW01bpK1.jpg",
+         "genre_ids":[
+            28,
+            53,
+            18
+         ],
+         "id":429473,
+         "original_language":"en",
+         "original_title":"Lou",
+         "overview":"A young girl is kidnapped during a powerful storm. Her mother joins forces with her mysterious neighbour to set off in pursuit of the kidnapper. Their journey will test their limits and expose the dark secrets of their past.",
+         "popularity":667.623,
+         "poster_path":"/djM2s4wSaATn4jVB33cV05PEbV7.jpg",
+         "release_date":"2022-09-23",
+         "title":"Lou",
+         "video":false,
+         "vote_average":6.7,
+         "vote_count":342
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/rwgmDkIEv8VjAsWx25ottJrFvpO.jpg",
+         "genre_ids":[
+            10749,
+            18
+         ],
+         "id":744276,
+         "original_language":"en",
+         "original_title":"After Ever Happy",
+         "overview":"As a shocking truth about a couple's families emerges, the two lovers discover they are not so different from each other. Tessa is no longer the sweet, simple, good girl she was when she met Hardin — any more than he is the cruel, moody boy she fell so hard for.",
+         "popularity":619.047,
+         "poster_path":"/6b7swg6DLqXCO3XUsMnv6RwDMW2.jpg",
+         "release_date":"2022-08-24",
+         "title":"After Ever Happy",
+         "video":false,
+         "vote_average":7,
+         "vote_count":531
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/d3l7kgFJyLTTQSrR4ysCk5yeVyW.jpg",
+         "genre_ids":[
+            28,
+            18
+         ],
+         "id":579974,
+         "original_language":"te",
+         "original_title":"రౌద్రం రణం రుధిరం",
+         "overview":"A fictional history of two legendary revolutionaries' journey away from home before they began fighting for their country in the 1920s.",
+         "popularity":616.715,
+         "poster_path":"/kdO4JtO5DnIMyLymQv8C8Ol1CzA.jpg",
+         "release_date":"2022-03-24",
+         "title":"RRR",
+         "video":false,
+         "vote_average":7.8,
+         "vote_count":495
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/kdOfq5ImruKCJDEqASuuXlrj9LM.jpg",
+         "genre_ids":[
+            27,
+            18,
+            36
+         ],
+         "id":883083,
+         "original_language":"mk",
+         "original_title":"You Won't Be Alone",
+         "overview":"In an isolated mountain village in 19th century Macedonia, a young feral witch accidentally kills a peasant. She assumes the peasant's shape to see what life is like in her skin, igniting a deep seated curiosity to experience life inside the bodies of others.",
+         "popularity":595.588,
+         "poster_path":"/kJ1bSR2T16yzgRMSySpbAJzF3rM.jpg",
+         "release_date":"2022-04-01",
+         "title":"You Won't Be Alone",
+         "video":false,
+         "vote_average":6.6,
+         "vote_count":133
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/rl7Jw8PjhSIjArOlDNv0JQPL1ZV.jpg",
+         "genre_ids":[
+            10749,
+            18
+         ],
+         "id":851644,
+         "original_language":"ko",
+         "original_title":"20 Century Girl",
+         "overview":"Yeon-du asks her best friend Bora to collect all the information she can about Baek Hyun-jin while she is away in the U.S. for heart surgery. Bora decides to get close to Baek's best friend, Pung Woon-ho first. However, Bora's clumsy plan unfolds in an unexpected direction. In 1999, a year before the new century, Bora, who turns seventeen, falls into the fever of first love.",
+         "popularity":577.563,
+         "poster_path":"/od22ftNnyag0TTxcnJhlsu3aLoU.jpg",
+         "release_date":"2022-10-06",
+         "title":"20th Century Girl",
+         "video":false,
+         "vote_average":8.9,
+         "vote_count":198
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/rV0xrSgkOQj2EpiG8n16VHHJeg3.jpg",
+         "genre_ids":[
+            18,
+            80,
+            9648
+         ],
+         "id":541134,
+         "original_language":"en",
+         "original_title":"The Good Nurse",
+         "overview":"Suspicious that her colleague is responsible for a series of mysterious patient deaths, a nurse risks her own life to uncover the truth in this gripping thriller based on true events.",
+         "popularity":451.153,
+         "poster_path":"/rSq6cq0LCcbro10jbEaPTEb3WmW.jpg",
+         "release_date":"2022-10-19",
+         "title":"The Good Nurse",
+         "video":false,
+         "vote_average":7.1,
+         "vote_count":390
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/ru5zAV1Ij6bQGedBkczqhiBmjzn.jpg",
+         "genre_ids":[
+            18
+         ],
+         "id":1029446,
+         "original_language":"tl",
+         "original_title":"Selina's Gold",
+         "overview":"Selina's father sells her to Tiago who makes her a sex slave. With the help of Domeng, Tiago's blind slave, she plans their way out of this living hell.",
+         "popularity":432.08,
+         "poster_path":"/4IVBk5IpiPvkBHpOQTwhb4qlQ4t.jpg",
+         "release_date":"2022-10-24",
+         "title":"Selina's Gold",
+         "video":false,
+         "vote_average":5,
+         "vote_count":3
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/z8KsgBFtduX5bS1yVkjoGo4L7KJ.jpg",
+         "genre_ids":[
+            18,
+            35,
+            10752
+         ],
+         "id":597922,
+         "original_language":"en",
+         "original_title":"The Greatest Beer Run Ever",
+         "overview":"Chickie wants to support his friends fighting in Vietnam, so he does something wild—personally bring them American beer. What starts as a well-meaning journey quickly changes Chickie’s life and perspective. Based on a true story.",
+         "popularity":379.157,
+         "poster_path":"/ggf37TpcKaxwguhvtNn6MQpyqBn.jpg",
+         "release_date":"2022-09-30",
+         "title":"The Greatest Beer Run Ever",
+         "video":false,
+         "vote_average":7.9,
+         "vote_count":320
+      }
+   ],
+   "total_pages":8725,
+   "total_results":174499
+}

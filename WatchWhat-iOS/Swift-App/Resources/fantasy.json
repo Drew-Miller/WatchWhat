@@ -1,0 +1,418 @@
+{
+   "page":1,
+   "results":[
+      {
+         "adult":false,
+         "backdrop_path":"/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
+         "genre_ids":[
+            28,
+            14,
+            878
+         ],
+         "id":436270,
+         "original_language":"en",
+         "original_title":"Black Adam",
+         "overview":"Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.",
+         "popularity":3772.253,
+         "poster_path":"/3zXceNTtyj5FLjwQXuPvLYK5YYL.jpg",
+         "release_date":"2022-10-19",
+         "title":"Black Adam",
+         "video":false,
+         "vote_average":6.9,
+         "vote_count":938
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/pGx6O6IwqADOsgmqWzPysmWnOyr.jpg",
+         "genre_ids":[
+            28,
+            14
+         ],
+         "id":732459,
+         "original_language":"en",
+         "original_title":"Blade of the 47 Ronin",
+         "overview":"In this sequel to \"47 Ronin,\" a new class of warriors emerges among the Samurai clans to keep a sought-after sword from falling into the wrong hands.",
+         "popularity":3127.332,
+         "poster_path":"/kjFDIlUCJkcpFxYKtE6OsGcAfQQ.jpg",
+         "release_date":"2022-10-25",
+         "title":"Blade of the 47 Ronin",
+         "video":false,
+         "vote_average":6.7,
+         "vote_count":50
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/iS9U3VHpPEjTWnwmW56CrBlpgLj.jpg",
+         "genre_ids":[
+            14,
+            35,
+            10751
+         ],
+         "id":642885,
+         "original_language":"en",
+         "original_title":"Hocus Pocus 2",
+         "overview":"29 years since the Black Flame Candle was last lit, the 17th-century Sanderson sisters are resurrected, and they are looking for revenge. Now it's up to three high school students to stop the ravenous witches from wreaking a new kind of havoc on Salem before dawn on All Hallow's Eve.",
+         "popularity":1549.993,
+         "poster_path":"/7ze7YNmUaX81ufctGqt0AgHxRtL.jpg",
+         "release_date":"2022-09-27",
+         "title":"Hocus Pocus 2",
+         "video":false,
+         "vote_average":7.6,
+         "vote_count":1047
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/5hoS3nEkGGXUfmnu39yw1k52JX5.jpg",
+         "genre_ids":[
+            28,
+            12,
+            14
+         ],
+         "id":960704,
+         "original_language":"ja",
+         "original_title":"鋼の錬金術師 完結編 最後の錬成",
+         "overview":"The Elric brothers’ long and winding journey comes to a close in this epic finale, where they must face off against an unworldly, nationwide threat.",
+         "popularity":1397.502,
+         "poster_path":"/AeyiuQUUs78bPkz18FY3AzNFF8b.jpg",
+         "release_date":"2022-06-24",
+         "title":"Fullmetal Alchemist: The Final Alchemy",
+         "video":false,
+         "vote_average":6.2,
+         "vote_count":115
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/jsoz1HlxczSuTx0mDl2h0lxy36l.jpg",
+         "genre_ids":[
+            14,
+            28,
+            35
+         ],
+         "id":616037,
+         "original_language":"en",
+         "original_title":"Thor: Love and Thunder",
+         "overview":"After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now wields Mjolnir as the Mighty Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher’s vengeance and stop him before it’s too late.",
+         "popularity":1318.417,
+         "poster_path":"/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+         "release_date":"2022-07-06",
+         "title":"Thor: Love and Thunder",
+         "video":false,
+         "vote_average":6.7,
+         "vote_count":4551
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/nnUQqlVZeEGuCRx8SaoCU4XVHJN.jpg",
+         "genre_ids":[
+            14,
+            12,
+            10751
+         ],
+         "id":532639,
+         "original_language":"en",
+         "original_title":"Pinocchio",
+         "overview":"A wooden puppet embarks on a thrilling adventure to become a real boy.",
+         "popularity":1208.029,
+         "poster_path":"/g8sclIV4gj1TZqUpnL82hKOTK3B.jpg",
+         "release_date":"2022-09-07",
+         "title":"Pinocchio",
+         "video":false,
+         "vote_average":6.7,
+         "vote_count":1030
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/tSxbUnrnWlR5dQvUgqMI7sACmFD.jpg",
+         "genre_ids":[
+            14,
+            28,
+            18
+         ],
+         "id":779782,
+         "original_language":"en",
+         "original_title":"The School for Good and Evil",
+         "overview":"Best friends Sophie and Agatha navigate an enchanted school for young heroes and villains — and find themselves on opposing sides of the battle between good and evil.",
+         "popularity":1147.802,
+         "poster_path":"/6oZeEu1GDILdwezmZ5e2xWISf1C.jpg",
+         "release_date":"2022-10-19",
+         "title":"The School for Good and Evil",
+         "video":false,
+         "vote_average":7.3,
+         "vote_count":513
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/Ach0puWzxuO2imh1yWEUK7CGsx.jpg",
+         "genre_ids":[
+            16,
+            12,
+            28,
+            14
+         ],
+         "id":900667,
+         "original_language":"ja",
+         "original_title":"ONE PIECE FILM RED",
+         "overview":"Uta — the most beloved singer in the world. Her voice, which she sings with while concealing her true identity, has been described as “otherworldly.” She will appear in public for the first time at a live concert. As the venue fills with all kinds of Uta fans — excited pirates, the Navy watching closely, and the Straw Hats led by Luffy who simply came to enjoy her sonorous performance — the voice that the whole world has been waiting for is about to resound.",
+         "popularity":1137.786,
+         "poster_path":"/m80kPdrmmtEh9wlLroCp0bwUGH0.jpg",
+         "release_date":"2022-08-06",
+         "title":"One Piece Film Red",
+         "video":false,
+         "vote_average":7.3,
+         "vote_count":146
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/7ABsaBkO1jA2psC8Hy4IDhkID4h.jpg",
+         "genre_ids":[
+            28,
+            12,
+            14,
+            878
+         ],
+         "id":19995,
+         "original_language":"en",
+         "original_title":"Avatar",
+         "overview":"In the 22nd century, a paraplegic Marine is dispatched to the moon Pandora on a unique mission, but becomes torn between following orders and protecting an alien civilization.",
+         "popularity":923.82,
+         "poster_path":"/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg",
+         "release_date":"2009-12-15",
+         "title":"Avatar",
+         "video":false,
+         "vote_average":7.5,
+         "vote_count":26473
+      },
+      {
+         "adult":false,
+         "backdrop_path":null,
+         "genre_ids":[
+            27,
+            14,
+            53
+         ],
+         "id":1034541,
+         "original_language":"en",
+         "original_title":"Terrifier 3",
+         "overview":"In the aftermath of Terrifier 2, the third installment will continue to follow Sienna and Jonathan as they uncover Art the Clown's background and his connection to their late father.",
+         "popularity":918.347,
+         "poster_path":"/A2ouWngHdomaAyFAPMI7VOpOLvS.jpg",
+         "release_date":"",
+         "title":"Terrifier 3",
+         "video":false,
+         "vote_average":0,
+         "vote_count":0
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/askg3SMvhqEl4OL52YuvdtY40Yb.jpg",
+         "genre_ids":[
+            10751,
+            16,
+            14,
+            10402,
+            35,
+            12
+         ],
+         "id":354912,
+         "original_language":"en",
+         "original_title":"Coco",
+         "overview":"Despite his family’s baffling generations-old ban on music, Miguel dreams of becoming an accomplished musician like his idol, Ernesto de la Cruz. Desperate to prove his talent, Miguel finds himself in the stunning and colorful Land of the Dead following a mysterious chain of events. Along the way, he meets charming trickster Hector, and together, they set off on an extraordinary journey to unlock the real story behind Miguel's family history.",
+         "popularity":883.967,
+         "poster_path":"/gGEsBPAijhVUFoiNpgZXqRVWJt2.jpg",
+         "release_date":"2017-10-27",
+         "title":"Coco",
+         "video":false,
+         "vote_average":8.2,
+         "vote_count":16449
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/gUNRlH66yNDH3NQblYMIwgZXJ2u.jpg",
+         "genre_ids":[
+            14,
+            28,
+            12
+         ],
+         "id":453395,
+         "original_language":"en",
+         "original_title":"Doctor Strange in the Multiverse of Madness",
+         "overview":"Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
+         "popularity":792.73,
+         "poster_path":"/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
+         "release_date":"2022-05-04",
+         "title":"Doctor Strange in the Multiverse of Madness",
+         "video":false,
+         "vote_average":7.4,
+         "vote_count":6245
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/a6OX0pzbcPHstcNPK3FSJGq8Sxp.jpg",
+         "genre_ids":[
+            16,
+            14,
+            12
+         ],
+         "id":955644,
+         "original_language":"en",
+         "original_title":"Mia and Me: The Hero of Centopia",
+         "overview":"Mia discovers her magic stone is part of an ancient prophecy and embarks on a thrilling journey to the farthest islands of Centopia to face a great evil, and shape her own destiny.",
+         "popularity":771.47,
+         "poster_path":"/a3ZpDsvNCQUOD7ApAs9y3mFwVU4.jpg",
+         "release_date":"2022-05-26",
+         "title":"Mia and Me: The Hero of Centopia",
+         "video":false,
+         "vote_average":7.2,
+         "vote_count":27
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/geYUecpFI2AonDLhjyK9zoVFcMv.jpg",
+         "genre_ids":[
+            16,
+            28,
+            14
+         ],
+         "id":810693,
+         "original_language":"ja",
+         "original_title":"劇場版 呪術廻戦 0",
+         "overview":"Yuta Okkotsu is a nervous high school student who is suffering from a serious problem—his childhood friend Rika has turned into a curse and won't leave him alone. Since Rika is no ordinary curse, his plight is noticed by Satoru Gojo, a teacher at Jujutsu High, a school where fledgling exorcists learn how to combat curses. Gojo convinces Yuta to enroll, but can he learn enough in time to confront the curse that haunts him?",
+         "popularity":680.605,
+         "poster_path":"/yzkgx79vj1KsZBzxFBIsQBwBkPE.jpg",
+         "release_date":"2021-12-24",
+         "title":"Jujutsu Kaisen 0",
+         "video":false,
+         "vote_average":8.3,
+         "vote_count":659
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/apBUC70udhxoLzXo7DqclQ6gcXo.jpg",
+         "genre_ids":[
+            16,
+            35,
+            14,
+            12
+         ],
+         "id":511817,
+         "original_language":"en",
+         "original_title":"Wendell & Wild",
+         "overview":"Two demon brothers enlist the aid of Kat Elliot — a tough teen with a load of guilt — to summon them to the Land of the Living. But what Kat demands in return leads to a brilliantly bizarre and comedic adventure like no other.",
+         "popularity":670.378,
+         "poster_path":"/5dsX6UAHqkQz1kiV8bs8SvjyVNa.jpg",
+         "release_date":"2022-10-21",
+         "title":"Wendell & Wild",
+         "video":false,
+         "vote_average":6.7,
+         "vote_count":98
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/3p3amyz5nXK9AW4VARqkPaMAG5J.jpg",
+         "genre_ids":[
+            16,
+            12,
+            35,
+            14
+         ],
+         "id":585511,
+         "original_language":"en",
+         "original_title":"Luck",
+         "overview":"Suddenly finding herself in the never-before-seen Land of Luck, the unluckiest person in the world must unite with the magical creatures there to turn her luck around.",
+         "popularity":635.436,
+         "poster_path":"/1HOYvwGFioUFL58UVvDRG6beEDm.jpg",
+         "release_date":"2022-08-05",
+         "title":"Luck",
+         "video":false,
+         "vote_average":7.9,
+         "vote_count":883
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/qjGrUmKW78MCFG8PTLDBp67S27p.jpg",
+         "genre_ids":[
+            16,
+            28,
+            12,
+            14
+         ],
+         "id":635302,
+         "original_language":"ja",
+         "original_title":"劇場版「鬼滅の刃」無限列車編",
+         "overview":"Tanjirō Kamado, joined with Inosuke Hashibira, a boy raised by boars who wears a boar's head, and Zenitsu Agatsuma, a scared boy who reveals his true power when he sleeps, boards the Infinity Train on a new mission with the Fire Hashira, Kyōjurō Rengoku, to defeat a demon who has been tormenting the people and killing the demon slayers who oppose it!",
+         "popularity":595.327,
+         "poster_path":"/h8Rb9gBr48ODIwYUttZNYeMWeUU.jpg",
+         "release_date":"2020-10-16",
+         "title":"Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
+         "video":false,
+         "vote_average":8.3,
+         "vote_count":2771
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/3G1Q5xF40HkUBJXxt2DQgQzKTp5.jpg",
+         "genre_ids":[
+            16,
+            35,
+            10751,
+            14
+         ],
+         "id":568124,
+         "original_language":"en",
+         "original_title":"Encanto",
+         "overview":"The tale of an extraordinary family, the Madrigals, who live hidden in the mountains of Colombia, in a magical house, in a vibrant town, in a wondrous, charmed place called an Encanto. The magic of the Encanto has blessed every child in the family—every child except one, Mirabel. But when she discovers that the magic surrounding the Encanto is in danger, Mirabel decides that she, the only ordinary Madrigal, might just be her exceptional family's last hope.",
+         "popularity":580.159,
+         "poster_path":"/4j0PNHkMr5ax3IA8tjtxcmPU3QT.jpg",
+         "release_date":"2021-10-13",
+         "title":"Encanto",
+         "video":false,
+         "vote_average":7.7,
+         "vote_count":7547
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg",
+         "genre_ids":[
+            16,
+            10751,
+            35,
+            14
+         ],
+         "id":508947,
+         "original_language":"en",
+         "original_title":"Turning Red",
+         "overview":"Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
+         "popularity":537.461,
+         "poster_path":"/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
+         "release_date":"2022-03-01",
+         "title":"Turning Red",
+         "video":false,
+         "vote_average":7.5,
+         "vote_count":3505
+      },
+      {
+         "adult":false,
+         "backdrop_path":"/m3Ys7UDzUzOyoPYKzp4GhKKokUr.jpg",
+         "genre_ids":[
+            16,
+            35,
+            10751,
+            14,
+            12
+         ],
+         "id":585083,
+         "original_language":"en",
+         "original_title":"Hotel Transylvania: Transformania",
+         "overview":"When Van Helsing's mysterious invention, the \"Monsterfication Ray,\" goes haywire, Drac and his monster pals are all transformed into humans, and Johnny becomes a monster. In their new mismatched bodies, Drac and Johnny must team up and race across the globe to find a cure before it's too late, and before they drive each other crazy.",
+         "popularity":533.024,
+         "poster_path":"/teCy1egGQa0y8ULJvlrDHQKnxBL.jpg",
+         "release_date":"2022-02-25",
+         "title":"Hotel Transylvania: Transformania",
+         "video":false,
+         "vote_average":7.1,
+         "vote_count":1265
+      }
+   ],
+   "total_pages":821,
+   "total_results":16403
+}

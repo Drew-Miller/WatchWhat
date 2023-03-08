@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "Function.GraphQL"
+		}
+	],
+	"settings": {
+		"debug.internalConsoleOptions": "neverOpen"
+	}
+}
