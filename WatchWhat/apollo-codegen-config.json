@@ -1,0 +1,29 @@
+{
+  "schemaName" : "GraphQL",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./WatchWhat/GraphQL",
+      "moduleType" : {
+        "embeddedInTarget" : {
+          "name" : "WatchWhat"
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  }
+}
