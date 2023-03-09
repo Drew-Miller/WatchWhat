@@ -7,19 +7,18 @@
 
 import SwiftUI
 
-class MovieCategories: ObservableObject {
-    @Published private(set) var category: String?
-    @Published private(set) var movies: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
-}
-
 struct ContentView: View {
     @StateObject var popularMovies = PopularMovies()
 
     var body: some View {
-        MovieAppView(movies: popularMovies.results)
-            .onAppear {
-                popularMovies.loadData()
-            }
+        ZStack {
+            BackgroundView(topColor: Palette.background, bottomColor: Palette.background)
+            
+            MovieAppView(movies: popularMovies.results)
+                .onAppear {
+                    popularMovies.loadData()
+                }
+        }
     }
 }
 
@@ -31,17 +30,13 @@ struct ContentView_Previews: PreviewProvider {
 
 struct MovieAppView: View {
     let categories = ["Popular"]
-    var movies: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
+    var movies: [PopularMoviesResult?]?
         
     var body: some View {
-        NavigationView {
-            ScrollView {
-                LazyVStack(spacing: 0) {                    
-                    ForEach(categories, id: \.self) { category in
-                        CategoryView(category: category, movies: movies)
-                    }
-                    
-                    FooterView()
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(categories, id: \.self) { category in
+                    CategoryView(category: category, movies: movies)
                 }
             }
         }
@@ -50,11 +45,12 @@ struct MovieAppView: View {
 
 struct CategoryView: View {
     let category: String
-    var movies: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
+    var movies: [PopularMoviesResult?]?
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(category)
+                .foregroundColor(Palette.text)
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.horizontal)
@@ -65,6 +61,7 @@ struct CategoryView: View {
                         ForEach(movies, id: \.self) { movie in
                             if let movie = movie {
                                 MoviePosterView(movie: movie)
+                                
                             }
                         }
                     }
@@ -78,50 +75,33 @@ struct CategoryView: View {
 }
 
 struct MoviePosterView: View {
-    var movie: WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result
-
-    var body: some View {
-        Image("poster-placeholder")
-            .resizable()
-            .scaledToFit()
-            .cornerRadius(8)
-            .frame(width: 160, height: 240)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray, lineWidth: 1)
-            )
-        Text(movie.title)
-    }
-}
-
-struct FooterView: View {
+    var movie: PopularMoviesResult
     
     var body: some View {
-        HStack {
-            Spacer()
-            NavigationLink(destination: Text("Favorites")) {
-                Image(systemName: "heart.fill")
-                    .font(.title)
+        VStack {
+            AsyncImage(url: URL(string: Configuration.movieImageUrl + movie.poster_path!)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(8)
+                    .frame(width: 160, height: 240)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
+            } placeholder: {
+                Image("placeholder_image")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(8)
+                    .frame(width: 160, height: 240)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.gray, lineWidth: 1)
+                    )
             }
-            Spacer()
-            NavigationLink(destination: Text("Search")) {
-                Image(systemName: "magnifyingglass")
-                    .font(.title)
-            }
-            Spacer()
-            NavigationLink(destination: Text("Settings")) {
-                Image(systemName: "gearshape")
-                    .font(.title)
-            }
-            Spacer()
-            NavigationLink(destination: Text("Profile")) {
-                Image(systemName: "person.crop.circle")
-                    .font(.title)
-            }
-            Spacer()
+            Text(movie.title)
+                .foregroundColor(Palette.text)
         }
-        .padding()
-        .background(Color.gray.opacity(0.2))
     }
 }
-

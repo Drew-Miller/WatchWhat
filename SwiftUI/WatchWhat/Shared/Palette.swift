@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Palette {
     static var text: Color {
-        return Color(.white)
+        return Color("Text")
     }
     
     static var background: Color {

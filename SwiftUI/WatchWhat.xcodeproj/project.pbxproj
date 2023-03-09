@@ -49,6 +49,8 @@
 		56C233F529B96B660010A733 /* WatchWhatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* WatchWhatClient.swift */; };
 		56C233F729B96C8B0010A733 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Palette.swift */; };
 		56C233F929B973B60010A733 /* PopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F829B973B60010A733 /* PopularMovies.swift */; };
+		56C233FB29B97DB70010A733 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233FA29B97DB70010A733 /* Background.swift */; };
+		56C233FF29B984580010A733 /* GraphQLAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233FE29B984580010A733 /* GraphQLAliases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		56C233F429B96B660010A733 /* WatchWhatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatClient.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		56C233F829B973B60010A733 /* PopularMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovies.swift; sourceTree = "<group>"; };
+		56C233FA29B97DB70010A733 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		56C233FE29B984580010A733 /* GraphQLAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLAliases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				56012B9F29B832D900E2E5A9 /* ContentView.swift */,
+				56C233FC29B97DBD0010A733 /* Shared */,
+				56C233FD29B97DC80010A733 /* Movies */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 				56C233EE29B9682D0010A733 /* Configuration.swift */,
 				56C233F629B96C8B0010A733 /* Palette.swift */,
 				56C233F429B96B660010A733 /* WatchWhatClient.swift */,
+				56C233FE29B984580010A733 /* GraphQLAliases.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -305,6 +312,21 @@
 				56C232F029B8FAA80010A733 /* moviesByGenre.graphql */,
 			);
 			path = Src;
+			sourceTree = "<group>";
+		};
+		56C233FC29B97DBD0010A733 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				56C233FA29B97DB70010A733 /* Background.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		56C233FD29B97DC80010A733 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Movies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C233FF29B984580010A733 /* GraphQLAliases.swift in Sources */,
 				56C232EF29B8FA0D0010A733 /* popular.graphql in Sources */,
 				56C233E629B91BFB0010A733 /* Cast.graphql.swift in Sources */,
 				56C233E429B91BFB0010A733 /* Credits.graphql.swift in Sources */,
@@ -478,6 +501,7 @@
 				56C233D729B91BFB0010A733 /* SearchMoviesQuery.graphql.swift in Sources */,
 				56C233D829B91BFB0010A733 /* PopularMoviesQuery.graphql.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,
+				56C233FB29B97DB70010A733 /* Background.swift in Sources */,
 				56C233E029B91BFB0010A733 /* Crew.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,7 @@ class PopularMovies: ObservableObject {
     func fetchData(page: Int) async {
         WhatchWhatClient.apollo.fetch(query: WatchWhatSchema.PopularMoviesQuery(page: 1)) { result in
             guard let data = try? result.get().data else { return }
-            
+                        
             DispatchQueue.main.async {
                 self.page           = data.popularMovies.page
                 self.totalPages     = data.popularMovies.total_pages
