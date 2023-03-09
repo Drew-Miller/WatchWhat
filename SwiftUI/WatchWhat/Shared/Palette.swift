@@ -13,6 +13,10 @@ enum Palette {
         return Color("Text")
     }
     
+    static var backgroundAccent: Color {
+        return Color("Electric Purple Dark")
+    }
+    
     static var background: Color {
         return Color("Raisin Black")
     }

@@ -15,8 +15,6 @@
 		56012BB929B832DB00E2E5A9 /* WatchWhatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */; };
 		56012BBB29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */; };
 		56012BCB29B8353E00E2E5A9 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 56012BCA29B8353E00E2E5A9 /* Apollo */; };
-		56C2332929B8FD670010A733 /* apollo-codegen-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 56C2332829B8FD660010A733 /* apollo-codegen-config.json */; };
-		56C233ED29B91C0B0010A733 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */; };
 		56C233EF29B9682D0010A733 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EE29B9682D0010A733 /* Configuration.swift */; };
 		56C233F529B96B660010A733 /* WhatWhat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* WhatWhat.swift */; };
 		56C233F729B96C8B0010A733 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Palette.swift */; };
@@ -37,13 +35,17 @@
 		56C2342929BA856D0010A733 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2342229BA856D0010A733 /* SchemaConfiguration.swift */; };
 		56C2342A29BA856D0010A733 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2342329BA856D0010A733 /* SchemaMetadata.graphql.swift */; };
 		56C2342C29BA86610010A733 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2342B29BA86610010A733 /* Aliases.swift */; };
-		56C2343829BA88670010A733 /* HomeQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2342F29BA88670010A733 /* HomeQuery.graphql.swift */; };
-		56C2343929BA88670010A733 /* Home.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343229BA88670010A733 /* Home.graphql.swift */; };
-		56C2343A29BA88670010A733 /* Movie.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343329BA88670010A733 /* Movie.graphql.swift */; };
-		56C2343B29BA88670010A733 /* Query.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343429BA88670010A733 /* Query.graphql.swift */; };
-		56C2343C29BA88670010A733 /* GroupedMovies.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343529BA88670010A733 /* GroupedMovies.graphql.swift */; };
-		56C2343D29BA88670010A733 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343629BA88670010A733 /* SchemaConfiguration.swift */; };
-		56C2343E29BA88670010A733 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343729BA88670010A733 /* SchemaMetadata.graphql.swift */; };
+		56C2344029BA8EB10010A733 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343F29BA8EB10010A733 /* HomeView.swift */; };
+		56C2344229BA8EF00010A733 /* MovieCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344129BA8EF00010A733 /* MovieCategory.swift */; };
+		56C2344429BA8F090010A733 /* MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344329BA8F090010A733 /* MoviePoster.swift */; };
+		56C2345329BA92070010A733 /* Home.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344929BA92070010A733 /* Home.graphql.swift */; };
+		56C2345429BA92070010A733 /* Movie.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344A29BA92070010A733 /* Movie.graphql.swift */; };
+		56C2345529BA92070010A733 /* Query.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344B29BA92070010A733 /* Query.graphql.swift */; };
+		56C2345629BA92070010A733 /* GroupedMovies.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344C29BA92070010A733 /* GroupedMovies.graphql.swift */; };
+		56C2345729BA92070010A733 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344D29BA92070010A733 /* SchemaConfiguration.swift */; };
+		56C2345829BA92070010A733 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344E29BA92070010A733 /* SchemaMetadata.graphql.swift */; };
+		56C2345929BA92070010A733 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344F29BA92070010A733 /* WatchWhatSchema.graphql.swift */; };
+		56C2345A29BA92070010A733 /* HomeQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2345229BA92070010A733 /* HomeQuery.graphql.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +77,6 @@
 		56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITests.swift; sourceTree = "<group>"; };
 		56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56012BC729B832EF00E2E5A9 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
-		56C2332829B8FD660010A733 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "apollo-codegen-config.json"; path = "WatchWhat/GraphQL/apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
-		56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
 		56C233EE29B9682D0010A733 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		56C233F429B96B660010A733 /* WhatWhat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatWhat.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -97,13 +97,17 @@
 		56C2342229BA856D0010A733 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
 		56C2342329BA856D0010A733 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
 		56C2342B29BA86610010A733 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
-		56C2342F29BA88670010A733 /* HomeQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeQuery.graphql.swift; sourceTree = "<group>"; };
-		56C2343229BA88670010A733 /* Home.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.graphql.swift; sourceTree = "<group>"; };
-		56C2343329BA88670010A733 /* Movie.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.graphql.swift; sourceTree = "<group>"; };
-		56C2343429BA88670010A733 /* Query.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.graphql.swift; sourceTree = "<group>"; };
-		56C2343529BA88670010A733 /* GroupedMovies.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedMovies.graphql.swift; sourceTree = "<group>"; };
-		56C2343629BA88670010A733 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
-		56C2343729BA88670010A733 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
+		56C2343F29BA8EB10010A733 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		56C2344129BA8EF00010A733 /* MovieCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategory.swift; sourceTree = "<group>"; };
+		56C2344329BA8F090010A733 /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
+		56C2344929BA92070010A733 /* Home.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.graphql.swift; sourceTree = "<group>"; };
+		56C2344A29BA92070010A733 /* Movie.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.graphql.swift; sourceTree = "<group>"; };
+		56C2344B29BA92070010A733 /* Query.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Query.graphql.swift; sourceTree = "<group>"; };
+		56C2344C29BA92070010A733 /* GroupedMovies.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedMovies.graphql.swift; sourceTree = "<group>"; };
+		56C2344D29BA92070010A733 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
+		56C2344E29BA92070010A733 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
+		56C2344F29BA92070010A733 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
+		56C2345229BA92070010A733 /* HomeQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeQuery.graphql.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,11 +200,10 @@
 		56C232EB29B8F9440010A733 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				56C2332829B8FD660010A733 /* apollo-codegen-config.json */,
 				56C2342B29BA86610010A733 /* Aliases.swift */,
-				56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */,
-				56C2342D29BA88670010A733 /* Operations */,
-				56C2343029BA88670010A733 /* Schema */,
+				56C2344F29BA92070010A733 /* WatchWhatSchema.graphql.swift */,
+				56C2345029BA92070010A733 /* Operations */,
+				56C2344729BA92070010A733 /* Schema */,
 				56C233F329B9699B0010A733 /* Src */,
 			);
 			path = GraphQL;
@@ -218,9 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				56012B9F29B832D900E2E5A9 /* ContentView.swift */,
-				56C2341429BA5EB70010A733 /* Styles */,
 				56C233FC29B97DBD0010A733 /* Shared */,
-				56C233FD29B97DC80010A733 /* Movies */,
+				56C233FD29B97DC80010A733 /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +230,7 @@
 		56C233F229B9694C0010A733 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				56C233F629B96C8B0010A733 /* Palette.swift */,
 				56C233F429B96B660010A733 /* WhatWhat.swift */,
 				56C233EE29B9682D0010A733 /* Configuration.swift */,
 			);
@@ -249,15 +252,18 @@
 			isa = PBXGroup;
 			children = (
 				56C233FA29B97DB70010A733 /* Background.swift */,
+				56C2344129BA8EF00010A733 /* MovieCategory.swift */,
+				56C2344329BA8F090010A733 /* MoviePoster.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		56C233FD29B97DC80010A733 /* Movies */ = {
+		56C233FD29B97DC80010A733 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				56C2343F29BA8EB10010A733 /* HomeView.swift */,
 			);
-			path = Movies;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		56C2340729B9A3E10010A733 /* Fonts */ = {
@@ -270,14 +276,6 @@
 				56C2340A29B9A4020010A733 /* Rajdhani-SemiBold.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		56C2341429BA5EB70010A733 /* Styles */ = {
-			isa = PBXGroup;
-			children = (
-				56C233F629B96C8B0010A733 /* Palette.swift */,
-			);
-			path = Styles;
 			sourceTree = "<group>";
 		};
 		56C2341929BA856D0010A733 /* Operations */ = {
@@ -319,41 +317,41 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
-		56C2342D29BA88670010A733 /* Operations */ = {
+		56C2344729BA92070010A733 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
-				56C2342E29BA88670010A733 /* Queries */,
-			);
-			path = Operations;
-			sourceTree = "<group>";
-		};
-		56C2342E29BA88670010A733 /* Queries */ = {
-			isa = PBXGroup;
-			children = (
-				56C2342F29BA88670010A733 /* HomeQuery.graphql.swift */,
-			);
-			path = Queries;
-			sourceTree = "<group>";
-		};
-		56C2343029BA88670010A733 /* Schema */ = {
-			isa = PBXGroup;
-			children = (
-				56C2343129BA88670010A733 /* Objects */,
-				56C2343629BA88670010A733 /* SchemaConfiguration.swift */,
-				56C2343729BA88670010A733 /* SchemaMetadata.graphql.swift */,
+				56C2344829BA92070010A733 /* Objects */,
+				56C2344D29BA92070010A733 /* SchemaConfiguration.swift */,
+				56C2344E29BA92070010A733 /* SchemaMetadata.graphql.swift */,
 			);
 			path = Schema;
 			sourceTree = "<group>";
 		};
-		56C2343129BA88670010A733 /* Objects */ = {
+		56C2344829BA92070010A733 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				56C2343229BA88670010A733 /* Home.graphql.swift */,
-				56C2343329BA88670010A733 /* Movie.graphql.swift */,
-				56C2343429BA88670010A733 /* Query.graphql.swift */,
-				56C2343529BA88670010A733 /* GroupedMovies.graphql.swift */,
+				56C2344929BA92070010A733 /* Home.graphql.swift */,
+				56C2344A29BA92070010A733 /* Movie.graphql.swift */,
+				56C2344B29BA92070010A733 /* Query.graphql.swift */,
+				56C2344C29BA92070010A733 /* GroupedMovies.graphql.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		56C2345029BA92070010A733 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				56C2345129BA92070010A733 /* Queries */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		56C2345129BA92070010A733 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				56C2345229BA92070010A733 /* HomeQuery.graphql.swift */,
+			);
+			path = Queries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -470,7 +468,6 @@
 				56012BA529B832DA00E2E5A9 /* Preview Assets.xcassets in Resources */,
 				56C2340D29B9A4350010A733 /* Rajdhani-Bold.ttf in Resources */,
 				56C2340E29B9A4380010A733 /* Rajdhani-Light.ttf in Resources */,
-				56C2332929B8FD670010A733 /* apollo-codegen-config.json in Resources */,
 				56C2341029B9A43D0010A733 /* Rajdhani-Regular.ttf in Resources */,
 				56C2340F29B9A43B0010A733 /* Rajdhani-Medium.ttf in Resources */,
 				56C2341829BA85390010A733 /* schema.graphqls in Resources */,
@@ -501,28 +498,31 @@
 			files = (
 				56C2342429BA856D0010A733 /* HomeQuery.graphql.swift in Sources */,
 				56012BA029B832D900E2E5A9 /* ContentView.swift in Sources */,
+				56C2345629BA92070010A733 /* GroupedMovies.graphql.swift in Sources */,
 				56C2342C29BA86610010A733 /* Aliases.swift in Sources */,
-				56C233ED29B91C0B0010A733 /* WatchWhatSchema.graphql.swift in Sources */,
+				56C2345329BA92070010A733 /* Home.graphql.swift in Sources */,
+				56C2345729BA92070010A733 /* SchemaConfiguration.swift in Sources */,
+				56C2345A29BA92070010A733 /* HomeQuery.graphql.swift in Sources */,
+				56C2344029BA8EB10010A733 /* HomeView.swift in Sources */,
+				56C2345929BA92070010A733 /* WatchWhatSchema.graphql.swift in Sources */,
 				56C233F529B96B660010A733 /* WhatWhat.swift in Sources */,
-				56C2343D29BA88670010A733 /* SchemaConfiguration.swift in Sources */,
 				56C233F729B96C8B0010A733 /* Palette.swift in Sources */,
-				56C2343829BA88670010A733 /* HomeQuery.graphql.swift in Sources */,
-				56C2343A29BA88670010A733 /* Movie.graphql.swift in Sources */,
 				56C233F929B973B60010A733 /* HomeData.swift in Sources */,
-				56C2343929BA88670010A733 /* Home.graphql.swift in Sources */,
 				56C233EF29B9682D0010A733 /* Configuration.swift in Sources */,
 				56C2342629BA856D0010A733 /* Movie.graphql.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,
-				56C2343B29BA88670010A733 /* Query.graphql.swift in Sources */,
-				56C2343C29BA88670010A733 /* GroupedMovies.graphql.swift in Sources */,
+				56C2345829BA92070010A733 /* SchemaMetadata.graphql.swift in Sources */,
 				56C2341629BA81730010A733 /* home.graphql in Sources */,
+				56C2344229BA8EF00010A733 /* MovieCategory.swift in Sources */,
+				56C2345529BA92070010A733 /* Query.graphql.swift in Sources */,
 				56C2342A29BA856D0010A733 /* SchemaMetadata.graphql.swift in Sources */,
 				56C2342829BA856D0010A733 /* GroupedMovies.graphql.swift in Sources */,
 				56C233FB29B97DB70010A733 /* Background.swift in Sources */,
 				56C2342929BA856D0010A733 /* SchemaConfiguration.swift in Sources */,
 				56C2342529BA856D0010A733 /* Home.graphql.swift in Sources */,
-				56C2343E29BA88670010A733 /* SchemaMetadata.graphql.swift in Sources */,
 				56C2342729BA856D0010A733 /* Query.graphql.swift in Sources */,
+				56C2344429BA8F090010A733 /* MoviePoster.swift in Sources */,
+				56C2345429BA92070010A733 /* Movie.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

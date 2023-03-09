@@ -22,6 +22,7 @@ class HomeData: ObservableObject {
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
+                print(data.home.results[0].movies[0].poster_path!)
                 self.results = data.home.results
                 // Convert to movie
 //                self.results        = data.popularMovies.results.map {
