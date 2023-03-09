@@ -45,6 +45,7 @@
 		56C233EA29B91BFB0010A733 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D429B91BFB0010A733 /* SchemaConfiguration.swift */; };
 		56C233EB29B91BFB0010A733 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233D529B91BFB0010A733 /* SchemaMetadata.graphql.swift */; };
 		56C233ED29B91C0B0010A733 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */; };
+		56C233EF29B9682D0010A733 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EE29B9682D0010A733 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,7 @@
 		56C232F129B8FAA80010A733 /* searchMovies.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchMovies.graphql; sourceTree = "<group>"; };
 		56C232F229B8FAA90010A733 /* genres.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = genres.graphql; sourceTree = "<group>"; };
 		56C232F329B8FAA90010A733 /* movieById.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = movieById.graphql; sourceTree = "<group>"; };
-		56C2332829B8FD660010A733 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
+		56C2332829B8FD660010A733 /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "apollo-codegen-config.json"; path = "WatchWhat/GraphQL/apollo-codegen-config.json"; sourceTree = SOURCE_ROOT; };
 		56C233BE29B91BFB0010A733 /* MovieByIdQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieByIdQuery.graphql.swift; sourceTree = "<group>"; };
 		56C233BF29B91BFB0010A733 /* SearchMoviesQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMoviesQuery.graphql.swift; sourceTree = "<group>"; };
 		56C233C029B91BFB0010A733 /* PopularMoviesQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularMoviesQuery.graphql.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		56C233D429B91BFB0010A733 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
 		56C233D529B91BFB0010A733 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
 		56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
+		56C233EE29B9682D0010A733 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,12 +161,13 @@
 			isa = PBXGroup;
 			children = (
 				56012BC829B8336300E2E5A9 /* Info.plist */,
+				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
-				56012B9F29B832D900E2E5A9 /* ContentView.swift */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
 				56012BA329B832DA00E2E5A9 /* Preview Content */,
-				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
-				56C2332829B8FD660010A733 /* apollo-codegen-config.json */,
+				56C233F229B9694C0010A733 /* Shared */,
+				56C233F029B968340010A733 /* Models */,
+				56C233F129B9692B0010A733 /* Views */,
 				56C232EB29B8F9440010A733 /* GraphQL */,
 			);
 			path = WatchWhat;
@@ -198,15 +201,11 @@
 		56C232EB29B8F9440010A733 /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
+				56C233F329B9699B0010A733 /* Source */,
 				56C233BC29B91BFB0010A733 /* Operations */,
 				56C233C329B91BFB0010A733 /* Schema */,
+				56C2332829B8FD660010A733 /* apollo-codegen-config.json */,
 				56C233EC29B91C0B0010A733 /* WatchWhatSchema.graphql.swift */,
-				56C232EC29B8F9610010A733 /* schema.graphqls */,
-				56C232EE29B8FA0D0010A733 /* popular.graphql */,
-				56C232F129B8FAA80010A733 /* searchMovies.graphql */,
-				56C232F329B8FAA90010A733 /* movieById.graphql */,
-				56C232F229B8FAA90010A733 /* genres.graphql */,
-				56C232F029B8FAA80010A733 /* moviesByGenre.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -261,6 +260,42 @@
 				56C233D329B91BFB0010A733 /* ProductionCompany.graphql.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		56C233F029B968340010A733 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		56C233F129B9692B0010A733 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56012B9F29B832D900E2E5A9 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		56C233F229B9694C0010A733 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				56C233EE29B9682D0010A733 /* Configuration.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		56C233F329B9699B0010A733 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				56C232EC29B8F9610010A733 /* schema.graphqls */,
+				56C232EE29B8FA0D0010A733 /* popular.graphql */,
+				56C232F129B8FAA80010A733 /* searchMovies.graphql */,
+				56C232F329B8FAA90010A733 /* movieById.graphql */,
+				56C232F229B8FAA90010A733 /* genres.graphql */,
+				56C232F029B8FAA80010A733 /* moviesByGenre.graphql */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +461,7 @@
 				56C233E529B91BFB0010A733 /* Genre.graphql.swift in Sources */,
 				56C233E729B91BFB0010A733 /* PaginatedMovies.graphql.swift in Sources */,
 				56C233DF29B91BFB0010A733 /* PaginatedRecommendations.graphql.swift in Sources */,
+				56C233EF29B9682D0010A733 /* Configuration.swift in Sources */,
 				56C233DB29B91BFB0010A733 /* ProductionCountry.graphql.swift in Sources */,
 				56C233D729B91BFB0010A733 /* SearchMoviesQuery.graphql.swift in Sources */,
 				56C233D829B91BFB0010A733 /* PopularMoviesQuery.graphql.swift in Sources */,

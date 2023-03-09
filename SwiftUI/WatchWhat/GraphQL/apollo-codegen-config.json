@@ -14,7 +14,7 @@
       }
     },
     "schemaTypes" : {
-      "path" : "./WatchWhat/GraphQL",
+      "path" : "./",
       "moduleType" : {
         "embeddedInTarget" : {
           "name" : "WatchWhat"
