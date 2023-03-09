@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var popularMovies = PopularMovies()
+    @StateObject var homeData = HomeData()
 
     var body: some View {
         ZStack {
             BackgroundView(topColor: Palette.background, bottomColor: Palette.background)
             
-            MovieAppView(movies: popularMovies.results)
+            MovieAppView(results: homeData.results)
                 .onAppear {
-                    popularMovies.loadData()
+                    homeData.loadData()
                 }
         }
     }
@@ -29,14 +29,13 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct MovieAppView: View {
-    let categories = ["Popular"]
-    var movies: [Movie]
+    var results: [HomeQuery.Data.Home.Result]
         
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(categories, id: \.self) { category in
-                    CategoryView(category: category, movies: movies)
+                ForEach(results, id: \.self) { result in
+                    CategoryView(result: result)
                 }
             }
         }
@@ -44,12 +43,11 @@ struct MovieAppView: View {
 }
 
 struct CategoryView: View {
-    let category: String
-    var movies: [Movie]
+    var result: HomeQuery.Data.Home.Result
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(category)
+            Text(result.title)
                 .foregroundColor(Palette.text)
                 .font(.title)
                 .fontWeight(.bold)
@@ -57,7 +55,7 @@ struct CategoryView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {
-                    ForEach(movies, id: \.self) { movie in
+                    ForEach(result.movies, id: \.self) { movie in
                         if let movie = movie {
                             MoviePosterView(movie: movie)
                             
@@ -73,11 +71,11 @@ struct CategoryView: View {
 }
 
 struct MoviePosterView: View {
-    var movie: Movie
+    var movie: HomeQuery.Data.Home.Result.Movie
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: Configuration.imgUrlStr + movie.posterPath!)) { image in
+            AsyncImage(url: URL(string: Configuration.imgUrlStr + movie.poster_path!)) { image in
                 image.resizable()
             } placeholder: {
                 Image("placeholder_image").resizable()

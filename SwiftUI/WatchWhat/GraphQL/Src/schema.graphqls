@@ -1,6 +1,7 @@
 type Query {
   hello: String
   ping: String
+  home: Home!
   popularMovies(page: Int): PaginatedMovies!
   searchMovies(query: String!, page: Int): PaginatedMovies!
   genres: [Genre!]!
@@ -9,6 +10,16 @@ type Query {
   credits(id: Int!): Credits!
   videos(id: Int!): TrailerResults!
   recommendations(id: Int!): PaginatedRecommendations!
+}
+
+type Home {
+  results: [GroupedMovies!]!
+}
+
+type GroupedMovies {
+  id: Int!
+  title: String!
+  movies: [Movie!]!
 }
 
 type Genre {

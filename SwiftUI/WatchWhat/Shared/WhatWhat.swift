@@ -8,8 +8,8 @@
 import Foundation
 import Apollo
 
-class WhatchWhatClient {
-    static let apollo: ApolloClient = ApolloClient(url: Configuration.baseURL)
+class WhatWhat {
+    static let apolloClient: ApolloClient = ApolloClient(url: Configuration.baseURL)
     
     private init() {}
 }

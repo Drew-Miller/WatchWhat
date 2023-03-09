@@ -1,0 +1,13 @@
+query Home {
+  home {
+    results {
+      id
+      title
+      movies {
+        title
+        poster_path
+        backdrop_path
+      }
+    }
+  }
+}
