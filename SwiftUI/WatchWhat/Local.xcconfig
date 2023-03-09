@@ -10,4 +10,4 @@
 
 SIMPLE_SLASH=/
 
-BASE_URL=http:$(SIMPLE_SLASH)/localhost:7075/api/graphql
+BASE_URL=http:$(SIMPLE_SLASH)/localhost:7071/api/graphql

@@ -6,18 +6,20 @@
 //
 
 import SwiftUI
-import Apollo
 
-let apolloClient = ApolloClient(url: Configuration.baseURL)
-
-//apolloClient.fetch(query: WatchWhatSchema.GenresQuery()) { result in
-//  guard let data = try? result.get().data else { return }
-//    print(data.genres) // Luke Skywalker
-//}
+class MovieCategories: ObservableObject {
+    @Published private(set) var category: String?
+    @Published private(set) var movies: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
+}
 
 struct ContentView: View {
+    @StateObject var popularMovies = PopularMovies()
+
     var body: some View {
-        MovieAppView()
+        MovieAppView(movies: popularMovies.results)
+            .onAppear {
+                popularMovies.loadData()
+            }
     }
 }
 
@@ -28,15 +30,15 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct MovieAppView: View {
-    
-    let categories = ["Action", "Comedy", "Drama", "Thriller"]
-    
+    let categories = ["Popular"]
+    var movies: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
+        
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 0) {                    
                     ForEach(categories, id: \.self) { category in
-                        CategoryView(category: category)
+                        CategoryView(category: category, movies: movies)
                     }
                     
                     FooterView()
@@ -47,8 +49,8 @@ struct MovieAppView: View {
 }
 
 struct CategoryView: View {
-    
     let category: String
+    var movies: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -59,9 +61,14 @@ struct CategoryView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {
-                    ForEach(0..<10) { _ in
-                        MoviePosterView()
+                    if let movies = movies {
+                        ForEach(movies, id: \.self) { movie in
+                            if let movie = movie {
+                                MoviePosterView(movie: movie)
+                            }
+                        }
                     }
+                    
                 }
                 .padding(.horizontal)
             }
@@ -71,7 +78,8 @@ struct CategoryView: View {
 }
 
 struct MoviePosterView: View {
-    
+    var movie: WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result
+
     var body: some View {
         Image("poster-placeholder")
             .resizable()
@@ -82,6 +90,7 @@ struct MoviePosterView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.gray, lineWidth: 1)
             )
+        Text(movie.title)
     }
 }
 
