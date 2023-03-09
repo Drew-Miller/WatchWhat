@@ -91,6 +91,7 @@ struct MoviePosterView: View {
             )
             
             Text(movie.title)
+                .font(.custom("Rajdhani-Regular", size: 14))
                 .foregroundColor(Palette.text)
         }
     }

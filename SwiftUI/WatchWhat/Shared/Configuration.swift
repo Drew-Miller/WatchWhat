@@ -31,7 +31,7 @@ enum FromBundle {
 
 enum Configuration {
     static var baseURL: URL {
-        return try! URL(string: FromBundle.value(for: "BASE_URL"))!
+        return try! URL(string: FromBundle.value(for: "BaseUrl"))!
     }
     
     static var movieImageUrl: String {

@@ -88,7 +88,6 @@
 		56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITests.swift; sourceTree = "<group>"; };
 		56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56012BC729B832EF00E2E5A9 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
-		56012BC829B8336300E2E5A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		56C232EE29B8FA0D0010A733 /* popular.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = popular.graphql; sourceTree = "<group>"; };
 		56C232F029B8FAA80010A733 /* moviesByGenre.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = moviesByGenre.graphql; sourceTree = "<group>"; };
 		56C232F129B8FAA80010A733 /* searchMovies.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchMovies.graphql; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		56012B9C29B832D900E2E5A9 /* WatchWhat */ = {
 			isa = PBXGroup;
 			children = (
-				56012BC829B8336300E2E5A9 /* Info.plist */,
 				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
