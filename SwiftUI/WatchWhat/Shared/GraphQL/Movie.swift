@@ -17,16 +17,7 @@ struct Movie {
     let overview: String
     let popularity: Double
     let posterPath: String?
-    
-    private let releaseDateString: String
-    let var releaseDate: Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        dateFormatter.timeZone = TimeZone.current
-        dateFormatter.locale = Locale.current
-        return dateFormatter.date(from: self.releaseDateString)
-    }
-    
+    let releaseDate: Date
     let title: String
     let video: Bool
     let voteAverage: Bool
@@ -44,10 +35,16 @@ struct Movie {
         self.originalTitle      = movie.original_title
         self.popularity         = movie.popularity
         self.posterPath         = movie.poster_path
-        self.releaseDate        = movie.release_date // Convert
+        self.releaseDate        = self.formatDate(movie.release_date)
         self.title              = movie.title
         self.video              = movie.video
         self.voteAverage        = movie.vote_average
         self.voteCount          = movie.vote_count
+    }
+    
+    private func formatDate(date: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: self.releaseDateString)
     }
 }
