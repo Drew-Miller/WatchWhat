@@ -79,13 +79,13 @@ public extension WatchWhatSchema {
           .field("page", Int.self),
           .field("total_pages", Int.self),
           .field("total_results", Int.self),
-          .field("results", [Result?]?.self),
+          .field("results", [Result].self),
         ] }
 
         public var page: Int { __data["page"] }
         public var total_pages: Int { __data["total_pages"] }
         public var total_results: Int { __data["total_results"] }
-        public var results: [Result?]? { __data["results"] }
+        public var results: [Result] { __data["results"] }
 
         /// SearchMovies.Result
         ///
@@ -98,7 +98,7 @@ public extension WatchWhatSchema {
           public static var __selections: [ApolloAPI.Selection] { [
             .field("adult", Bool.self),
             .field("backdrop_path", String?.self),
-            .field("genre_ids", [Int?]?.self),
+            .field("genre_ids", [Int].self),
             .field("id", Int.self),
             .field("original_language", String.self),
             .field("original_title", String.self),
@@ -114,7 +114,7 @@ public extension WatchWhatSchema {
 
           public var adult: Bool { __data["adult"] }
           public var backdrop_path: String? { __data["backdrop_path"] }
-          public var genre_ids: [Int?]? { __data["genre_ids"] }
+          public var genre_ids: [Int] { __data["genre_ids"] }
           public var id: Int { __data["id"] }
           public var original_language: String { __data["original_language"] }
           public var original_title: String { __data["original_title"] }

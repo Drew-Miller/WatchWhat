@@ -8,7 +8,7 @@ type Query {
   
   searchMovies(query: String!, page: Int): PaginatedMovies!
 
-  genres: [Genre]
+  genres: [Genre!]!
   moviesByGenre(genreIds: [Int], page: Int): PaginatedMovies!
 
   movie(id: Int!): MovieDetails!
@@ -37,7 +37,7 @@ type Genre {
 
 type PaginatedMovies {
   page: Int!
-  results: [Movie]
+  results: [Movie!]!
   total_pages: Int!
   total_results: Int!
 }
@@ -45,7 +45,7 @@ type PaginatedMovies {
 type Movie {
   adult: Boolean!
   backdrop_path: String
-  genre_ids: [Int]
+  genre_ids: [Int!]!
   id: Int!
   original_language: String!
   original_title: String!
@@ -66,7 +66,7 @@ type MovieDetails {
   adult: Boolean!
   backdrop_path: String
   budget: Int!
-  genres: [Genre]
+  genres: [Genre!]!
   homepage: String!
   id: Int!
   imdb_id: String!
@@ -75,12 +75,12 @@ type MovieDetails {
   overview: String!
   popularity: Float!
   poster_path: String
-  production_companies: [ProductionCompany]
-  production_countries: [ProductionCountry]
+  production_companies: [ProductionCompany!]!
+  production_countries: [ProductionCountry!]!
   release_date: String!
   revenue: Int!
   runtime: Int!
-  spoken_languages: [SpokenLanguages]
+  spoken_languages: [SpokenLanguages!]!
   status: String!
   tagline: String!
   title: String!
@@ -140,8 +140,8 @@ type Crew {
 }
 
 type Credits {
-  cast: [Cast]
-  crew: [Crew]
+  cast: [Cast!]!
+  crew: [Crew!]!
   id: Int!
 }
 
@@ -150,7 +150,7 @@ type Credits {
 
 type TrailerResults {
   id: Int!
-  results: [Trailer]
+  results: [Trailer!]!
 }
 
 type Trailer {
@@ -172,7 +172,7 @@ type Trailer {
 type Recommendation {
   adult: Boolean!
   backdrop_path: String
-  genre_ids: [Int]
+  genre_ids: [Int!]!
   id: Int!
   media_type: String!
   original_language: String!
@@ -188,7 +188,7 @@ type Recommendation {
 
 type PaginatedRecommendations {
   page: Int!
-  results: [Recommendation]
+  results: [Recommendation!]!
   total_pages: Int!
   total_results: Int!
 }

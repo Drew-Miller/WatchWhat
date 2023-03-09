@@ -30,7 +30,7 @@ struct ContentView_Previews: PreviewProvider {
 
 struct MovieAppView: View {
     let categories = ["Popular"]
-    var movies: [PopularMoviesResult?]?
+    var movies: [Movie]
         
     var body: some View {
         ScrollView {
@@ -45,7 +45,7 @@ struct MovieAppView: View {
 
 struct CategoryView: View {
     let category: String
-    var movies: [PopularMoviesResult?]?
+    var movies: [Movie]
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -57,12 +57,10 @@ struct CategoryView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {
-                    if let movies = movies {
-                        ForEach(movies, id: \.self) { movie in
-                            if let movie = movie {
-                                MoviePosterView(movie: movie)
-                                
-                            }
+                    ForEach(movies, id: \.self) { movie in
+                        if let movie = movie {
+                            MoviePosterView(movie: movie)
+                            
                         }
                     }
                     
@@ -75,31 +73,23 @@ struct CategoryView: View {
 }
 
 struct MoviePosterView: View {
-    var movie: PopularMoviesResult
+    var movie: Movie
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: Configuration.movieImageUrl + movie.poster_path!)) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
-                    .frame(width: 160, height: 240)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
+            AsyncImage(url: URL(string: Configuration.movieImageUrl + movie.posterPath!)) { image in
+                image.resizable()
             } placeholder: {
-                Image("placeholder_image")
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(8)
-                    .frame(width: 160, height: 240)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
+                Image("placeholder_image").resizable()
             }
+            .scaledToFit()
+            .cornerRadius(8)
+            .frame(width: 160, height: 240)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
+            
             Text(movie.title)
                 .foregroundColor(Palette.text)
         }

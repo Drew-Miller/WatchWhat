@@ -170,7 +170,7 @@ public extension WatchWhatSchema {
           .field("adult", Bool.self),
           .field("backdrop_path", String?.self),
           .field("budget", Int.self),
-          .field("genres", [Genre?]?.self),
+          .field("genres", [Genre].self),
           .field("homepage", String.self),
           .field("id", Int.self),
           .field("imdb_id", String.self),
@@ -179,12 +179,12 @@ public extension WatchWhatSchema {
           .field("overview", String.self),
           .field("popularity", Double.self),
           .field("poster_path", String?.self),
-          .field("production_companies", [Production_company?]?.self),
-          .field("production_countries", [Production_country?]?.self),
+          .field("production_companies", [Production_company].self),
+          .field("production_countries", [Production_country].self),
           .field("release_date", String.self),
           .field("revenue", Int.self),
           .field("runtime", Int.self),
-          .field("spoken_languages", [Spoken_language?]?.self),
+          .field("spoken_languages", [Spoken_language].self),
           .field("status", String.self),
           .field("tagline", String.self),
           .field("title", String.self),
@@ -196,7 +196,7 @@ public extension WatchWhatSchema {
         public var adult: Bool { __data["adult"] }
         public var backdrop_path: String? { __data["backdrop_path"] }
         public var budget: Int { __data["budget"] }
-        public var genres: [Genre?]? { __data["genres"] }
+        public var genres: [Genre] { __data["genres"] }
         public var homepage: String { __data["homepage"] }
         public var id: Int { __data["id"] }
         public var imdb_id: String { __data["imdb_id"] }
@@ -205,12 +205,12 @@ public extension WatchWhatSchema {
         public var overview: String { __data["overview"] }
         public var popularity: Double { __data["popularity"] }
         public var poster_path: String? { __data["poster_path"] }
-        public var production_companies: [Production_company?]? { __data["production_companies"] }
-        public var production_countries: [Production_country?]? { __data["production_countries"] }
+        public var production_companies: [Production_company] { __data["production_companies"] }
+        public var production_countries: [Production_country] { __data["production_countries"] }
         public var release_date: String { __data["release_date"] }
         public var revenue: Int { __data["revenue"] }
         public var runtime: Int { __data["runtime"] }
-        public var spoken_languages: [Spoken_language?]? { __data["spoken_languages"] }
+        public var spoken_languages: [Spoken_language] { __data["spoken_languages"] }
         public var status: String { __data["status"] }
         public var tagline: String { __data["tagline"] }
         public var title: String { __data["title"] }
@@ -303,13 +303,13 @@ public extension WatchWhatSchema {
         public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Credits }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("id", Int.self),
-          .field("cast", [Cast?]?.self),
-          .field("crew", [Crew?]?.self),
+          .field("cast", [Cast].self),
+          .field("crew", [Crew].self),
         ] }
 
         public var id: Int { __data["id"] }
-        public var cast: [Cast?]? { __data["cast"] }
-        public var crew: [Crew?]? { __data["crew"] }
+        public var cast: [Cast] { __data["cast"] }
+        public var crew: [Crew] { __data["crew"] }
 
         /// Credits.Cast
         ///
@@ -394,11 +394,11 @@ public extension WatchWhatSchema {
         public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.TrailerResults }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("id", Int.self),
-          .field("results", [Result?]?.self),
+          .field("results", [Result].self),
         ] }
 
         public var id: Int { __data["id"] }
-        public var results: [Result?]? { __data["results"] }
+        public var results: [Result] { __data["results"] }
 
         /// Videos.Result
         ///
@@ -446,13 +446,13 @@ public extension WatchWhatSchema {
           .field("page", Int.self),
           .field("total_pages", Int.self),
           .field("total_results", Int.self),
-          .field("results", [Result?]?.self),
+          .field("results", [Result].self),
         ] }
 
         public var page: Int { __data["page"] }
         public var total_pages: Int { __data["total_pages"] }
         public var total_results: Int { __data["total_results"] }
-        public var results: [Result?]? { __data["results"] }
+        public var results: [Result] { __data["results"] }
 
         /// Recommendations.Result
         ///
@@ -465,7 +465,7 @@ public extension WatchWhatSchema {
           public static var __selections: [ApolloAPI.Selection] { [
             .field("adult", Bool.self),
             .field("backdrop_path", String?.self),
-            .field("genre_ids", [Int?]?.self),
+            .field("genre_ids", [Int].self),
             .field("id", Int.self),
             .field("media_type", String.self),
             .field("original_language", String.self),
@@ -481,7 +481,7 @@ public extension WatchWhatSchema {
 
           public var adult: Bool { __data["adult"] }
           public var backdrop_path: String? { __data["backdrop_path"] }
-          public var genre_ids: [Int?]? { __data["genre_ids"] }
+          public var genre_ids: [Int] { __data["genre_ids"] }
           public var id: Int { __data["id"] }
           public var media_type: String { __data["media_type"] }
           public var original_language: String { __data["original_language"] }

@@ -15,7 +15,6 @@
 		56012BB929B832DB00E2E5A9 /* WatchWhatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */; };
 		56012BBB29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */; };
 		56012BCB29B8353E00E2E5A9 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 56012BCA29B8353E00E2E5A9 /* Apollo */; };
-		56C232ED29B8F9610010A733 /* schema.graphqls in Resources */ = {isa = PBXBuildFile; fileRef = 56C232EC29B8F9610010A733 /* schema.graphqls */; };
 		56C232EF29B8FA0D0010A733 /* popular.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 56C232EE29B8FA0D0010A733 /* popular.graphql */; };
 		56C232F429B8FAA90010A733 /* moviesByGenre.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 56C232F029B8FAA80010A733 /* moviesByGenre.graphql */; };
 		56C232F529B8FAA90010A733 /* searchMovies.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 56C232F129B8FAA80010A733 /* searchMovies.graphql */; };
@@ -50,7 +49,9 @@
 		56C233F729B96C8B0010A733 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Palette.swift */; };
 		56C233F929B973B60010A733 /* PopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F829B973B60010A733 /* PopularMovies.swift */; };
 		56C233FB29B97DB70010A733 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233FA29B97DB70010A733 /* Background.swift */; };
-		56C233FF29B984580010A733 /* GraphQLAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233FE29B984580010A733 /* GraphQLAliases.swift */; };
+		56C2340229B994BD0010A733 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2340129B994BD0010A733 /* Movie.swift */; };
+		56C2340429B9966E0010A733 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2340329B9966E0010A733 /* TypeAliases.swift */; };
+		56C2340629B99C530010A733 /* schema.graphqls in Resources */ = {isa = PBXBuildFile; fileRef = 56C2340529B99C530010A733 /* schema.graphqls */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +84,6 @@
 		56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56012BC729B832EF00E2E5A9 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
 		56012BC829B8336300E2E5A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		56C232EC29B8F9610010A733 /* schema.graphqls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		56C232EE29B8FA0D0010A733 /* popular.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = popular.graphql; sourceTree = "<group>"; };
 		56C232F029B8FAA80010A733 /* moviesByGenre.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = moviesByGenre.graphql; sourceTree = "<group>"; };
 		56C232F129B8FAA80010A733 /* searchMovies.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchMovies.graphql; sourceTree = "<group>"; };
@@ -118,7 +118,9 @@
 		56C233F629B96C8B0010A733 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		56C233F829B973B60010A733 /* PopularMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMovies.swift; sourceTree = "<group>"; };
 		56C233FA29B97DB70010A733 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		56C233FE29B984580010A733 /* GraphQLAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphQLAliases.swift; sourceTree = "<group>"; };
+		56C2340129B994BD0010A733 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		56C2340329B9966E0010A733 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		56C2340529B99C530010A733 /* schema.graphqls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,10 +295,10 @@
 		56C233F229B9694C0010A733 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				56C2340029B994B30010A733 /* GraphQL */,
 				56C233EE29B9682D0010A733 /* Configuration.swift */,
 				56C233F629B96C8B0010A733 /* Palette.swift */,
 				56C233F429B96B660010A733 /* WatchWhatClient.swift */,
-				56C233FE29B984580010A733 /* GraphQLAliases.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -304,7 +306,7 @@
 		56C233F329B9699B0010A733 /* Src */ = {
 			isa = PBXGroup;
 			children = (
-				56C232EC29B8F9610010A733 /* schema.graphqls */,
+				56C2340529B99C530010A733 /* schema.graphqls */,
 				56C232EE29B8FA0D0010A733 /* popular.graphql */,
 				56C232F129B8FAA80010A733 /* searchMovies.graphql */,
 				56C232F329B8FAA90010A733 /* movieById.graphql */,
@@ -327,6 +329,15 @@
 			children = (
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		56C2340029B994B30010A733 /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				56C2340329B9966E0010A733 /* TypeAliases.swift */,
+				56C2340129B994BD0010A733 /* Movie.swift */,
+			);
+			path = GraphQL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,8 +455,8 @@
 				56012BA529B832DA00E2E5A9 /* Preview Assets.xcassets in Resources */,
 				56C232F429B8FAA90010A733 /* moviesByGenre.graphql in Resources */,
 				56C232F729B8FAA90010A733 /* movieById.graphql in Resources */,
-				56C232ED29B8F9610010A733 /* schema.graphqls in Resources */,
 				56C2332929B8FD670010A733 /* apollo-codegen-config.json in Resources */,
+				56C2340629B99C530010A733 /* schema.graphqls in Resources */,
 				56012BA229B832DA00E2E5A9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,13 +482,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56C233FF29B984580010A733 /* GraphQLAliases.swift in Sources */,
 				56C232EF29B8FA0D0010A733 /* popular.graphql in Sources */,
 				56C233E629B91BFB0010A733 /* Cast.graphql.swift in Sources */,
 				56C233E429B91BFB0010A733 /* Credits.graphql.swift in Sources */,
 				56C233E229B91BFB0010A733 /* Query.graphql.swift in Sources */,
 				56C233DD29B91BFB0010A733 /* Movie.graphql.swift in Sources */,
 				56C233EA29B91BFB0010A733 /* SchemaConfiguration.swift in Sources */,
+				56C2340229B994BD0010A733 /* Movie.swift in Sources */,
 				56012BA029B832D900E2E5A9 /* ContentView.swift in Sources */,
 				56C233ED29B91C0B0010A733 /* WatchWhatSchema.graphql.swift in Sources */,
 				56C233E329B91BFB0010A733 /* Trailer.graphql.swift in Sources */,
@@ -498,6 +509,7 @@
 				56C233DF29B91BFB0010A733 /* PaginatedRecommendations.graphql.swift in Sources */,
 				56C233EF29B9682D0010A733 /* Configuration.swift in Sources */,
 				56C233DB29B91BFB0010A733 /* ProductionCountry.graphql.swift in Sources */,
+				56C2340429B9966E0010A733 /* TypeAliases.swift in Sources */,
 				56C233D729B91BFB0010A733 /* SearchMoviesQuery.graphql.swift in Sources */,
 				56C233D829B91BFB0010A733 /* PopularMoviesQuery.graphql.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,

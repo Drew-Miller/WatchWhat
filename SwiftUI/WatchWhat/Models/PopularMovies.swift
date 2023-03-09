@@ -11,7 +11,7 @@ class PopularMovies: ObservableObject {
     @Published private(set) var page: Int?
     @Published private(set) var totalPages: Int?
     @Published private(set) var totalResults: Int?
-    @Published private(set) var results: [WatchWhatSchema.PopularMoviesQuery.Data.PopularMovies.Result?]?
+    @Published private(set) var results: [Movie] = [Movie]()
 
     func loadData(page: Int = 1) {
         Task.init {
@@ -27,7 +27,11 @@ class PopularMovies: ObservableObject {
                 self.page           = data.popularMovies.page
                 self.totalPages     = data.popularMovies.total_pages
                 self.totalResults   = data.popularMovies.total_results
-                self.results        = data.popularMovies.results
+                
+                // Convert to movie
+                self.results        = data.popularMovies.results.map {
+                    Movie.fromPopularMovies(movie: $0)
+                }
             }
         }
     }

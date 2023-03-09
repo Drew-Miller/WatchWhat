@@ -27,10 +27,10 @@ public extension WatchWhatSchema {
 
       public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("genres", [Genre?]?.self),
+        .field("genres", [Genre].self),
       ] }
 
-      public var genres: [Genre?]? { __data["genres"] }
+      public var genres: [Genre] { __data["genres"] }
 
       /// Genre
       ///
