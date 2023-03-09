@@ -4,6 +4,11 @@ type Query {
   hello: String
   ping: String
 
+  #### Custom Calls ####
+  home: Home!
+
+  #### Built in Movie DB Calls ####
+
   popularMovies(page: Int): PaginatedMovies!
   
   searchMovies(query: String!, page: Int): PaginatedMovies!
@@ -17,10 +22,20 @@ type Query {
   recommendations(id: Int!): PaginatedRecommendations!
 }
 
+
 ################
 # Custom Types #
 ################
 
+type Home {
+  results: [GroupedMovies!]!
+}
+
+type GroupedMovies {
+  id: Int!
+  title: String!
+  movies: [Movie!]!
+}
 
 
 ##################

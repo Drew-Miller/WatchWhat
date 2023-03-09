@@ -34,7 +34,11 @@ enum Configuration {
         return try! URL(string: FromBundle.value(for: "BaseUrl"))!
     }
     
-    static var movieImageUrl: String {
+    static var imgUrlStr: String {
         return "https://image.tmdb.org/t/p/w500/"
+    }
+    
+    static var originalImgUrlStr: String {
+        return "https://image.tmdb.org/t/p/original"
     }
 }

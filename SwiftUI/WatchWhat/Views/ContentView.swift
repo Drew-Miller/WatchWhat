@@ -77,7 +77,7 @@ struct MoviePosterView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: Configuration.movieImageUrl + movie.posterPath!)) { image in
+            AsyncImage(url: URL(string: Configuration.imgUrlStr + movie.posterPath!)) { image in
                 image.resizable()
             } placeholder: {
                 Image("placeholder_image").resizable()

@@ -1,10 +1,29 @@
+import { GroupedMovies } from '../movie-api/dtos';
 import { MyContext } from './context';
+
+type Home = {
+  results: GroupedMovies[]
+}
 
 // The GraphQL schema
 const resolvers = {
   Query: {
     hello: () => 'world',
     ping: () => 'pong',
+
+
+    home: async(_:any, __: any, { dataSources }: MyContext) => {
+      const promises = Promise.all([
+        dataSources.movieAPI.popularMoviesGrouped(),
+        dataSources.movieAPI.moviesByGenresGrouped()
+      ]);
+
+      const [ popularMovies, genreCategories ] = await promises;
+      const results = [popularMovies, ...genreCategories];
+      const home: Home = { results };
+      return home;
+    },
+
 
     popularMovies: async(_: any, req: { page: number }, { dataSources }: MyContext) => {
       return dataSources.movieAPI.popularMovies(req.page);

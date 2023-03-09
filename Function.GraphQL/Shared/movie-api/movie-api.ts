@@ -1,7 +1,7 @@
 import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
-import { Credits, Genre, Movie, MovieDetails, PaginatedResults, Recommendation, Results, Trailer } from "./dtos";
+import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Recommendation, Results, Trailer } from "./dtos";
 
 export type MovieAPIOptions = DataSourceConfig & {
   apiVersion: string,
@@ -38,6 +38,45 @@ export class MovieAPI extends RESTDataSource {
     this.readAccessToken = options.readAccessToken;
     this.sessionId = options.sessionId;
   }
+
+
+  // Custom methods
+
+  async popularMoviesGrouped(): Promise<GroupedMovies> {
+    const data = await this.popularMovies().then(popularMovies => {
+      const group: GroupedMovies = {
+        id: 0,
+        title: "Popular",
+        movies: popularMovies.results
+      }
+
+      return group
+    });
+
+    return data;
+  }
+
+  async moviesByGenresGrouped(): Promise<GroupedMovies[]> {
+    const genres = await this.genres();
+
+    const promises = genres.map(genre => this.moviesByGenre([genre.id])
+      .then(pagedMovies => {
+        const group: GroupedMovies = {
+          id: genre.id,
+          title: genre.name,
+          movies: pagedMovies.results
+        }
+
+        return group;
+      })
+    );
+
+    const data: GroupedMovies[] = await Promise.all(promises);
+    return data;
+  }
+
+
+  // The Movie DB API
 
   async popularMovies(page: number = 1) {
     const data = await this.get(`/${this.apiVersion}/movie/popular`, {
