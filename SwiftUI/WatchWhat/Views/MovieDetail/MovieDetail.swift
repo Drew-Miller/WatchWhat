@@ -12,47 +12,33 @@ struct MovieDetailView: View {
     @StateObject var movieData = MovieData()
     
     let id: Int
-    let onDismiss: () -> Void
     
     var body: some View {
         ZStack() {
             // Content View
             ScrollView {
                 if let movie = movieData.movie {
-                    MovieDetailsPoster(posterPath: movie.poster_path!)
-                    
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack {
-                            Text("\(getReleaseYear(date: movie.release_date))")
-                            Text("\(movie.runtime) min")
-                            //Text("\(movie.genres[0])")
-                        }
-                        .foregroundColor(Palette.accent)
-                        
-                        Text(movie.overview)
-                            .font(.body)
-                        
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: -20, leading: 10, bottom: 0, trailing: 10))
+                    MovieDetail_Poster(posterPath: movie.poster_path!)
+                    MovieDetail_Movie(movie: movie)
                 }
             }
-            .edgesIgnoringSafeArea([.top, .bottom])
+            .edgesIgnoringSafeArea(.all)
             
             // Header controls
-            MovieDetailControls {
-                onDismiss()
+            VStack {
+                MovieDetail_Header() {
+                    modelData.movieId = nil
+                    modelData.navigatePrevious()
+                }
+                
+                Spacer()
             }
-            .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+            
         }
         .foregroundColor(Palette.text)
         .onAppear {
             movieData.loadData(id: self.id)
         }
-    }
-    
-    func getReleaseYear(date: String) -> String {
-        return String(date.split(separator: "-")[0])
     }
 }
 
@@ -61,41 +47,60 @@ struct MovieDetailView_Previews: PreviewProvider {
         ZStack {
             BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
-            MovieDetailView(id: 315162) {
-                print("Dismissed")
-            }
-            .environmentObject(ModelData())
+            MovieDetailView(id: 315162)
+                .environmentObject(ModelData())
         }
         .preferredColorScheme(.dark)
     }
 }
 
-struct MovieDetailControls: View {
+struct MovieDetail_Header: View {
     @EnvironmentObject var modelData: ModelData
     
     let onDismiss: () -> Void
 
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    modelData.movieId = nil
-                    onDismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 25, weight: .light, design: .default))
-                }
-                
-                Spacer()
+        HStack {
+            Button {
+                modelData.movieId = nil
+                onDismiss()
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 25, weight: .light, design: .default))
             }
             
             Spacer()
         }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+        .padding(EdgeInsets(top: 15, leading: 20, bottom: 0, trailing: 20))
     }
 }
 
-struct MovieDetailsPoster: View {
+struct MovieDetail_Movie: View {
+    let movie: MovieQuery.Data.Movie
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("\(getReleaseYear(date: movie.release_date))")
+                Text("\(movie.runtime) min")
+            }
+            .foregroundColor(Palette.accent)
+            
+            Text(movie.overview)
+                .font(.body)
+            
+            Spacer()
+        }
+        .padding(EdgeInsets(top: -20, leading: 10, bottom: 0, trailing: 10))
+    }
+    
+    
+    func getReleaseYear(date: String) -> String {
+        return String(date.split(separator: "-")[0])
+    }
+}
+
+struct MovieDetail_Poster: View {
     let posterPath: String
     
     var body: some View {

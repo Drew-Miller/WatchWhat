@@ -15,24 +15,15 @@ struct ContentView: View {
             BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
             switch modelData.view {
-                
+            
             case .home:
-                HomeView() { movieId in
-                    modelData.movieId = movieId
-                    withAnimation {
-                        modelData.setView(.movieDetails)
-                    }
-                }
-                //.transition(.move(edge: .leading))
+                HomeView()
+                    .transition(.move(edge: .leading))
                 
             case .movieDetails:
                 if let movieId = modelData.movieId {
-                    MovieDetailView(id: movieId) {
-                        withAnimation {
-                            modelData.navigatePrevious()
-                        }
-                    }
-                    .transition(.move(edge: .trailing))
+                    MovieDetailView(id: movieId)
+                        .transition(.move(edge: .trailing))
                 } else {
                     Text("Returning...")
                         .onAppear {
@@ -43,8 +34,6 @@ struct ContentView: View {
             case .video:
                 Text("Video view")
             }
-            
-            
         }
         .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)

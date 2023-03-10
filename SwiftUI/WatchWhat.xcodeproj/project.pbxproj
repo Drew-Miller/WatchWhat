@@ -61,6 +61,7 @@
 		56C2352F29BBB1550010A733 /* MovieQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2351A29BBB1550010A733 /* MovieQuery.graphql.swift */; };
 		56C2353029BBB1550010A733 /* MovieExtrasQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2351B29BBB1550010A733 /* MovieExtrasQuery.graphql.swift */; };
 		56C2353129BBB1550010A733 /* HomeQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2351C29BBB1550010A733 /* HomeQuery.graphql.swift */; };
+		56C2353329BBB3900010A733 /* TODO.md in Sources */ = {isa = PBXBuildFile; fileRef = 56C2353229BBB3900010A733 /* TODO.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		56C2351A29BBB1550010A733 /* MovieQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieQuery.graphql.swift; sourceTree = "<group>"; };
 		56C2351B29BBB1550010A733 /* MovieExtrasQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieExtrasQuery.graphql.swift; sourceTree = "<group>"; };
 		56C2351C29BBB1550010A733 /* HomeQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeQuery.graphql.swift; sourceTree = "<group>"; };
+		56C2353229BBB3900010A733 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			children = (
 				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
 				56C2349B29BAE5F30010A733 /* Release.xcconfig */,
+				56C2353229BBB3900010A733 /* TODO.md */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
 				56012BA329B832DA00E2E5A9 /* Preview Content */,
@@ -539,6 +542,7 @@
 				56C233EF29B9682D0010A733 /* Configuration.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,
 				56C2353029BBB1550010A733 /* MovieExtrasQuery.graphql.swift in Sources */,
+				56C2353329BBB3900010A733 /* TODO.md in Sources */,
 				56C2341629BA81730010A733 /* home.graphql in Sources */,
 				56C2349229BAB7B70010A733 /* MovieDetail.swift in Sources */,
 				56C2352229BBB1550010A733 /* PaginatedRecommendations.graphql.swift in Sources */,

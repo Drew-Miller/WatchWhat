@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var modelData: ModelData
     @StateObject var homeData = HomeData()
-    @State var controlTransition: Float = 0.0
-    let onMovieSelected: (Int) -> Void
         
     var body: some View {
         ZStack {
+            // Movies
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(homeData.results, id: \.self) { result in
-                        MovieList(result: result, onTapGesture: onMovieSelected)
+                        MovieList(result: result) { movieId in
+                            modelData.movieId = movieId
+                            modelData.setView(.movieDetails)
+                        }
                     }
                 }
                 .padding(EdgeInsets(top: 55, leading: 0, bottom: 0, trailing: 0))
@@ -33,10 +36,18 @@ struct HomeView: View {
                })
             )
             
-            HomeControls {
-                print("menu")
+            // Controls
+            VStack {
+                HomeControls {
+                    print("menu")
+                }
+                .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+                
+                Spacer()
+                
+                
             }
-            .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+            
         }
         .foregroundColor(Palette.text)
     }
@@ -49,36 +60,31 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-
 struct HomeControls: View {
     @EnvironmentObject var modelData: ModelData
     
     let onMenu: () -> Void
 
     var body: some View {
-        VStack {
-            HStack {
-                Button {
-                    onMenu()
-                } label: {
-                    Image(systemName: "line.3.horizontal")
-                        .font(.system(size: 25, weight: .light, design: .default))
-                }
-                
-                Spacer()
-                
-                Image(uiImage: UIImage(named: "logo-white-no-background")!)
-                    .resizable()
-                    .frame(width: 200, height: 20)
-
-                Spacer()
-                
-                UserIcon(initials: "D", color: Palette.primary, size: 28) {
-                    print("User Tapped")
-                }
+        HStack {
+            Button {
+                onMenu()
+            } label: {
+                Image(systemName: "line.3.horizontal")
+                    .font(.system(size: 25, weight: .light, design: .default))
             }
             
             Spacer()
+            
+            Image(uiImage: UIImage(named: "logo-white-no-background")!)
+                .resizable()
+                .frame(width: 200, height: 20)
+
+            Spacer()
+            
+            UserIcon(initials: "D", color: Palette.primary, size: 28) {
+                print("User Tapped")
+            }
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
     }
@@ -110,4 +116,17 @@ struct UserIcon: View {
     }
 }
 
+struct FooterControls: View {
+    @EnvironmentObject var modelData: ModelData
 
+    var body: some View {
+        HStack {
+            Button {
+                print("clicked")
+            } label: {
+                Image(systemName: "line.3.horizontal")
+                    .font(.system(size: 25, weight: .light, design: .default))
+            }
+        }
+    }
+}

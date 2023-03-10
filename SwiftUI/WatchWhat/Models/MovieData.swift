@@ -19,7 +19,7 @@ class MovieData: ObservableObject {
             await fetchData(id: id)
         }
         Task.init {
-            await fetchData(id: id)
+            await fetchExtras(id: id)
         }
     }
 
@@ -38,7 +38,6 @@ class MovieData: ObservableObject {
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
-                print(data)
                 self.credits = data.credits
                 self.videos = data.videos
                 self.recommendations = data.recommendations
