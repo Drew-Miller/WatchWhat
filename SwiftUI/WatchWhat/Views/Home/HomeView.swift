@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var modelData: ModelData
     @StateObject var homeData = HomeData()
+    var changeView: (AppView) -> Void
         
     var body: some View {
         ZStack {
@@ -19,7 +20,7 @@ struct HomeView: View {
                     ForEach(homeData.results, id: \.self) { result in
                         MovieList(result: result) { movieId in
                             modelData.movieId = movieId
-                            modelData.setView(.movieDetails)
+                            changeView(.movieDetails)
                         }
                     }
                 }
@@ -38,14 +39,14 @@ struct HomeView: View {
             
             // Controls
             VStack {
-                HomeControls {
+                HomeView_Header {
                     print("menu")
                 }
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
                 
                 Spacer()
                 
-                
+                HomeView_Footer()
             }
             
         }
@@ -60,7 +61,7 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-struct HomeControls: View {
+struct HomeView_Header: View {
     @EnvironmentObject var modelData: ModelData
     
     let onMenu: () -> Void
@@ -116,7 +117,7 @@ struct UserIcon: View {
     }
 }
 
-struct FooterControls: View {
+struct HomeView_Footer: View {
     @EnvironmentObject var modelData: ModelData
 
     var body: some View {

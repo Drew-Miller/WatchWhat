@@ -9,26 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
+    @State var view: AppView = .home
+    @State var previousView: AppView = .home
     
     var body: some View {
         ZStack {
             BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
-            switch modelData.view {
+            switch view {
             
             case .home:
-                HomeView()
-                    .transition(.move(edge: .leading))
+                HomeView() { view in
+                    withAnimation {
+                        self.setView(view)
+                    }
+                }
                 
             case .movieDetails:
                 if let movieId = modelData.movieId {
-                    MovieDetailView(id: movieId)
-                        .transition(.move(edge: .trailing))
+                    MovieDetailView(id: movieId) {
+                        withAnimation {
+                            self.navigatePrevious()
+                        }
+                    }
+                    .transition(.move(edge: .trailing))
                 } else {
                     Text("Returning...")
-                        .onAppear {
-                            modelData.navigatePrevious()
+                    .onAppear {
+                        withAnimation {
+                            self.navigatePrevious()
                         }
+                    }
                 }
                 
             case .video:
@@ -37,6 +48,15 @@ struct ContentView: View {
         }
         .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
+    }
+    
+    func setView(_ view: AppView) {
+        self.previousView = self.view
+        self.view = view
+    }
+    
+    func navigatePrevious() {
+        self.view = self.previousView
     }
 }
 

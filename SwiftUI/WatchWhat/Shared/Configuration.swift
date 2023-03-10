@@ -2,7 +2,7 @@
 //  Configuration.swift
 //  WatchWhat
 //
-//  Created by Drew Miller on 3/8/23.
+//  Created by Drew Miller on 3/10/23.
 //
 
 import Foundation
@@ -30,6 +30,7 @@ enum FromBundle {
 }
 
 enum Configuration {
+    
     static var baseURL: URL {
         return try! URL(string: FromBundle.value(for: "BaseUrl"))!
     }

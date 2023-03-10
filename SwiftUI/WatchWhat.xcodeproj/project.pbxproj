@@ -15,7 +15,7 @@
 		56012BB929B832DB00E2E5A9 /* WatchWhatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */; };
 		56012BBB29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */; };
 		56012BCB29B8353E00E2E5A9 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 56012BCA29B8353E00E2E5A9 /* Apollo */; };
-		56C233EF29B9682D0010A733 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EE29B9682D0010A733 /* Configuration.swift */; };
+		56C233EF29B9682D0010A733 /* AppViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233EE29B9682D0010A733 /* AppViews.swift */; };
 		56C233F529B96B660010A733 /* WatchWhat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* WatchWhat.swift */; };
 		56C233F729B96C8B0010A733 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Palette.swift */; };
 		56C233F929B973B60010A733 /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F829B973B60010A733 /* HomeData.swift */; };
@@ -62,6 +62,7 @@
 		56C2353029BBB1550010A733 /* MovieExtrasQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2351B29BBB1550010A733 /* MovieExtrasQuery.graphql.swift */; };
 		56C2353129BBB1550010A733 /* HomeQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2351C29BBB1550010A733 /* HomeQuery.graphql.swift */; };
 		56C2353329BBB3900010A733 /* TODO.md in Sources */ = {isa = PBXBuildFile; fileRef = 56C2353229BBB3900010A733 /* TODO.md */; };
+		56C2353529BBCE920010A733 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2353429BBCE920010A733 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +94,7 @@
 		56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITests.swift; sourceTree = "<group>"; };
 		56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		56012BC729B832EF00E2E5A9 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
-		56C233EE29B9682D0010A733 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		56C233EE29B9682D0010A733 /* AppViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViews.swift; sourceTree = "<group>"; };
 		56C233F429B96B660010A733 /* WatchWhat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhat.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		56C233F829B973B60010A733 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		56C2351B29BBB1550010A733 /* MovieExtrasQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieExtrasQuery.graphql.swift; sourceTree = "<group>"; };
 		56C2351C29BBB1550010A733 /* HomeQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeQuery.graphql.swift; sourceTree = "<group>"; };
 		56C2353229BBB3900010A733 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		56C2353429BBCE920010A733 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,9 +272,10 @@
 		56C233F229B9694C0010A733 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				56C233EE29B9682D0010A733 /* AppViews.swift */,
+				56C2353429BBCE920010A733 /* Configuration.swift */,
 				56C233F629B96C8B0010A733 /* Palette.swift */,
 				56C233F429B96B660010A733 /* WatchWhat.swift */,
-				56C233EE29B9682D0010A733 /* Configuration.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				56C2349829BAD5720010A733 /* MoviePoster.swift in Sources */,
 				56C2352E29BBB1550010A733 /* SchemaMetadata.graphql.swift in Sources */,
 				56C2352529BBB1550010A733 /* Query.graphql.swift in Sources */,
+				56C2353529BBCE920010A733 /* Configuration.swift in Sources */,
 				56C233F729B96C8B0010A733 /* Palette.swift in Sources */,
 				56C2352129BBB1550010A733 /* MovieDetails.graphql.swift in Sources */,
 				56C2349429BAB82C0010A733 /* MovieData.swift in Sources */,
@@ -539,7 +543,7 @@
 				56C2352C29BBB1550010A733 /* ProductionCompany.graphql.swift in Sources */,
 				56C2352829BBB1550010A733 /* GroupedMovies.graphql.swift in Sources */,
 				56C233F929B973B60010A733 /* HomeData.swift in Sources */,
-				56C233EF29B9682D0010A733 /* Configuration.swift in Sources */,
+				56C233EF29B9682D0010A733 /* AppViews.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,
 				56C2353029BBB1550010A733 /* MovieExtrasQuery.graphql.swift in Sources */,
 				56C2353329BBB3900010A733 /* TODO.md in Sources */,
@@ -636,6 +640,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"*.graphql",
+					TODO.md,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -697,6 +705,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"*.graphql",
+					TODO.md,
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

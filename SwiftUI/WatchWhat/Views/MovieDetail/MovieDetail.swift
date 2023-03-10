@@ -12,6 +12,7 @@ struct MovieDetailView: View {
     @StateObject var movieData = MovieData()
     
     let id: Int
+    let onDismiss: () -> Void
     
     var body: some View {
         ZStack() {
@@ -28,7 +29,7 @@ struct MovieDetailView: View {
             VStack {
                 MovieDetail_Header() {
                     modelData.movieId = nil
-                    modelData.navigatePrevious()
+                    onDismiss()
                 }
                 
                 Spacer()
@@ -47,8 +48,10 @@ struct MovieDetailView_Previews: PreviewProvider {
         ZStack {
             BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
-            MovieDetailView(id: 315162)
-                .environmentObject(ModelData())
+            MovieDetailView(id: 315162) {
+                print("dismissed")
+            }
+            .environmentObject(ModelData())
         }
         .preferredColorScheme(.dark)
     }
@@ -62,7 +65,6 @@ struct MovieDetail_Header: View {
     var body: some View {
         HStack {
             Button {
-                modelData.movieId = nil
                 onDismiss()
             } label: {
                 Image(systemName: "chevron.left")
