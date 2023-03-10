@@ -8,7 +8,7 @@
 import Foundation
 import Apollo
 
-class WhatWhat {
+class WatchWhat {
     static let apolloClient: ApolloClient = ApolloClient(url: Configuration.baseURL)
     
     private init() {}

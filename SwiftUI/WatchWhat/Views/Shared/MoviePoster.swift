@@ -7,42 +7,30 @@
 
 import SwiftUI
 
-struct MoviePosterView: View {
-    @EnvironmentObject var modelData: ModelData
-    var movie: HomeQuery.Data.Home.Result.Movie
-    let onTapGesture: (Int) -> Void
-    
-    var url: URL? {
-        return URL(string: Configuration.imgUrlStr + movie.poster_path!)
-    }
+struct MoviePoster: View {
+    @ObservedObject var urlImageModel = UrlImageModel()
+    let imageUrl: String
+    let width: CGFloat
+    let height: CGFloat
     
     var body: some View {
-        VStack() {
-            AsyncImage(url: self.url) { image in
-                image.resizable()
-            } placeholder: {
+        VStack {
+            if let image = urlImageModel.image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: width, height: height)
+                    .padding(.bottom, 7)
+            } else {
                 Image(systemName: "popcorn.fill")
                     .resizable()
-                    .frame(width: 50, height: 70)
-                    .foregroundColor(Palette.text)
+                    .scaledToFit()
+                    .frame(width: width, height: height)
+                    .padding(.bottom, 7)
             }
-            .scaledToFit()
-            .frame(width: 160, height: 240)
-            .padding(.bottom, 7)
-            
-            Text(movie.title)
-                .font(.system(size: 15))
-                .foregroundColor(Palette.text)
-                .lineLimit(nil)
-                .truncationMode(.tail)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(width: 140)
-            
-            Spacer()
         }
-        .onTapGesture {
-            onTapGesture(movie.id)
+        .onAppear {
+            urlImageModel.load(urlString: Configuration.imgUrlStr + imageUrl)
         }
-        .frame(height: 310)
     }
 }

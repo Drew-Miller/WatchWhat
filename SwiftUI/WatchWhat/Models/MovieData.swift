@@ -17,7 +17,7 @@ class MovieData: ObservableObject {
     }
 
     private func fetchData(id: Int) async {
-        WhatWhat.apolloClient.fetch(query: WatchWhatSchema.MovieByIdQuery(id: id)) { result in
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.MovieByIdQuery(id: id)) { result in
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {

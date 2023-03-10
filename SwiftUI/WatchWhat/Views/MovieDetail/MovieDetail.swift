@@ -15,19 +15,28 @@ struct MovieDetailView: View {
     let onDismiss: () -> Void
     
     var body: some View {
-        HStack() {
-            Button {
-                modelData.movieId = nil
-                onDismiss()
-            } label: {
-                Image(systemName: "chevron.left")
+        ZStack() {
+            // Content View
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    if let movie = movieData.movie {
+                        MoviePoster(imageUrl: movie.poster_path!, width: .infinity, height: 600)
+                        
+                        Text(movie.title)
+                        Text(movie.overview)
+                        
+                        Spacer()
+                    }
+                }
             }
+            .edgesIgnoringSafeArea([.top, .bottom])
             
-            if let movie = movieData.movie {
-                Text(movie.title)
-                Text(movie.overview)
+            // Header controls
+            MovieDetailControlView {
+                onDismiss()
             }
         }
+        .foregroundColor(Palette.text)
         .onAppear {
             movieData.loadData(id: self.id)
         }
@@ -36,9 +45,36 @@ struct MovieDetailView: View {
 
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailView(id: 315162) {
-            print("Dismissed")
+        ZStack {
+            BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
+            
+            MovieDetailView(id: 315162) {
+                print("Dismissed")
+            }
+            .environmentObject(ModelData())
         }
-        .environmentObject(ModelData())
+        .preferredColorScheme(.dark)
+    }
+}
+
+struct MovieDetailControlView: View {
+    @EnvironmentObject var modelData: ModelData
+    
+    let onDismiss: () -> Void
+
+    var body: some View {
+        VStack {
+            HStack {
+                Button {
+                    modelData.movieId = nil
+                    onDismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                }
+                
+                Spacer()
+            }
+            Spacer()
+        }
     }
 }

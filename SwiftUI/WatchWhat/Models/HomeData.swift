@@ -18,7 +18,7 @@ class HomeData: ObservableObject {
     }
 
     private func fetchData() async {
-        WhatWhat.apolloClient.fetch(query: WatchWhatSchema.HomeQuery()) { result in
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.HomeQuery()) { result in
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {

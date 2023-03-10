@@ -15,7 +15,7 @@ struct HomeView: View {
         ScrollView {
             LazyVStack(spacing: 0) {
                 ForEach(homeData.results, id: \.self) { result in
-                    MovieCategoryView(result: result, onTapGesture: onMovieSelected)
+                    MovieList(result: result, onTapGesture: onMovieSelected)
                 }
             }
         }

@@ -23,7 +23,7 @@ struct ContentView: View {
                         modelData.setView(.movieDetails)
                     }
                 }
-                .transition(.move(edge: .leading))
+                //.transition(.move(edge: .leading))
                 
             case .movieDetails:
                 if let movieId = modelData.movieId {
@@ -40,6 +40,7 @@ struct ContentView: View {
             }
             
         }
+        .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
     }
 }
