@@ -138,6 +138,7 @@
 		56C2349529BABD8F0010A733 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		56C2349729BAD5720010A733 /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
 		56C2349929BADE090010A733 /* UrlImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageModel.swift; sourceTree = "<group>"; };
+		56C2349B29BAE5F30010A733 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
+				56C2349B29BAE5F30010A733 /* Release.xcconfig */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
 				56012BA329B832DA00E2E5A9 /* Preview Content */,
@@ -666,7 +668,7 @@
 		};
 		56012BBD29B832DB00E2E5A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56012BC729B832EF00E2E5A9 /* Local.xcconfig */;
+			baseConfigurationReference = 56C2349B29BAE5F30010A733 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
