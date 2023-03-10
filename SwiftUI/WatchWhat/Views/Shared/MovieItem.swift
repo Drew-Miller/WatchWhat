@@ -21,11 +21,11 @@ struct MovieItem: View {
             MoviePoster(imageUrl: movie.poster_path!, maxWidth: maxWidth)
             
             Text(movie.title)
-                .font(.system(size: 15))
+                .font(.system(size: 12))
                 .lineLimit(nil)
                 .truncationMode(.tail)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(width: 140)
+                //.fixedSize(horizontal: false, vertical: true)
+                .frame(width: maxWidth - 10)
             
             Spacer()
         }
@@ -33,6 +33,7 @@ struct MovieItem: View {
             onTapGesture(movie.id)
         }
         .foregroundColor(Palette.text)
-        .frame(height: 310)
+        .frame(height: 320)
+        .padding(.top, 20)
     }
 }
