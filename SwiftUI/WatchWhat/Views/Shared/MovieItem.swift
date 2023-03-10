@@ -24,7 +24,6 @@ struct MovieItem: View {
                 .font(.system(size: 12))
                 .lineLimit(nil)
                 .truncationMode(.tail)
-                //.fixedSize(horizontal: false, vertical: true)
                 .frame(width: maxWidth - 10)
             
             Spacer()

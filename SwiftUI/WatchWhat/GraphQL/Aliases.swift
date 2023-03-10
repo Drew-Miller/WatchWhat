@@ -8,4 +8,5 @@
 import Foundation
 
 typealias HomeQuery = WatchWhatSchema.HomeQuery
-typealias MovieByIdQuery = WatchWhatSchema.MovieByIdQuery
+typealias MovieQuery = WatchWhatSchema.MovieQuery
+typealias MovieExtrasQuery = WatchWhatSchema.MovieExtrasQuery
