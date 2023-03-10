@@ -5,18 +5,16 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "{*segments}",
       "methods": [
         "get",
-        "post",
-        "options"
+        "post"
       ]
     },
     {
       "type": "http",
       "direction": "out",
-      "name": "$return"
+      "name": "res"
     }
   ],
-  "scriptFile": "../dist/GraphQL/index.js"
+  "scriptFile": "../dist/Health/index.js"
 }

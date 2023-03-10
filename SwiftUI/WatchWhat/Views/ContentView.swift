@@ -33,6 +33,11 @@ struct ContentView: View {
                         }
                     }
                     .transition(.move(edge: .trailing))
+                } else {
+                    Text("Returning...")
+                        .onAppear {
+                            modelData.navigatePrevious()
+                        }
                 }
                 
             case .video:

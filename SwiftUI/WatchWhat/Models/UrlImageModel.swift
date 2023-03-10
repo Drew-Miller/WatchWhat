@@ -12,6 +12,24 @@ class UrlImageModel: ObservableObject {
     var urlString: String?
     var imageCache = ImageCache.getImageCache()
     
+    // Image Cache
+    class ImageCache {
+        private static var imageCache = ImageCache()
+        static func getImageCache() -> ImageCache {
+            return imageCache
+        }
+        
+        var cache = NSCache<NSString, UIImage>()
+        
+        func get(forKey: String) -> UIImage? {
+            return cache.object(forKey: NSString(string: forKey))
+        }
+        
+        func set(forKey: String, image: UIImage) {
+            cache.setObject(image, forKey: NSString(string: forKey))
+        }
+    }
+    
     func load(urlString: String?) {
         self.urlString = urlString
         
@@ -63,24 +81,5 @@ class UrlImageModel: ObservableObject {
             self.imageCache.set(forKey: self.urlString!, image: loadedImage)
             self.image = loadedImage
         }
-    }
-}
-
-class ImageCache {
-    var cache = NSCache<NSString, UIImage>()
-    
-    func get(forKey: String) -> UIImage? {
-        return cache.object(forKey: NSString(string: forKey))
-    }
-    
-    func set(forKey: String, image: UIImage) {
-        cache.setObject(image, forKey: NSString(string: forKey))
-    }
-}
-
-extension ImageCache {
-    private static var imageCache = ImageCache()
-    static func getImageCache() -> ImageCache {
-        return imageCache
     }
 }
