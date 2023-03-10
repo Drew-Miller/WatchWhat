@@ -39,6 +39,20 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>Tools for plug-in “Install CLI” 3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Tools for plug-in “Install CLI” 4.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Tools for plug-in “Install CLI”.xcscheme</key>
 		<dict>
 			<key>isShown</key>

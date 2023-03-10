@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieItem: View {
-    var movie: HomeQuery.Data.Home.Result.Movie
+    var movie: Movie
     let maxWidth: CGFloat
     let onTapGesture: (Int) -> Void
     

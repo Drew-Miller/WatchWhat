@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieList: View {
-    var result: HomeQuery.Data.Home.Result
+    var result: MovieCategory
     let onTapGesture: (Int) -> Void
 
     var body: some View {
@@ -22,7 +22,7 @@ struct MovieList: View {
                 LazyHStack(spacing: 16) {
                     ForEach(result.movies, id: \.self) { movie in
                         if let movie = movie {
-                            MovieItem(movie: movie, maxWidth: 180) { v in
+                            MovieItem(movie: movie, maxWidth: Configuration.movieItemWidth) { v in
                                 onTapGesture(v)
                             }
                             

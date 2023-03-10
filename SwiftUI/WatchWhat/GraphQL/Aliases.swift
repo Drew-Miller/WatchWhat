@@ -10,3 +10,4 @@ import Foundation
 typealias HomeQuery = WatchWhatSchema.HomeQuery
 typealias MovieQuery = WatchWhatSchema.MovieQuery
 typealias MovieExtrasQuery = WatchWhatSchema.MovieExtrasQuery
+typealias SearchQuery = WatchWhatSchema.SearchQuery

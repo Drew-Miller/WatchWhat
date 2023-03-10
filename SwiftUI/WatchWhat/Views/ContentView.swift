@@ -9,19 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
-    @State var view: AppView = .home
-    @State var previousView: AppView = .home
+    @StateObject var navigation = Navigation()
     
     var body: some View {
         ZStack {
-            BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
+            Background(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
-            switch view {
+            switch navigation.view {
             
             case .home:
                 HomeView() { view in
-                    withAnimation {
-                        self.setView(view)
+                    withAnimation(.easeInOut(duration: 0.15)) {
+                        setView(view)
+                    }
+                }
+                
+            case .search:
+                SearchView() { view in
+                    withAnimation(.easeInOut(duration: 0.15)) {
+                        setView(view)
                     }
                 }
                 
@@ -29,34 +35,37 @@ struct ContentView: View {
                 if let movieId = modelData.movieId {
                     MovieDetailView(id: movieId) {
                         withAnimation {
-                            self.navigatePrevious()
+                            navigatePrevious()
                         }
                     }
                     .transition(.move(edge: .trailing))
                 } else {
-                    Text("Returning...")
-                    .onAppear {
+                    Content_DefaultView() {
                         withAnimation {
-                            self.navigatePrevious()
+                            navigatePrevious()
                         }
                     }
                 }
                 
-            case .video:
-                Text("Video view")
+            default:
+                Content_DefaultView() {
+                    withAnimation {
+                        navigatePrevious()
+                    }
+                }
             }
         }
+        .ignoresSafeArea(.all, edges: .bottom)
         .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
     }
     
     func setView(_ view: AppView) {
-        self.previousView = self.view
-        self.view = view
+        navigation.setView(view)
     }
     
     func navigatePrevious() {
-        self.view = self.previousView
+        navigation.navigatePrevious()
     }
 }
 
@@ -64,5 +73,16 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(ModelData())
+    }
+}
+
+struct Content_DefaultView: View {
+    var returning: () -> Void
+    
+    var body: some View {
+        Text("Returning...")
+        .onAppear {
+            returning()
+        }
     }
 }

@@ -46,7 +46,7 @@ struct MovieDetailView: View {
 struct MovieDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
+            Background(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
             MovieDetailView(id: 315162) {
                 print("dismissed")

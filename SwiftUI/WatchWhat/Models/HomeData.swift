@@ -9,7 +9,7 @@ import Foundation
 
 class HomeData: ObservableObject {
     @Published private(set) var page: Int?
-    @Published private(set) var results: [HomeQuery.Data.Home.Result] = [HomeQuery.Data.Home.Result]()
+    @Published private(set) var results: [MovieCategory] = [MovieCategory]()
 
     func loadData() {
         Task.init {
@@ -22,11 +22,9 @@ class HomeData: ObservableObject {
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
-                self.results = data.home.results
-                // Convert to movie
-//                self.results        = data.popularMovies.results.map {
-//                    Movie.fromPopularMovies(movie: $0)
-//                }
+                self.results = data.home.results.map {
+                    return MovieCategory(data: $0.__data)
+                }                
             }
         }
     }

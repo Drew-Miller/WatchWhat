@@ -9,5 +9,5 @@ import Foundation
 
 class ModelData: ObservableObject {
     @Published var movieId: Int? = nil
+    @Published var navigation = Navigation()
 }
-

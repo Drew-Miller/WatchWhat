@@ -14,11 +14,15 @@ enum Palette {
     }
     
     static var backgroundAccent: Color {
-        return Color("Electric Purple Dark")
+        return Color("Licorice")
     }
     
     static var background: Color {
         return Color("Raisin Black")
+    }
+    
+    static var footer: Color {
+        return Color("Eerie Black")
     }
     
     static var primary: Color {

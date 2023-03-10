@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashView: View {
     var body: some View {
         ZStack {
-            BackgroundView(topColor: .black, bottomColor: .black)
+            Background(topColor: .black, bottomColor: .black)
 
             VStack {
                 Spacer()

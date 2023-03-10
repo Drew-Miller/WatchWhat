@@ -47,6 +47,7 @@ public extension WatchWhatSchema {
       case "Home": return WatchWhatSchema.Objects.Home
       case "GroupedMovies": return WatchWhatSchema.Objects.GroupedMovies
       case "Movie": return WatchWhatSchema.Objects.Movie
+      case "PaginatedMovies": return WatchWhatSchema.Objects.PaginatedMovies
       default: return nil
       }
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BackgroundView: View {
+struct Background: View {
     var topColor: Color
     var bottomColor: Color
     
