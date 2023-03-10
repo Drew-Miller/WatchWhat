@@ -18,15 +18,23 @@ struct MovieDetailView: View {
         ZStack() {
             // Content View
             ScrollView {
-                LazyVStack(spacing: 16) {
-                    if let movie = movieData.movie {
-                        MovieDetailsPoster(posterPath: movie.poster_path!)
+                if let movie = movieData.movie {
+                    MovieDetailsPoster(posterPath: movie.poster_path!)
+                    
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack {
+                            Text("\(getReleaseYear(date: movie.release_date))")
+                            Text("\(movie.runtime) min")
+                            //Text("\(movie.genres[0])")
+                        }
+                        .foregroundColor(Palette.accent)
                         
-                        Text(movie.title)
                         Text(movie.overview)
+                            .font(.body)
                         
                         Spacer()
                     }
+                    .padding(EdgeInsets(top: -20, leading: 10, bottom: 0, trailing: 10))
                 }
             }
             .edgesIgnoringSafeArea([.top, .bottom])
@@ -41,6 +49,10 @@ struct MovieDetailView: View {
         .onAppear {
             movieData.loadData(id: self.id)
         }
+    }
+    
+    func getReleaseYear(date: String) -> String {
+        return String(date.split(separator: "-")[0])
     }
 }
 

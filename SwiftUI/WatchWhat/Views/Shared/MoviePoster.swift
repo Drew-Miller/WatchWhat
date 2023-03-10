@@ -22,6 +22,7 @@ struct MoviePoster: View {
                     .padding(.bottom, 7)
             } else {
                 Image(systemName: "popcorn.fill")
+                    .renderingMode(.original)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: maxWidth)

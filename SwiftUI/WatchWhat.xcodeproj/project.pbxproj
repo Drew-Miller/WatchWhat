@@ -61,6 +61,8 @@
 		56C2349629BABD8F0010A733 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2349529BABD8F0010A733 /* ModelData.swift */; };
 		56C2349829BAD5720010A733 /* MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2349729BAD5720010A733 /* MoviePoster.swift */; };
 		56C2349A29BADE090010A733 /* UrlImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2349929BADE090010A733 /* UrlImageModel.swift */; };
+		56C2349D29BB20770010A733 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2349C29BB20770010A733 /* SplashView.swift */; };
+		56C234A529BB265E0010A733 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 56C234A429BB265E0010A733 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,7 @@
 		56C2349729BAD5720010A733 /* MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePoster.swift; sourceTree = "<group>"; };
 		56C2349929BADE090010A733 /* UrlImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageModel.swift; sourceTree = "<group>"; };
 		56C2349B29BAE5F30010A733 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		56C2349C29BB20770010A733 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56C234A529BB265E0010A733 /* SDWebImageSwiftUI in Frameworks */,
 				56012BCB29B8353E00E2E5A9 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				56012B9F29B832D900E2E5A9 /* ContentView.swift */,
+				56C2349C29BB20770010A733 /* SplashView.swift */,
 				56C233FC29B97DBD0010A733 /* Shared */,
 				56C233FD29B97DC80010A733 /* Home */,
 				56C2349029BAB7A60010A733 /* MovieDetail */,
@@ -403,6 +408,7 @@
 			name = WatchWhat;
 			packageProductDependencies = (
 				56012BCA29B8353E00E2E5A9 /* Apollo */,
+				56C234A429BB265E0010A733 /* SDWebImageSwiftUI */,
 			);
 			productName = WatchWhat;
 			productReference = 56012B9A29B832D900E2E5A9 /* WatchWhat.app */;
@@ -478,6 +484,7 @@
 			mainGroup = 56012B9129B832D800E2E5A9;
 			packageReferences = (
 				56012BC929B8353E00E2E5A9 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				56C234A329BB265E0010A733 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 56012B9B29B832D900E2E5A9 /* Products */;
 			projectDirPath = "";
@@ -547,6 +554,7 @@
 				56C2348129BAB7600010A733 /* Crew.graphql.swift in Sources */,
 				56C2347B29BAB7600010A733 /* ProductionCountry.graphql.swift in Sources */,
 				56C2347E29BAB7600010A733 /* Movie.graphql.swift in Sources */,
+				56C2349D29BB20770010A733 /* SplashView.swift in Sources */,
 				56C233F929B973B60010A733 /* HomeData.swift in Sources */,
 				56C2347D29BAB7600010A733 /* Home.graphql.swift in Sources */,
 				56C233EF29B9682D0010A733 /* Configuration.swift in Sources */,
@@ -907,6 +915,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		56C234A329BB265E0010A733 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -914,6 +930,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56012BC929B8353E00E2E5A9 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		56C234A429BB265E0010A733 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 56C234A329BB265E0010A733 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

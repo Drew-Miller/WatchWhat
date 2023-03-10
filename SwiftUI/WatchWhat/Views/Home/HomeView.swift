@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var homeData = HomeData()
+    @State var controlTransition: Float = 0.0
     let onMovieSelected: (Int) -> Void
         
     var body: some View {
@@ -24,9 +25,16 @@ struct HomeView: View {
             .onAppear {
                 homeData.loadData()
             }
+            .simultaneousGesture(
+                DragGesture().onChanged({
+                   print($0.translation.height)
+                   let isScrollDown = 0 < $0.translation.height
+                   
+               })
+            )
             
             HomeControls {
-                print("dismissed")
+                print("menu")
             }
             .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
         }
@@ -45,14 +53,13 @@ struct HomeView_Previews: PreviewProvider {
 struct HomeControls: View {
     @EnvironmentObject var modelData: ModelData
     
-    let onDismiss: () -> Void
+    let onMenu: () -> Void
 
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    modelData.movieId = nil
-                    onDismiss()
+                    onMenu()
                 } label: {
                     Image(systemName: "line.3.horizontal")
                         .font(.system(size: 25, weight: .light, design: .default))
@@ -65,6 +72,10 @@ struct HomeControls: View {
                     .frame(width: 200, height: 20)
 
                 Spacer()
+                
+                UserIcon(initials: "D", color: Palette.primary, size: 28) {
+                    print("User Tapped")
+                }
             }
             
             Spacer()
@@ -72,4 +83,31 @@ struct HomeControls: View {
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
     }
 }
+
+struct UserIcon: View {
+    let initials: String
+    let color: Color
+    let size: CGFloat
+    let shadow: CGFloat = 1.5
+    let onTapGesture: () -> Void
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(color)
+                .frame(width: size, height: size)
+            Text(initials)
+                .foregroundColor(.white)
+                .font(.system(size: 14, weight: .bold))
+        }
+        .overlay(
+            Circle()
+                .stroke(Color.white, lineWidth: shadow)
+        )
+        .onTapGesture {
+            onTapGesture()
+        }
+    }
+}
+
 
