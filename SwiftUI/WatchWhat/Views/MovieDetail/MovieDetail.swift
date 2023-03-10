@@ -20,7 +20,7 @@ struct MovieDetailView: View {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     if let movie = movieData.movie {
-                        MoviePoster(imageUrl: movie.poster_path!, maxWidth: .infinity)
+                        MovieDetailsPoster(posterPath: movie.poster_path!)
                         
                         Text(movie.title)
                         Text(movie.overview)
@@ -32,9 +32,10 @@ struct MovieDetailView: View {
             .edgesIgnoringSafeArea([.top, .bottom])
             
             // Header controls
-            MovieDetailControlView {
+            MovieDetailControls {
                 onDismiss()
             }
+            .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
         }
         .foregroundColor(Palette.text)
         .onAppear {
@@ -57,7 +58,7 @@ struct MovieDetailView_Previews: PreviewProvider {
     }
 }
 
-struct MovieDetailControlView: View {
+struct MovieDetailControls: View {
     @EnvironmentObject var modelData: ModelData
     
     let onDismiss: () -> Void
@@ -70,19 +71,32 @@ struct MovieDetailControlView: View {
                     onDismiss()
                 } label: {
                     Image(systemName: "chevron.left")
+                        .font(.system(size: 25, weight: .light, design: .default))
                 }
                 
-                Spacer()
-                
-                Image(uiImage: UIImage(named: "logo-white-no-background")!)
-                    .resizable()
-                    .frame(width: 200, height: 20)
-
                 Spacer()
             }
             
             Spacer()
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+    }
+}
+
+struct MovieDetailsPoster: View {
+    let posterPath: String
+    
+    var body: some View {
+        MoviePoster(imageUrl: posterPath, maxWidth: .infinity)
+            .mask(
+                LinearGradient(
+                    gradient: Gradient(stops: [
+                        .init(color: Palette.background, location: 0.75),
+                        .init(color: Color.clear, location: 1)
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
     }
 }

@@ -44,6 +44,7 @@ struct ContentView: View {
                 Text("Video view")
             }
             
+            
         }
         .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
