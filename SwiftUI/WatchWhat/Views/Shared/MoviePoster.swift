@@ -10,8 +10,7 @@ import SwiftUI
 struct MoviePoster: View {
     @ObservedObject var urlImageModel = UrlImageModel()
     let imageUrl: String
-    let width: CGFloat
-    let height: CGFloat
+    let maxWidth: CGFloat
     
     var body: some View {
         VStack {
@@ -19,13 +18,13 @@ struct MoviePoster: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: width, height: height)
+                    .frame(maxWidth: maxWidth)
                     .padding(.bottom, 7)
             } else {
                 Image(systemName: "popcorn.fill")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: width, height: height)
+                    .frame(maxWidth: maxWidth)
                     .padding(.bottom, 7)
             }
         }

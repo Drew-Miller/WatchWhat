@@ -20,7 +20,7 @@ struct MovieDetailView: View {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     if let movie = movieData.movie {
-                        MoviePoster(imageUrl: movie.poster_path!, width: .infinity, height: 600)
+                        MoviePoster(imageUrl: movie.poster_path!, maxWidth: .infinity)
                         
                         Text(movie.title)
                         Text(movie.overview)
@@ -73,8 +73,16 @@ struct MovieDetailControlView: View {
                 }
                 
                 Spacer()
+                
+                Image(uiImage: UIImage(named: "logo-white-no-background")!)
+                    .resizable()
+                    .frame(width: 200, height: 20)
+
+                Spacer()
             }
+            
             Spacer()
         }
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
     }
 }
