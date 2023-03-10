@@ -8,15 +8,26 @@
 import SwiftUI
 
 struct HomeView: View {
-    var results: [HomeQuery.Data.Home.Result]
+    @StateObject var homeData = HomeData()
+    let onMovieSelected: (Int) -> Void
         
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(results, id: \.self) { result in
-                    MovieCategoryView(result: result)
+                ForEach(homeData.results, id: \.self) { result in
+                    MovieCategoryView(result: result, onTapGesture: onMovieSelected)
                 }
             }
         }
+        .onAppear {
+            homeData.loadData()
+        }
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(ModelData())
     }
 }

@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct MoviePosterView: View {
+    @EnvironmentObject var modelData: ModelData
     var movie: HomeQuery.Data.Home.Result.Movie
+    let onTapGesture: (Int) -> Void
+    
+    var url: URL? {
+        return URL(string: Configuration.imgUrlStr + movie.poster_path!)
+    }
     
     var body: some View {
         VStack() {
-            AsyncImage(url: URL(string: Configuration.imgUrlStr + movie.poster_path!)) { image in
+            AsyncImage(url: self.url) { image in
                 image.resizable()
             } placeholder: {
                 Image(systemName: "popcorn.fill")
@@ -33,6 +39,9 @@ struct MoviePosterView: View {
                 .frame(width: 140)
             
             Spacer()
+        }
+        .onTapGesture {
+            onTapGesture(movie.id)
         }
         .frame(height: 310)
     }

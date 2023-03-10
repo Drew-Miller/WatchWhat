@@ -8,16 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var homeData = HomeData()
-
+    @EnvironmentObject var modelData: ModelData
+    
     var body: some View {
         ZStack {
             BackgroundView(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
-            HomeView(results: homeData.results)
-                .onAppear {
-                    homeData.loadData()
+            switch modelData.view {
+                
+            case .home:
+                HomeView() { movieId in
+                    modelData.movieId = movieId
+                    withAnimation {
+                        modelData.setView(.movieDetails)
+                    }
                 }
+                .transition(.move(edge: .leading))
+                
+            case .movieDetails:
+                if let movieId = modelData.movieId {
+                    MovieDetailView(id: movieId) {
+                        withAnimation {
+                            modelData.navigatePrevious()
+                        }
+                    }
+                    .transition(.move(edge: .trailing))
+                }
+                
+            case .video:
+                Text("Video view")
+            }
+            
         }
         .preferredColorScheme(.dark)
     }
@@ -26,5 +47,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }

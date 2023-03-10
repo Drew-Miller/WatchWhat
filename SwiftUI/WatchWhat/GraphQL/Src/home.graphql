@@ -4,6 +4,7 @@ query Home {
       id
       title
       movies {
+        id
         title
         poster_path
         backdrop_path
