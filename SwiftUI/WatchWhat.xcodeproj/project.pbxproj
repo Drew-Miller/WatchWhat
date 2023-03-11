@@ -72,6 +72,7 @@
 		56C235A229BBE3120010A733 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2358B29BBE3120010A733 /* SchemaMetadata.graphql.swift */; };
 		56C235A529BBE71B0010A733 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C235A429BBE71B0010A733 /* Movie.swift */; };
 		56C235A729BBE8280010A733 /* MovieCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C235A629BBE8280010A733 /* MovieCategory.swift */; };
+		56C235A929BC11510010A733 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C235A829BC11510010A733 /* Header.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +162,7 @@
 		56C2358B29BBE3120010A733 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
 		56C235A429BBE71B0010A733 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		56C235A629BBE8280010A733 /* MovieCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategory.swift; sourceTree = "<group>"; };
+		56C235A829BC11510010A733 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,10 +319,11 @@
 			isa = PBXGroup;
 			children = (
 				56C233FA29B97DB70010A733 /* Background.swift */,
+				56C2353829BBDF530010A733 /* Footer.swift */,
+				56C235A829BC11510010A733 /* Header.swift */,
 				56C2344129BA8EF00010A733 /* MovieList.swift */,
 				56C2344329BA8F090010A733 /* MovieItem.swift */,
 				56C2349729BAD5720010A733 /* MoviePoster.swift */,
-				56C2353829BBDF530010A733 /* Footer.swift */,
 				56C2353A29BBDF8D0010A733 /* UserIcon.swift */,
 			);
 			path = Shared;
@@ -576,6 +579,7 @@
 				56C2359D29BBE3120010A733 /* Cast.graphql.swift in Sources */,
 				56C2359A29BBE3120010A733 /* Credits.graphql.swift in Sources */,
 				56C2359F29BBE3120010A733 /* TrailerResults.graphql.swift in Sources */,
+				56C235A929BC11510010A733 /* Header.swift in Sources */,
 				56C233F529B96B660010A733 /* WatchWhat.swift in Sources */,
 				56C2359629BBE3120010A733 /* Crew.graphql.swift in Sources */,
 				56C2349829BAD5720010A733 /* MoviePoster.swift in Sources */,

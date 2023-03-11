@@ -29,7 +29,7 @@ struct SearchView: View {
                         
                     }
                 }
-                .padding(EdgeInsets(top: 55, leading: 0, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 110, leading: 0, bottom: 0, trailing: 0))
             }
             .onAppear {
                 search()
@@ -41,10 +41,11 @@ struct SearchView: View {
             
             // Controls
             VStack {
-                SearchView_Header(search: $modelData.searchValue) {
+                Header {
                     print("menu")
                 }
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+                SearchBar(text: $modelData.searchValue)
                 
                 Spacer()
                 
@@ -76,25 +77,6 @@ struct SearchVhew_Previews: PreviewProvider {
     }
 }
 
-struct SearchView_Header: View {
-    @EnvironmentObject var modelData: ModelData
-    @Binding var search: String
-
-    let onMenu: () -> Void
-
-    var body: some View {
-        HStack {
-            SearchBar(text: $search)
-
-            Spacer()
-            
-            UserIcon(initials: "D", color: Palette.primary, size: 28) {
-                print("User Tapped")
-            }
-        }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-    }
-}
 
 extension Array {
     func chunked(into size: Int) -> [[Element]] {
@@ -106,9 +88,25 @@ extension Array {
 
 struct SearchBar: View {
     @Binding var text: String
+    var placeHolder: String {
+        if !text.isEmpty {
+            return ""
+        } else {
+            return "What're you searching for?"
+        }
+    }
 
     var body: some View {
-        TextField("Enter Text", text: $text)
-            .padding()
+        VStack {
+            TextField(placeHolder, text: $text)
+                .padding(.horizontal, 15)
+                .padding(.vertical, 10)
+                .background(Palette.footer)
+                .foregroundColor(.gray)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 5)
+                .frame(maxWidth: .infinity)
+        }
+        .padding(.horizontal, 20)
     }
 }
