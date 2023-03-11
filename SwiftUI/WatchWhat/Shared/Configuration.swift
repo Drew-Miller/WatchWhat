@@ -44,6 +44,6 @@ enum Configuration {
     }
     
     static var movieItemWidth: CGFloat {
-        return 180
+        return 170
     }
 }

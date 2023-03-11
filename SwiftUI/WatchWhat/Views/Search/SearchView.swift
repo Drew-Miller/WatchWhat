@@ -17,23 +17,31 @@ struct SearchView: View {
             // Movies
             ScrollView {
                 LazyVStack(spacing: 0) {
-                    ForEach(searchData.results, id: \.self) { movie in
-                        MovieItem(movie: movie, maxWidth: Configuration.movieItemWidth) { movieId in
-                            modelData.movieId = movieId
-                            changeView(.movieDetails)
+                    ForEach(searchData.results.chunked(into: 2), id: \.self) { rowItems in
+                        LazyHStack {
+                            ForEach(rowItems, id: \.self) { movie in
+                                MovieItem(movie: movie, maxWidth: Configuration.movieItemWidth) { movieId in
+                                    modelData.movieId = movieId
+                                    changeView(.movieDetails)
+                                }
+                            }
                         }
+                        
                     }
                 }
                 .padding(EdgeInsets(top: 55, leading: 0, bottom: 0, trailing: 0))
             }
             .onAppear {
-                searchData.loadData(query: "The Dark Knight")
+                search()
+            }
+            .onChange(of: modelData.searchValue) { _ in
+                search()
             }
             .padding(.bottom, 50)
             
             // Controls
             VStack {
-                HomeView_Header {
+                SearchView_Header(search: $modelData.searchValue) {
                     print("menu")
                 }
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
@@ -46,7 +54,15 @@ struct SearchView: View {
             }
             
         }
+        .ignoresSafeArea(.all, edges: .bottom)
         .foregroundColor(Palette.text)
+    }
+    
+    func search() {
+        let search = modelData.searchValue
+        if !search.isEmpty {
+            searchData.loadData(query: search)
+        }
     }
 }
 
@@ -56,28 +72,19 @@ struct SearchVhew_Previews: PreviewProvider {
             print("view changed")
         }
         .environmentObject(ModelData())
+        .preferredColorScheme(.dark)
     }
 }
 
-struct HomeView_Header: View {
+struct SearchView_Header: View {
     @EnvironmentObject var modelData: ModelData
-    
+    @Binding var search: String
+
     let onMenu: () -> Void
 
     var body: some View {
         HStack {
-            Button {
-                onMenu()
-            } label: {
-                Image(systemName: "line.3.horizontal")
-                    .font(.system(size: 25, weight: .light, design: .default))
-            }
-            
-            Spacer()
-            
-            Image(uiImage: UIImage(named: "logo-white-no-background")!)
-                .resizable()
-                .frame(width: 200, height: 20)
+            SearchBar(text: $search)
 
             Spacer()
             
@@ -86,5 +93,22 @@ struct HomeView_Header: View {
             }
         }
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+    }
+}
+
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        return stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
+        }
+    }
+}
+
+struct SearchBar: View {
+    @Binding var text: String
+
+    var body: some View {
+        TextField("Enter Text", text: $text)
+            .padding()
     }
 }

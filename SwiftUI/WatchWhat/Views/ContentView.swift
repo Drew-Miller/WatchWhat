@@ -55,7 +55,6 @@ struct ContentView: View {
                 }
             }
         }
-        .ignoresSafeArea(.all, edges: .bottom)
         .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
     }

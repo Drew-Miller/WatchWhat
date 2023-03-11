@@ -24,12 +24,12 @@ struct HomeView: View {
                         }
                     }
                 }
-                .padding(EdgeInsets(top: 55, leading: 0, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
             }
             .onAppear {
                 homeData.loadData()
             }
-            .padding(.bottom, 50)
+            .padding(.bottom, 25)
             
             // Controls
             VStack {
@@ -46,6 +46,7 @@ struct HomeView: View {
             }
             
         }
+        .ignoresSafeArea(.all, edges: .bottom)
         .foregroundColor(Palette.text)
     }
 }
@@ -55,6 +56,37 @@ struct HomeView_Previews: PreviewProvider {
         HomeView() { view in
             print("view changed")
         }
+        .preferredColorScheme(.dark)
         .environmentObject(ModelData())
+    }
+}
+
+struct HomeView_Header: View {
+    @EnvironmentObject var modelData: ModelData
+    
+    let onMenu: () -> Void
+
+    var body: some View {
+        HStack {
+            Button {
+                onMenu()
+            } label: {
+                Image(systemName: "line.3.horizontal")
+                    .font(.system(size: 25, weight: .light, design: .default))
+            }
+            
+            Spacer()
+            
+            Image(uiImage: UIImage(named: "logo-white-no-background")!)
+                .resizable()
+                .frame(width: 200, height: 20)
+
+            Spacer()
+            
+            UserIcon(initials: "D", color: Palette.primary, size: 28) {
+                print("User Tapped")
+            }
+        }
+        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
     }
 }
