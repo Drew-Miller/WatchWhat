@@ -12,7 +12,7 @@ const resolvers = {
     ping: () => 'pong',
 
 
-    home: async(_:any, __: any, { dataSources }: MyContext) => {
+    discoverMovies: async(_:any, __: any, { dataSources }: MyContext) => {
       const promises = Promise.all([
         dataSources.movieAPI.popularMoviesGrouped(),
         dataSources.movieAPI.moviesByGenresGrouped()
@@ -31,6 +31,16 @@ const resolvers = {
 
     searchMovies: async (_: any, req: { query: string, page: number }, { dataSources }: MyContext) => {
       return dataSources.movieAPI.searchMovies(req.query, req.page);
+    },
+
+    regions: async (_: any, __: any, { dataSources }: MyContext) => {
+      return dataSources.movieAPI.regions();
+    },
+    movieProviders: async (_: any, req: { region?: string }, { dataSources }: MyContext) => {
+      return dataSources.movieAPI.movieProviders(req.region);
+    },
+    watchMovie: async (_: any, req: { movieId: number, region: string }, { dataSources }: MyContext) => {
+      return dataSources.movieAPI.watchMovie(req.movieId, req.region);
     },
 
     genres: async (_: any, __: any, { dataSources }: MyContext) => {

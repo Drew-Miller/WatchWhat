@@ -1,0 +1,70 @@
+query MovieExtras($id: Int!) {
+  credits(id: $id) {
+    id
+    cast {
+      adult
+      cast_id
+      character
+      credit_id
+      gender
+      id
+      known_for_department
+      name
+      order
+      original_name
+      popularity
+      profile_path
+    }
+    crew {
+      adult
+      credit_id
+      department
+      gender
+      id
+      job
+      known_for_department
+      name
+      original_name
+      popularity
+      profile_path
+    }
+  }
+
+  videos(id: $id) {
+    id
+    results {
+      id
+      iso_639_1
+      iso_3166_1
+      key
+      name
+      official
+      published_at
+      site
+      size
+      type
+    }
+  }
+
+  recommendations(id: $id) {
+    page,
+    total_pages
+    total_results
+    results {
+      adult
+      backdrop_path
+      genre_ids
+      id
+      media_type
+      original_language
+      original_title
+      overview
+      popularity
+      poster_path
+      release_date
+      title
+      video
+      vote_average
+    }
+  }
+}

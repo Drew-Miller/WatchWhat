@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MoviePoster: View {
     @ObservedObject var urlImageModel = UrlImageModel()
-    let imageUrl: String
+    let imageUrl: String?
     let maxWidth: CGFloat
     
     var body: some View {
@@ -30,7 +30,11 @@ struct MoviePoster: View {
             }
         }
         .onAppear {
-            urlImageModel.load(urlString: Configuration.imgUrlStr + imageUrl)
+            if imageUrl?.isEmpty ?? true {
+                return
+            } else {
+                urlImageModel.load(urlString: Configuration.imgUrlStr + imageUrl!)
+            }
         }
     }
 }

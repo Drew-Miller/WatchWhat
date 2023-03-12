@@ -18,7 +18,7 @@ struct MovieItem: View {
     
     var body: some View {
         VStack() {
-            MoviePoster(imageUrl: movie.poster_path!, maxWidth: maxWidth)
+            MoviePoster(imageUrl: movie.poster_path, maxWidth: maxWidth)
             
             Text(movie.title)
                 .font(.system(size: 12))

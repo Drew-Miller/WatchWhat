@@ -1,7 +1,7 @@
 import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
-import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Recommendation, Results, Trailer } from "./dtos";
+import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Recommendation, Region, Results, Trailer } from "./dtos";
 
 export type MovieAPIOptions = DataSourceConfig & {
   apiVersion: string,
@@ -97,6 +97,31 @@ export class MovieAPI extends RESTDataSource {
       }
     });
     return data;
+  }
+
+  async regions(): Promise<Region[]> {
+    const data = await this.get<{ results: Region[] }>(`/${this.apiVersion}/watch/providers/regions?api_key=${this.apiKey}`);
+    return data.results;
+  }
+
+  async movieProviders(region: string = ""): Promise<Provider[]> {
+    const data = await this.get<{ results: ProviderDisplay[] }>(`/${this.apiVersion}/watch/providers/movie?api_key=${this.apiKey}`);
+    const results: Provider[] = data.results.map(result => {
+      if (!!region && region in result.display_priorities) {
+        result.display_priority = result.display_priorities[region];
+      }
+      return result as Provider;
+    })
+    return results;
+  }
+
+  async watchMovie(movieId: number, region: string): Promise<WatchProviders | null> {
+    const data = await this.get<{ results: { [country: string]: WatchProviders } }>(`/${this.apiVersion}/movie/${movieId}/watch/providers?api_key=${this.apiKey}`);
+    const results = data.results;
+    if (region in results) {
+      return results[region];
+    }
+    return null;
   }
 
   async genres(): Promise<Genre[]> {

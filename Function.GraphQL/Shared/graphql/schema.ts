@@ -5,9 +5,15 @@ type Query {
   ping: String
 
   #### Custom Calls ####
-  home: Home!
+  discoverMovies: DiscoverMovies!
 
   #### Built in Movie DB Calls ####
+
+  regions: [Region!]!
+
+  movieProviders(region: String): [Provider!]!
+
+  watchMovie(movieId: Int!, region: String!):  WatchProviders!
 
   popularMovies(page: Int): PaginatedMovies!
   
@@ -27,7 +33,7 @@ type Query {
 # Custom Types #
 ################
 
-type Home {
+type DiscoverMovies {
   results: [GroupedMovies!]!
 }
 
@@ -42,6 +48,27 @@ type GroupedMovies {
 # Movie DB Types #
 ##################
 
+# Providers
+
+type Region {
+  iso_3166_1: String
+  english_name: String
+  native_name: String
+}
+
+type Provider {
+  display_priority: Int!
+  logo_path: String
+  provider_name: String!
+  provider_id: Int!
+}
+
+type WatchProviders {
+  link: String!
+  buy: [Provider!]
+  rent: [Provider!]
+  flatrate: [Provider!]
+}
 
 # Genre Types
 
