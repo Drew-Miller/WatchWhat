@@ -48,6 +48,6 @@ enum Configuration {
     }
     
     static var providerLogoWidth: CGFloat {
-        return 170
+        return 40
     }
 }

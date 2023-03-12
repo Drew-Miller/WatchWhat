@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "Function.GraphQL"
+		},
+		{
+			"path": "Function.Streaming"
 		}
 	],
 	"settings": {

@@ -19,14 +19,14 @@ struct ProviderLogo: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: maxWidth)
-                    .padding(.bottom, 7)
+                    .clipShape(Circle())
             } else {
                 Image(systemName: "popcorn.fill")
                     .renderingMode(.original)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: maxWidth)
-                    .padding(.bottom, 7)
+                    .clipShape(Circle())
             }
         }
         .onAppear {

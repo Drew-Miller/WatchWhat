@@ -20,9 +20,11 @@ struct MovieDetailView: View {
             ScrollView {
                 if let movie = movieData.movie {
                     MovieDetail_Poster(posterPath: movie.poster_path!)
+                    
                     if let watchProviders = movieData.watchProviders {
-                        MovieDetail_WatchProviders(watchProviders: watchProviders)
+                        MovieDetail_WatchProviders(movie: movie, watchProviders: watchProviders)
                     }
+                    
                     MovieDetail_Movie(movie: movie)
                 }
             }
@@ -81,29 +83,37 @@ struct MovieDetail_Header: View {
 }
 
 struct MovieDetail_WatchProviders: View {
+    let movie: Movie
     let watchProviders: WatchProviders
+    let maxCount = 4
     var body: some View {
         VStack {
-            if let buy = watchProviders.buy {
-                ForEach(buy, id: \.self.provider_id) { buy in
-                    Text(buy.provider_name)
-                }
-            }
-             
-            if let rent = watchProviders.rent {
-                ForEach(rent, id: \.self.provider_id) { rent in
-                    Text(rent.provider_name)
+            HStack {
+                if let buy = watchProviders.buy {
+                    ForEach(buy.prefix(maxCount), id: \.self.provider_id) { buy in
+                        ProviderLogo(imageUrl: buy.logo_path, maxWidth: Configuration.providerLogoWidth)
+                    }
                 }
             }
             
-            if let flatrate = watchProviders.flatrate {
-                ForEach(flatrate, id: \.self.provider_id) { flatrate in
-                    Text(flatrate.provider_name)
-                    ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: Configuration.providerLogoWidth)
-                    
+            HStack {
+                if let rent = watchProviders.rent {
+                    ForEach(rent.prefix(maxCount), id: \.self.provider_id) { rent in
+                        ProviderLogo(imageUrl: rent.logo_path, maxWidth: Configuration.providerLogoWidth)
+                    }
+                }
+            }
+            
+            HStack {
+                if let flatrate = watchProviders.flatrate {
+                    ForEach(flatrate.prefix(maxCount), id: \.self.provider_id) { flatrate in
+                        ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: Configuration.providerLogoWidth)
+                        
+                    }
                 }
             }
         }
+        
     }
 }
 

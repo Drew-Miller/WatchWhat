@@ -21,6 +21,7 @@ struct MovieItem: View {
             MoviePoster(imageUrl: movie.poster_path, maxWidth: maxWidth)
             
             Text(movie.title)
+                .padding(.top, 7)
                 .font(.system(size: 12))
                 .lineLimit(nil)
                 .truncationMode(.tail)

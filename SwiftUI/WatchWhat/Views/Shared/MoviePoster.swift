@@ -19,14 +19,12 @@ struct MoviePoster: View {
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: maxWidth)
-                    .padding(.bottom, 7)
             } else {
                 Image(systemName: "popcorn.fill")
                     .renderingMode(.original)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: maxWidth)
-                    .padding(.bottom, 7)
             }
         }
         .onAppear {
