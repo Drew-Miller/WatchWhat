@@ -7,7 +7,8 @@
 
 import Foundation
 
-typealias HomeQuery = WatchWhatSchema.HomeQuery
+typealias DiscoverQuery = WatchWhatSchema.DiscoverQuery
 typealias MovieQuery = WatchWhatSchema.MovieQuery
 typealias MovieExtrasQuery = WatchWhatSchema.MovieExtrasQuery
 typealias SearchQuery = WatchWhatSchema.SearchQuery
+typealias WatchMovieQuery = WatchWhatSchema.WatchMovieQuery

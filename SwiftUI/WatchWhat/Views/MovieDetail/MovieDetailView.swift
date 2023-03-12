@@ -20,6 +20,9 @@ struct MovieDetailView: View {
             ScrollView {
                 if let movie = movieData.movie {
                     MovieDetail_Poster(posterPath: movie.poster_path!)
+                    if let watchProviders = movieData.watchProviders {
+                        MovieDetail_WatchProviders(watchProviders: watchProviders)
+                    }
                     MovieDetail_Movie(movie: movie)
                 }
             }
@@ -38,7 +41,7 @@ struct MovieDetailView: View {
         }
         .foregroundColor(Palette.text)
         .onAppear {
-            movieData.loadData(id: self.id)
+            movieData.loadData(id: self.id, region: modelData.providerRegion)
         }
     }
 }
@@ -74,6 +77,33 @@ struct MovieDetail_Header: View {
             Spacer()
         }
         .padding(EdgeInsets(top: 15, leading: 20, bottom: 0, trailing: 20))
+    }
+}
+
+struct MovieDetail_WatchProviders: View {
+    let watchProviders: WatchProviders
+    var body: some View {
+        VStack {
+            if let buy = watchProviders.buy {
+                ForEach(buy, id: \.self.provider_id) { buy in
+                    Text(buy.provider_name)
+                }
+            }
+             
+            if let rent = watchProviders.rent {
+                ForEach(rent, id: \.self.provider_id) { rent in
+                    Text(rent.provider_name)
+                }
+            }
+            
+            if let flatrate = watchProviders.flatrate {
+                ForEach(flatrate, id: \.self.provider_id) { flatrate in
+                    Text(flatrate.provider_name)
+                    ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: Configuration.providerLogoWidth)
+                    
+                }
+            }
+        }
     }
 }
 

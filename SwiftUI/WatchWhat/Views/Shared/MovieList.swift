@@ -22,7 +22,7 @@ struct MovieList: View {
                 LazyHStack(spacing: 16) {
                     ForEach(result.movies, id: \.self) { movie in
                         if let movie = movie {
-                            MovieItem(movie: movie, maxWidth: Configuration.movieItemWidth) { v in
+                            MovieItem(movie: movie, maxWidth: Configuration.moviePosterWidth) { v in
                                 onTapGesture(v)
                             }
                             

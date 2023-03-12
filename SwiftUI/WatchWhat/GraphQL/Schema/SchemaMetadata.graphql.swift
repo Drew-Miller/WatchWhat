@@ -44,10 +44,12 @@ public extension WatchWhatSchema {
       case "Trailer": return WatchWhatSchema.Objects.Trailer
       case "PaginatedRecommendations": return WatchWhatSchema.Objects.PaginatedRecommendations
       case "Recommendation": return WatchWhatSchema.Objects.Recommendation
-      case "Home": return WatchWhatSchema.Objects.Home
+      case "Discover": return WatchWhatSchema.Objects.Discover
       case "GroupedMovies": return WatchWhatSchema.Objects.GroupedMovies
       case "Movie": return WatchWhatSchema.Objects.Movie
       case "PaginatedMovies": return WatchWhatSchema.Objects.PaginatedMovies
+      case "WatchProviders": return WatchWhatSchema.Objects.WatchProviders
+      case "Provider": return WatchWhatSchema.Objects.Provider
       default: return nil
       }
     }

@@ -1,5 +1,5 @@
-query Home {
-  home {
+query Discover {
+  discover {
     results {
       id
       title

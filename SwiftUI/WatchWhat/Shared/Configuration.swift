@@ -43,7 +43,11 @@ enum Configuration {
         return "https://image.tmdb.org/t/p/original"
     }
     
-    static var movieItemWidth: CGFloat {
+    static var moviePosterWidth: CGFloat {
+        return 170
+    }
+    
+    static var providerLogoWidth: CGFloat {
         return 170
     }
 }

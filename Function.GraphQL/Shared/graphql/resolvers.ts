@@ -12,7 +12,7 @@ const resolvers = {
     ping: () => 'pong',
 
 
-    discoverMovies: async(_:any, __: any, { dataSources }: MyContext) => {
+    discover: async(_:any, __: any, { dataSources }: MyContext) => {
       const promises = Promise.all([
         dataSources.movieAPI.popularMoviesGrouped(),
         dataSources.movieAPI.moviesByGenresGrouped()

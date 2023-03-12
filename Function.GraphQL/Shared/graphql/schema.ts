@@ -5,7 +5,7 @@ type Query {
   ping: String
 
   #### Custom Calls ####
-  discoverMovies: DiscoverMovies!
+  discover: Discover!
 
   #### Built in Movie DB Calls ####
 
@@ -33,7 +33,7 @@ type Query {
 # Custom Types #
 ################
 
-type DiscoverMovies {
+type Discover {
   results: [GroupedMovies!]!
 }
 

@@ -1,7 +1,10 @@
 type Query {
   hello: String
   ping: String
-  home: Home!
+  discover: Discover!
+  regions: [Region!]!
+  movieProviders(region: String): [Provider!]!
+  watchMovie(movieId: Int!, region: String!): WatchProviders!
   popularMovies(page: Int): PaginatedMovies!
   searchMovies(query: String!, page: Int): PaginatedMovies!
   genres: [Genre!]!
@@ -12,7 +15,7 @@ type Query {
   recommendations(id: Int!): PaginatedRecommendations!
 }
 
-type Home {
+type Discover {
   results: [GroupedMovies!]!
 }
 
@@ -20,6 +23,26 @@ type GroupedMovies {
   id: Int!
   title: String!
   movies: [Movie!]!
+}
+
+type Region {
+  iso_3166_1: String
+  english_name: String
+  native_name: String
+}
+
+type Provider {
+  display_priority: Int!
+  logo_path: String
+  provider_name: String!
+  provider_id: Int!
+}
+
+type WatchProviders {
+  link: String!
+  buy: [Provider!]
+  rent: [Provider!]
+  flatrate: [Provider!]
 }
 
 type Genre {

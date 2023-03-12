@@ -11,5 +11,5 @@ class ModelData: ObservableObject {
     @Published var movieId: Int? = nil
     @Published var searchValue: String = ""
     @Published var navigation = Navigation()
-    @Published var providerRegion: String?
+    @Published var providerRegion: String? = "US"
 }

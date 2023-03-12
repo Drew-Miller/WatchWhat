@@ -12,18 +12,24 @@ class MovieData: ObservableObject {
     @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
     @Published private(set) var videos: MovieExtrasQuery.Data.Videos?
     @Published private(set) var recommendations: MovieExtrasQuery.Data.Recommendations?
+    @Published private(set) var watchProviders: WatchProviders?
     
     
-    func loadData(id: Int) {
+    func loadData(id: Int, region: String?) {
         Task.init {
-            await fetchData(id: id)
+            await fetchMovie(id: id)
         }
         Task.init {
-            await fetchExtras(id: id)
+            await fetchMovieExtras(id: id)
+        }
+        if !(region ?? "").isEmpty {
+            Task.init {
+                await fetchWatchProviders(id: id, region: region!)
+            }
         }
     }
 
-    private func fetchData(id: Int) async {
+    private func fetchMovie(id: Int) async {
         WatchWhat.apolloClient.fetch(query: WatchWhatSchema.MovieQuery(id: id)) { result in
             guard let data = try? result.get().data else { return }
                         
@@ -33,7 +39,7 @@ class MovieData: ObservableObject {
         }
     }
     
-    private func fetchExtras(id: Int) async {
+    private func fetchMovieExtras(id: Int) async {
         WatchWhat.apolloClient.fetch(query: WatchWhatSchema.MovieExtrasQuery(id: id)) { result in
             guard let data = try? result.get().data else { return }
                         
@@ -41,6 +47,16 @@ class MovieData: ObservableObject {
                 self.credits = data.credits
                 self.videos = data.videos
                 self.recommendations = data.recommendations
+            }
+        }
+    }
+    
+    private func fetchWatchProviders(id: Int, region: String) async {
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.WatchMovieQuery(movieId: id, region: region)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            DispatchQueue.main.async {
+                self.watchProviders = WatchProviders(data: data.watchMovie.__data)
             }
         }
     }

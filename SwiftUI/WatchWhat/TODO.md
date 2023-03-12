@@ -2,7 +2,7 @@
 
 ## Home
 - Hide menu and footer on Home scroll
-- Add TV
+- Add TV options
 
 ## Category View
 - Similar to home view

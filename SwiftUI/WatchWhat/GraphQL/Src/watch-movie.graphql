@@ -1,0 +1,23 @@
+query WatchMovie($movieId: Int!, $region: String!) {
+  watchMovie(movieId: $movieId, region: $region) {
+    link
+    buy {
+      display_priority
+      logo_path
+      provider_name
+      provider_id
+    }
+    rent {
+      display_priority
+      logo_path
+      provider_name
+      provider_id
+    }
+    flatrate {
+      display_priority
+      logo_path
+      provider_name
+      provider_id
+    }
+  }
+}

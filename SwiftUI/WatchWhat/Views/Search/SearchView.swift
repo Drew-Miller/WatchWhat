@@ -20,7 +20,7 @@ struct SearchView: View {
                     ForEach(searchData.results.chunked(into: 2), id: \.self) { rowItems in
                         LazyHStack {
                             ForEach(rowItems, id: \.self) { movie in
-                                MovieItem(movie: movie, maxWidth: Configuration.movieItemWidth) { movieId in
+                                MovieItem(movie: movie, maxWidth: Configuration.moviePosterWidth) { movieId in
                                     modelData.movieId = movieId
                                     changeView(.movieDetails)
                                 }
