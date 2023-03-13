@@ -83,7 +83,7 @@ struct MovieDetail_Header: View {
 }
 
 struct MovieDetail_WatchProviders: View {
-    let movie: Movie
+    let movie: MovieDetails
     let watchProviders: WatchProviders
     let maxCount = 4
     var body: some View {
@@ -118,7 +118,7 @@ struct MovieDetail_WatchProviders: View {
 }
 
 struct MovieDetail_Movie: View {
-    let movie: MovieQuery.Data.Movie
+    let movie: MovieDetails
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {

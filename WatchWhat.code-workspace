@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "Function.Streaming"
+		},
+		{
+			"path": "SwiftUI"
 		}
 	],
 	"settings": {

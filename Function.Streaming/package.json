@@ -10,7 +10,8 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@azure/data-tables": "^13.2.1"
+    "@azure/data-tables": "^13.2.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@azure/functions": "^3.0.0",

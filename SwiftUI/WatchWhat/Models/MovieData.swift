@@ -8,7 +8,7 @@
 import Foundation
 
 class MovieData: ObservableObject {
-    @Published private(set) var movie: MovieQuery.Data.Movie?
+    @Published private(set) var movie: MovieDetails?
     @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
     @Published private(set) var videos: MovieExtrasQuery.Data.Videos?
     @Published private(set) var recommendations: MovieExtrasQuery.Data.Recommendations?
@@ -34,7 +34,7 @@ class MovieData: ObservableObject {
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
-                self.movie = data.movie
+                self.movie = MovieDetails(data: data.movie.__data)
             }
         }
     }
