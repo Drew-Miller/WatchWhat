@@ -2,6 +2,7 @@ type Query {
   hello: String
   ping: String
   discover: Discover!
+  webUrl(tmdbId: Int!, titleType: String, sourceName: String!): String!
   regions: [Region!]!
   movieProviders(region: String): [Provider!]!
   watchMovie(movieId: Int!, region: String!): WatchProviders!
@@ -194,4 +195,18 @@ type PaginatedRecommendations {
   results: [Recommendation!]!
   total_pages: Int!
   total_results: Int!
+}
+
+type Source {
+  source_id: Int
+  name: String!
+  type: String!
+  region: String!
+  ios_url: String
+  android_url: String
+  web_url: String!
+  format: Int!
+  price: Int
+  seasons: Int
+  episodes: Int
 }

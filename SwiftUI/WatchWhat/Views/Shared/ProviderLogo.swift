@@ -30,7 +30,7 @@ struct ProviderLogo: View {
             }
         }
         .onAppear {
-            if imageUrl?.isEmpty ?? true {
+            if (imageUrl ?? "").isEmpty {
                 return
             } else {
                 urlImageModel.load(urlString: Configuration.imgUrlStr + imageUrl!)

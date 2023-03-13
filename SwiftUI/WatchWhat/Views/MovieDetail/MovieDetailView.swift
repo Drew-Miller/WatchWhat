@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    @Environment(\.openURL) private var openURL
     @EnvironmentObject var modelData: ModelData
     @StateObject var movieData = MovieData()
     
@@ -16,13 +17,23 @@ struct MovieDetailView: View {
     
     var body: some View {
         ZStack() {
+            // Link navigation
+            if !(movieData.webUrl ?? "").isEmpty {
+                Text("Navgating...")
+                    .onAppear {
+                        openURL(URL(string: movieData.webUrl!)!)
+                    }
+            }
+            
             // Content View
             ScrollView {
                 if let movie = movieData.movie {
                     MovieDetail_Poster(posterPath: movie.poster_path!)
                     
                     if let watchProviders = movieData.watchProviders {
-                        MovieDetail_WatchProviders(movie: movie, watchProviders: watchProviders)
+                        MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
+                            movieData.openWebUrl(id: id, providerName: providerName)
+                        }
                     }
                     
                     MovieDetail_Movie(movie: movie)
@@ -83,37 +94,22 @@ struct MovieDetail_Header: View {
 }
 
 struct MovieDetail_WatchProviders: View {
-    let movie: MovieDetails
     let watchProviders: WatchProviders
     let maxCount = 4
+    var onTapGesture: (String) -> Void
+    
     var body: some View {
-        VStack {
-            HStack {
-                if let buy = watchProviders.buy {
-                    ForEach(buy.prefix(maxCount), id: \.self.provider_id) { buy in
-                        ProviderLogo(imageUrl: buy.logo_path, maxWidth: Configuration.providerLogoWidth)
-                    }
-                }
-            }
-            
-            HStack {
-                if let rent = watchProviders.rent {
-                    ForEach(rent.prefix(maxCount), id: \.self.provider_id) { rent in
-                        ProviderLogo(imageUrl: rent.logo_path, maxWidth: Configuration.providerLogoWidth)
-                    }
-                }
-            }
-            
-            HStack {
-                if let flatrate = watchProviders.flatrate {
-                    ForEach(flatrate.prefix(maxCount), id: \.self.provider_id) { flatrate in
-                        ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: Configuration.providerLogoWidth)
-                        
-                    }
+        HStack {
+            if let flatrate = watchProviders.flatrate {
+                ForEach(flatrate.prefix(maxCount), id: \.self.provider_id) { flatrate in
+                    ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: Configuration.providerLogoWidth)
+                        .onTapGesture {
+                            onTapGesture(flatrate.provider_name)
+                        }
+                    
                 }
             }
         }
-        
     }
 }
 
