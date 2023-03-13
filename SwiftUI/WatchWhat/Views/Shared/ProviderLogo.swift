@@ -8,33 +8,22 @@
 import SwiftUI
 
 struct ProviderLogo: View {
-    @ObservedObject var urlImageModel = UrlImageModel()
     let imageUrl: String?
     let maxWidth: CGFloat
     
     var body: some View {
         VStack {
-            if let image = urlImageModel.image {
-                Image(uiImage: image)
+            AsyncImage(url: URL(string: Configuration.imgUrlStr + imageUrl!)) { image in
+                image
                     .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: maxWidth)
-                    .clipShape(Circle())
-            } else {
+            } placeholder: {
                 Image(systemName: "popcorn.fill")
                     .renderingMode(.original)
                     .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: maxWidth)
-                    .clipShape(Circle())
             }
-        }
-        .onAppear {
-            if (imageUrl ?? "").isEmpty {
-                return
-            } else {
-                urlImageModel.load(urlString: Configuration.imgUrlStr + imageUrl!)
-            }
+            .scaledToFit()
+            .frame(maxWidth: maxWidth)
+            .clipShape(Circle())
         }
     }
 }
