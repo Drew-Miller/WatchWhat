@@ -3,7 +3,7 @@ import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/data
 import { AppErrors } from "../errors";
 import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Recommendation, Region, Results, Trailer } from "./dtos";
 
-export type MovieAPIOptions = DataSourceConfig & {
+export type TmdbAPIOptions = DataSourceConfig & {
   apiVersion: string,
   apiKey: string,
   readAccessToken: string,
@@ -11,25 +11,25 @@ export type MovieAPIOptions = DataSourceConfig & {
   sessionId?: string
 };
 
-export class MovieAPI extends RESTDataSource {
+export class TmdbAPI extends RESTDataSource {
   private apiVersion: string;
   private apiKey: string;
   private readAccessToken: string;
   private sessionId?: string;
 
-  constructor(options: MovieAPIOptions) {
+  constructor(options: TmdbAPIOptions) {
     super(options);
 
     if (!options.baseURL) {
-      throw AppErrors.MOVIE_URL_FAILED;
+      throw AppErrors.BASE_URL_FAILED;
     }
 
     if (!options.apiKey) {
-      throw AppErrors.MOVIE_API_KEY_FAILED;
+      throw AppErrors.API_KEY_FAILED;
     }
 
     if (!options.readAccessToken) {
-      throw AppErrors.MOVIE_READ_ACCESS_TOKEN_FAILED;
+      throw AppErrors.READ_ACCESS_TOKEN_FAILED;
     }
 
     this.baseURL = options.baseURL;

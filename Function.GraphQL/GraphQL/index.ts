@@ -2,9 +2,14 @@ import { Context } from "@azure/functions";
 import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateHandler } from "@as-integrations/azure-functions";
 import { MyContext, resolvers, typeDefs } from "../Shared/graphql";
-import { MovieAPI, MovieAPIOptions } from "../Shared/movie-api";
+import { TmdbAPI, TmdbAPIOptions } from "../Shared/tmdb";
+import { WatchmodeAPI, WatchmodeAPIOptions } from "../Shared/watchmode";
 
-const { MOVIE_BASE_URL, MOVIE_API_VERSION, MOVIE_API_KEY, MOVIE_READ_ACCESS_TOKEN } = process.env;
+// TMDB Variables
+const { TMDB_BASE_URL, TMDB_API_VERSION, TMDB_API_KEY, TMDB_READ_ACCESS_TOKEN } = process.env;
+
+// Watchmode Variables
+const { WATCHMODE_BASE_URL, WATCHMODE_API_VERSION, WATCHMODE_API_KEY } = process.env;
 
 // Apollo Server setup
 const server = new ApolloServer<MyContext>({
@@ -21,16 +26,24 @@ export default startServerAndCreateHandler(server, {
 
     const sessionId = req.headers.sessionId;
 
-    const options: MovieAPIOptions = {
-      baseURL: MOVIE_BASE_URL,
-      apiVersion: MOVIE_API_VERSION,
-      apiKey: MOVIE_API_KEY,
-      readAccessToken: MOVIE_READ_ACCESS_TOKEN,
+    const tmdbOptions: TmdbAPIOptions = {
+      baseURL: TMDB_BASE_URL,
+      apiVersion: TMDB_API_VERSION,
+      apiKey: TMDB_API_KEY,
+      readAccessToken: TMDB_READ_ACCESS_TOKEN,
       cache
     };
 
+    const watchmodeOptions: WatchmodeAPIOptions = {
+      baseURL: WATCHMODE_BASE_URL,
+      apiVersion: WATCHMODE_API_VERSION,
+      apiKey: WATCHMODE_API_KEY,
+      cache
+    }
+
     const dataSources = {
-      movieAPI: new MovieAPI(options)
+      tmdbAPI: new TmdbAPI(tmdbOptions),
+      watchmodeAPI: new WatchmodeAPI(watchmodeOptions)
     };
 
     return { dataSources };

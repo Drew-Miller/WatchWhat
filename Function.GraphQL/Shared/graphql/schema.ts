@@ -4,10 +4,15 @@ type Query {
   hello: String
   ping: String
 
-  #### Custom Calls ####
+  #### Calls ####
+
   discover: Discover!
 
-  #### Built in Movie DB Calls ####
+  #### Watchmode ####
+
+  webUrl(tmdbId: Int!, titleType: String, sourceName: String!): String!
+
+  #### TMDB ####
 
   regions: [Region!]!
 
@@ -44,9 +49,9 @@ type GroupedMovies {
 }
 
 
-##################
-# Movie DB Types #
-##################
+##############
+# TMDB Types #
+##############
 
 # Providers
 
@@ -233,6 +238,25 @@ type PaginatedRecommendations {
   results: [Recommendation!]!
   total_pages: Int!
   total_results: Int!
+}
+
+
+###################
+# Watchmode Types #
+###################
+
+type Source {
+  source_id: Int
+  name: String!
+  type: String!
+  region: String!
+  ios_url: String
+  android_url: String
+  web_url: String!
+  format: Int!
+  price: Int
+  seasons: Int
+  episodes: Int
 }
 
 `;

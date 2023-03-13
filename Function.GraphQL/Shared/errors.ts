@@ -8,7 +8,7 @@ export type Error = {
 };
 
 export class AppErrors {
-  public static MOVIE_URL_FAILED: GraphQLError = new GraphQLError(
+  public static BASE_URL_FAILED: GraphQLError = new GraphQLError(
     "Movie url is not defined.", {
       extensions: {
         code: "",
@@ -17,7 +17,7 @@ export class AppErrors {
     }
   );
 
-  public static MOVIE_READ_ACCESS_TOKEN_FAILED: GraphQLError = new GraphQLError(
+  public static READ_ACCESS_TOKEN_FAILED: GraphQLError = new GraphQLError(
     "READ_ACCESS_TOKEN is not defined.", {
       extensions: {
         code: "",
@@ -26,7 +26,7 @@ export class AppErrors {
     }
   );
 
-  public static MOVIE_API_KEY_FAILED: GraphQLError = new GraphQLError(
+  public static API_KEY_FAILED: GraphQLError = new GraphQLError(
     "API_KEY is not defined.", {
       extensions: {
         code: "",

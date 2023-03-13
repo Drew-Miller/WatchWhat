@@ -1,9 +1,11 @@
-import { MovieAPI } from "../movie-api/movie-api";
+import { TmdbAPI } from "../tmdb";
+import { WatchmodeAPI } from "../watchmode";
 
 type MyContext = {
   // Context typing
   dataSources: {
-    movieAPI: MovieAPI
+    tmdbAPI: TmdbAPI,
+    watchmodeAPI: WatchmodeAPI
   };
 }
 

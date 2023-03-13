@@ -1,4 +1,4 @@
-import { GroupedMovies } from '../movie-api/dtos';
+import { GroupedMovies } from '../tmdb/dtos';
 import { MyContext } from './context';
 
 type Home = {
@@ -14,8 +14,8 @@ const resolvers = {
 
     discover: async(_:any, __: any, { dataSources }: MyContext) => {
       const promises = Promise.all([
-        dataSources.movieAPI.popularMoviesGrouped(),
-        dataSources.movieAPI.moviesByGenresGrouped()
+        dataSources.tmdbAPI.popularMoviesGrouped(),
+        dataSources.tmdbAPI.moviesByGenresGrouped()
       ]);
 
       const [ popularMovies, genreCategories ] = await promises;
@@ -26,42 +26,46 @@ const resolvers = {
 
 
     popularMovies: async(_: any, req: { page: number }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.popularMovies(req.page);
+      return dataSources.tmdbAPI.popularMovies(req.page);
     },
 
     searchMovies: async (_: any, req: { query: string, page: number }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.searchMovies(req.query, req.page);
+      return dataSources.tmdbAPI.searchMovies(req.query, req.page);
     },
 
     regions: async (_: any, __: any, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.regions();
+      return dataSources.tmdbAPI.regions();
     },
     movieProviders: async (_: any, req: { region?: string }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.movieProviders(req.region);
+      return dataSources.tmdbAPI.movieProviders(req.region);
     },
     watchMovie: async (_: any, req: { movieId: number, region: string }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.watchMovie(req.movieId, req.region);
+      return dataSources.tmdbAPI.watchMovie(req.movieId, req.region);
     },
 
     genres: async (_: any, __: any, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.genres();
+      return dataSources.tmdbAPI.genres();
     },
     moviesByGenre: async(_: any, req: { genreIds: number[], page: number }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.moviesByGenre(req.genreIds, req.page);
+      return dataSources.tmdbAPI.moviesByGenre(req.genreIds, req.page);
     },
 
     movie: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
       console.log(req.id);
-      return dataSources.movieAPI.movie(req.id);
+      return dataSources.tmdbAPI.movie(req.id);
     },
     credits: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.credits(req.id);
+      return dataSources.tmdbAPI.credits(req.id);
     },
     videos: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.videos(req.id);
+      return dataSources.tmdbAPI.videos(req.id);
     },
     recommendations: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
-      return dataSources.movieAPI.recommendations(req.id);
+      return dataSources.tmdbAPI.recommendations(req.id);
+    },
+
+    webUrl: async(_: any, req: { tmdbId: number, titleType: "movie" | "tv", sourceName: string }, { dataSources }: MyContext) => {
+      return dataSources.watchmodeAPI.webUrl(req.tmdbId, req.titleType, req.sourceName);
     },
   },
   // Mutation: {
