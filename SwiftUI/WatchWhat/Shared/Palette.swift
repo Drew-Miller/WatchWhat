@@ -13,6 +13,10 @@ enum Palette {
         return Color("Text")
     }
     
+    static var textBody: Color {
+        return Color("Text").opacity(0.85)
+    }
+    
     static var backgroundAccent: Color {
         return Color("Licorice")
     }

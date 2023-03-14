@@ -30,13 +30,36 @@ struct MovieDetailView: View {
                 if let movie = movieData.movie {
                     MovieDetail_Poster(posterPath: movie.poster_path!)
                     
-                    if let watchProviders = movieData.watchProviders {
-                        MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
-                            movieData.openWebUrl(id: id, providerName: providerName)
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack {
+                            let padRight = 16.0
+                            
+                            Text("\(movie.runtime / 60) HR \(movie.runtime % 60) MIN")
+                                .padding(.trailing, padRight)
+                            Text("\(getReleaseYear(date: movie.release_date))")
+                                .padding(.trailing, padRight)
+                            
+                            Text("\(movie.vote_average)")
+                                .padding(.trailing, padRight)
                         }
+                        .font(.system(size: 12))
+                        .foregroundColor(Palette.textBody)
+                        
+                        VStack {
+                            if let watchProviders = movieData.watchProviders {
+                                MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
+                                    movieData.openWebUrl(id: id, providerName: providerName)
+                                }
+                            }
+                        }
+                        
+                        Text(movie.overview)
+                            .foregroundColor(Palette.textBody)
+                            .font(.system(size: 16))
+                        
+                        Spacer()
                     }
-                    
-                    MovieDetail_Movie(movie: movie)
+                    .padding(EdgeInsets(top: -20, leading: 10, bottom: 0, trailing: 10))
                 }
             }
             .edgesIgnoringSafeArea(.all)
@@ -56,6 +79,10 @@ struct MovieDetailView: View {
         .onAppear {
             movieData.loadData(id: self.id, region: modelData.providerRegion)
         }
+    }
+    
+    func getReleaseYear(date: String) -> String {
+        return String(date.split(separator: "-")[0])
     }
 }
 
@@ -130,30 +157,5 @@ struct MovieDetail_WatchProviders: View {
                 }
             }
         }
-    }
-}
-
-struct MovieDetail_Movie: View {
-    let movie: MovieDetails
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                Text("\(getReleaseYear(date: movie.release_date))")
-                Text("\(movie.runtime) min")
-            }
-            .foregroundColor(Palette.accent)
-            
-            Text(movie.overview)
-                .font(.body)
-            
-            Spacer()
-        }
-        .padding(EdgeInsets(top: -20, leading: 10, bottom: 0, trailing: 10))
-    }
-    
-    
-    func getReleaseYear(date: String) -> String {
-        return String(date.split(separator: "-")[0])
     }
 }
