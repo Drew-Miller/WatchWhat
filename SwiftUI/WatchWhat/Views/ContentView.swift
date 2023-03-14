@@ -18,16 +18,16 @@ struct ContentView: View {
             switch navigation.view {
             
             case .home:
-                HomeView() { view in
-                    withAnimation(.easeInOut(duration: 0.15)) {
-                        setView(view)
+                HomeView() { movieId in
+                    withAnimation(.easeInOut(duration: 0.1)) {
+                        onMovieSelected(movieId: movieId)
                     }
                 }
                 
             case .search:
-                SearchView() { view in
-                    withAnimation(.easeInOut(duration: 0.15)) {
-                        setView(view)
+                SearchView() { movieId in
+                    withAnimation(.easeInOut(duration: 0.1)) {
+                        onMovieSelected(movieId: movieId)
                     }
                 }
                 
@@ -54,11 +54,26 @@ struct ContentView: View {
                     }
                 }
             }
+            
+            VStack {                
+                Spacer()
+                
+                if navigation.hasFooter {
+                    Footer(view: .home) { view in
+                        setView(view)
+                    }
+                    .transition(.move(edge: .bottom))
+                }
+            }
         }
         .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
     }
     
+    func onMovieSelected(movieId: Int) {
+        modelData.movieId = movieId
+        setView(.movieDetails)
+    }
     func setView(_ view: AppView) {
         navigation.setView(view)
     }

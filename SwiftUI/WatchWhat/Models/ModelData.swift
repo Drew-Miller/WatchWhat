@@ -8,8 +8,9 @@
 import Foundation
 
 class ModelData: ObservableObject {
+    @Published var navigation = Navigation()
+
     @Published var movieId: Int? = nil
     @Published var searchValue: String = ""
-    @Published var navigation = Navigation()
     @Published var providerRegion: String? = "US"
 }

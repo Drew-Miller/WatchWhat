@@ -1,17 +1,17 @@
 - Better transitions between MovieDetailsPoster
 
 ## Home
-- Hide menu and footer on Home scroll
+- Make footer bigger
 - Add TV options
-
-## Category View
-- Similar to home view
-- Queries on Provider, Movie/TV, Providers, Genre
+- Remember scroll position!
+- Hide header footer on scroll
 
 ## Movie Detail
 - Update movie detail page to show better details and videos
 
-## Movie Search
+## Category View
+- Similar to home view
+- Queries on Provider, Movie/TV, Providers, Genre
 
 ## User Accounts
 Login
@@ -23,7 +23,3 @@ Create User Lists
 
 ## Splash
 - Splash w/ graphics
-
-## Streaming Services
-- Find Country and streaming services a user has
-- URLScheme to other streaming apps

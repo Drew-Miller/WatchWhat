@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var modelData: ModelData
     @StateObject var homeData = HomeData()
-    var changeView: (AppView) -> Void
+    var selectedMovie: (Int) -> Void
         
     var body: some View {
         ZStack {
@@ -19,8 +18,7 @@ struct HomeView: View {
                 LazyVStack(spacing: 0) {
                     ForEach(homeData.results, id: \.self) { result in
                         MovieList(result: result) { movieId in
-                            modelData.movieId = movieId
-                            changeView(.movieDetails)
+                            selectedMovie(movieId)
                         }
                     }
                 }
@@ -39,10 +37,6 @@ struct HomeView: View {
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
                 
                 Spacer()
-                
-                Footer(view: .home) { view in
-                    changeView(view)
-                }
             }
             
         }

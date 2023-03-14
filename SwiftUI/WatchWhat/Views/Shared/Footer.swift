@@ -8,43 +8,48 @@
 import SwiftUI
 
 struct Footer: View {
-    @EnvironmentObject var modelData: ModelData
     var view: AppView
-    var viewSelected: (AppView) -> Void
+    var changeView: (AppView) -> Void
     
     var body: some View {
         HStack(alignment: .center) {
-            Footer_Icon(icon: "house", activeView: view, view: .home) { view in
-                viewSelected(view)
+            Footer_Icon(text: "Home", icon: "house", activeIcon: "house.fill", activeView: view, view: .home) { view in
+                changeView(view)
             }
             
             Spacer()
             
-            Footer_Icon(icon: "film", activeView: view, view: .movies) { view in
-                viewSelected(view)
+            Footer_Icon(text: "Movies", icon: "film", activeIcon: "film.fill", activeView: view, view: .movies) { view in
+                changeView(view)
             }
             
             Spacer()
             
-            Footer_Icon(icon: "tv", activeView: view, view: .tv) { view in
-                viewSelected(view)
+            Footer_Icon(text: "TV", icon: "tv", activeIcon: "fv.fill", activeView: view, view: .tv) { view in
+                changeView(view)
             }
             
             Spacer()
             
-            Footer_Icon(icon: "magnifyingglass", activeView: view, view: .search) {view in
-                viewSelected(view)
+            Footer_Icon(text: "Search", icon: "magnifyingglass", activeIcon: "magnifyingglass.circle.fill", activeView: view, view: .search) {view in
+                changeView(view)
             }
         }
-        .padding([.top, .bottom], 20)
-        .padding([.leading, .trailing], 50)
+        .padding(.top, 7)
+        .padding([.leading, .trailing], 40)
         .frame(maxWidth: .infinity)
         .background(Palette.footer)
+        .overlay(alignment: .top) {
+            Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Palette.backgroundAccent)
+        }
+        
     }
 }
 
 struct Footer_Icon: View {
+    let text: String
     let icon: String
+    let activeIcon: String
     var activeView: AppView
     let view: AppView
     let onClick: (AppView) -> Void
@@ -53,16 +58,22 @@ struct Footer_Icon: View {
         Button {
             onClick(view)
         } label: {
-            Group {
-                if view == activeView {
-                    Image(systemName: icon)
-                        .fontWeight(.regular)
-                } else {
-                    Image(systemName: icon)
-                        .fontWeight(.thin)
+            VStack {
+                Group {
+                    if view == activeView {
+                        Image(systemName: activeIcon)
+                            .fontWeight(.regular)
+                    } else {
+                        Image(systemName: icon)
+                            .fontWeight(.thin)
+                    }
                 }
+                .font(.system(size: 22))
+                
+                Text(text)
+                    .padding(.top, 3)
+                    .font(.system(size: 8))
             }
-            .font(.system(size: 20))
         }
     }
 }

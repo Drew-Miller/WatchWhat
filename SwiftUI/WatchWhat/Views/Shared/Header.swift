@@ -33,9 +33,6 @@ struct Header: View {
                 print("User Tapped")
             }
         }
-//        .background(
-//            LinearGradient(gradient: Gradient(colors: [Palette.backgroundAccent, Color.clear]), startPoint: .topLeading, endPoint: .bottomTrailing)
-//        )
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
     }
 }

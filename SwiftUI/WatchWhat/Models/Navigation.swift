@@ -16,15 +16,27 @@ enum AppView: Int {
 }
 
 class Navigation: ObservableObject {
-    @Published var view: AppView = .home
-    @Published var previousView: AppView = .home
+    @Published private(set) var hasFooter = true
+    @Published private(set) var view: AppView = .home
+    @Published private(set) var previousView: AppView = .home
     
     func setView(_ view: AppView) {
         self.previousView = self.view
-        self.view = view
+        self.navigate(view)
     }
     
     func navigatePrevious() {
-        self.view = self.previousView
+        self.navigate(self.previousView)
+    }
+    
+    private func navigate(_ view: AppView) {
+        self.view = view
+        
+        switch view {
+        case .movieDetails:
+            self.hasFooter = false
+        default:
+            self.hasFooter = true
+        }
     }
 }

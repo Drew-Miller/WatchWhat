@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @EnvironmentObject var modelData: ModelData
     @StateObject var searchData = SearchData()
-    var changeView: (AppView) -> Void
+    var selectedMovie: (Int) -> Void
         
     var body: some View {
         ZStack {
@@ -21,8 +21,7 @@ struct SearchView: View {
                         LazyHStack {
                             ForEach(rowItems, id: \.self) { movie in
                                 MovieItem(movie: movie, maxWidth: Configuration.moviePosterWidth) { movieId in
-                                    modelData.movieId = movieId
-                                    changeView(.movieDetails)
+                                    selectedMovie(movieId)
                                 }
                             }
                         }
@@ -48,10 +47,6 @@ struct SearchView: View {
                 SearchBar(text: $modelData.searchValue)
                 
                 Spacer()
-                
-                Footer(view: .search) { view in
-                    changeView(view)
-                }
             }
             
         }
