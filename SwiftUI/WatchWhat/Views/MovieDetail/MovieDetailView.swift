@@ -93,6 +93,26 @@ struct MovieDetail_Header: View {
     }
 }
 
+
+struct MovieDetail_Poster: View {
+    let posterPath: String
+    
+    var body: some View {
+        MoviePoster(imageUrl: posterPath, maxWidth: .infinity)
+            .mask(
+                LinearGradient(
+                    gradient: Gradient(stops: [
+                        .init(color: Palette.background, location: 0.75),
+                        .init(color: Color.clear, location: 1)
+                    ]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+    }
+}
+
+
 struct MovieDetail_WatchProviders: View {
     let watchProviders: WatchProviders
     let maxCount = 4
@@ -135,23 +155,5 @@ struct MovieDetail_Movie: View {
     
     func getReleaseYear(date: String) -> String {
         return String(date.split(separator: "-")[0])
-    }
-}
-
-struct MovieDetail_Poster: View {
-    let posterPath: String
-    
-    var body: some View {
-        MoviePoster(imageUrl: posterPath, maxWidth: .infinity)
-            .mask(
-                LinearGradient(
-                    gradient: Gradient(stops: [
-                        .init(color: Palette.background, location: 0.75),
-                        .init(color: Color.clear, location: 1)
-                    ]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            )
     }
 }

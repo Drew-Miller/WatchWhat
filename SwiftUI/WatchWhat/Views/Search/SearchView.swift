@@ -96,7 +96,7 @@ struct SearchBar: View {
             TextField(placeHolder, text: $text)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
-                .background(Palette.footer)
+                .background(Palette.background2)
                 .foregroundColor(.gray)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)

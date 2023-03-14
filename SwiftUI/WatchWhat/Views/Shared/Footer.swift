@@ -31,18 +31,14 @@ struct Footer: View {
             
             Spacer()
             
-            Footer_Icon(text: "Search", icon: "magnifyingglass", activeIcon: "magnifyingglass.circle.fill", activeView: view, view: .search) {view in
+            Footer_Icon(text: "Search", icon: "magnifyingglass", activeIcon: "magnifyingglass", activeView: view, view: .search) {view in
                 changeView(view)
             }
         }
         .padding(.top, 7)
         .padding([.leading, .trailing], 40)
         .frame(maxWidth: .infinity)
-        .background(Palette.footer)
-        .overlay(alignment: .top) {
-            Rectangle().frame(width: nil, height: 1, alignment: .top).foregroundColor(Palette.backgroundAccent)
-        }
-        
+        .background(Palette.background.opacity(0.85))
     }
 }
 
@@ -56,7 +52,9 @@ struct Footer_Icon: View {
     
     var body: some View {
         Button {
-            onClick(view)
+            withAnimation {
+                onClick(view)
+            }
         } label: {
             VStack {
                 Group {

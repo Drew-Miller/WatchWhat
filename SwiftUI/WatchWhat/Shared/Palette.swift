@@ -21,8 +21,8 @@ enum Palette {
         return Color("Raisin Black")
     }
     
-    static var footer: Color {
-        return Color("Eerie Black")
+    static var background2: Color {
+        return Color("Errie Black")
     }
     
     static var primary: Color {

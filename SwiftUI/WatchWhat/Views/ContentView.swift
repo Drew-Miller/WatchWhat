@@ -59,7 +59,7 @@ struct ContentView: View {
                 Spacer()
                 
                 if navigation.hasFooter {
-                    Footer(view: .home) { view in
+                    Footer(view: navigation.view) { view in
                         setView(view)
                     }
                     .transition(.move(edge: .bottom))
