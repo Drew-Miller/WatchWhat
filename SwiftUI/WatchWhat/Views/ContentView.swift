@@ -14,45 +14,44 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Background(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
+            Background(topColor: .backgroundAccent, bottomColor: .background)
             
-            switch navigation.view {
-            
-            case .home:
-                HomeView() { movieId in
-                    withAnimation(.easeInOut(duration: 0.1)) {
-                        onMovieSelected(movieId: movieId)
+            Group {
+                switch navigation.view {
+                case .home:
+                    HomeView() { movieId in
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            onMovieSelected(movieId: movieId)
+                        }
                     }
-                }
-                
-            case .search:
-                SearchView() { movieId in
-                    withAnimation(.easeInOut(duration: 0.1)) {
-                        onMovieSelected(movieId: movieId)
+                case .search:
+                    SearchView() { movieId in
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            onMovieSelected(movieId: movieId)
+                        }
                     }
-                }
-                
-            case .movieDetails:
-                if let movieId = self.modelData.movieId  {
-                    MovieDetailView(id: movieId) { movieId in
-                        modelData.selectMovieId(movieId)
+                case .movieDetails:
+                    if let movieId = self.modelData.movieId  {
+                        MovieDetailView(id: movieId) { movieId in
+                            modelData.selectMovieId(movieId)
+                        }
+                        .transition(.move(edge: .trailing))
+                    } else {
+                        Content_DefaultView() {
+                            withAnimation {
+                                navigatePrevious()
+                            }
+                        }
                     }
-                    .transition(.move(edge: .trailing))
-                } else {
+                default:
                     Content_DefaultView() {
                         withAnimation {
                             navigatePrevious()
                         }
                     }
                 }
-                
-            default:
-                Content_DefaultView() {
-                    withAnimation {
-                        navigatePrevious()
-                    }
-                }
             }
+            
             
             VStack {                
                 Spacer()
@@ -65,7 +64,6 @@ struct ContentView: View {
                 }
             }
         }
-        .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
     }
     

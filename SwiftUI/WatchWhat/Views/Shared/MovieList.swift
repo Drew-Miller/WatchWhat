@@ -14,21 +14,31 @@ struct MovieList: View {
     var body: some View {
         VStack(alignment: .leading) {            
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 16) {
+                LazyHStack(spacing: 12) {
                     ForEach(movies, id: \.self) { movie in
                         if let movie = movie {
-                            MovieItem(movie: movie, maxWidth: Configuration.moviePosterWidth) { v in
+                            MovieListItem(movie: movie) { v in
                                 onTapGesture(v)
                             }
-                            
                         }
                     }
-                    
                 }
-                .padding(.horizontal)
             }
         }
-        .foregroundColor(Palette.text)
-        .padding(.vertical)
+    }
+}
+
+
+struct MovieList_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+            Background(topColor: .backgroundAccent, bottomColor: .background)
+            
+            HomeView() { view in
+                print("view changed")
+            }
+        }
+        .preferredColorScheme(.dark)
+        .environmentObject(ModelData())
     }
 }

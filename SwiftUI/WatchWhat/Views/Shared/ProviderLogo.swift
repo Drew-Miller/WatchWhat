@@ -23,7 +23,7 @@ struct ProviderLogo: View {
             }
             .scaledToFit()
             .frame(maxWidth: maxWidth)
-            .clipShape(Circle())
+            .cornerRadius(6)
         }
     }
 }

@@ -15,51 +15,45 @@ struct HomeView: View {
         ZStack {
             // Movies
             ScrollView {
-                LazyVStack(spacing: 0) {
+                LazyVStack(spacing: 12) {
                     ForEach(homeData.results, id: \.self) { result in
                         HStack {
                             Text(result.title)
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding(.horizontal)
-                                .foregroundColor(Palette.text)
+                                .font(.sectionHeader)
+                                .foregroundColor(.text)
                             
                             Spacer()
                         }
-                        
                         
                         MovieList(movies: result.movies) { movieId in
                             selectedMovie(movieId)
                         }
                     }
                 }
-                .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
+                .hasHeaderStyles()
+                .hasFooterStyles()
             }
-            .onAppear {
-                homeData.loadData()
-            }
-            .padding(.bottom, 25)
             
             // Controls
             VStack {
                 Header {
                     print("menu")
                 }
-                .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
                 
                 Spacer()
             }
             
         }
-        .ignoresSafeArea(.all, edges: .bottom)
-        .foregroundColor(Palette.text)
+        .onAppear {
+            homeData.loadData()
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            Background(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
+            Background(topColor: .backgroundAccent, bottomColor: .background)
             
             HomeView() { view in
                 print("view changed")

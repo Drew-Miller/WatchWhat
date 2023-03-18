@@ -18,22 +18,20 @@ struct Header: View {
                 onMenu()
             } label: {
                 Image(systemName: "line.3.horizontal")
-                    .font(.system(size: 25, weight: .light, design: .default))
+                    .headerIcon()
             }
             
             Spacer()
             
-            Image(uiImage: UIImage(named: "logo-white-no-background")!)
-                .resizable()
-                .frame(width: 200, height: 20)
+            Image("logo-white-no-background").brandLogo(size: 160)
 
             Spacer()
             
-            UserIcon(initials: "D", color: Palette.primary, size: 28) {
+            UserIcon(fill: .primary, initials: "D", view: .small) {
                 print("User Tapped")
             }
         }
-        .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+        .headerStyles()
     }
 }
 

@@ -15,15 +15,12 @@ struct SplashView: View {
             VStack {
                 Spacer()
                 
-                Image("logo-white-no-background")
-                    .resizable()
-                    .frame(width: 300, height: 50)
+                Image("logo-white-no-background").brandLogo(size: 300)
                 
                 Spacer()
             }
             
         }
-        .foregroundColor(Palette.text)
         .preferredColorScheme(.dark)
         
     }

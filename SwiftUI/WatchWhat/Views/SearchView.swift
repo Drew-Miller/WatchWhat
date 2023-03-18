@@ -20,7 +20,7 @@ struct SearchView: View {
                     ForEach(searchData.results.chunked(into: 2), id: \.self) { rowItems in
                         LazyHStack {
                             ForEach(rowItems, id: \.self) { movie in
-                                MovieItem(movie: movie, maxWidth: Configuration.moviePosterWidth) { movieId in
+                                MovieListItem(movie: movie) { movieId in
                                     selectedMovie(movieId)
                                 }
                             }
@@ -28,44 +28,39 @@ struct SearchView: View {
                         
                     }
                 }
-                .padding(EdgeInsets(top: 110, leading: 0, bottom: 0, trailing: 0))
+                .hasHeaderStyles()
+                .hasSearchStyles()
+                .hasFooterStyles()
             }
-            .onAppear {
-                search()
-            }
-            .onChange(of: modelData.searchValue) { _ in
-                search()
-            }
-            .padding(.bottom, 50)
             
             // Controls
             VStack {
                 Header {
                     print("menu")
                 }
-                .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 0))
+                
                 SearchBar(text: $modelData.searchValue)
                 
                 Spacer()
             }
             
         }
-        .ignoresSafeArea(.all, edges: .bottom)
-        .foregroundColor(Palette.text)
-    }
-    
-    func search() {
-        let search = modelData.searchValue
-        if !search.isEmpty {
-            searchData.loadData(query: search)
+        .task(id: modelData.searchValue) {
+            let search = modelData.searchValue
+            if !search.isEmpty {
+                searchData.loadData(query: search)
+            }
         }
     }
 }
 
 struct SearchVhew_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView() { view in
-            print("view changed")
+        ZStack {
+            Background(topColor: .backgroundAccent, bottomColor: .background)
+            SearchView() { view in
+                print("view changed")
+            }
         }
         .environmentObject(ModelData())
         .preferredColorScheme(.dark)
@@ -96,7 +91,7 @@ struct SearchBar: View {
             TextField(placeHolder, text: $text)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
-                .background(Palette.background2)
+                .background(Color.background2)
                 .foregroundColor(.gray)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)

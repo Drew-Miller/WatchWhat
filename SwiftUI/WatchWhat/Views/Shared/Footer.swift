@@ -13,64 +13,61 @@ struct Footer: View {
     
     var body: some View {
         HStack(alignment: .center) {
-            Footer_Icon(text: "Home", icon: "house", activeIcon: "house.fill", activeView: view, view: .home) { view in
-                changeView(view)
+            Footer_Icon(text: "Home", icon: view == .home ? "house.fill" : "house") {
+                changeView(.home)
             }
             
             Spacer()
             
-            Footer_Icon(text: "Movies", icon: "film", activeIcon: "film.fill", activeView: view, view: .movies) { view in
-                changeView(view)
+            Footer_Icon(text: "Movies", icon: view == .movies ? "film.fill" : "film") {
+                changeView(.movies)
             }
             
             Spacer()
             
-            Footer_Icon(text: "TV", icon: "tv", activeIcon: "fv.fill", activeView: view, view: .tv) { view in
-                changeView(view)
+            Footer_Icon(text: "TV", icon: view == .tv ? "tv.fill" : "tv") {
+                changeView(.tv)
             }
             
             Spacer()
             
-            Footer_Icon(text: "Search", icon: "magnifyingglass", activeIcon: "magnifyingglass", activeView: view, view: .search) {view in
-                changeView(view)
+            Footer_Icon(text: "Search", icon: view == .search ? "magnifyingglass" : "magnifyingglass") {
+                changeView(.search)
             }
         }
-        .padding(.top, 7)
-        .padding([.leading, .trailing], 40)
-        .frame(maxWidth: .infinity)
-        .background(Palette.background.opacity(0.85))
+        .footerStyles()
+    }
+}
+
+
+struct Footer_Previews: PreviewProvider {
+    static var previews: some View {
+        Footer(view: .home) { view in
+            print("changed view")
+        }
+        .preferredColorScheme(.dark)
     }
 }
 
 struct Footer_Icon: View {
     let text: String
     let icon: String
-    let activeIcon: String
-    var activeView: AppView
-    let view: AppView
-    let onClick: (AppView) -> Void
+    let onClick: () -> Void
     
     var body: some View {
         Button {
             withAnimation {
-                onClick(view)
+                onClick()
             }
         } label: {
-            VStack {
-                Group {
-                    if view == activeView {
-                        Image(systemName: activeIcon)
-                            .fontWeight(.regular)
-                    } else {
-                        Image(systemName: icon)
-                            .fontWeight(.thin)
-                    }
-                }
-                .font(.system(size: 22))
+            VStack(spacing: 4) {
+                Image(systemName: icon)
+                    .font(.system(size: 22, weight: .thin))
+                    .foregroundColor(.text)
                 
                 Text(text)
-                    .padding(.top, 3)
-                    .font(.system(size: 8))
+                    .font(.xxs)
+                    .foregroundColor(.text)
             }
         }
     }

@@ -8,28 +8,48 @@
 import SwiftUI
 
 struct UserIcon: View {
+    let fill: Color
     let initials: String
-    let color: Color
-    let size: CGFloat
-    let shadow: CGFloat = 1.5
+    let view: ViewConfiguration
+    enum ViewConfiguration {
+        case small
+        case large
+    }
+    
     let onTapGesture: () -> Void
     
     var body: some View {
+        switch view {
+        case .small:
+            small()
+        default:
+            large()
+        }
+    }
+    
+    private func main(size: CGFloat) -> some View {
         ZStack {
             Circle()
-                .fill(color)
+                .fill(fill)
                 .frame(width: size, height: size)
             Text(initials)
                 .foregroundColor(.white)
-                .font(.system(size: 14, weight: .bold))
+                .font(.system(size: size / 2, weight: .bold))
         }
         .overlay(
-            Circle()
-                .stroke(Color.white, lineWidth: shadow)
+            Circle().stroke(.white, lineWidth: size / 20)
         )
         .onTapGesture {
             onTapGesture()
         }
+    }
+    
+    private func small() -> some View {
+        self.main(size: 25)
+    }
+    
+    private func large() -> some View {
+        self.main(size: 50)
     }
 }
 
