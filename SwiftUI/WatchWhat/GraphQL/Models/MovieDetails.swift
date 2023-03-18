@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// Parent Type: `MovieDetails`
 public struct MovieDetails: WatchWhatSchema.SelectionSet {
   public let __data: DataDict
   public init(data: DataDict) { __data = data }
@@ -20,6 +20,7 @@ public struct MovieDetails: WatchWhatSchema.SelectionSet {
     .field("homepage", String.self),
     .field("id", Int.self),
     .field("imdb_id", String.self),
+    .field("mpaa_rating", String.self),
     .field("original_language", String.self),
     .field("original_title", String.self),
     .field("overview", String.self),
@@ -46,6 +47,7 @@ public struct MovieDetails: WatchWhatSchema.SelectionSet {
   public var homepage: String { __data["homepage"] }
   public var id: Int { __data["id"] }
   public var imdb_id: String { __data["imdb_id"] }
+  public var mpaa_rating: String { __data["mpaa_rating"] }
   public var original_language: String { __data["original_language"] }
   public var original_title: String { __data["original_title"] }
   public var overview: String { __data["overview"] }

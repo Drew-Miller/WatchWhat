@@ -17,12 +17,23 @@ struct HomeView: View {
             ScrollView {
                 LazyVStack(spacing: 0) {
                     ForEach(homeData.results, id: \.self) { result in
-                        MovieList(result: result) { movieId in
+                        HStack {
+                            Text(result.title)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.horizontal)
+                                .foregroundColor(Palette.text)
+                            
+                            Spacer()
+                        }
+                        
+                        
+                        MovieList(movies: result.movies) { movieId in
                             selectedMovie(movieId)
                         }
                     }
                 }
-                .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
+                .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 0))
             }
             .onAppear {
                 homeData.loadData()

@@ -5,5 +5,6 @@ export * from "./movie";
 export * from "./provider"
 export * from "./recommendation";
 export * from "./region";
+export * from "./release-dates";
 export * from "./results";
 export * from "./trailer";

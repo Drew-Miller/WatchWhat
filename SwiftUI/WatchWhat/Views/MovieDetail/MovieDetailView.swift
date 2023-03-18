@@ -11,9 +11,8 @@ struct MovieDetailView: View {
     @Environment(\.openURL) private var openURL
     @EnvironmentObject var modelData: ModelData
     @StateObject var movieData = MovieData()
-    
     let id: Int
-    let onDismiss: () -> Void
+    let onMovieSelected: (Int) -> Void
     
     var body: some View {
         ZStack() {
@@ -36,26 +35,53 @@ struct MovieDetailView: View {
                             
                             Text("\(movie.runtime / 60) HR \(movie.runtime % 60) MIN")
                                 .padding(.trailing, padRight)
+                            Text("\(movie.mpaa_rating)")
+                                .padding(.trailing, padRight)
                             Text("\(getReleaseYear(date: movie.release_date))")
                                 .padding(.trailing, padRight)
                             
-                            Text("\(movie.vote_average)")
+                            Text("\(String(format: "%g", movie.vote_average))")
                                 .padding(.trailing, padRight)
                         }
                         .font(.system(size: 12))
                         .foregroundColor(Palette.textBody)
                         
-                        VStack {
-                            if let watchProviders = movieData.watchProviders {
-                                MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
-                                    movieData.openWebUrl(id: id, providerName: providerName)
-                                }
+                        if let watchProviders = movieData.watchProviders {
+                            MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
+                                movieData.openWebUrl(id: modelData.movieId!, providerName: providerName)
                             }
                         }
                         
+                        Text("\(movie.title)")
+                            .font(.title2)
+                            .foregroundColor(Palette.text)
+                        
                         Text(movie.overview)
                             .foregroundColor(Palette.textBody)
-                            .font(.system(size: 16))
+                            .font(.system(size: 14))
+                        
+                        HStack {
+                            Image(systemName: "list.and.film")
+                                .padding(.trailing, 12)
+                            Text("TRAILERS")
+                                .monospaced()
+                        }
+                        .font(.system(size: 14))
+                        .padding([.top, .bottom], 20)
+                        
+    
+                        HStack {
+                            Text("More Like This")
+                                .font(.system(size: 14, weight: .bold))
+                        }
+                        .padding([.top, .bottom], 20)
+                        
+                        if let recommendations = movieData.recommendations {
+                            MovieList(movies: recommendations) { movieId in
+                                self.onMovieSelected(movieId)
+                            }
+                        }
+                        
                         
                         Spacer()
                     }
@@ -67,8 +93,7 @@ struct MovieDetailView: View {
             // Header controls
             VStack {
                 MovieDetail_Header() {
-                    modelData.movieId = nil
-                    onDismiss()
+                    modelData.removeMovieId()
                 }
                 
                 Spacer()
@@ -76,7 +101,7 @@ struct MovieDetailView: View {
             
         }
         .foregroundColor(Palette.text)
-        .onAppear {
+        .task(id: self.id) {
             movieData.loadData(id: self.id, region: modelData.providerRegion)
         }
     }
@@ -91,8 +116,8 @@ struct MovieDetailView_Previews: PreviewProvider {
         ZStack {
             Background(topColor: Palette.backgroundAccent, bottomColor: Palette.background)
             
-            MovieDetailView(id: 315162) {
-                print("dismissed")
+            MovieDetailView(id: 315162) { movieId in
+                print("movie selected")
             }
             .environmentObject(ModelData())
         }

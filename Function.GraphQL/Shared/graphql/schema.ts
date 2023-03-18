@@ -117,6 +117,7 @@ type MovieDetails {
   homepage: String!
   id: Int!
   imdb_id: String!
+  mpaa_rating: String!
   original_language: String!
   original_title: String!
   overview: String!

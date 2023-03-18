@@ -8,19 +8,14 @@
 import SwiftUI
 
 struct MovieList: View {
-    var result: MovieCategory
+    var movies: [Movie]
     let onTapGesture: (Int) -> Void
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(result.title)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.horizontal)
-            
+        VStack(alignment: .leading) {            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {
-                    ForEach(result.movies, id: \.self) { movie in
+                    ForEach(movies, id: \.self) { movie in
                         if let movie = movie {
                             MovieItem(movie: movie, maxWidth: Configuration.moviePosterWidth) { v in
                                 onTapGesture(v)

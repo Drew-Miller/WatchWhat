@@ -1,9 +1,13 @@
-import { GroupedMovies } from '../tmdb/dtos';
+import { GroupedMovies, MovieDetails } from '../tmdb/dtos';
 import { MyContext } from './context';
 
-type Home = {
+type DiscoverView = {
   results: GroupedMovies[]
-}
+};
+
+type MovieDetailsView = MovieDetails & {
+  mpaa_rating: string
+};
 
 // The GraphQL schema
 const resolvers = {
@@ -20,7 +24,7 @@ const resolvers = {
 
       const [ popularMovies, genreCategories ] = await promises;
       const results = [popularMovies, ...genreCategories];
-      const home: Home = { results };
+      const home: DiscoverView = { results };
       return home;
     },
 
@@ -51,8 +55,20 @@ const resolvers = {
     },
 
     movie: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
-      console.log(req.id);
-      return dataSources.tmdbAPI.movie(req.id);
+      const [ movie, releaseDates ] = await Promise.all([
+        dataSources.tmdbAPI.movie(req.id),
+        dataSources.tmdbAPI.releaseDates(req.id).then(releaseDates => {
+          return releaseDates.filter(x => x.iso_3166_1.toLocaleLowerCase() == "US".toLocaleLowerCase());
+        }),
+      ]);
+
+      const mpaaRating = !!releaseDates.length && !!releaseDates[0].release_dates.length ? releaseDates[0].release_dates[0].certification : "";
+      const result: MovieDetailsView = {
+        ...movie,
+        mpaa_rating: mpaaRating
+      };
+
+      return result;
     },
     credits: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.credits(req.id);

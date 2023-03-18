@@ -27,7 +27,7 @@ struct MoviePoster: View {
                     .frame(maxWidth: maxWidth)
             }
         }
-        .onAppear {
+        .task(id: self.imageUrl) {
             if imageUrl?.isEmpty ?? true {
                 return
             } else {

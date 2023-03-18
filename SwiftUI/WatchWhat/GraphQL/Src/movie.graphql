@@ -10,6 +10,7 @@ query Movie($id: Int!) {
     homepage
     id
     imdb_id
+    mpaa_rating
     original_language
     original_title
     overview

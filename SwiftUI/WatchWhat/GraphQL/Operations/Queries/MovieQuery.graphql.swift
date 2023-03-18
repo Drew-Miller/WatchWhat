@@ -23,6 +23,7 @@ public extension WatchWhatSchema {
             homepage
             id
             imdb_id
+            mpaa_rating
             original_language
             original_title
             overview
@@ -95,6 +96,7 @@ public extension WatchWhatSchema {
           .field("homepage", String.self),
           .field("id", Int.self),
           .field("imdb_id", String.self),
+          .field("mpaa_rating", String.self),
           .field("original_language", String.self),
           .field("original_title", String.self),
           .field("overview", String.self),
@@ -121,6 +123,7 @@ public extension WatchWhatSchema {
         public var homepage: String { __data["homepage"] }
         public var id: Int { __data["id"] }
         public var imdb_id: String { __data["imdb_id"] }
+        public var mpaa_rating: String { __data["mpaa_rating"] }
         public var original_language: String { __data["original_language"] }
         public var original_title: String { __data["original_title"] }
         public var overview: String { __data["overview"] }

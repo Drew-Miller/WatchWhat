@@ -11,7 +11,7 @@ class MovieData: ObservableObject {
     @Published private(set) var movie: MovieDetails?
     @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
     @Published private(set) var videos: MovieExtrasQuery.Data.Videos?
-    @Published private(set) var recommendations: MovieExtrasQuery.Data.Recommendations?
+    @Published private(set) var recommendations: [Movie]?
     @Published private(set) var watchProviders: WatchProviders?
     @Published private(set) var webUrl: String?
     
@@ -58,7 +58,9 @@ class MovieData: ObservableObject {
             DispatchQueue.main.async {
                 self.credits = data.credits
                 self.videos = data.videos
-                self.recommendations = data.recommendations
+                self.recommendations = data.recommendations.results.map {
+                    return Movie(data: $0.__data)
+                }
             }
         }
     }

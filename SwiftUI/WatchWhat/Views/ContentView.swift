@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var modelData: ModelData
     @StateObject var navigation = Navigation()
+    @State var movieId: Int?
     
     var body: some View {
         ZStack {
@@ -32,11 +33,9 @@ struct ContentView: View {
                 }
                 
             case .movieDetails:
-                if let movieId = modelData.movieId {
-                    MovieDetailView(id: movieId) {
-                        withAnimation {
-                            navigatePrevious()
-                        }
+                if let movieId = self.modelData.movieId  {
+                    MovieDetailView(id: movieId) { movieId in
+                        modelData.selectMovieId(movieId)
                     }
                     .transition(.move(edge: .trailing))
                 } else {
@@ -71,7 +70,7 @@ struct ContentView: View {
     }
     
     func onMovieSelected(movieId: Int) {
-        modelData.movieId = movieId
+        modelData.selectMovieId(movieId)
         setView(.movieDetails)
     }
     func setView(_ view: AppView) {
