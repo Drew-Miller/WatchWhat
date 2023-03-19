@@ -28,9 +28,7 @@ struct SearchView: View {
                         
                     }
                 }
-                .hasHeaderStyles()
-                .hasSearchStyles()
-                .hasFooterStyles()
+                .searchPadding()
             }
             
             // Controls

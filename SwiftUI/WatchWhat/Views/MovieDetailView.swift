@@ -29,19 +29,21 @@ struct MovieDetailView: View {
                 if let movie = movieData.movie {
                     MovieDetail_Poster(posterPath: movie.poster_path!)
                     
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack(spacing: 16.0) {
-                            Text("\(movie.runtime / 60) HR \(movie.runtime % 60) MIN")
-                            Text("\(movie.mpaa_rating)")
-                            Text("\(getReleaseYear(date: movie.release_date))")
-                            Text("\(String(format: "%g", movie.vote_average))")
+                    VStack(alignment: .leading, spacing: 28) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack(spacing: 16.0) {
+                                Text("\(movie.runtime / 60) HR \(movie.runtime % 60) MIN")
+                                Text("\(movie.mpaa_rating)")
+                                Text("\(getReleaseYear(date: movie.release_date))")
+                                Text("\(String(format: "%0.1f", movie.vote_average))")
+                            }
+                            .font(.xs)
+                            .foregroundColor(.textBody)
+                            
+                            Text("\(movie.title)")
+                                .font(.header)
+                                .foregroundColor(.text)
                         }
-                        .font(.xs)
-                        .foregroundColor(.textBody)
-                        
-                        Text("\(movie.title)")
-                            .font(.sectionHeader2)
-                            .foregroundColor(.text)
                         
                         if let watchProviders = movieData.watchProviders {
                             MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
@@ -50,30 +52,34 @@ struct MovieDetailView: View {
                         }
                         
                         Text(movie.overview)
+                            .paragraph()
                             .foregroundColor(.textBody)
-                            .font(.system(size: 14))
                         
                         HStack(spacing: 12.0) {
-                            Image(systemName: "list.and.film")
-                            Text("TRAILERS").monospaced()
+                            Button {
+                                if let videos = movieData.videos {
+                                    openURL(URL(string: "https://youtube.com/embed/\(videos[0].key)")!)
+                                }
+                            } label: {
+                                Image(systemName: "list.and.film")
+                                Text("TRAILER").monospaced()
+                            }
+                            .font(.section)
+                            .foregroundColor(.textBody)
                         }
-                        .font(.small)
-                        .padding([.top, .bottom], 20)
-                        
+                        .sectionPadding()
     
                         HStack {
                             Text("More Like This")
-                                .font(.small)
-                                .bold()
                         }
-                        .padding([.top, .bottom], 20)
+                        .font(.section)
+                        .sectionPadding()
                         
                         if let recommendations = movieData.recommendations {
                             MovieList(movies: recommendations) { movieId in
                                 self.onMovieSelected(movieId)
                             }
                         }
-                        
                         
                         Spacer()
                     }
@@ -132,7 +138,7 @@ struct MovieDetail_Header: View {
             
             Spacer()
         }
-        .headerStyles()
+        .header()
     }
 }
 
@@ -162,7 +168,7 @@ struct MovieDetail_WatchProviders: View {
         HStack {
             if let flatrate = watchProviders.flatrate {
                 ForEach(flatrate.prefix(4), id: \.self.provider_id) { flatrate in
-                    ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: 40)
+                    ProviderLogo(imageUrl: flatrate.logo_path, maxWidth: 48)
                         .onTapGesture {
                             onTapGesture(flatrate.provider_name)
                         }

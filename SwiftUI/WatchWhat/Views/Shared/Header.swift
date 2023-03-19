@@ -31,7 +31,7 @@ struct Header: View {
                 print("User Tapped")
             }
         }
-        .headerStyles()
+        .header()
     }
 }
 

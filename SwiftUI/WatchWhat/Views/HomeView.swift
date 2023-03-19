@@ -15,11 +15,11 @@ struct HomeView: View {
         ZStack {
             // Movies
             ScrollView {
-                LazyVStack(spacing: 12) {
+                LazyVStack(spacing: 24) {
                     ForEach(homeData.results, id: \.self) { result in
                         HStack {
                             Text(result.title)
-                                .font(.sectionHeader)
+                                .font(.header)
                                 .foregroundColor(.text)
                             
                             Spacer()
@@ -30,8 +30,7 @@ struct HomeView: View {
                         }
                     }
                 }
-                .hasHeaderStyles()
-                .hasFooterStyles()
+                .homePadding()
             }
             
             // Controls

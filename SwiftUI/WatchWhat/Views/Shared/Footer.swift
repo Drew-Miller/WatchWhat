@@ -35,7 +35,7 @@ struct Footer: View {
                 changeView(.search)
             }
         }
-        .footerStyles()
+        .footer()
     }
 }
 
