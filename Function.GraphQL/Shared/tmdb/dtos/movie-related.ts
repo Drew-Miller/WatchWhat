@@ -3,7 +3,6 @@ export type MovieRelated = {
   backdrop_path: string,
   genre_ids: number[],  
   id: number,
-  media_type: string,
   original_language: string,
   original_title: string,
   overview: string,
@@ -13,4 +12,8 @@ export type MovieRelated = {
   title: string,
   video: boolean,
   vote_average: number
-}
+};
+
+export type Recommendation = MovieRelated & {
+  media_type: string
+};

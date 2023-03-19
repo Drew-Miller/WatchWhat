@@ -30,8 +30,8 @@ type Query {
   movie(id: Int!): MovieDetails!
   credits(id: Int!): Credits!
   videos(id: Int!): TrailerResults!
-  similar(id: Int!): RelatedPaginated!
-  recommendations(id: Int!): RelatedPaginated!
+  similar(id: Int!): PaginatedSimilar!
+  recommendations(id: Int!): PaginatedRecommendation!
 }
 
 
@@ -215,10 +215,7 @@ type Trailer {
   type: String!
 }
 
-
-# Recommendation Types
-
-type MovieRelated {
+type Recommendation {
   adult: Boolean!
   backdrop_path: String
   genre_ids: [Int!]!
@@ -235,9 +232,32 @@ type MovieRelated {
   vote_average: Float!
 }
 
-type RelatedPaginated {
+type PaginatedRecommendation {
   page: Int!
   results: [Recommendation!]!
+  total_pages: Int!
+  total_results: Int!
+}
+
+type Similar {
+  adult: Boolean!
+  backdrop_path: String
+  genre_ids: [Int!]!
+  id: Int!
+  original_language: String!
+  original_title: String!
+  overview: String!
+  popularity: Float!
+  poster_path: String
+  release_date: String!
+  title: String!
+  video: Boolean!
+  vote_average: Float!
+}
+
+type PaginatedSimilar {
+  page: Int!
+  results: [Similar!]!
   total_pages: Int!
   total_results: Int!
 }
