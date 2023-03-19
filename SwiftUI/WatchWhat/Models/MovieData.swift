@@ -62,6 +62,9 @@ class MovieData: ObservableObject {
                 }.map {
                     return Video(data: $0.__data)
                 }
+                
+                self.moreLikeThis = 
+                
                 self.recommendations = data.recommendations.results.map {
                     return Movie(data: $0.__data)
                 }

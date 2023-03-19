@@ -76,6 +76,9 @@ const resolvers = {
     videos: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.videos(req.id);
     },
+    similar: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
+      return dataSources.tmdbAPI.similar(req.id);
+    },
     recommendations: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.recommendations(req.id);
     },

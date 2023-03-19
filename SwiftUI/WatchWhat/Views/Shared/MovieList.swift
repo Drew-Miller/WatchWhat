@@ -17,14 +17,33 @@ struct MovieList: View {
                 LazyHStack(spacing: 12) {
                     ForEach(movies, id: \.self) { movie in
                         if let movie = movie {
-                            MovieListItem(movie: movie) { v in
-                                onTapGesture(v)
+                            listItem(movie: movie) { movieId in
+                                onTapGesture(movieId)
                             }
                         }
                     }
                 }
             }
         }
+    }
+    
+    func listItem(movie: Movie, onTapGesture: @escaping (Int) -> Void) -> some View {
+        VStack() {
+            MoviePoster(imageUrl: movie.poster_path)
+            
+            Text(movie.title)
+                .font(.xs)
+                .foregroundColor(.text)
+                .padding(.top, 6)
+                .lineLimit(nil)
+                .truncationMode(.tail)
+            
+            Spacer()
+        }
+        .onTapGesture {
+            onTapGesture(movie.id)
+        }
+        .frame(width: 192)
     }
 }
 

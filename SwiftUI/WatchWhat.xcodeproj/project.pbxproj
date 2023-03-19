@@ -47,8 +47,9 @@
 		569ED36729C014960022F396 /* Provider.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED34C29C014960022F396 /* Provider.graphql.swift */; };
 		569ED36829C014960022F396 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED34D29C014960022F396 /* SchemaConfiguration.swift */; };
 		569ED36929C014960022F396 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED34E29C014960022F396 /* SchemaMetadata.graphql.swift */; };
-		569ED36B29C68B720022F396 /* YoutubeVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED36A29C68B720022F396 /* YoutubeVideo.swift */; };
 		569ED36D29C68D1B0022F396 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED36C29C68D1B0022F396 /* Video.swift */; };
+		569F746329C6C1D600D25EA4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 569F746229C6C1D600D25EA4 /* FirebaseAuth */; };
+		569F746529C6C1D600D25EA4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 569F746429C6C1D600D25EA4 /* FirebaseMessaging */; };
 		56C233F529B96B660010A733 /* WatchWhat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* WatchWhat.swift */; };
 		56C233F729B96C8B0010A733 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Styles.swift */; };
 		56C233F929B973B60010A733 /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F829B973B60010A733 /* HomeData.swift */; };
@@ -62,7 +63,6 @@
 		56C2341829BA85390010A733 /* schema.graphqls in Resources */ = {isa = PBXBuildFile; fileRef = 56C2341729BA85390010A733 /* schema.graphqls */; };
 		56C2344029BA8EB10010A733 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2343F29BA8EB10010A733 /* HomeView.swift */; };
 		56C2344229BA8EF00010A733 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344129BA8EF00010A733 /* MovieList.swift */; };
-		56C2344429BA8F090010A733 /* MovieListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344329BA8F090010A733 /* MovieListItem.swift */; };
 		56C2345929BA92070010A733 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2344F29BA92070010A733 /* WatchWhatSchema.graphql.swift */; };
 		56C2345C29BAB6DB0010A733 /* movie.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 56C2345B29BAB6DB0010A733 /* movie.graphql */; };
 		56C2349229BAB7B70010A733 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2349129BAB7B70010A733 /* MovieDetailView.swift */; };
@@ -146,7 +146,6 @@
 		569ED34C29C014960022F396 /* Provider.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.graphql.swift; sourceTree = "<group>"; };
 		569ED34D29C014960022F396 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
 		569ED34E29C014960022F396 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
-		569ED36A29C68B720022F396 /* YoutubeVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideo.swift; sourceTree = "<group>"; };
 		569ED36C29C68D1B0022F396 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		56C233F429B96B660010A733 /* WatchWhat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhat.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -161,7 +160,6 @@
 		56C2341729BA85390010A733 /* schema.graphqls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		56C2343F29BA8EB10010A733 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		56C2344129BA8EF00010A733 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
-		56C2344329BA8F090010A733 /* MovieListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItem.swift; sourceTree = "<group>"; };
 		56C2344F29BA92070010A733 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
 		56C2345B29BAB6DB0010A733 /* movie.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = movie.graphql; sourceTree = "<group>"; };
 		56C2349129BAB7B70010A733 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
@@ -190,7 +188,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569F746529C6C1D600D25EA4 /* FirebaseMessaging in Frameworks */,
 				56012BCB29B8353E00E2E5A9 /* Apollo in Frameworks */,
+				569F746329C6C1D600D25EA4 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,11 +404,9 @@
 				56C2353829BBDF530010A733 /* Footer.swift */,
 				56C235A829BC11510010A733 /* Header.swift */,
 				56C2344129BA8EF00010A733 /* MovieList.swift */,
-				56C2344329BA8F090010A733 /* MovieListItem.swift */,
 				56C2349729BAD5720010A733 /* MoviePoster.swift */,
 				569ED2F029BD7F3B0022F396 /* ProviderLogo.swift */,
 				56C2353A29BBDF8D0010A733 /* UserIcon.swift */,
-				569ED36A29C68B720022F396 /* YoutubeVideo.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -443,6 +441,8 @@
 			name = WatchWhat;
 			packageProductDependencies = (
 				56012BCA29B8353E00E2E5A9 /* Apollo */,
+				569F746229C6C1D600D25EA4 /* FirebaseAuth */,
+				569F746429C6C1D600D25EA4 /* FirebaseMessaging */,
 			);
 			productName = WatchWhat;
 			productReference = 56012B9A29B832D900E2E5A9 /* WatchWhat.app */;
@@ -518,6 +518,7 @@
 			mainGroup = 56012B9129B832D800E2E5A9;
 			packageReferences = (
 				56012BC929B8353E00E2E5A9 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				569F746129C6C1D600D25EA4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 56012B9B29B832D900E2E5A9 /* Products */;
 			projectDirPath = "";
@@ -584,7 +585,6 @@
 				569ED35B29C014960022F396 /* Crew.graphql.swift in Sources */,
 				56C235A729BBE8280010A733 /* MovieCategory.swift in Sources */,
 				569ED36929C014960022F396 /* SchemaMetadata.graphql.swift in Sources */,
-				569ED36B29C68B720022F396 /* YoutubeVideo.swift in Sources */,
 				569ED35229C014960022F396 /* MovieExtrasQuery.graphql.swift in Sources */,
 				569ED2B529BD79B40022F396 /* watch-movie.graphql in Sources */,
 				569ED34F29C014960022F396 /* SearchQuery.graphql.swift in Sources */,
@@ -629,7 +629,6 @@
 				569ED35029C014960022F396 /* MovieQuery.graphql.swift in Sources */,
 				56C2354029BBE1960010A733 /* SearchData.swift in Sources */,
 				56C2349A29BADE090010A733 /* UrlImageModel.swift in Sources */,
-				56C2344429BA8F090010A733 /* MovieListItem.swift in Sources */,
 				569ED35329C014960022F396 /* WebURLQuery.graphql.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -977,6 +976,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		569F746129C6C1D600D25EA4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -984,6 +991,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 56012BC929B8353E00E2E5A9 /* XCRemoteSwiftPackageReference "apollo-ios" */;
 			productName = Apollo;
+		};
+		569F746229C6C1D600D25EA4 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 569F746129C6C1D600D25EA4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		569F746429C6C1D600D25EA4 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 569F746129C6C1D600D25EA4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,4 +1,4 @@
-export type Recommendation = {
+export type MovieRelated = {
   adult: boolean,
   backdrop_path: string,
   genre_ids: number[],  

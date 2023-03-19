@@ -1,7 +1,7 @@
 import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
-import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Recommendation, Region, Results, Trailer, ReleaseDate } from "./dtos";
+import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Region, Results, Trailer, ReleaseDate, MovieRelated } from "./dtos";
 
 export type TmdbAPIOptions = DataSourceConfig & {
   apiVersion: string,
@@ -160,8 +160,13 @@ export class TmdbAPI extends RESTDataSource {
     return data;
   }
 
-  async recommendations(id: number): Promise<PaginatedResults<Recommendation>> {
-    const data = await this.get<PaginatedResults<Recommendation>>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}/recommendations`);
+  async similar(id: number): Promise<PaginatedResults<MovieRelated>> {
+    const data = await this.get<PaginatedResults<MovieRelated>>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}/similar`);
+    return data;
+  }
+
+  async recommendations(id: number): Promise<PaginatedResults<MovieRelated>> {
+    const data = await this.get<PaginatedResults<MovieRelated>>(`/${this.apiVersion}/movie/${encodeURIComponent(id)}/recommendations`);
     return data;
   }
 

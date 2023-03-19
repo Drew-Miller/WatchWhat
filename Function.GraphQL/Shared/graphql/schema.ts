@@ -30,7 +30,8 @@ type Query {
   movie(id: Int!): MovieDetails!
   credits(id: Int!): Credits!
   videos(id: Int!): TrailerResults!
-  recommendations(id: Int!): PaginatedRecommendations!
+  similar(id: Int!): RelatedPaginated!
+  recommendations(id: Int!): RelatedPaginated!
 }
 
 
@@ -217,7 +218,7 @@ type Trailer {
 
 # Recommendation Types
 
-type Recommendation {
+type MovieRelated {
   adult: Boolean!
   backdrop_path: String
   genre_ids: [Int!]!
@@ -234,7 +235,7 @@ type Recommendation {
   vote_average: Float!
 }
 
-type PaginatedRecommendations {
+type RelatedPaginated {
   page: Int!
   results: [Recommendation!]!
   total_pages: Int!
