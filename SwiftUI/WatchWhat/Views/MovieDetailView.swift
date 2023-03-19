@@ -57,8 +57,8 @@ struct MovieDetailView: View {
                         
                         HStack(spacing: 12.0) {
                             Button {
-                                if let videos = movieData.videos {
-                                    openURL(URL(string: "https://youtube.com/embed/\(videos[0].key)")!)
+                                if let trailers = movieData.trailers {
+                                    openURL(URL(string: "https://youtube.com/embed/\(trailers[0].key)")!)
                                 }
                             } label: {
                                 Image(systemName: "list.and.film")
@@ -75,8 +75,8 @@ struct MovieDetailView: View {
                         .font(.section)
                         .sectionPadding()
                         
-                        if let recommendations = movieData.recommendations {
-                            MovieList(movies: recommendations) { movieId in
+                        if let similar = movieData.similar {
+                            MovieListView(movies: similar) { movieId in
                                 self.onMovieSelected(movieId)
                             }
                         }
@@ -146,7 +146,7 @@ struct MovieDetail_Poster: View {
     let posterPath: String
     
     var body: some View {
-        MoviePoster(imageUrl: posterPath)
+        MoviePosterView(imageUrl: posterPath)
             .mask(
                 LinearGradient(
                     gradient: Gradient(stops: [

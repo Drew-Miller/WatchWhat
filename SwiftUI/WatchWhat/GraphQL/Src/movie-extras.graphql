@@ -1,4 +1,4 @@
-query MovieExtras($id: Int!) {
+query Credits($id: Int!) {
   credits(id: $id) {
     id
     cast {
@@ -29,42 +29,36 @@ query MovieExtras($id: Int!) {
       profile_path
     }
   }
+}
 
+query Videos($id: Int!) {
   videos(id: $id) {
-    id
     results {
-      id
-      iso_639_1
-      iso_3166_1
       key
       name
       official
-      published_at
-      site
-      size
-      type
     }
   }
+}
 
-  recommendations(id: $id) {
-    page,
-    total_pages
-    total_results
+query Similar($id: Int!) {
+  similar(id: $id) {
     results {
-      adult
-      backdrop_path
-      genre_ids
       id
-      media_type
-      original_language
-      original_title
-      overview
-      popularity
-      poster_path
-      release_date
       title
-      video
-      vote_average
+      poster_path
+      backdrop_path
+    }
+  }
+}
+
+query Recommendations($id: Int!) {
+  recommendations(id: $id) {
+    results {
+      id
+      title
+      poster_path
+      backdrop_path
     }
   }
 }

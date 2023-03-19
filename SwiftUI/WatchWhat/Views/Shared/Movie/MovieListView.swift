@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MovieList: View {
+struct MovieListView: View {
     var movies: [Movie]
     let onTapGesture: (Int) -> Void
 
@@ -17,7 +17,7 @@ struct MovieList: View {
                 LazyHStack(spacing: 12) {
                     ForEach(movies, id: \.self) { movie in
                         if let movie = movie {
-                            listItem(movie: movie) { movieId in
+                            MovieView(movie: movie) { movieId in
                                 onTapGesture(movieId)
                             }
                         }
@@ -25,25 +25,6 @@ struct MovieList: View {
                 }
             }
         }
-    }
-    
-    func listItem(movie: Movie, onTapGesture: @escaping (Int) -> Void) -> some View {
-        VStack() {
-            MoviePoster(imageUrl: movie.poster_path)
-            
-            Text(movie.title)
-                .font(.xs)
-                .foregroundColor(.text)
-                .padding(.top, 6)
-                .lineLimit(nil)
-                .truncationMode(.tail)
-            
-            Spacer()
-        }
-        .onTapGesture {
-            onTapGesture(movie.id)
-        }
-        .frame(width: 192)
     }
 }
 

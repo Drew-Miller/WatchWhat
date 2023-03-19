@@ -10,8 +10,9 @@ import Foundation
 class MovieData: ObservableObject {
     @Published private(set) var movie: MovieDetails?
     // @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
-    @Published private(set) var videos: [Video]?
+    @Published private(set) var trailers: [Video]? // fetched through videos
     @Published private(set) var recommendations: [Movie]?
+    @Published private(set) var similar: [Movie]?
     @Published private(set) var watchProviders: WatchProviders?
     @Published private(set) var webUrl: String?
     
@@ -29,13 +30,15 @@ class MovieData: ObservableObject {
     
     func loadData(id: Int, region: String?) {
         Task.init {
-            await fetchMovie(id: id)
+            async let movies            = fetchMovie(id: id)
+            async let videos            = fetchVideos(id: id)
+            async let recommendations   = fetchRecommendations(id: id)
+            async let similar           = fetchSimilar(id: id)
+            
+            let loading = await [ movies, videos, recommendations, similar ]
         }
         Task.init {
-            await fetchMovieExtras(id: id)
-        }
-        if !(region ?? "").isEmpty {
-            Task.init {
+            if !(region ?? "").isEmpty {
                 await fetchWatchProviders(id: id, region: region!)
             }
         }
@@ -51,21 +54,39 @@ class MovieData: ObservableObject {
         }
     }
     
-    private func fetchMovieExtras(id: Int) async {
-        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.MovieExtrasQuery(id: id)) { result in
+    private func fetchVideos(id: Int) async {
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.VideosQuery(id: id)) { result in
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
-                // self.credits = data.credits
-                self.videos = data.videos.results.filter {
+                self.trailers = data.videos.results.filter {
                     $0.official && $0.name!.lowercased().contains("trailer")
                 }.map {
                     return Video(data: $0.__data)
                 }
-                
-                self.moreLikeThis = 
-                
+            }
+        }
+    }
+    
+    private func fetchRecommendations(id: Int) async {
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.RecommendationsQuery(id: id)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            DispatchQueue.main.async {
+                // self.credits = data.credits
                 self.recommendations = data.recommendations.results.map {
+                    Movie(data: $0.__data)
+                }
+            }
+        }
+    }
+    
+    private func fetchSimilar(id: Int) async {
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.SimilarQuery(id: id)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            DispatchQueue.main.async {
+                self.similar = data.similar.results.map {
                     return Movie(data: $0.__data)
                 }
             }

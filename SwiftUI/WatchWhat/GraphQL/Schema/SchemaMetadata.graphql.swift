@@ -35,14 +35,15 @@ public extension WatchWhatSchema {
       case "MovieDetails": return WatchWhatSchema.Objects.MovieDetails
       case "Genre": return WatchWhatSchema.Objects.Genre
       case "ProductionCompany": return WatchWhatSchema.Objects.ProductionCompany
-      case "ProductionCountry": return WatchWhatSchema.Objects.ProductionCountry
       case "SpokenLanguages": return WatchWhatSchema.Objects.SpokenLanguages
       case "Credits": return WatchWhatSchema.Objects.Credits
       case "Cast": return WatchWhatSchema.Objects.Cast
       case "Crew": return WatchWhatSchema.Objects.Crew
       case "TrailerResults": return WatchWhatSchema.Objects.TrailerResults
       case "Trailer": return WatchWhatSchema.Objects.Trailer
-      case "PaginatedRecommendations": return WatchWhatSchema.Objects.PaginatedRecommendations
+      case "PaginatedSimilar": return WatchWhatSchema.Objects.PaginatedSimilar
+      case "Similar": return WatchWhatSchema.Objects.Similar
+      case "PaginatedRecommendation": return WatchWhatSchema.Objects.PaginatedRecommendation
       case "Recommendation": return WatchWhatSchema.Objects.Recommendation
       case "Discover": return WatchWhatSchema.Objects.Discover
       case "GroupedMovies": return WatchWhatSchema.Objects.GroupedMovies

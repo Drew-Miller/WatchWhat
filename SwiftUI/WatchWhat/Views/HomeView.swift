@@ -25,7 +25,7 @@ struct HomeView: View {
                             Spacer()
                         }
                         
-                        MovieList(movies: result.movies) { movieId in
+                        MovieListView(movies: result.movies) { movieId in
                             selectedMovie(movieId)
                         }
                     }

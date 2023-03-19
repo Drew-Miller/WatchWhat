@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MoviePoster: View {
+struct MoviePosterView: View {
     @ObservedObject var urlImageModel = UrlImageModel()
     let imageUrl: String?
     

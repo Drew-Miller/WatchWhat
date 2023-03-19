@@ -20,7 +20,7 @@ struct SearchView: View {
                     ForEach(searchData.results.chunked(into: 2), id: \.self) { rowItems in
                         LazyHStack {
                             ForEach(rowItems, id: \.self) { movie in
-                                MovieListItem(movie: movie) { movieId in
+                                MovieView(movie: movie) { movieId in
                                     selectedMovie(movieId)
                                 }
                             }

@@ -1,29 +1,19 @@
 query Movie($id: Int!) {
   movie(id: $id) {
-    adult
     backdrop_path
-    budget
     genres {
       id
       name
     }
-    homepage
     id
     imdb_id
     mpaa_rating
-    original_language
-    original_title
     overview
     popularity
     poster_path
     production_companies {
       id
       logo_path
-      name
-      origin_country
-    }
-    production_countries {
-      iso_3166_1
       name
     }
     release_date
@@ -34,10 +24,7 @@ query Movie($id: Int!) {
       iso_639_1
       name
     }
-    status
-    tagline
     title
-    video
     vote_average
     vote_count
   }

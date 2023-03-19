@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let ProductionCountry = Object(
-    typename: "ProductionCountry",
+  static let PaginatedRecommendation = Object(
+    typename: "PaginatedRecommendation",
     implementedInterfaces: []
   )
 }
