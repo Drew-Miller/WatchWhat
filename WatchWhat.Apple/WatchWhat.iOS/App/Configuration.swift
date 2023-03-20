@@ -29,7 +29,21 @@ enum FromBundle {
     }
 }
 
+struct FirebaseEmulator {
+    let host: String
+    let port: Int
+}
+
 enum Configuration {
+    static var emaulatorSettings: FirebaseEmulator? {
+        do {
+            let emulator: String = try FromBundle.value(for: "Emulator")
+            let substrs = emulator.components(separatedBy: [":"])
+            return FirebaseEmulator(host: substrs[0], port: Int(substrs[1]) ?? 0)
+        } catch {
+            return nil
+        }
+    }
     
     static var baseURL: URL {
         return try! URL(string: FromBundle.value(for: "BaseUrl"))!

@@ -54,16 +54,16 @@
 		5687D20629C8193F00383AB4 /* search.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DF29C8193F00383AB4 /* search.graphql */; };
 		5687D20729C8193F00383AB4 /* weburl.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1E029C8193F00383AB4 /* weburl.graphql */; };
 		5687D20829C8193F00383AB4 /* watch-movie.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1E129C8193F00383AB4 /* watch-movie.graphql */; };
+		5687D20A29C8210400383AB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5687D20929C8210400383AB4 /* GoogleService-Info.plist */; };
 		569ED2EF29BD7B510022F396 /* WatchProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED2EE29BD7B510022F396 /* WatchProviders.swift */; };
 		569ED2F129BD7F3B0022F396 /* ProviderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED2F029BD7F3B0022F396 /* ProviderLogo.swift */; };
 		569ED2F329BD98AC0022F396 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED2F229BD98AC0022F396 /* MovieDetails.swift */; };
 		569ED36D29C68D1B0022F396 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED36C29C68D1B0022F396 /* Video.swift */; };
 		569F74A729C79F3D00D25EA4 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F74A629C79F3D00D25EA4 /* MovieView.swift */; };
-		569F74ED29C7D10700D25EA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 569F74EC29C7D10600D25EA4 /* GoogleService-Info.plist */; };
 		569F74F029C7DA6C00D25EA4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74EF29C7DA6C00D25EA4 /* FirebaseAnalytics */; };
 		569F74F229C7DA6C00D25EA4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F129C7DA6C00D25EA4 /* FirebaseAuth */; };
 		569F74F429C7DA6C00D25EA4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F329C7DA6C00D25EA4 /* FirebaseMessaging */; };
-		569F74F629C8089800D25EA4 /* WatchWhatAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F74F529C8089800D25EA4 /* WatchWhatAppDelegate.swift */; };
+		569F74F629C8089800D25EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F74F529C8089800D25EA4 /* AppDelegate.swift */; };
 		569F74F929C814DF00D25EA4 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F829C814DF00D25EA4 /* FirebaseAnalyticsSwift */; };
 		56C233F529B96B660010A733 /* WatchWhat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* WatchWhat.swift */; };
 		56C233F729B96C8B0010A733 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Styles.swift */; };
@@ -157,13 +157,14 @@
 		5687D1DF29C8193F00383AB4 /* search.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = search.graphql; sourceTree = "<group>"; };
 		5687D1E029C8193F00383AB4 /* weburl.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = weburl.graphql; sourceTree = "<group>"; };
 		5687D1E129C8193F00383AB4 /* watch-movie.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "watch-movie.graphql"; sourceTree = "<group>"; };
+		5687D20929C8210400383AB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5687D20B29C829E100383AB4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		569ED2EE29BD7B510022F396 /* WatchProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviders.swift; sourceTree = "<group>"; };
 		569ED2F029BD7F3B0022F396 /* ProviderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLogo.swift; sourceTree = "<group>"; };
 		569ED2F229BD98AC0022F396 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		569ED36C29C68D1B0022F396 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		569F74A629C79F3D00D25EA4 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
-		569F74EC29C7D10600D25EA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		569F74F529C8089800D25EA4 /* WatchWhatAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatAppDelegate.swift; sourceTree = "<group>"; };
+		569F74F529C8089800D25EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56C233F429B96B660010A733 /* WatchWhat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhat.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		56C233F829B973B60010A733 /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
@@ -244,18 +245,19 @@
 		56012B9C29B832D900E2E5A9 /* WatchWhat.iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5687D20B29C829E100383AB4 /* Info.plist */,
 				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
 				56C2349B29BAE5F30010A733 /* Release.xcconfig */,
-				569F74EC29C7D10600D25EA4 /* GoogleService-Info.plist */,
+				5687D20929C8210400383AB4 /* GoogleService-Info.plist */,
 				56C2353229BBB3900010A733 /* TODO.md */,
-				569F74F529C8089800D25EA4 /* WatchWhatAppDelegate.swift */,
+				569F74F529C8089800D25EA4 /* AppDelegate.swift */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
 				56012BA329B832DA00E2E5A9 /* Preview Content */,
 				56C233F229B9694C0010A733 /* App */,
+				56C232EB29B8F9440010A733 /* GraphQL */,
 				56C233F029B968340010A733 /* Models */,
 				56C233F129B9692B0010A733 /* Views */,
-				56C232EB29B8F9440010A733 /* GraphQL */,
 			);
 			path = WatchWhat.iOS;
 			sourceTree = "<group>";
@@ -577,9 +579,9 @@
 				5687D20429C8193F00383AB4 /* movie-extras.graphql in Resources */,
 				5687D20829C8193F00383AB4 /* watch-movie.graphql in Resources */,
 				56012BA529B832DA00E2E5A9 /* Preview Assets.xcassets in Resources */,
-				569F74ED29C7D10700D25EA4 /* GoogleService-Info.plist in Resources */,
 				5687D20629C8193F00383AB4 /* search.graphql in Resources */,
 				5687D20229C8193F00383AB4 /* movie.graphql in Resources */,
+				5687D20A29C8210400383AB4 /* GoogleService-Info.plist in Resources */,
 				56012BA229B832DA00E2E5A9 /* Assets.xcassets in Resources */,
 				5687D20329C8193F00383AB4 /* schema.graphqls in Resources */,
 			);
@@ -629,7 +631,7 @@
 				5687D1E529C8193F00383AB4 /* SimilarQuery.graphql.swift in Sources */,
 				5687D1F229C8193F00383AB4 /* Query.graphql.swift in Sources */,
 				5687D1E629C8193F00383AB4 /* RecommendationsQuery.graphql.swift in Sources */,
-				569F74F629C8089800D25EA4 /* WatchWhatAppDelegate.swift in Sources */,
+				569F74F629C8089800D25EA4 /* AppDelegate.swift in Sources */,
 				5687D1E729C8193F00383AB4 /* VideosQuery.graphql.swift in Sources */,
 				5687D1FC29C8193F00383AB4 /* Similar.graphql.swift in Sources */,
 				5687D1F729C8193F00383AB4 /* Cast.graphql.swift in Sources */,

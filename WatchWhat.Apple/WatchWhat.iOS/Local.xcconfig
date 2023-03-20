@@ -11,3 +11,4 @@
 SIMPLE_SLASH=/
 
 BASE_URL=http:$(SIMPLE_SLASH)/localhost:7071/api/graphql
+EMULATOR=localhost:4000

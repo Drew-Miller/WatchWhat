@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct WatchWhatApp: App {
-    // @UIApplicationDelegateAdaptor(WatchWhatAppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var isActive: Bool = false
 
     var body: some Scene {
