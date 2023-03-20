@@ -1,0 +1,31 @@
+query Movie($id: Int!) {
+  movie(id: $id) {
+    backdrop_path
+    genres {
+      id
+      name
+    }
+    id
+    imdb_id
+    mpaa_rating
+    overview
+    popularity
+    poster_path
+    production_companies {
+      id
+      logo_path
+      name
+    }
+    release_date
+    revenue
+    runtime
+    spoken_languages {
+      english_name
+      iso_639_1
+      name
+    }
+    title
+    vote_average
+    vote_count
+  }
+}

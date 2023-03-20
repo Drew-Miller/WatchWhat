@@ -1,0 +1,14 @@
+query Discover {
+  discover {
+    results {
+      id
+      title
+      movies {
+        id
+        title
+        poster_path
+        backdrop_path
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+query WebURL($tmdbId: Int!, $titleType: String!, $sourceName: String!) {
+  webUrl(tmdbId: $tmdbId, titleType: $titleType, sourceName: $sourceName)
+}

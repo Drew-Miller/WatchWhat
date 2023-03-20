@@ -1,0 +1,64 @@
+query Credits($id: Int!) {
+  credits(id: $id) {
+    id
+    cast {
+      adult
+      cast_id
+      character
+      credit_id
+      gender
+      id
+      known_for_department
+      name
+      order
+      original_name
+      popularity
+      profile_path
+    }
+    crew {
+      adult
+      credit_id
+      department
+      gender
+      id
+      job
+      known_for_department
+      name
+      original_name
+      popularity
+      profile_path
+    }
+  }
+}
+
+query Videos($id: Int!) {
+  videos(id: $id) {
+    results {
+      key
+      name
+      official
+    }
+  }
+}
+
+query Similar($id: Int!) {
+  similar(id: $id) {
+    results {
+      id
+      title
+      poster_path
+      backdrop_path
+    }
+  }
+}
+
+query Recommendations($id: Int!) {
+  recommendations(id: $id) {
+    results {
+      id
+      title
+      poster_path
+      backdrop_path
+    }
+  }
+}
