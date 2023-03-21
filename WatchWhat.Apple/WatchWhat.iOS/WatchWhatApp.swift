@@ -17,7 +17,6 @@ struct WatchWhatApp: App {
             ZStack {
                 if self.isActive {
                     ContentView()
-                        .environmentObject(ModelData())
                 } else {
                     SplashView()
                 }

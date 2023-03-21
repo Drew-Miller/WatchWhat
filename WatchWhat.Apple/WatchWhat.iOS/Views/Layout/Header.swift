@@ -7,18 +7,14 @@
 
 import SwiftUI
 
-struct Header: View {
-    @EnvironmentObject var modelData: ModelData
-    
-    let onMenu: () -> Void
-
+struct Header: View {    
     var body: some View {
         HStack {
             Button {
-                onMenu()
+                print("menu clicked")
             } label: {
                 Image(systemName: "line.3.horizontal")
-                    .headerIcon()
+                    .icon()
             }
             
             Spacer()

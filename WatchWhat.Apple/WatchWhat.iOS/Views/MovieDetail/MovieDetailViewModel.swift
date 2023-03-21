@@ -13,7 +13,7 @@ class MovieDetailViewModel: ObservableObject {
     @Published private(set) var trailers: [Video]? // fetched through videos
     @Published private(set) var recommendations: [Movie]?
     @Published private(set) var similar: [Movie]?
-    @Published private(set) var watchProviders: WatchProviders?
+    @Published private(set) var stream: [Provider]?
     @Published private(set) var webUrl: String?
     
     func openWebUrl(id: Int, providerName: String) {
@@ -98,7 +98,11 @@ class MovieDetailViewModel: ObservableObject {
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
-                self.watchProviders = WatchProviders(data: data.watchMovie.__data)
+                if let flatrate = data.watchMovie.flatrate {
+                    self.stream = flatrate.map {
+                        Provider(data: $0.__data)
+                    }
+                }
             }
         }
     }

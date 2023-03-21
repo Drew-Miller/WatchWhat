@@ -25,18 +25,3 @@ struct MovieListView: View {
         }
     }
 }
-
-
-struct MovieList_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack {
-            Background(topColor: .backgroundAccent, bottomColor: .background)
-            
-            HomeView() { view in
-                print("view changed")
-            }
-        }
-        .preferredColorScheme(.dark)
-        .environmentObject(ModelData())
-    }
-}

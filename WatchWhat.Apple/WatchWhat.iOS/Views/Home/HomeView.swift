@@ -8,58 +8,57 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var navigationData: NavigationData
     @StateObject var viewModel = HomeViewModel()
-    var selectedMovie: (Int) -> Void
         
     var body: some View {
         ZStack {
-            // Movies
             ScrollView {
-                LazyVStack(spacing: 24) {
-                    ForEach(viewModel.categories, id: \.self) { category in
-                        HStack {
-                            Text(category.title)
-                                .font(.header)
-                                .foregroundColor(.text)
-                            
-                            Spacer()
-                        }
-                        
-                        MovieListView(movies: category.movies) { movieId in
-                            selectedMovie(movieId)
-                        }
-                    }
-                }
-                .homePadding()
+                content
+                    .homePadding()
             }
             
-            // Controls
-            VStack {
-                Header {
-                    print("menu")
-                }
+            layout
+        }
+    }
+    
+    var content: some View {
+        // Movies
+        LazyVStack(alignment: .leading, spacing: 24) {
+            ForEach(viewModel.categories, id: \.self) { category in
+                Text(category.title)
+                    .font(.header)
+                    .foregroundColor(.text)
                 
-                Spacer()
+                MovieListView(movies: category.movies) { movieId in
+                    navigationData.movieSelected(movieId)
+                }
             }
-            
         }
         .onAppear {
             viewModel.loadData()
         }
     }
+    
+    var layout: some View {
+        VStack {
+            Header()
+            
+            Spacer()
+            
+            Footer(view: .home)
+                .environmentObject(navigationData)
+        }
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {
+    static let navigationData = NavigationData()
     static var previews: some View {
-        HomeView() { view in
-            print("view changed")
-        }
-        .environmentObject(ModelData())
-        
-        HomeView() { view in
-            print("view changed")
-        }
-        .preferredColorScheme(.dark)
-        .environmentObject(ModelData())
+        HomeView()
+            .environmentObject(navigationData)
+        HomeView()
+            .environmentObject(navigationData)
+            .preferredColorScheme(.dark)
     }
 }

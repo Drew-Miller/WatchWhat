@@ -8,68 +8,72 @@
 import SwiftUI
 
 struct Footer: View {
+    @EnvironmentObject var navigationData: NavigationData
     var view: AppView
-    var changeView: (AppView) -> Void
+    let spacing = 4.0
     
     var body: some View {
         HStack(alignment: .center) {
-            Footer_Icon(text: "Home", icon: view == .home ? "house.fill" : "house") {
-                changeView(.home)
+            VStack(spacing: spacing) {
+                button(.home, "house")
+                
+                Text("Home")
+                    .font(.xxs)
+                    .foregroundColor(.text)
             }
             
             Spacer()
             
-            Footer_Icon(text: "Movies", icon: view == .movies ? "film.fill" : "film") {
-                changeView(.movies)
+            VStack(spacing: spacing) {
+                button(.movies, "film")
+                
+                Text("Movies")
+                    .font(.xxs)
+                    .foregroundColor(.text)
             }
             
             Spacer()
             
-            Footer_Icon(text: "TV", icon: view == .tv ? "tv.fill" : "tv") {
-                changeView(.tv)
+            VStack(spacing: spacing) {
+                button(.tv, "tv")
+                
+                Text("TV")
+                    .font(.xxs)
+                    .foregroundColor(.text)
             }
             
             Spacer()
             
-            Footer_Icon(text: "Search", icon: view == .search ? "magnifyingglass" : "magnifyingglass") {
-                changeView(.search)
+            VStack(spacing: spacing) {
+                button(.search, "magnifyingglass")
+                
+                Text("Search")
+                    .font(.xxs)
+                    .foregroundColor(.text)
             }
         }
         .footer()
+    }
+    
+    func button(_ view: AppView, _ icon: String) -> some View {
+        return Button {
+            navigationData.setView(view)
+        } label: {
+            Image(systemName: icon)
+                .icon()
+        }
     }
 }
 
 
 struct Footer_Previews: PreviewProvider {
-    static var previews: some View {
-        Footer(view: .home) { view in
-            print("changed view")
-        }
-        .preferredColorScheme(.dark)
-    }
-}
-
-struct Footer_Icon: View {
-    let text: String
-    let icon: String
-    let onClick: () -> Void
+    static let navigationData = NavigationData()
     
-    var body: some View {
-        Button {
-            withAnimation {
-                onClick()
-            }
-        } label: {
-            VStack(spacing: 4) {
-                Image(systemName: icon)
-                    .font(.system(size: 22, weight: .thin))
-                    .foregroundColor(.text)
-                
-                Text(text)
-                    .font(.xxs)
-                    .foregroundColor(.text)
-            }
-        }
+    static var previews: some View {
+        Footer(view: .home)
+            .environmentObject(navigationData)
+        Footer(view: .home)
+            .environmentObject(navigationData)
+            .preferredColorScheme(.dark)
     }
 }
-

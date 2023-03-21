@@ -30,7 +30,7 @@ extension Font {
 }
 
 extension Image {
-    func headerIcon() -> some View {
+    func icon() -> some View {
         self.foregroundColor(.text).font(.system(size: 24, weight: .light, design: .default))
     }
     
