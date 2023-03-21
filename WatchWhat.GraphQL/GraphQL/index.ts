@@ -4,12 +4,16 @@ import { startServerAndCreateHandler } from "@as-integrations/azure-functions";
 import { MyContext, resolvers, typeDefs } from "../Shared/graphql";
 import { TmdbAPI, TmdbAPIOptions } from "../Shared/tmdb";
 import { WatchmodeAPI, WatchmodeAPIOptions } from "../Shared/watchmode";
+import { WatchWhatAPI, WatchWhatAPIOptions } from "../Shared/watchwhat";
 
 // TMDB Variables
 const { TMDB_BASE_URL, TMDB_API_VERSION, TMDB_API_KEY, TMDB_READ_ACCESS_TOKEN } = process.env;
 
 // Watchmode Variables
 const { WATCHMODE_BASE_URL, WATCHMODE_API_VERSION, WATCHMODE_API_KEY } = process.env;
+
+// WatchWhat Variables
+const { WATCHWHAT_BASE_URL } = process.env;
 
 // Apollo Server setup
 const server = new ApolloServer<MyContext>({
@@ -39,11 +43,16 @@ export default startServerAndCreateHandler(server, {
       apiVersion: WATCHMODE_API_VERSION,
       apiKey: WATCHMODE_API_KEY,
       cache
-    }
+    };
+
+    const watchWhatOptions: WatchWhatAPIOptions = {
+      baseURL: WATCHWHAT_BASE_URL
+    };
 
     const dataSources = {
       tmdbAPI: new TmdbAPI(tmdbOptions),
-      watchmodeAPI: new WatchmodeAPI(watchmodeOptions)
+      watchmodeAPI: new WatchmodeAPI(watchmodeOptions),
+      watchWhatAPI: new WatchWhatAPI(watchWhatOptions)
     };
 
     return { dataSources };

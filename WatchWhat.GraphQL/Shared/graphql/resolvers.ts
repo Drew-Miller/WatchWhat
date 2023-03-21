@@ -12,11 +12,15 @@ type MovieDetailsView = MovieDetails & {
 // The GraphQL schema
 const resolvers = {
   Query: {
-    hello: () => 'world',
     ping: () => 'pong',
 
+    health: async (_: any, __: any, { dataSources }: MyContext) => {
+      return dataSources.watchWhatAPI.health();
+    },
 
-    discover: async(_:any, __: any, { dataSources }: MyContext) => {
+    // TmdbAPI
+
+    discover: async (_:any, __: any, { dataSources }: MyContext) => {
       const promises = Promise.all([
         dataSources.tmdbAPI.popularMoviesGrouped(),
         dataSources.tmdbAPI.moviesByGenresGrouped()
@@ -28,8 +32,7 @@ const resolvers = {
       return home;
     },
 
-
-    popularMovies: async(_: any, req: { page: number }, { dataSources }: MyContext) => {
+    popularMovies: async (_: any, req: { page: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.popularMovies(req.page);
     },
 
@@ -50,11 +53,11 @@ const resolvers = {
     genres: async (_: any, __: any, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.genres();
     },
-    moviesByGenre: async(_: any, req: { genreIds: number[], page: number }, { dataSources }: MyContext) => {
+    moviesByGenre: async (_: any, req: { genreIds: number[], page: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.moviesByGenre(req.genreIds, req.page);
     },
 
-    movie: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
+    movie: async (_: any, req: { id: number }, { dataSources }: MyContext) => {
       const [ movie, releaseDates ] = await Promise.all([
         dataSources.tmdbAPI.movie(req.id),
         dataSources.tmdbAPI.releaseDates(req.id).then(releaseDates => {
@@ -70,22 +73,26 @@ const resolvers = {
 
       return result;
     },
-    credits: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
+    credits: async (_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.credits(req.id);
     },
-    videos: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
+    videos: async (_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.videos(req.id);
     },
-    similar: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
+    similar: async (_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.similar(req.id);
     },
-    recommendations: async(_: any, req: { id: number }, { dataSources }: MyContext) => {
+    recommendations: async (_: any, req: { id: number }, { dataSources }: MyContext) => {
       return dataSources.tmdbAPI.recommendations(req.id);
     },
 
-    webUrl: async(_: any, req: { tmdbId: number, titleType: "movie" | "tv", sourceName: string }, { dataSources }: MyContext) => {
+
+    // Watchmode API
+
+    webUrl: async (_: any, req: { tmdbId: number, titleType: "movie" | "tv", sourceName: string }, { dataSources }: MyContext) => {
       return dataSources.watchmodeAPI.webUrl(req.tmdbId, req.titleType, req.sourceName);
     },
+
   },
   // Mutation: {
   //   addBook: async (_: any, req: AddBook, { dataSources }: MyContext) => {
