@@ -13,7 +13,11 @@ export class WatchWhatAPI extends RESTDataSource {
     super(options);
 
     if (!options.baseURL) {
-      throw AppErrors.BASE_URL_FAILED;
+      throw AppErrors.BASE_URL_FAILED("WatchWhatAPI");
+    }
+
+    if (!options.functionKey) {
+      throw AppErrors.API_KEY_FAILED("WatchWhatAPI");
     }
 
     this.baseURL = options.baseURL;

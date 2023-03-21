@@ -21,15 +21,15 @@ export class TmdbAPI extends RESTDataSource {
     super(options);
 
     if (!options.baseURL) {
-      throw AppErrors.BASE_URL_FAILED;
+      throw AppErrors.BASE_URL_FAILED("TmdbAPI");
     }
 
     if (!options.apiKey) {
-      throw AppErrors.API_KEY_FAILED;
+      throw AppErrors.API_KEY_FAILED("TmdbAPI");
     }
 
     if (!options.readAccessToken) {
-      throw AppErrors.READ_ACCESS_TOKEN_FAILED;
+      throw AppErrors.READ_ACCESS_TOKEN_FAILED("TmdbAPI");
     }
 
     this.baseURL = options.baseURL;

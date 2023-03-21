@@ -13,23 +13,21 @@ export type WatchmodeAPIOptions = DataSourceConfig & {
 export class WatchmodeAPI extends RESTDataSource {
   private apiVersion: string;
   private apiKey: string;
-  private sessionId?: string;
 
   constructor(options: WatchmodeAPIOptions) {
     super(options);
 
     if (!options.baseURL) {
-      throw AppErrors.BASE_URL_FAILED;
+      throw AppErrors.BASE_URL_FAILED("WatchmodeAPI");
     }
 
     if (!options.apiKey) {
-      throw AppErrors.API_KEY_FAILED;
+      throw AppErrors.API_KEY_FAILED("WatchmodeAPI");
     }
 
     this.baseURL = options.baseURL;
     this.apiVersion = options.apiVersion;
     this.apiKey = encodeURIComponent(options.apiKey);
-    this.sessionId = options.sessionId;
   }
 
   async webUrl(titleId: number, titleType: "movie" | "tv", sourceName: string): Promise<String | null> {
