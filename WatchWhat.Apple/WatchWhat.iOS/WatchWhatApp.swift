@@ -16,11 +16,14 @@ struct WatchWhatApp: App {
         WindowGroup {
             ZStack {
                 if self.isActive {
-                    ContentView()
+                    AuthenticatedView {
+                        ContentView()
+                    }
                 } else {
                     SplashView()
                 }
             }
+            .preferredColorScheme(.dark)
             .onAppear {
                 // Sets the wait time, should be based on performance
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {

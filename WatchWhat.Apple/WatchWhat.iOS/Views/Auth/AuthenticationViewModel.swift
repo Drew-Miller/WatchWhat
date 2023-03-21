@@ -19,7 +19,6 @@ enum AuthenticationFlow {
     case signUp
 }
 
-@MainActor
 class AuthenticationViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
@@ -83,6 +82,7 @@ class AuthenticationViewModel: ObservableObject {
 }
 
 // MARK: - Email and Password Authentication
+@MainActor
 extension AuthenticationViewModel {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating

@@ -8,26 +8,31 @@
 import SwiftUI
 
 struct SplashView: View {
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         ZStack {
-            Background(topColor: .black, bottomColor: .black)
+            Background(topColor: .background, bottomColor: .background)
 
             VStack {
                 Spacer()
                 
-                Image("logo-white-no-background").brandLogo(size: 300)
+                if colorScheme == .dark {
+                    Image("logo-white-no-background").brandLogo(size: 300)
+                } else {
+                    Image("logo-color-no-background").brandLogo(size: 300)
+                }
                 
                 Spacer()
             }
-            
         }
-        .preferredColorScheme(.dark)
-        
     }
 }
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
         SplashView()
+        SplashView()
+            .preferredColorScheme(.dark)
     }
 }
