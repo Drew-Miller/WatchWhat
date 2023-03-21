@@ -13,7 +13,7 @@ const { TMDB_BASE_URL, TMDB_API_VERSION, TMDB_API_KEY, TMDB_READ_ACCESS_TOKEN } 
 const { WATCHMODE_BASE_URL, WATCHMODE_API_VERSION, WATCHMODE_API_KEY } = process.env;
 
 // WatchWhat Variables
-const { WATCHWHAT_BASE_URL } = process.env;
+const { WATCHWHAT_BASE_URL, WATCHWHAT_FUNCTION_KEY } = process.env;
 
 // Apollo Server setup
 const server = new ApolloServer<MyContext>({
@@ -46,7 +46,8 @@ export default startServerAndCreateHandler(server, {
     };
 
     const watchWhatOptions: WatchWhatAPIOptions = {
-      baseURL: WATCHWHAT_BASE_URL
+      baseURL: WATCHWHAT_BASE_URL,
+      functionKey: WATCHWHAT_FUNCTION_KEY
     };
 
     const dataSources = {
