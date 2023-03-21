@@ -10,23 +10,23 @@ import SwiftUI
 struct MovieDetailView: View {
     @Environment(\.openURL) private var openURL
     @EnvironmentObject var modelData: ModelData
-    @StateObject var movieData = MovieData()
+    @StateObject var viewModel = MovieDetailViewModel()
     let id: Int
     let onMovieSelected: (Int) -> Void
     
     var body: some View {
         ZStack() {
             // Link navigation
-            if !(movieData.webUrl ?? "").isEmpty {
+            if !(viewModel.webUrl ?? "").isEmpty {
                 Text("Navgating...")
                     .onAppear {
-                        openURL(URL(string: movieData.webUrl!)!)
+                        openURL(URL(string: viewModel.webUrl!)!)
                     }
             }
             
             // Content View
             ScrollView {
-                if let movie = movieData.movie {
+                if let movie = viewModel.movie {
                     MovieDetail_Poster(posterPath: movie.poster_path!)
                     
                     VStack(alignment: .leading, spacing: 28) {
@@ -45,9 +45,9 @@ struct MovieDetailView: View {
                                 .foregroundColor(.text)
                         }
                         
-                        if let watchProviders = movieData.watchProviders {
+                        if let watchProviders = viewModel.watchProviders {
                             MovieDetail_WatchProviders(watchProviders: watchProviders) { providerName in
-                                movieData.openWebUrl(id: modelData.movieId!, providerName: providerName)
+                                viewModel.openWebUrl(id: modelData.movieId!, providerName: providerName)
                             }
                         }
                         
@@ -57,7 +57,7 @@ struct MovieDetailView: View {
                         
                         HStack(spacing: 12.0) {
                             Button {
-                                if let trailers = movieData.trailers {
+                                if let trailers = viewModel.trailers {
                                     openURL(URL(string: "https://youtube.com/embed/\(trailers[0].key)")!)
                                 }
                             } label: {
@@ -75,7 +75,7 @@ struct MovieDetailView: View {
                         .font(.section)
                         .sectionPadding()
                         
-                        if let similar = movieData.similar {
+                        if let similar = viewModel.similar {
                             MovieListView(movies: similar) { movieId in
                                 self.onMovieSelected(movieId)
                             }
@@ -100,7 +100,7 @@ struct MovieDetailView: View {
             
         }
         .task(id: self.id) {
-            movieData.loadData(id: self.id, region: modelData.providerRegion)
+            viewModel.loadData(id: self.id, region: modelData.providerRegion)
         }
     }
     

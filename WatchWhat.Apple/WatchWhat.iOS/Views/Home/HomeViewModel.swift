@@ -7,9 +7,9 @@
 
 import Foundation
 
-class HomeData: ObservableObject {
+class HomeViewModel: ObservableObject {
     @Published private(set) var page: Int?
-    @Published private(set) var results: [MovieCategory] = [MovieCategory]()
+    @Published private(set) var categories: [MovieCategory] = [MovieCategory]()
 
     func loadData() {
         Task.init {
@@ -22,7 +22,7 @@ class HomeData: ObservableObject {
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {
-                self.results = data.discover.results.map {
+                self.categories = data.discover.results.map {
                     return MovieCategory(data: $0.__data)
                 }                
             }

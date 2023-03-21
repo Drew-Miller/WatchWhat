@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchData: ObservableObject {
+class SearchViewModel: ObservableObject {
     @Published private(set) var page: Int?
     @Published private(set) var totalPages: Int?
     @Published private(set) var totalResults: Int?

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MoviePosterView: View {
-    @ObservedObject var urlImageModel = UrlImageModel()
+    @StateObject var viewModel = UrlImageViewModel()
     let imageUrl: String?
     
     var body: some View {
         VStack {
-            if let image = urlImageModel.image {
+            if let image = viewModel.image {
                 poster(image: image)
             } else {
                 loading
@@ -44,7 +44,7 @@ struct MoviePosterView: View {
     
     private func load() {
         if let url = imageUrl {
-            urlImageModel.load(urlString: Configuration.imgUrlStr + url)
+            viewModel.load(urlString: Configuration.imgUrlStr + url)
         }
     }
 }

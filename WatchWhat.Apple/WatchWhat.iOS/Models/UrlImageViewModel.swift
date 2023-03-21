@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class UrlImageModel: ObservableObject {
+class UrlImageViewModel: ObservableObject {
     @Published var image: UIImage?
     var urlString: String?
     var imageCache = ImageCache.getImageCache()

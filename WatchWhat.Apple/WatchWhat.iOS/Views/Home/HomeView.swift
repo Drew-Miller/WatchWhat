@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var homeData = HomeData()
+    @StateObject var viewModel = HomeViewModel()
     var selectedMovie: (Int) -> Void
         
     var body: some View {
@@ -16,16 +16,16 @@ struct HomeView: View {
             // Movies
             ScrollView {
                 LazyVStack(spacing: 24) {
-                    ForEach(homeData.results, id: \.self) { result in
+                    ForEach(viewModel.categories, id: \.self) { category in
                         HStack {
-                            Text(result.title)
+                            Text(category.title)
                                 .font(.header)
                                 .foregroundColor(.text)
                             
                             Spacer()
                         }
                         
-                        MovieListView(movies: result.movies) { movieId in
+                        MovieListView(movies: category.movies) { movieId in
                             selectedMovie(movieId)
                         }
                     }
@@ -44,19 +44,20 @@ struct HomeView: View {
             
         }
         .onAppear {
-            homeData.loadData()
+            viewModel.loadData()
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            Background(topColor: .backgroundAccent, bottomColor: .background)
-            
-            HomeView() { view in
-                print("view changed")
-            }
+        HomeView() { view in
+            print("view changed")
+        }
+        .environmentObject(ModelData())
+        
+        HomeView() { view in
+            print("view changed")
         }
         .preferredColorScheme(.dark)
         .environmentObject(ModelData())

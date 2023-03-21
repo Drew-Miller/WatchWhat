@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovieData: ObservableObject {
+class MovieDetailViewModel: ObservableObject {
     @Published private(set) var movie: MovieDetails?
     // @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
     @Published private(set) var trailers: [Video]? // fetched through videos

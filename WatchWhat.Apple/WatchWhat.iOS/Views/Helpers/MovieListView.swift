@@ -16,10 +16,8 @@ struct MovieListView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 12) {
                     ForEach(movies, id: \.self) { movie in
-                        if let movie = movie {
-                            MovieView(movie: movie) { movieId in
-                                onTapGesture(movieId)
-                            }
+                        MovieView(movie: movie) { movieId in
+                            onTapGesture(movieId)
                         }
                     }
                 }
