@@ -16,9 +16,9 @@ struct MovieView: View {
             MoviePosterView(imageUrl: movie.poster_path)
             
             Text(movie.title)
-                .font(.xs)
+                .font(.caption)
                 .foregroundColor(.text)
-                .frame(height: 30)
+                .frame(height: 60)
                 .padding(.top, 6)
                 .lineLimit(nil)
                 .truncationMode(.tail)

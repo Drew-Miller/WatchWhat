@@ -15,26 +15,28 @@ struct SearchView: View {
     var body: some View {
         // Movies
         ZStack {
-            content
+            ScrollView {
+                content
+                    .headerPadding()
+                    .searchPadding()
+                    .footerPadding()
+            }
             
             layout
         }
     }
     
     var content: some View {
-        ScrollView {
-            LazyVStack(spacing: 0) {
-                ForEach(viewModel.results.chunked(into: 2), id: \.self) { rowItems in
-                    LazyHStack {
-                        ForEach(rowItems, id: \.self) { movie in
-                            MovieView(movie: movie) { movieId in
-                                navigationData.movieSelected(movieId)
-                            }
+        LazyVStack(spacing: 0) {
+            ForEach(viewModel.results.chunked(into: 2), id: \.self) { rowItems in
+                LazyHStack {
+                    ForEach(rowItems, id: \.self) { movie in
+                        MovieView(movie: movie) { movieId in
+                            navigationData.movieSelected(movieId)
                         }
                     }
                 }
             }
-            .searchPadding()
         }
         .task(id: searchValue) {
             if !searchValue.isEmpty {

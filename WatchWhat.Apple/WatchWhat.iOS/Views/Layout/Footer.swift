@@ -18,7 +18,7 @@ struct Footer: View {
                 button(.home, "house")
                 
                 Text("Home")
-                    .font(.xxs)
+                    .font(.footnote)
                     .foregroundColor(.text)
             }
             
@@ -28,7 +28,7 @@ struct Footer: View {
                 button(.movies, "film")
                 
                 Text("Movies")
-                    .font(.xxs)
+                    .font(.footnote)
                     .foregroundColor(.text)
             }
             
@@ -38,7 +38,7 @@ struct Footer: View {
                 button(.tv, "tv")
                 
                 Text("TV")
-                    .font(.xxs)
+                    .font(.footnote)
                     .foregroundColor(.text)
             }
             
@@ -48,7 +48,7 @@ struct Footer: View {
                 button(.search, "magnifyingglass")
                 
                 Text("Search")
-                    .font(.xxs)
+                    .font(.footnote)
                     .foregroundColor(.text)
             }
         }

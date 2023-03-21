@@ -30,13 +30,13 @@ struct SearchBarView: View {
     var body: some View {
         VStack {
             TextField(displayText, text: $text)
+                .frame(maxWidth: .infinity)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
-                .background(.background)
+                .background(Color.backgroundAccent)
                 .foregroundColor(.text)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                .frame(maxWidth: .infinity)
         }
         .padding(.horizontal, 20)
     }
@@ -48,7 +48,6 @@ struct SearchBarView_Previews: PreviewProvider {
     
     static var previews: some View {
         SearchBarView(text: $text)
-        
         SearchBarView(text: $text)
             .preferredColorScheme(.dark)
     }

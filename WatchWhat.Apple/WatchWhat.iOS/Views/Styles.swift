@@ -14,19 +14,10 @@ extension Color {
     static let accent = Color("Spring Green")
     
     static let text = Color("Text")
-    static let textBody = Color("Text").opacity(0.85)
     
     static let background = Color("Raisin Black")
     static let background2 = Color("Errie Black")
     static let backgroundAccent = Color("Licorice")
-}
-
-extension Font {
-    static let header = Font.title.bold()
-    static let section = Font.system(size: 16).bold()
-    static let paragraph = Font.system(size: 14)
-    static let xs = Font.system(size: 12)
-    static let xxs = Font.system(size: 8)
 }
 
 extension Image {
@@ -40,14 +31,6 @@ extension Image {
 }
 
 extension View {
-    func sectionPadding() -> some View {
-        self.padding(.top, 8).padding(.bottom, 4)
-    }
-    
-    func paragraph() -> some View {
-        self.font(.paragraph).lineSpacing(8)
-    }
-    
     func header() -> some View {
         self.padding(.horizontal, 20).padding(.top, 8)
     }
@@ -60,11 +43,15 @@ extension View {
             .frame(maxWidth: .infinity)
     }
     
-    func homePadding() -> some View {
-        self.padding(.bottom, 48).padding(.top, 64)
+    func headerPadding() -> some View {
+        self.padding(.top, 64)
     }
     
     func searchPadding() -> some View {
-        self.padding(.bottom, 48).padding(.top, 96)
+        self.padding(.top, 32)
+    }
+    
+    func footerPadding() -> some View {
+        self.padding(.bottom, 60)
     }
 }

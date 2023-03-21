@@ -15,7 +15,8 @@ struct HomeView: View {
         ZStack {
             ScrollView {
                 content
-                    .homePadding()
+                    .headerPadding()
+                    .footerPadding()
             }
             
             layout
@@ -27,7 +28,7 @@ struct HomeView: View {
         LazyVStack(alignment: .leading, spacing: 24) {
             ForEach(viewModel.categories, id: \.self) { category in
                 Text(category.title)
-                    .font(.header)
+                    .font(.title)
                     .foregroundColor(.text)
                 
                 MovieListView(movies: category.movies) { movieId in
