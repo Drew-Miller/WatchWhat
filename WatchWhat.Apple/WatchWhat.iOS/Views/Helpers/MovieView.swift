@@ -18,6 +18,7 @@ struct MovieView: View {
             Text(movie.title)
                 .font(.xs)
                 .foregroundColor(.text)
+                .frame(height: 30)
                 .padding(.top, 6)
                 .lineLimit(nil)
                 .truncationMode(.tail)

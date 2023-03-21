@@ -12,7 +12,7 @@ struct MovieListView: View {
     let onTapGesture: (Int) -> Void
 
     var body: some View {
-        VStack(alignment: .leading) {            
+        VStack(alignment: .leading) {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 12) {
                     ForEach(movies, id: \.self) { movie in
