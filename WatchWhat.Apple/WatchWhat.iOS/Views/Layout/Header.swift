@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Header: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appData: AppData
     
     var body: some View {
@@ -21,7 +22,11 @@ struct Header: View {
             
             Spacer()
             
-            Image("logo-white-no-background").brandLogo(size: 160)
+            if colorScheme == .dark {
+                Image("logo-white-no-background").brandLogo(size: 140)
+            } else {
+                Image("logo-color-no-background").brandLogo(size: 140)
+            }
 
             Spacer()
             

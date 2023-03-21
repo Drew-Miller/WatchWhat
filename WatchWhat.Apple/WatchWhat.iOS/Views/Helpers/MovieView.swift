@@ -16,9 +16,9 @@ struct MovieView: View {
             MoviePosterView(imageUrl: movie.poster_path)
             
             Text(movie.title)
-                .font(.caption)
+                .font(.body)
                 .foregroundColor(.text)
-                .frame(height: 60)
+                .frame(height: 40)
                 .padding(.top, 6)
                 .lineLimit(nil)
                 .truncationMode(.tail)
@@ -28,6 +28,6 @@ struct MovieView: View {
         .onTapGesture {
             onTapGesture(movie.id)
         }
-        .frame(width: 192)
+        .frame(width: 224)
     }
 }

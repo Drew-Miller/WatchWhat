@@ -78,7 +78,7 @@ struct MovieDetailView: View {
             }
             
             Text(movie.overview)
-                .font(.subheadline)
+                .font(.body)
                 .foregroundColor(.text)
                 .lineSpacing(8)
                 .padding(.vertical, 16)

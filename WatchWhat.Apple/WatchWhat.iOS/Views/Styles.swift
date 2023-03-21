@@ -30,6 +30,10 @@ extension Image {
     }
 }
 
+extension Font {
+    static let body = Font.system(size: 14)
+}
+
 extension View {
     func header() -> some View {
         self.padding(.horizontal, 20).padding(.top, 8)
