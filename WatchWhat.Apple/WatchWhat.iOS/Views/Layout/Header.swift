@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct Header: View {    
+struct Header: View {
+    @EnvironmentObject var appData: AppData
+    
     var body: some View {
         HStack {
             Button {
@@ -24,7 +26,7 @@ struct Header: View {
             Spacer()
             
             UserIcon(fill: .primary, initials: "D", view: .small) {
-                print("User Tapped")
+                appData.presentingProfileScreen.toggle()
             }
         }
         .header()

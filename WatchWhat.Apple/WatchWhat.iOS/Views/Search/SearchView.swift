@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @EnvironmentObject var navigationData: NavigationData
+    @EnvironmentObject var appData: AppData
     @Binding var searchValue: String
     @StateObject var viewModel = SearchViewModel()
         
@@ -32,7 +32,7 @@ struct SearchView: View {
                 LazyHStack {
                     ForEach(rowItems, id: \.self) { movie in
                         MovieView(movie: movie) { movieId in
-                            navigationData.movieSelected(movieId)
+                            appData.movieSelected(movieId)
                         }
                     }
                 }
@@ -49,6 +49,7 @@ struct SearchView: View {
         VStack {
             Header()
                 .transition(.move(edge: .top))
+                .environmentObject(appData)
             SearchBarView(text: $searchValue)
                 .transition(.move(edge: .top))
             
@@ -61,14 +62,14 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
-    static let navigationData = NavigationData()
+    static let appData = AppData()
     @State static var searchValue = "The Dark Knight"
     
     static var previews: some View {
         SearchView(searchValue: $searchValue)
-            .environmentObject(navigationData)
+            .environmentObject(appData)
         SearchView(searchValue: $searchValue)
-            .environmentObject(navigationData)
+            .environmentObject(appData)
             .preferredColorScheme(.dark)
     }
 }

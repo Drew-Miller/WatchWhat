@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MovieDetailView: View {
     @Environment(\.openURL) private var openURL
-    @EnvironmentObject var navigationData: NavigationData
+    @EnvironmentObject var appData: AppData
     @StateObject var viewModel = MovieDetailViewModel()
     let id: Int
     var movie: MovieDetails {
@@ -105,7 +105,7 @@ struct MovieDetailView: View {
             
             if let similar = viewModel.similar {
                 MovieListView(movies: similar) { movieId in
-                    navigationData.movieSelected(movieId)
+                    appData.movieSelected(movieId)
                 }
             }
         }
@@ -116,7 +116,7 @@ struct MovieDetailView: View {
         VStack {
             HStack {
                 Button {
-                    navigationData.navigatePrevious()
+                    appData.navigatePrevious()
                 } label: {
                     Image(systemName: "chevron.left")
                         .icon()
@@ -137,13 +137,13 @@ struct MovieDetailView: View {
 }
 
 struct MovieDetailView_Previews: PreviewProvider {
-    static let navigationData = NavigationData()
+    static let appData = AppData()
     
     static var previews: some View {
         MovieDetailView(id: 315162)
-            .environmentObject(navigationData)
+            .environmentObject(appData)
         MovieDetailView(id: 315162)
-            .environmentObject(navigationData)
+            .environmentObject(appData)
             .preferredColorScheme(.dark)
     }
 }

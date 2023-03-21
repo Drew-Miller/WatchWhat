@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var navigationData = NavigationData()
+    @EnvironmentObject var authModel: AuthenticationViewModel
+    @StateObject var appData = AppData()
     @State var searchValue = ""
     var movieId: Int? {
-        return navigationData.movieId
+        return appData.movieId
     }
     
     var body: some View {
@@ -20,33 +21,39 @@ struct ContentView: View {
             
             // Views
             Group {
-                switch navigationData.view {
+                switch appData.view {
                 case .home:
                     HomeView()
-                        .environmentObject(navigationData)
+                        .environmentObject(appData)
                 case .search:
                     SearchView(searchValue: $searchValue)
-                        .environmentObject(navigationData)
+                        .environmentObject(appData)
                 case .movieDetails:
-                    if let movieId = navigationData.movieId  {
+                    if let movieId = appData.movieId  {
                         MovieDetailView(id: movieId)
-                            .environmentObject(navigationData)
+                            .environmentObject(appData)
                             .transition(.move(edge: .trailing))
                     } else {
                         Text("Returning...")
                             .onAppear {
-                                navigationData.navigatePrevious()
+                                appData.navigatePrevious()
                             }
                     }
                 default:
                     Text("Returning...")
                         .onAppear {
-                            navigationData.navigatePrevious()
+                            appData.navigatePrevious()
                         }
                 }
             }
         }
-            .preferredColorScheme(.dark)
+        .preferredColorScheme(.dark)
+        .sheet(isPresented: $appData.presentingProfileScreen) {
+            NavigationView {
+                UserProfileView()
+                    .environmentObject(authModel)
+            }
+        }
     }
 }
 

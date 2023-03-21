@@ -15,7 +15,8 @@ enum AppView: Int {
     case movieDetails   = 4
 }
 
-class NavigationData: ObservableObject {
+class AppData: ObservableObject {
+    @Published var presentingProfileScreen = false
     @Published private(set) var view: AppView
     @Published private(set) var previousView: AppView
     @Published private(set) var movieIds: [Int] = [Int]()

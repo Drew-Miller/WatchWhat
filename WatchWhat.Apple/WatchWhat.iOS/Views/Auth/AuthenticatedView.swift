@@ -18,7 +18,6 @@ extension AuthenticatedView where Unauthenticated == EmptyView {
 struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Unauthenticated: View {
     @StateObject private var viewModel = AuthenticationViewModel()
     @State private var presentingLoginScreen = false
-    @State private var presentingProfileScreen = false
     
     var unauthenticated: Unauthenticated?
     @ViewBuilder var content: () -> Content
@@ -58,16 +57,7 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
         case .authenticated:
             VStack {
                 content()
-                Text("You're logged in as \(viewModel.displayName).")
-                Button("Tap here to view your profile") {
-                    presentingProfileScreen.toggle()
-                }
-            }
-            .sheet(isPresented: $presentingProfileScreen) {
-                NavigationView {
-                    UserProfileView()
-                        .environmentObject(viewModel)
-                }
+                    .environmentObject(viewModel)
             }
         }
     }

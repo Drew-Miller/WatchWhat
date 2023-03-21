@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Footer: View {
-    @EnvironmentObject var navigationData: NavigationData
+    @EnvironmentObject var appData: AppData
     var view: AppView
     let spacing = 4.0
     
@@ -57,7 +57,7 @@ struct Footer: View {
     
     func button(_ view: AppView, _ icon: String) -> some View {
         return Button {
-            navigationData.setView(view)
+            appData.setView(view)
         } label: {
             Image(systemName: icon)
                 .icon()
@@ -67,13 +67,13 @@ struct Footer: View {
 
 
 struct Footer_Previews: PreviewProvider {
-    static let navigationData = NavigationData()
+    static let appData = AppData()
     
     static var previews: some View {
         Footer(view: .home)
-            .environmentObject(navigationData)
+            .environmentObject(appData)
         Footer(view: .home)
-            .environmentObject(navigationData)
+            .environmentObject(appData)
             .preferredColorScheme(.dark)
     }
 }

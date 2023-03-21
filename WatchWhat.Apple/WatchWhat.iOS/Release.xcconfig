@@ -12,3 +12,4 @@ SIMPLE_SLASH=/
 
 BASE_URL=https:$(SIMPLE_SLASH)/watchwhat.azurewebsites.net
 EMULATOR=""
+PORT=""

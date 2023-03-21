@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var navigationData: NavigationData
+    @EnvironmentObject var appData: AppData
     @StateObject var viewModel = HomeViewModel()
-        
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -32,7 +32,7 @@ struct HomeView: View {
                     .foregroundColor(.text)
                 
                 MovieListView(movies: category.movies) { movieId in
-                    navigationData.movieSelected(movieId)
+                    appData.movieSelected(movieId)
                 }
             }
         }
@@ -44,22 +44,23 @@ struct HomeView: View {
     var layout: some View {
         VStack {
             Header()
+                .environmentObject(appData)
             
             Spacer()
             
             Footer(view: .home)
-                .environmentObject(navigationData)
+                .environmentObject(appData)
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
-    static let navigationData = NavigationData()
+    static let appData = AppData()
     static var previews: some View {
         HomeView()
-            .environmentObject(navigationData)
+            .environmentObject(appData)
         HomeView()
-            .environmentObject(navigationData)
+            .environmentObject(appData)
             .preferredColorScheme(.dark)
     }
 }
