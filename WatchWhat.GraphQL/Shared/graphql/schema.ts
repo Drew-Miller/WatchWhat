@@ -5,7 +5,7 @@ type Query {
 
   health: String!
 
-  authenticated(idToken: String!): String!
+  authenticated: String!
 
   #### Calls ####
 

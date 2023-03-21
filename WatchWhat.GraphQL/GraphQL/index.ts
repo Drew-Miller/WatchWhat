@@ -28,7 +28,7 @@ export default startServerAndCreateHandler(server, {
     const { cache } = server;
     const { req, res } = args.context;
 
-    const idToken = req.headers.authentication;
+    const idToken = req.headers['id-token'];
     const sessionId = req.headers.sessionId;
 
     const tmdbOptions: TmdbAPIOptions = {
