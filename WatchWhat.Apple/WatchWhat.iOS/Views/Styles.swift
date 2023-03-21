@@ -26,7 +26,7 @@ extension Image {
     }
     
     func brandLogo(size: CGFloat) -> some View {
-        self.resizable().frame(width: size, height: size / 10)
+        self.resizable().frame(width: size, height: size / 10 * (14 / 12))
     }
 }
 

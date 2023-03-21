@@ -20,6 +20,18 @@ struct MovieDetailView: View {
         ZStack() {
             if viewModel.movie != nil {
                 ScrollView {
+                    MoviePosterView(imageUrl: movie.poster_path)
+                        .mask(
+                            LinearGradient(
+                                gradient: Gradient(stops: [
+                                    .init(color: .background, location: 0.75),
+                                    .init(color: Color.clear, location: 1)
+                                ]),
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                    
                     content
                 }
                     .edgesIgnoringSafeArea(.all)
@@ -40,18 +52,6 @@ struct MovieDetailView: View {
     var content: some View {
         // Content View
         VStack(alignment: .leading) {
-            MoviePosterView(imageUrl: movie.poster_path)
-                .mask(
-                    LinearGradient(
-                        gradient: Gradient(stops: [
-                            .init(color: .background, location: 0.75),
-                            .init(color: Color.clear, location: 1)
-                        ]),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-            
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 16.0) {
                     Text("\(movie.runtime / 60) HR \(movie.runtime % 60) MIN")
@@ -81,7 +81,7 @@ struct MovieDetailView: View {
                 .font(.subheadline)
                 .foregroundColor(.text)
                 .lineSpacing(8)
-                .padding(.top, 12)
+                .padding(.vertical, 16)
             
             Button {
                 if let trailers = viewModel.trailers {
@@ -94,14 +94,14 @@ struct MovieDetailView: View {
             }
                 .font(.headline)
                 .foregroundColor(.text)
-                .padding(.vertical, 12)
+                .padding(.vertical, 8)
 
             HStack {
                 Text("More Like This")
             }
                 .font(.headline)
                 .foregroundColor(.text)
-                .padding(.vertical, 12)
+                .padding(.vertical, 16)
             
             if let similar = viewModel.similar {
                 MovieListView(movies: similar) { movieId in
@@ -109,6 +109,7 @@ struct MovieDetailView: View {
                 }
             }
         }
+            .padding(.horizontal, 8)
     }
     
     var layout: some View {
