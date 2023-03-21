@@ -17,7 +17,7 @@ export class WatchWhatAPI extends RESTDataSource {
   }
 
   async health(): Promise<string> {
-    const data = await this.get<string>(`/api/health`);
+    const data = await this.get(`/api/health`);
     const results = data;
     return results;
   }
