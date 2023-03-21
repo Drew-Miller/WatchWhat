@@ -34,7 +34,7 @@ struct MovieDetailView: View {
                     
                     content
                 }
-                    .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.all)
             }
             
             layout
@@ -59,8 +59,8 @@ struct MovieDetailView: View {
                     Text("\(getReleaseYear(date: movie.release_date))")
                     Text("\(String(format: "%0.1f", movie.vote_average))")
                 }
-                    .font(.caption)
-                    .foregroundColor(.text)
+                .font(.caption)
+                .foregroundColor(.text)
                 
                 Text("\(movie.title)")
                     .font(.title)
@@ -92,16 +92,16 @@ struct MovieDetailView: View {
                 Text("TRAILER")
                     .monospaced()
             }
-                .font(.headline)
-                .foregroundColor(.text)
-                .padding(.vertical, 8)
-
+            .font(.headline)
+            .foregroundColor(.text)
+            .padding(.vertical, 8)
+            
             HStack {
                 Text("More Like This")
             }
-                .font(.headline)
-                .foregroundColor(.text)
-                .padding(.vertical, 16)
+            .font(.headline)
+            .foregroundColor(.text)
+            .padding(.vertical, 16)
             
             if let similar = viewModel.similar {
                 MovieListView(movies: similar) { movieId in
@@ -109,7 +109,7 @@ struct MovieDetailView: View {
                 }
             }
         }
-            .padding(.horizontal, 8)
+        .padding(.horizontal, 8)
     }
     
     var layout: some View {
@@ -127,8 +127,8 @@ struct MovieDetailView: View {
             
             Spacer()
         }
-            .header()
-            .transition(.move(edge: .top))
+        .header()
+        .transition(.move(edge: .top))
     }
     
     func getReleaseYear(date: String) -> String {

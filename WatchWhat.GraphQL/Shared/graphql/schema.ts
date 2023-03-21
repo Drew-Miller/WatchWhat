@@ -1,9 +1,11 @@
 export const typeDefs = `#graphql
 
 type Query {
-  ping: String
+  ping: String!
 
-  health: String
+  health: String!
+
+  authenticated(idToken: String!): String!
 
   #### Calls ####
 

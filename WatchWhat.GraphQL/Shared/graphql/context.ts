@@ -3,7 +3,7 @@ import { WatchmodeAPI } from "../watchmode";
 import { WatchWhatAPI } from "../watchwhat";
 
 type MyContext = {
-  // Context typing
+  idToken?: string,
   dataSources: {
     tmdbAPI: TmdbAPI,
     watchmodeAPI: WatchmodeAPI,

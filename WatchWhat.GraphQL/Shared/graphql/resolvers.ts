@@ -18,6 +18,10 @@ const resolvers = {
       return dataSources.watchWhatAPI.health();
     },
 
+    authenticated: async (_: any, __: any, { dataSources }: MyContext) => {
+      return dataSources.watchWhatAPI.authenticated();
+    },
+
     // TmdbAPI
 
     discover: async (_:any, __: any, { dataSources }: MyContext) => {

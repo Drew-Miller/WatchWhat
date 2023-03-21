@@ -28,6 +28,7 @@ export default startServerAndCreateHandler(server, {
     const { cache } = server;
     const { req, res } = args.context;
 
+    const idToken = req.headers.authentication;
     const sessionId = req.headers.sessionId;
 
     const tmdbOptions: TmdbAPIOptions = {
@@ -47,15 +48,16 @@ export default startServerAndCreateHandler(server, {
 
     const watchWhatOptions: WatchWhatAPIOptions = {
       baseURL: WATCHWHAT_BASE_URL,
-      functionKey: WATCHWHAT_FUNCTION_KEY
+      functionKey: WATCHWHAT_FUNCTION_KEY,
+      idToken
     };
 
-    const dataSources = {
-      tmdbAPI: new TmdbAPI(tmdbOptions),
-      watchmodeAPI: new WatchmodeAPI(watchmodeOptions),
-      watchWhatAPI: new WatchWhatAPI(watchWhatOptions)
+    return {
+      dataSources: {
+        tmdbAPI: new TmdbAPI(tmdbOptions),
+        watchmodeAPI: new WatchmodeAPI(watchmodeOptions),
+        watchWhatAPI: new WatchWhatAPI(watchWhatOptions)
+      }
     };
-
-    return { dataSources };
   }
 });

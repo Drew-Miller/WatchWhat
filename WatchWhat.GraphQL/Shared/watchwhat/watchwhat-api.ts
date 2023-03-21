@@ -3,11 +3,13 @@ import { AppErrors } from "../errors";
 
 export type WatchWhatAPIOptions = DataSourceConfig & {
   baseURL: string,
-  functionKey: string
+  functionKey: string,
+  idToken?: string
 };
 
 export class WatchWhatAPI extends RESTDataSource {
   functionKey: string;
+  idToken?: string;
 
   constructor(options: WatchWhatAPIOptions) {
     super(options);
@@ -22,15 +24,21 @@ export class WatchWhatAPI extends RESTDataSource {
 
     this.baseURL = options.baseURL;
     this.functionKey = options.functionKey;
+    this.idToken = options.idToken;
   }
 
   async health(): Promise<string> {
-    const data = await this.get(`/api/health`);
-    const results = data;
-    return results;
+    const data = await this.get<string>(`/api/health`);
+    return data;
+  }
+
+  async authenticated(): Promise<string> {
+    const data = await this.post<string>(`/api/authenticated`);
+    return data;
   }
 
   override willSendRequest(_path: string, request: AugmentedRequest) {
     request.headers['x-functions-key'] = this.functionKey;
+    request.headers['id-token'] = this.idToken;
   }
 }

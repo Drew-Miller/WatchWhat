@@ -19,6 +19,7 @@ enum AuthenticationFlow {
     case signUp
 }
 
+@MainActor
 class AuthenticationViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
@@ -30,6 +31,8 @@ class AuthenticationViewModel: ObservableObject {
     @Published var authenticationState: AuthenticationState = .unauthenticated
     @Published var errorMessage = ""
     @Published var user: User?
+    @Published var idToken: String?
+
     @Published var displayName = ""
     
     init() {
@@ -53,6 +56,21 @@ class AuthenticationViewModel: ObservableObject {
                 self.user = user
                 self.authenticationState = user == nil ? .unauthenticated : .authenticated
                 self.displayName = user?.email ?? ""
+                
+                guard let user = user else {
+                    return
+                }
+                
+                user.getIDTokenForcingRefresh(true) { idToken, error in
+                    if let error = error {
+                        // Handle error
+                        print(error.localizedDescription)
+                        self.idToken = nil
+                        return;
+                    }
+                    
+                    self.idToken = idToken
+                }
             }
         }
     }
@@ -82,13 +100,11 @@ class AuthenticationViewModel: ObservableObject {
 }
 
 // MARK: - Email and Password Authentication
-@MainActor
 extension AuthenticationViewModel {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do {
-            let authResult = try await Auth.auth().signIn(withEmail: self.email, password: self.password)
-            onSignIn(authResult: authResult)
+            try await Auth.auth().signIn(withEmail: self.email, password: self.password)
             return true
         }
         catch  {
@@ -132,13 +148,5 @@ extension AuthenticationViewModel {
             errorMessage = error.localizedDescription
             return false
         }
-    }
-    
-    func onSignIn(authResult: AuthDataResult) {
-        let user = authResult.user
-        print("User \(user.uid) signed in.")
-        self.user = user
-        self.displayName = user.displayName ?? "(unkown)"
-        self.authenticationState = .authenticated
     }
 }
