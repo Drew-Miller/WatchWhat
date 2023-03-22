@@ -7,9 +7,23 @@
 
 import SwiftUI
 
+@MainActor
+class ContentModel: ObservableObject {
+    @Published var authenticated = ""
+    
+    func load(idToken: String) async {
+        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.AuthenticatedQuery()) { result in
+            guard let data = try? result.get().data else { return }
+            self.authenticated = data.authenticated
+            print(self.authenticated)
+        }
+    }
+}
+
 struct ContentView: View {
-    @EnvironmentObject var authModel: AuthenticationViewModel
+    @StateObject var authModel = Authentication.shared
     @StateObject var appData = AppData()
+    @StateObject var contentModel = ContentModel()
     @State var searchValue = ""
     var movieId: Int? {
         return appData.movieId
@@ -52,6 +66,13 @@ struct ContentView: View {
             NavigationView {
                 UserProfileView()
                     .environmentObject(authModel)
+            }
+        }
+        .task(id: authModel.idToken) {
+            if let idToken = authModel.idToken {
+                Task {
+                    await contentModel.load(idToken: idToken)
+                }
             }
         }
     }

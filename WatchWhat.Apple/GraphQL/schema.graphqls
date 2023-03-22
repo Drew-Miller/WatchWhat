@@ -1,6 +1,7 @@
 type Query {
-  hello: String
-  ping: String
+  ping: String!
+  health: String!
+  authenticated: String!
   discover: Discover!
   webUrl(tmdbId: Int!, titleType: String, sourceName: String!): String!
   regions: [Region!]!

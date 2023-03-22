@@ -20,7 +20,9 @@ enum AuthenticationFlow {
 }
 
 @MainActor
-class AuthenticationViewModel: ObservableObject {
+class Authentication: ObservableObject {
+    static let shared = Authentication()
+    
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -35,7 +37,7 @@ class AuthenticationViewModel: ObservableObject {
 
     @Published var displayName = ""
     
-    init() {
+    private init() {
         registerAuthStateHandler()
         
         $flow
@@ -101,7 +103,7 @@ class AuthenticationViewModel: ObservableObject {
 }
 
 // MARK: - Email and Password Authentication
-extension AuthenticationViewModel {
+extension Authentication {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do {

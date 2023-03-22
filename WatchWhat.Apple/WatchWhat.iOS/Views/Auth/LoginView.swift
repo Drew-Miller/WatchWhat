@@ -16,7 +16,7 @@ private enum FocusableField: Hashable {
 }
 
 struct LoginView: View {
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @StateObject var viewModel = Authentication.shared
     @Environment(\.dismiss) var dismiss
     
     @FocusState private var focus: FocusableField?
@@ -121,6 +121,5 @@ struct LoginView_Previews: PreviewProvider {
             LoginView()
                 .preferredColorScheme(.dark)
         }
-        .environmentObject(AuthenticationViewModel())
     }
 }

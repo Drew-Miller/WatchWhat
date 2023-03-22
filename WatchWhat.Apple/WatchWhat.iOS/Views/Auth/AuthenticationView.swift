@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @EnvironmentObject var viewModel: AuthenticationViewModel
+    @StateObject var viewModel = Authentication.shared
     
     var body: some View {
         VStack {
@@ -27,9 +27,7 @@ struct AuthenticationView: View {
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
         AuthenticationView()
-            .environmentObject(AuthenticationViewModel())
         AuthenticationView()
-            .environmentObject(AuthenticationViewModel())
             .preferredColorScheme(.dark)
     }
 }
