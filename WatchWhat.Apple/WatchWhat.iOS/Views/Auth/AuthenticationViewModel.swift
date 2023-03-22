@@ -61,10 +61,11 @@ class AuthenticationViewModel: ObservableObject {
                     return
                 }
                 
+                
                 user.getIDTokenForcingRefresh(true) { idToken, error in
                     if let error = error {
                         // Handle error
-                        print(error.localizedDescription)
+                        self.errorMessage = error.localizedDescription
                         self.idToken = nil
                         return;
                     }
