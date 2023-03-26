@@ -11,8 +11,8 @@ import SwiftUI
 import FirebaseAnalyticsSwift
 
 struct UserProfileView: View {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = Authentication.shared
     @State var presentingConfirmationDialog = false
     
     private func deleteAccount() {

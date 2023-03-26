@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct AuthenticationView: View {
-    @StateObject var viewModel = Authentication.shared
-    
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+
     var body: some View {
         VStack {
             switch viewModel.flow {

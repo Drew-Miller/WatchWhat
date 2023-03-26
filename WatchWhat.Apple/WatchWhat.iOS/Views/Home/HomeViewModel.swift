@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
     }
 
     private func fetchData() async {
-        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
+        Apollo.client.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {

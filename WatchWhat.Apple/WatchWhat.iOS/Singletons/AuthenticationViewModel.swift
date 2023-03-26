@@ -20,9 +20,7 @@ enum AuthenticationFlow {
 }
 
 @MainActor
-class Authentication: ObservableObject {
-    static let shared = Authentication()
-    
+class AuthenticationViewModel: ObservableObject {    
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -37,8 +35,33 @@ class Authentication: ObservableObject {
 
     @Published var displayName = ""
     
-    private init() {
+    init() {
         registerAuthStateHandler()
+        
+        $errorMessage.sink { message in
+            print(message)
+        }
+        
+        $user
+            .filter {
+                $0 != nil
+            }
+            .map { user in
+                guard let user = user else {
+                    return
+                }
+                
+                user.getIDTokenForcingRefresh(true) { idToken, error in
+                    if let error = error {
+                        // Handle error
+                        self.errorMessage = "Error getting token: \(error.localizedDescription)"
+                        self.idToken = nil
+                        return;
+                    }
+                    
+                    self.idToken = idToken
+                }
+            }
         
         $flow
             .combineLatest($email, $password, $confirmPassword)
@@ -50,30 +73,14 @@ class Authentication: ObservableObject {
             .assign(to: &$isValid)
     }
     
-    private var authStateHandler: AuthStateDidChangeListenerHandle?
+    private static var authStateHandler: AuthStateDidChangeListenerHandle?
     
     func registerAuthStateHandler() {
-        if authStateHandler == nil {
-            authStateHandler = Auth.auth().addStateDidChangeListener { auth, user in
+        if AuthenticationViewModel.authStateHandler == nil {
+            AuthenticationViewModel.authStateHandler = Auth.auth().addStateDidChangeListener { auth, user in
                 self.user = user
                 self.authenticationState = user == nil ? .unauthenticated : .authenticated
                 self.displayName = user?.email ?? ""
-                
-                guard let user = user else {
-                    return
-                }
-                
-                
-                user.getIDTokenForcingRefresh(true) { idToken, error in
-                    if let error = error {
-                        // Handle error
-                        self.errorMessage = error.localizedDescription
-                        self.idToken = nil
-                        return;
-                    }
-                    
-                    self.idToken = idToken
-                }
             }
         }
     }
@@ -103,7 +110,7 @@ class Authentication: ObservableObject {
 }
 
 // MARK: - Email and Password Authentication
-extension Authentication {
+extension AuthenticationViewModel {
     func signInWithEmailPassword() async -> Bool {
         authenticationState = .authenticating
         do {
@@ -125,7 +132,6 @@ extension Authentication {
             return true
         }
         catch {
-            print(error)
             errorMessage = error.localizedDescription
             authenticationState = .unauthenticated
             return false

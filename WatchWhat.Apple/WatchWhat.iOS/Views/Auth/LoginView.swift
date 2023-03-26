@@ -16,7 +16,7 @@ private enum FocusableField: Hashable {
 }
 
 struct LoginView: View {
-    @StateObject var viewModel = Authentication.shared
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
     
     @FocusState private var focus: FocusableField?

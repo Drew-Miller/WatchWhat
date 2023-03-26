@@ -12,7 +12,7 @@ class ContentModel: ObservableObject {
     @Published var authenticated = ""
     
     func load(idToken: String) async {
-        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.AuthenticatedQuery()) { result in
+        Apollo.client.fetch(query: WatchWhatSchema.AuthenticatedQuery()) { result in
             guard let data = try? result.get().data else { return }
             self.authenticated = data.authenticated
             print(self.authenticated)
@@ -21,7 +21,7 @@ class ContentModel: ObservableObject {
 }
 
 struct ContentView: View {
-    @StateObject var authModel = Authentication.shared
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @StateObject var appData = AppData()
     @StateObject var contentModel = ContentModel()
     @State var searchValue = ""
@@ -65,11 +65,11 @@ struct ContentView: View {
         .sheet(isPresented: $appData.presentingProfileScreen) {
             NavigationView {
                 UserProfileView()
-                    .environmentObject(authModel)
+                    .environmentObject(viewModel)
             }
         }
-        .task(id: authModel.idToken) {
-            if let idToken = authModel.idToken {
+        .task(id: viewModel.idToken) {
+            if let idToken = viewModel.idToken {
                 Task {
                     await contentModel.load(idToken: idToken)
                 }

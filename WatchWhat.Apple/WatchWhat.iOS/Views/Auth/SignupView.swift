@@ -16,9 +16,8 @@ private enum FocusableField: Hashable {
 }
 
 struct SignupView: View {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel = Authentication.shared
-    
     @FocusState private var focus: FocusableField?
     
     private func signUpWithEmailPassword() {

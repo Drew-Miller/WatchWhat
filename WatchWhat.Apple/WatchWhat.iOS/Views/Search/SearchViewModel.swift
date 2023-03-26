@@ -22,7 +22,7 @@ class SearchViewModel: ObservableObject {
     private func fetchData(query: String, page: Int) async {
         let pageNullable = GraphQLNullable<Int>(integerLiteral: page)
         
-        WatchWhat.apolloClient.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
+        Apollo.client.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
             guard let data = try? result.get().data else { return }
                         
             DispatchQueue.main.async {

@@ -25,7 +25,7 @@
 		5687D20A29C8210400383AB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5687D20929C8210400383AB4 /* GoogleService-Info.plist */; };
 		5687D20F29C82C5900383AB4 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D20E29C82C5900383AB4 /* AuthenticatedView.swift */; };
 		5687D21129C82C6600383AB4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21029C82C6600383AB4 /* AuthenticationView.swift */; };
-		5687D21329C82C7400383AB4 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21229C82C7400383AB4 /* Authentication.swift */; };
+		5687D21329C82C7400383AB4 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21229C82C7400383AB4 /* AuthenticationViewModel.swift */; };
 		5687D21529C82C8000383AB4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21429C82C8000383AB4 /* LoginView.swift */; };
 		5687D21729C82C8800383AB4 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21629C82C8800383AB4 /* SignupView.swift */; };
 		5687D21929C82C9100383AB4 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21829C82C9100383AB4 /* UserProfileView.swift */; };
@@ -40,7 +40,7 @@
 		569F74F429C7DA6C00D25EA4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F329C7DA6C00D25EA4 /* FirebaseMessaging */; };
 		569F74F629C8089800D25EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F74F529C8089800D25EA4 /* AppDelegate.swift */; };
 		569F74F929C814DF00D25EA4 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F829C814DF00D25EA4 /* FirebaseAnalyticsSwift */; };
-		56C233F529B96B660010A733 /* WatchWhat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* WatchWhat.swift */; };
+		56C233F529B96B660010A733 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* Apollo.swift */; };
 		56C233F729B96C8B0010A733 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Styles.swift */; };
 		56C233F929B973B60010A733 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F829B973B60010A733 /* HomeViewModel.swift */; };
 		56C233FB29B97DB70010A733 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233FA29B97DB70010A733 /* Background.swift */; };
@@ -61,6 +61,7 @@
 		56C235A529BBE71B0010A733 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C235A429BBE71B0010A733 /* Movie.swift */; };
 		56C235A729BBE8280010A733 /* MovieCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C235A629BBE8280010A733 /* MovieCategory.swift */; };
 		56C235A929BC11510010A733 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C235A829BC11510010A733 /* Header.swift */; };
+		56DB7AA229D0CED900180F47 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 56DB7AA129D0CED800180F47 /* .gitignore */; };
 		56DE676A29CA86190064D9F5 /* authenticated.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 56DE676929CA86190064D9F5 /* authenticated.graphql */; };
 		56DE679129CA88810064D9F5 /* SearchQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE676E29CA88810064D9F5 /* SearchQuery.graphql.swift */; };
 		56DE679229CA88810064D9F5 /* MovieQuery.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE676F29CA88810064D9F5 /* MovieQuery.graphql.swift */; };
@@ -137,7 +138,7 @@
 		5687D20B29C829E100383AB4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5687D20E29C82C5900383AB4 /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
 		5687D21029C82C6600383AB4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
-		5687D21229C82C7400383AB4 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		5687D21229C82C7400383AB4 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		5687D21429C82C8000383AB4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5687D21629C82C8800383AB4 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		5687D21829C82C9100383AB4 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
@@ -148,7 +149,7 @@
 		569ED36C29C68D1B0022F396 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		569F74A629C79F3D00D25EA4 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		569F74F529C8089800D25EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		56C233F429B96B660010A733 /* WatchWhat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhat.swift; sourceTree = "<group>"; };
+		56C233F429B96B660010A733 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		56C233F829B973B60010A733 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		56C233FA29B97DB70010A733 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 		56C235A429BBE71B0010A733 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		56C235A629BBE8280010A733 /* MovieCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCategory.swift; sourceTree = "<group>"; };
 		56C235A829BC11510010A733 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		56DB7AA129D0CED800180F47 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		56DE676929CA86190064D9F5 /* authenticated.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = authenticated.graphql; sourceTree = "<group>"; };
 		56DE676E29CA88810064D9F5 /* SearchQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchQuery.graphql.swift; sourceTree = "<group>"; };
 		56DE676F29CA88810064D9F5 /* MovieQuery.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieQuery.graphql.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		56012B9129B832D800E2E5A9 = {
 			isa = PBXGroup;
 			children = (
+				56DB7AA129D0CED800180F47 /* .gitignore */,
 				5687D1B429C8193F00383AB4 /* GraphQL */,
 				56012B9C29B832D900E2E5A9 /* WatchWhat.iOS */,
 				56012BAD29B832DB00E2E5A9 /* WatchWhatTests */,
@@ -407,9 +410,9 @@
 		56C233F229B9694C0010A733 /* Singletons */ = {
 			isa = PBXGroup;
 			children = (
+				56C233F429B96B660010A733 /* Apollo.swift */,
+				5687D21229C82C7400383AB4 /* AuthenticationViewModel.swift */,
 				56C2353429BBCE920010A733 /* Configuration.swift */,
-				56C233F429B96B660010A733 /* WatchWhat.swift */,
-				5687D21229C82C7400383AB4 /* Authentication.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				5687D20529C8193F00383AB4 /* discover.graphql in Resources */,
 				5687D20429C8193F00383AB4 /* movie-extras.graphql in Resources */,
 				5687D20829C8193F00383AB4 /* watch-movie.graphql in Resources */,
+				56DB7AA229D0CED900180F47 /* .gitignore in Resources */,
 				56012BA529B832DA00E2E5A9 /* Preview Assets.xcassets in Resources */,
 				5687D20629C8193F00383AB4 /* search.graphql in Resources */,
 				5687D20229C8193F00383AB4 /* movie.graphql in Resources */,
@@ -674,7 +678,7 @@
 				56C235A929BC11510010A733 /* Header.swift in Sources */,
 				5687D21729C82C8800383AB4 /* SignupView.swift in Sources */,
 				56DE679429CA88810064D9F5 /* AuthenticatedQuery.graphql.swift in Sources */,
-				56C233F529B96B660010A733 /* WatchWhat.swift in Sources */,
+				56C233F529B96B660010A733 /* Apollo.swift in Sources */,
 				56DE67B129CA88810064D9F5 /* WatchWhatSchema.graphql.swift in Sources */,
 				5687D21129C82C6600383AB4 /* AuthenticationView.swift in Sources */,
 				56C2349829BAD5720010A733 /* MoviePosterView.swift in Sources */,
@@ -685,7 +689,7 @@
 				569F74F629C8089800D25EA4 /* AppDelegate.swift in Sources */,
 				56DE67A129CA88810064D9F5 /* SpokenLanguages.graphql.swift in Sources */,
 				5687D21929C82C9100383AB4 /* UserProfileView.swift in Sources */,
-				5687D21329C82C7400383AB4 /* Authentication.swift in Sources */,
+				5687D21329C82C7400383AB4 /* AuthenticationViewModel.swift in Sources */,
 				5687D21529C82C8000383AB4 /* LoginView.swift in Sources */,
 				56DE679929CA88810064D9F5 /* DiscoverQuery.graphql.swift in Sources */,
 				56DE679329CA88810064D9F5 /* WatchMovieQuery.graphql.swift in Sources */,
