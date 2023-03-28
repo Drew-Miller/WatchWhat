@@ -7,24 +7,21 @@
 
 import Foundation
 
+@MainActor
 class HomeViewModel: ObservableObject {
     @Published private(set) var page: Int?
     @Published private(set) var categories: [MovieCategory] = [MovieCategory]()
 
-    func loadData() {
-        Task.init {
-            await fetchData()
-        }
+    func loadData() async {
+        await fetchData()
     }
 
     private func fetchData() async {
-        Apollo.client.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
+        Networking.apollo.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
             guard let data = try? result.get().data else { return }
                         
-            DispatchQueue.main.async {
-                self.categories = data.discover.results.map {
-                    return MovieCategory(data: $0.__data)
-                }                
+            self.categories = data.discover.results.map {
+                return MovieCategory(data: $0.__data)
             }
         }
     }

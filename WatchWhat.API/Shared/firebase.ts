@@ -1,6 +1,5 @@
-import { initializeApp, ServiceAccount } from "firebase-admin";
-import { App, cert, deleteApp, getApp } from "firebase-admin/app";
-import { getServiceAccount } from "./service-account";
+import { initializeApp, App, cert, deleteApp, getApp } from "firebase-admin/app";
+import { createServiceAccount, getServiceAccount } from "./service-account";
 
 /*
   This could be optimized in the future.
@@ -11,13 +10,15 @@ export class Firebase {
   private static firebaseApp: App;
   
   static async getFirebaseApp() {
+    const key = await getServiceAccount();
+    const serviceAccount = createServiceAccount(key);
+
     try {
-      // Check if format is correct or should parse to JSON
-      const key = await getServiceAccount();
       Firebase.firebaseApp = initializeApp({
-        credential: cert(key as ServiceAccount)
+        credential: cert(serviceAccount)
       });
-    } catch {
+    } catch(error) {
+      console.log(error);
       Firebase.firebaseApp = getApp();
     }
 

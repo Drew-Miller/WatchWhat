@@ -15,11 +15,13 @@ enum AppView: Int {
     case movieDetails   = 4
 }
 
+@MainActor
 class AppData: ObservableObject {
-    @Published var presentingProfileScreen = false
     @Published private(set) var view: AppView
     @Published private(set) var previousView: AppView
     @Published private(set) var movieIds: [Int] = [Int]()
+    @Published var presentingLoginScreen = false
+    
     var movieId: Int? {
         return movieIds.last
     }

@@ -11,7 +11,7 @@ import SwiftUI
 struct WatchWhatApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var isActive: Bool = false
-
+    
     var body: some Scene {
         WindowGroup {
             ZStack {

@@ -36,8 +36,8 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear {
-            viewModel.loadData()
+        .task {
+            await viewModel.loadData()
         }
     }
     

@@ -31,7 +31,7 @@ struct Header: View {
             Spacer()
             
             UserIcon(fill: .primary, initials: "D", view: .small) {
-                appData.presentingProfileScreen.toggle()
+                appData.presentingLoginScreen.toggle()
             }
         }
         .header()

@@ -40,7 +40,7 @@ struct MovieDetailView: View {
             layout
         }
         .task(id: id) {
-            viewModel.loadData(id: self.id, region: "US")
+            await viewModel.loadData(id: self.id, region: "US")
         }
         .task(id: viewModel.webUrl) {
             if !(viewModel.webUrl ?? "").isEmpty {
@@ -71,7 +71,9 @@ struct MovieDetailView: View {
                 ForEach(streams, id: \.self.provider_id) { stream in
                     ProviderLogo(imageUrl: stream.logo_path, maxWidth: 48)
                         .onTapGesture {
-                            viewModel.openWebUrl(id: movie.id, providerName: stream.provider_name)
+                            Task {
+                                await viewModel.openWebUrl(id: movie.id, providerName: stream.provider_name)
+                            }
                         }
                     
                 }

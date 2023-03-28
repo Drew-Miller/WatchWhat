@@ -5,16 +5,13 @@
 //  Created by Drew Miller on 3/8/23.
 //
 
-import Foundation
 import Apollo
+import Combine
+import Foundation
 
 class TokenInterceptor: ApolloInterceptor {
-    let token: String?
-    
-    init(token: String?) {
-        self.token = token
-    }
-    
+    let defaults = UserDefaults.standard
+
     func interceptAsync<Operation: GraphQLOperation>(
         chain: RequestChain,
         request: HTTPRequest<Operation>,
@@ -22,8 +19,8 @@ class TokenInterceptor: ApolloInterceptor {
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
     ) {
         // Add the authorization header to the request.
-        if let token = token {
-            request.addHeader(name: "id-token", value: token)
+        if let token = defaults.string(forKey: .keys.token) {
+            request.addHeader(name: "Authorization", value: "Bearer \(token)")
         }
         
         // Share the unauthenticated with the network handler.
@@ -52,21 +49,19 @@ class NetworkInterceptorsProvider: DefaultInterceptorProvider {
     }
 }
 
-class Apollo {
-    static let client: ApolloClient = Apollo.initClient
+class Networking {
+    static let apollo: ApolloClient = Networking.initApollo()
     
-    private static let initClient: ApolloClient = {
+    private static func initApollo() -> ApolloClient {
         let endpointURL = Configuration.baseURL
         let store = ApolloStore()
         let interceptorProvider = NetworkInterceptorsProvider(
-            interceptors: [TokenInterceptor(token: nil)],
+            interceptors: [TokenInterceptor()],
             store: store
         )
         let networkTransport = RequestChainNetworkTransport(
             interceptorProvider: interceptorProvider, endpointURL: endpointURL
         )
         return ApolloClient(networkTransport: networkTransport, store: store)
-    }()
-    
-    private init() { }
+    }
 }

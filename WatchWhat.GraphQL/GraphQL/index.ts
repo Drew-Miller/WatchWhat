@@ -28,7 +28,7 @@ export default startServerAndCreateHandler(server, {
     const { cache } = server;
     const { req, res } = args.context;
 
-    const idToken = req.headers['id-token'];
+    const token = req.headers.authorization;
     const sessionId = req.headers.sessionId;
 
     const tmdbOptions: TmdbAPIOptions = {
@@ -49,7 +49,7 @@ export default startServerAndCreateHandler(server, {
     const watchWhatOptions: WatchWhatAPIOptions = {
       baseURL: WATCHWHAT_BASE_URL,
       functionKey: WATCHWHAT_FUNCTION_KEY,
-      idToken
+      token
     };
 
     return {

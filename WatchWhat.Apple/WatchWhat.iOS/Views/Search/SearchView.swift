@@ -40,7 +40,7 @@ struct SearchView: View {
         }
         .task(id: searchValue) {
             if !searchValue.isEmpty {
-                viewModel.loadData(query: searchValue)
+                await viewModel.loadData(query: searchValue)
             }
         }
     }

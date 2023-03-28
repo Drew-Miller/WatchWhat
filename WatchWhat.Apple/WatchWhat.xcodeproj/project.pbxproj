@@ -40,7 +40,7 @@
 		569F74F429C7DA6C00D25EA4 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F329C7DA6C00D25EA4 /* FirebaseMessaging */; };
 		569F74F629C8089800D25EA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F74F529C8089800D25EA4 /* AppDelegate.swift */; };
 		569F74F929C814DF00D25EA4 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74F829C814DF00D25EA4 /* FirebaseAnalyticsSwift */; };
-		56C233F529B96B660010A733 /* Apollo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* Apollo.swift */; };
+		56C233F529B96B660010A733 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F429B96B660010A733 /* Networking.swift */; };
 		56C233F729B96C8B0010A733 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F629B96C8B0010A733 /* Styles.swift */; };
 		56C233F929B973B60010A733 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233F829B973B60010A733 /* HomeViewModel.swift */; };
 		56C233FB29B97DB70010A733 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C233FA29B97DB70010A733 /* Background.swift */; };
@@ -96,6 +96,7 @@
 		56DE67AF29CA88810064D9F5 /* SchemaConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE678E29CA88810064D9F5 /* SchemaConfiguration.swift */; };
 		56DE67B029CA88810064D9F5 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE678F29CA88810064D9F5 /* SchemaMetadata.graphql.swift */; };
 		56DE67B129CA88810064D9F5 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DE679029CA88810064D9F5 /* WatchWhatSchema.graphql.swift */; };
+		56E5A9BC29D2742800DD2F78 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5A9BB29D2742800DD2F78 /* UserDefaultsKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,7 +150,7 @@
 		569ED36C29C68D1B0022F396 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		569F74A629C79F3D00D25EA4 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 		569F74F529C8089800D25EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		56C233F429B96B660010A733 /* Apollo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apollo.swift; sourceTree = "<group>"; };
+		56C233F429B96B660010A733 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		56C233F629B96C8B0010A733 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		56C233F829B973B60010A733 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		56C233FA29B97DB70010A733 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -206,6 +207,7 @@
 		56DE678E29CA88810064D9F5 /* SchemaConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaConfiguration.swift; sourceTree = "<group>"; };
 		56DE678F29CA88810064D9F5 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
 		56DE679029CA88810064D9F5 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
+		56E5A9BB29D2742800DD2F78 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +328,7 @@
 			children = (
 				5687D20E29C82C5900383AB4 /* AuthenticatedView.swift */,
 				5687D21029C82C6600383AB4 /* AuthenticationView.swift */,
+				5687D21229C82C7400383AB4 /* AuthenticationViewModel.swift */,
 				5687D21429C82C8000383AB4 /* LoginView.swift */,
 				5687D21629C82C8800383AB4 /* SignupView.swift */,
 				5687D21829C82C9100383AB4 /* UserProfileView.swift */,
@@ -410,9 +413,9 @@
 		56C233F229B9694C0010A733 /* Singletons */ = {
 			isa = PBXGroup;
 			children = (
-				56C233F429B96B660010A733 /* Apollo.swift */,
-				5687D21229C82C7400383AB4 /* AuthenticationViewModel.swift */,
+				56C233F429B96B660010A733 /* Networking.swift */,
 				56C2353429BBCE920010A733 /* Configuration.swift */,
+				56E5A9BB29D2742800DD2F78 /* UserDefaultsKeys.swift */,
 			);
 			path = Singletons;
 			sourceTree = "<group>";
@@ -675,10 +678,11 @@
 				56DE679F29CA88810064D9F5 /* MovieDetails.graphql.swift in Sources */,
 				56DE679129CA88810064D9F5 /* SearchQuery.graphql.swift in Sources */,
 				56DE679B29CA88810064D9F5 /* WatchProviders.graphql.swift in Sources */,
+				56E5A9BC29D2742800DD2F78 /* UserDefaultsKeys.swift in Sources */,
 				56C235A929BC11510010A733 /* Header.swift in Sources */,
 				5687D21729C82C8800383AB4 /* SignupView.swift in Sources */,
 				56DE679429CA88810064D9F5 /* AuthenticatedQuery.graphql.swift in Sources */,
-				56C233F529B96B660010A733 /* Apollo.swift in Sources */,
+				56C233F529B96B660010A733 /* Networking.swift in Sources */,
 				56DE67B129CA88810064D9F5 /* WatchWhatSchema.graphql.swift in Sources */,
 				5687D21129C82C6600383AB4 /* AuthenticationView.swift in Sources */,
 				56C2349829BAD5720010A733 /* MoviePosterView.swift in Sources */,

@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 @MainActor
 class ContentModel: ObservableObject {
     @Published var authenticated = ""
     
-    func load(idToken: String) async {
-        Apollo.client.fetch(query: WatchWhatSchema.AuthenticatedQuery()) { result in
+    func load() async {
+        Networking.apollo.fetch(query: WatchWhatSchema.AuthenticatedQuery()) { result in
             guard let data = try? result.get().data else { return }
             self.authenticated = data.authenticated
             print(self.authenticated)
@@ -21,6 +22,7 @@ class ContentModel: ObservableObject {
 }
 
 struct ContentView: View {
+    @AppStorage(.keys.token) var token: String = ""
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @StateObject var appData = AppData()
     @StateObject var contentModel = ContentModel()
@@ -62,18 +64,16 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .sheet(isPresented: $appData.presentingProfileScreen) {
-            NavigationView {
-                UserProfileView()
-                    .environmentObject(viewModel)
-            }
+        .sheet(isPresented: $appData.presentingLoginScreen) {
+            UserProfileView()
+                .environmentObject(viewModel)
         }
-        .task(id: viewModel.idToken) {
-            if let idToken = viewModel.idToken {
-                Task {
-                    await contentModel.load(idToken: idToken)
-                }
+        .task(id: token) {
+            guard !token.isEmpty else {
+                return
             }
+            
+            await contentModel.load()
         }
     }
 }

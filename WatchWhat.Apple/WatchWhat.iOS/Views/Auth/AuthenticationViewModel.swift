@@ -5,6 +5,7 @@
 //  Created by Drew Miller on 3/19/23.
 //
 
+import Combine
 import Foundation
 import FirebaseAuth
 
@@ -20,7 +21,9 @@ enum AuthenticationFlow {
 }
 
 @MainActor
-class AuthenticationViewModel: ObservableObject {    
+class AuthenticationViewModel: ObservableObject {
+    let defaults = UserDefaults.standard
+    
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -31,37 +34,40 @@ class AuthenticationViewModel: ObservableObject {
     @Published var authenticationState: AuthenticationState = .unauthenticated
     @Published var errorMessage = ""
     @Published var user: User?
-    @Published var idToken: String?
-
     @Published var displayName = ""
+    
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         registerAuthStateHandler()
         
-        $errorMessage.sink { message in
-            print(message)
-        }
+        $errorMessage
+            .sink { message in
+                print(message)
+            }
+            .store(in: &cancellables)
         
         $user
             .filter {
                 $0 != nil
             }
-            .map { user in
+            .sink { user in
                 guard let user = user else {
                     return
                 }
                 
-                user.getIDTokenForcingRefresh(true) { idToken, error in
+                user.getIDTokenForcingRefresh(true) { token, error in
                     if let error = error {
                         // Handle error
                         self.errorMessage = "Error getting token: \(error.localizedDescription)"
-                        self.idToken = nil
+                        self.defaults.set("", forKey: .keys.token)
                         return;
                     }
                     
-                    self.idToken = idToken
+                    self.defaults.set(token, forKey: .keys.token)
                 }
             }
+            .store(in: &cancellables)
         
         $flow
             .combineLatest($email, $password, $confirmPassword)
