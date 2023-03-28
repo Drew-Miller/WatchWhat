@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct Footer: View {
-    @EnvironmentObject var appData: AppData
+    let app = AppState.shared
     var view: AppView
-    let spacing = 4.0
     
     var body: some View {
+        let spacing = 4.0
         HStack(alignment: .center) {
             VStack(spacing: spacing) {
                 button(.home, "house")
@@ -57,7 +57,9 @@ struct Footer: View {
     
     func button(_ view: AppView, _ icon: String) -> some View {
         return Button {
-            appData.setView(view)
+            Task {
+                await app.setView(view)
+            }
         } label: {
             Image(systemName: icon)
                 .icon()
@@ -67,13 +69,9 @@ struct Footer: View {
 
 
 struct Footer_Previews: PreviewProvider {
-    static let appData = AppData()
-    
     static var previews: some View {
         Footer(view: .home)
-            .environmentObject(appData)
         Footer(view: .home)
-            .environmentObject(appData)
             .preferredColorScheme(.dark)
     }
 }

@@ -8,28 +8,11 @@
 import SwiftUI
 import Combine
 
-@MainActor
-class ContentModel: ObservableObject {
-    @Published var authenticated = ""
-    
-    func load() async {
-        Networking.apollo.fetch(query: WatchWhatSchema.AuthenticatedQuery()) { result in
-            guard let data = try? result.get().data else { return }
-            self.authenticated = data.authenticated
-            print(self.authenticated)
-        }
-    }
-}
-
 struct ContentView: View {
-    @AppStorage(.keys.token) var token: String = ""
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @StateObject var appData = AppData()
-    @StateObject var contentModel = ContentModel()
-    @State var searchValue = ""
-    var movieId: Int? {
-        return appData.movieId
-    }
+    @StateObject var appState = AppState.shared
+    
+    let app = AppState.shared
     
     var body: some View {
         ZStack {
@@ -37,43 +20,33 @@ struct ContentView: View {
             
             // Views
             Group {
-                switch appData.view {
+                switch appState.view {
                 case .home:
                     HomeView()
-                        .environmentObject(appData)
                 case .search:
-                    SearchView(searchValue: $searchValue)
-                        .environmentObject(appData)
+                    SearchView(searchValue: $appState.searchValue)
                 case .movieDetails:
-                    if let movieId = appData.movieId  {
+                    if let movieId = appState.movieId  {
                         MovieDetailView(id: movieId)
-                            .environmentObject(appData)
                             .transition(.move(edge: .trailing))
                     } else {
                         Text("Returning...")
                             .onAppear {
-                                appData.navigatePrevious()
+                                app.navigatePrevious()
                             }
                     }
                 default:
                     Text("Returning...")
                         .onAppear {
-                            appData.navigatePrevious()
+                            app.navigatePrevious()
                         }
                 }
             }
         }
         .preferredColorScheme(.dark)
-        .sheet(isPresented: $appData.presentingLoginScreen) {
+        .sheet(isPresented: $appState.presentingLoginScreen) {
             UserProfileView()
                 .environmentObject(viewModel)
-        }
-        .task(id: token) {
-            guard !token.isEmpty else {
-                return
-            }
-            
-            await contentModel.load()
         }
     }
 }

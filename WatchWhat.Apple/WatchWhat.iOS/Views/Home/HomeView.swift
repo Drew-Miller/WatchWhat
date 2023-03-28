@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var appData: AppData
     @StateObject var viewModel = HomeViewModel()
     
     var body: some View {
@@ -32,7 +31,7 @@ struct HomeView: View {
                     .foregroundColor(.text)
                 
                 MovieListView(movies: category.movies) { movieId in
-                    appData.movieSelected(movieId)
+                    AppState.shared.movieSelected(movieId)
                 }
             }
         }
@@ -44,23 +43,18 @@ struct HomeView: View {
     var layout: some View {
         VStack {
             Header()
-                .environmentObject(appData)
             
             Spacer()
             
             Footer(view: .home)
-                .environmentObject(appData)
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
-    static let appData = AppData()
     static var previews: some View {
         HomeView()
-            .environmentObject(appData)
         HomeView()
-            .environmentObject(appData)
             .preferredColorScheme(.dark)
     }
 }

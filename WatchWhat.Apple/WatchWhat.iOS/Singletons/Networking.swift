@@ -19,7 +19,7 @@ class TokenInterceptor: ApolloInterceptor {
         completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void
     ) {
         // Add the authorization header to the request.
-        if let token = defaults.string(forKey: .keys.token) {
+        if let token = defaults.string(forKey: .defaultKeys.token) {
             request.addHeader(name: "Authorization", value: "Bearer \(token)")
         }
         

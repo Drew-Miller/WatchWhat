@@ -22,8 +22,6 @@ enum AuthenticationFlow {
 
 @MainActor
 class AuthenticationViewModel: ObservableObject {
-    let defaults = UserDefaults.standard
-    
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
@@ -36,37 +34,20 @@ class AuthenticationViewModel: ObservableObject {
     @Published var user: User?
     @Published var displayName = ""
     
+    let defaults = UserDefaults.standard
+    
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         registerAuthStateHandler()
         
         $errorMessage
-            .sink { message in
-                print(message)
-            }
+            .sink { message in print(message) }
             .store(in: &cancellables)
         
         $user
-            .filter {
-                $0 != nil
-            }
-            .sink { user in
-                guard let user = user else {
-                    return
-                }
-                
-                user.getIDTokenForcingRefresh(true) { token, error in
-                    if let error = error {
-                        // Handle error
-                        self.errorMessage = "Error getting token: \(error.localizedDescription)"
-                        self.defaults.set("", forKey: .keys.token)
-                        return;
-                    }
-                    
-                    self.defaults.set(token, forKey: .keys.token)
-                }
-            }
+            .filter { $0 != nil }
+            .sink { user in self.getAuthToken(user: user) }
             .store(in: &cancellables)
         
         $flow
@@ -88,6 +69,23 @@ class AuthenticationViewModel: ObservableObject {
                 self.authenticationState = user == nil ? .unauthenticated : .authenticated
                 self.displayName = user?.email ?? ""
             }
+        }
+    }
+    
+    func getAuthToken(user: User?) {
+        guard let user = user else {
+            return
+        }
+        
+        user.getIDTokenForcingRefresh(true) { token, error in
+            if let error = error {
+                // Handle error
+                self.errorMessage = "Error getting token: \(error.localizedDescription)"
+                self.defaults.set("", forKey: .defaultKeys.token)
+                return;
+            }
+            
+            self.defaults.set(token, forKey: .defaultKeys.token)
         }
     }
     

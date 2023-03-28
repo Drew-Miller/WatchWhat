@@ -31,8 +31,7 @@ struct AuthenticatedView<Content, Unauthenticated>: View where Content: View, Un
         self.unauthenticated = unauthenticated()
         self.content = content
     }
-    
-    
+
     var body: some View {
         switch viewModel.authenticationState {
         case .unauthenticated, .authenticating:

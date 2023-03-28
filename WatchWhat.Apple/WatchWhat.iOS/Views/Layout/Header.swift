@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Header: View {
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var appData: AppData
+    let app = AppState.shared
     
     var body: some View {
         HStack {
@@ -31,7 +31,7 @@ struct Header: View {
             Spacer()
             
             UserIcon(fill: .primary, initials: "D", view: .small) {
-                appData.presentingLoginScreen.toggle()
+                app.presentingLoginScreen.toggle()
             }
         }
         .header()
