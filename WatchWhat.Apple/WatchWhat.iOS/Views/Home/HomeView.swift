@@ -26,13 +26,7 @@ struct HomeView: View {
         // Movies
         LazyVStack(alignment: .leading, spacing: 24) {
             ForEach(viewModel.categories, id: \.self) { category in
-                Text(category.title)
-                    .font(.title)
-                    .foregroundColor(.text)
-                
-                MovieListView(movies: category.movies) { movieId in
-                    AppState.shared.movieSelected(movieId)
-                }
+                CategoryRow(categoryName: category.title, items: category.movies)
             }
         }
         .task {

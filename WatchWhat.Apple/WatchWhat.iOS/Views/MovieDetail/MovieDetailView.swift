@@ -19,7 +19,7 @@ struct MovieDetailView: View {
         ZStack() {
             if viewModel.movie != nil {
                 ScrollView {
-                    MoviePosterView(imageUrl: movie.poster_path)
+                    Poster(imageUrl: movie.poster_path)
                         .mask(
                             LinearGradient(
                                 gradient: Gradient(stops: [
@@ -66,15 +66,17 @@ struct MovieDetailView: View {
                     .foregroundColor(.text)
             }
             
-            if let streams = viewModel.stream {
-                ForEach(streams, id: \.self.provider_id) { stream in
-                    ProviderLogo(imageUrl: stream.logo_path, maxWidth: 48)
-                        .onTapGesture {
-                            Task {
-                                await viewModel.openWebUrl(id: movie.id, providerName: stream.provider_name)
+            HStack {
+                if let streams = viewModel.stream {
+                    ForEach(streams, id: \.self.provider_id) { stream in
+                        ProviderLogo(imageUrl: stream.logo_path, maxWidth: 48)
+                            .onTapGesture {
+                                Task {
+                                    await viewModel.openWebUrl(id: movie.id, providerName: stream.provider_name)
+                                }
                             }
-                        }
-                    
+                        
+                    }
                 }
             }
             
@@ -96,18 +98,9 @@ struct MovieDetailView: View {
             .font(.headline)
             .foregroundColor(.text)
             .padding(.vertical, 8)
-            
-            HStack {
-                Text("More Like This")
-            }
-            .font(.headline)
-            .foregroundColor(.text)
-            .padding(.vertical, 16)
-            
+
             if let similar = viewModel.similar {
-                MovieListView(movies: similar) { movieId in
-                    AppState.shared.movieSelected(movieId)
-                }
+                CategoryRow(categoryName: "More Like This", items: similar)
             }
         }
         .padding(.horizontal, 8)

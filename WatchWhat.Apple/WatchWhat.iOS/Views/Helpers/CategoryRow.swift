@@ -7,21 +7,24 @@
 
 import SwiftUI
 
-struct MovieListView: View {
-    var movies: [Movie]
-    let onTapGesture: (Int) -> Void
+struct CategoryRow: View {
+    let categoryName: String
+    let items: [Movie]
 
     var body: some View {
         VStack(alignment: .leading) {
+            Text(categoryName)
+                .font(.title2)
+                .foregroundColor(.text)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 12) {
-                    ForEach(movies, id: \.self) { movie in
-                        MovieView(movie: movie) { movieId in
-                            onTapGesture(movieId)
-                        }
+                    ForEach(items, id: \.self) { item in
+                        CategoryItem(item: item)
                     }
                 }
             }
+            .frame(height: 400)
         }
     }
 }

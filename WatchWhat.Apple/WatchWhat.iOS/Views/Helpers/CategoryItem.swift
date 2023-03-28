@@ -7,27 +7,23 @@
 
 import SwiftUI
 
-struct MovieView: View {
-    let movie: Movie
-    var onTapGesture: (Int) -> Void
+struct CategoryItem: View {
+    let app = AppState.shared
+    let item: Movie
     
     var body: some View {
         VStack() {
-            MoviePosterView(imageUrl: movie.poster_path)
+            Poster(imageUrl: item.poster_path, width: 224.0)
             
-            Text(movie.title)
+            Text(item.title)
                 .font(.body)
                 .foregroundColor(.text)
-                .frame(height: 40)
                 .padding(.top, 6)
                 .lineLimit(nil)
                 .truncationMode(.tail)
-            
-            Spacer()
         }
         .onTapGesture {
-            onTapGesture(movie.id)
+            app.movieSelected(item.id)
         }
-        .frame(width: 224)
     }
 }

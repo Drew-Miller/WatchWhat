@@ -10,23 +10,21 @@ import Combine
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    @StateObject var appState = AppState.shared
-    
-    let app = AppState.shared
-    
+    @StateObject var app = AppState.shared
+        
     var body: some View {
         ZStack {
             Background(topColor: .backgroundAccent, bottomColor: .background)
             
             // Views
             Group {
-                switch appState.view {
+                switch app.view {
                 case .home:
                     HomeView()
                 case .search:
-                    SearchView(searchValue: $appState.searchValue)
+                    SearchView(searchValue: $app.searchValue)
                 case .movieDetails:
-                    if let movieId = appState.movieId  {
+                    if let movieId = app.movieId  {
                         MovieDetailView(id: movieId)
                             .transition(.move(edge: .trailing))
                     } else {
@@ -44,7 +42,7 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .sheet(isPresented: $appState.presentingLoginScreen) {
+        .sheet(isPresented: $app.presentingLoginScreen) {
             UserProfileView()
                 .environmentObject(viewModel)
         }

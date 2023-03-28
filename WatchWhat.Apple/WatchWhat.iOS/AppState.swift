@@ -66,11 +66,12 @@ class AppState: ObservableObject {
     }
     
     func navigatePrevious() {
-        guard movieId != nil else {
+        guard movieIds.count == 0 else {
             movieIds.removeLast()
             return
         }
-        self.navigate(self.previousView)
+        
+        self.setView(self.previousView)
     }
     
     func movieSelected(_ id: Int) {
@@ -79,6 +80,12 @@ class AppState: ObservableObject {
     }
     
     private func navigate(_ view: AppView) {
+        // Default navigation
+        if view == AppView.movieDetails && movieIds.count == 0 {
+            self.view = .home
+            return
+        }
+        
         self.view = view
     }
 }

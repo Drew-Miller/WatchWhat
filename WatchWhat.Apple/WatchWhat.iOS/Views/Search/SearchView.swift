@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Binding var searchValue: String
     @StateObject var viewModel = SearchViewModel()
+    @Binding var searchValue: String
         
     var body: some View {
-        // Movies
         ZStack {
             ScrollView {
                 content
@@ -30,9 +29,7 @@ struct SearchView: View {
             ForEach(viewModel.results.chunked(into: 2), id: \.self) { rowItems in
                 LazyHStack {
                     ForEach(rowItems, id: \.self) { movie in
-                        MovieView(movie: movie) { movieId in
-                            AppState.shared.movieSelected(movieId)
-                        }
+                        CategoryItem(item: movie)
                     }
                 }
             }
@@ -48,6 +45,7 @@ struct SearchView: View {
         VStack {
             Header()
                 .transition(.move(edge: .top))
+            
             SearchBarView(text: $searchValue)
                 .transition(.move(edge: .top))
             

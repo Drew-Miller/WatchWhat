@@ -1,6 +1,10 @@
 {
 	"folders": [
 		{
+			"name": "Firebase",
+			"path": "Firebase"
+		},
+		{
 			"name": "WatchWhat.API",
 			"path": "WatchWhat.API"
 		},

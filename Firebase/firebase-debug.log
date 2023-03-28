@@ -1,28 +1,26 @@
-[debug] [2023-03-28T04:44:06.437Z] ----------------------------------------------------------------------
-[debug] [2023-03-28T04:44:06.440Z] Command:       /usr/local/Cellar/node@18/18.14.1/bin/node /usr/local/bin/firebase emulators:start
-[debug] [2023-03-28T04:44:06.441Z] CLI Version:   11.24.1
-[debug] [2023-03-28T04:44:06.441Z] Platform:      darwin
-[debug] [2023-03-28T04:44:06.441Z] Node Version:  v18.14.1
-[debug] [2023-03-28T04:44:06.442Z] Time:          Mon Mar 27 2023 21:44:06 GMT-0700 (Pacific Daylight Time)
-[debug] [2023-03-28T04:44:06.442Z] ----------------------------------------------------------------------
+[debug] [2023-03-28T18:58:42.798Z] ----------------------------------------------------------------------
+[debug] [2023-03-28T18:58:42.801Z] Command:       /usr/local/Cellar/node@18/18.14.1/bin/node /usr/local/bin/firebase emulators:start
+[debug] [2023-03-28T18:58:42.801Z] CLI Version:   11.24.1
+[debug] [2023-03-28T18:58:42.801Z] Platform:      darwin
+[debug] [2023-03-28T18:58:42.802Z] Node Version:  v18.14.1
+[debug] [2023-03-28T18:58:42.803Z] Time:          Tue Mar 28 2023 11:58:42 GMT-0700 (Pacific Daylight Time)
+[debug] [2023-03-28T18:58:42.803Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-03-28T04:44:06.445Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2023-03-28T04:44:06.521Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-03-28T04:44:06.521Z] > authorizing via signed-in user (d.m.lespaul@gmail.com)
+[debug] [2023-03-28T18:58:42.919Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-03-28T18:58:42.920Z] > authorizing via signed-in user (d.m.lespaul@gmail.com)
 [info] i  emulators: Starting emulators: auth {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth"}}
-[debug] [2023-03-28T04:44:07.508Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-28T04:44:07.509Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-03-28T04:44:07.509Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2023-03-28T04:44:07.522Z] [hub] writing locator at /var/folders/jw/y2tnsgbx2_zd5dc959j11f880000gn/T/hub-watchwhat-3aa9c.json
-[debug] [2023-03-28T04:44:12.990Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-03-28T04:44:12.990Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-03-28T04:44:12.991Z] Starting Emulator UI with command {"binary":"node","args":["/Users/drewmiller/.cache/firebase/emulators/ui-v1.11.4/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/drewmiller/.cache/firebase/emulators/ui-v1.11.4/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[debug] [2023-03-28T18:58:44.276Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-28T18:58:44.276Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-03-28T18:58:44.276Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-03-28T18:58:44.290Z] [hub] writing locator at /var/folders/jw/y2tnsgbx2_zd5dc959j11f880000gn/T/hub-watchwhat-3aa9c.json
+[debug] [2023-03-28T18:58:52.718Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-03-28T18:58:52.718Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-03-28T18:58:52.719Z] Starting Emulator UI with command {"binary":"node","args":["/Users/drewmiller/.cache/firebase/emulators/ui-v1.11.4/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/drewmiller/.cache/firebase/emulators/ui-v1.11.4/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
 [info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2023-03-28T04:44:13.127Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2023-03-28T04:44:13.127Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2023-03-28T04:44:13.193Z] Web / API server started at 127.0.0.1:4000
-Web / API server started at ::1:4000
- {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\nWeb / API server started at ::1:4000\n"}}
+[debug] [2023-03-28T18:58:52.900Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-03-28T18:58:52.901Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │

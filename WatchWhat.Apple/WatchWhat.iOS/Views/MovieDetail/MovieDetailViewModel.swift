@@ -37,7 +37,10 @@ class MovieDetailViewModel: ObservableObject {
 
     private func fetchMovie(id: Int) async {
         Networking.apollo.fetch(query: WatchWhatSchema.MovieQuery(id: id)) { result in
-            guard let data = try? result.get().data else { return }
+            guard let data = try? result.get().data else {
+                self.movie = nil
+                return
+            }
             
             self.movie = MovieDetails(data: data.movie.__data)
         }
@@ -45,7 +48,10 @@ class MovieDetailViewModel: ObservableObject {
     
     private func fetchTrailers(id: Int) async {
         Networking.apollo.fetch(query: WatchWhatSchema.VideosQuery(id: id)) { result in
-            guard let data = try? result.get().data else { return }
+            guard let data = try? result.get().data else {
+                self.trailers = nil
+                return
+            }
                         
             self.trailers = data.videos.results.filter {
                 $0.official && $0.name!.lowercased().contains("trailer")
@@ -57,7 +63,10 @@ class MovieDetailViewModel: ObservableObject {
     
     private func fetchRecommendations(id: Int) async {
         Networking.apollo.fetch(query: WatchWhatSchema.RecommendationsQuery(id: id)) { result in
-            guard let data = try? result.get().data else { return }
+            guard let data = try? result.get().data else {
+                self.recommendations = nil
+                return
+            }
                         
             self.recommendations = data.recommendations.results.map {
                 Movie(data: $0.__data)
@@ -67,7 +76,10 @@ class MovieDetailViewModel: ObservableObject {
     
     private func fetchSimilar(id: Int) async {
         Networking.apollo.fetch(query: WatchWhatSchema.SimilarQuery(id: id)) { result in
-            guard let data = try? result.get().data else { return }
+            guard let data = try? result.get().data else {
+                self.similar = nil
+                return
+            }
                         
             self.similar = data.similar.results.map {
                 return Movie(data: $0.__data)
@@ -77,7 +89,10 @@ class MovieDetailViewModel: ObservableObject {
     
     private func fetchWatchProviders(id: Int, region: String) async {
         Networking.apollo.fetch(query: WatchWhatSchema.WatchMovieQuery(movieId: id, region: region)) { result in
-            guard let data = try? result.get().data else { return }
+            guard let data = try? result.get().data else {
+                self.stream = nil
+                return
+            }
                         
             if let flatrate = data.watchMovie.flatrate {
                 self.stream = flatrate.map {
