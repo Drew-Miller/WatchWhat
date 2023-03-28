@@ -11,4 +11,4 @@
 SIMPLE_SLASH=/
 BASE_URL=https:$(SIMPLE_SLASH)/watchwhat-graphql.azurewebsites.net
 EMULATOR=""
-PORT=""
+EMULATOR_PORT=""
