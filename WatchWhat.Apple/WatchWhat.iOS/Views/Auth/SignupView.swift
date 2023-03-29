@@ -126,7 +126,9 @@ struct SignupView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SignupView()
+                .environmentObject(AuthenticationViewModel())
             SignupView()
+                .environmentObject(AuthenticationViewModel())
                 .preferredColorScheme(.dark)
         }
     }

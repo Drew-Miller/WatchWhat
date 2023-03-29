@@ -46,7 +46,7 @@ struct SearchView: View {
             Header()
                 .transition(.move(edge: .top))
             
-            SearchBarView(text: $searchValue)
+            SearchBar(text: $searchValue)
                 .transition(.move(edge: .top))
             
             Spacer()

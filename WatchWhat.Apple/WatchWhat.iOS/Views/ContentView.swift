@@ -41,7 +41,6 @@ struct ContentView: View {
                 }
             }
         }
-        .preferredColorScheme(.dark)
         .sheet(isPresented: $app.presentingLoginScreen) {
             UserProfileView()
                 .environmentObject(viewModel)
@@ -52,7 +51,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(AuthenticationViewModel())
         ContentView()
+            .environmentObject(AuthenticationViewModel())
             .preferredColorScheme(.dark)
     }
 }

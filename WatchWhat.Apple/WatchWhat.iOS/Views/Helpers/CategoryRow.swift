@@ -28,3 +28,13 @@ struct CategoryRow: View {
         }
     }
 }
+
+struct CategoryRow_Previews: PreviewProvider {
+    @Published static var movies: [Movie] = load("movies")
+    
+    static var previews: some View {
+        CategoryRow(categoryName: "Category", items: CategoryRow_Previews.movies)
+        CategoryRow(categoryName: "Category", items: CategoryRow_Previews.movies)
+            .preferredColorScheme(.dark)
+    }
+}

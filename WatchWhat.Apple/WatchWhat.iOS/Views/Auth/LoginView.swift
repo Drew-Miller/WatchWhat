@@ -118,7 +118,9 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LoginView()
+                .environmentObject(AuthenticationViewModel())
             LoginView()
+                .environmentObject(AuthenticationViewModel())
                 .preferredColorScheme(.dark)
         }
     }

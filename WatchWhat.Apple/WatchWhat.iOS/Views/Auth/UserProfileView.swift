@@ -85,7 +85,9 @@ struct UserProfileView: View {
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {
         UserProfileView()
+            .environmentObject(AuthenticationViewModel())
         UserProfileView()
+            .environmentObject(AuthenticationViewModel())
             .preferredColorScheme(.dark)
     }
 }

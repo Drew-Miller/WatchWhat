@@ -16,3 +16,11 @@ struct Background: View {
             .edgesIgnoringSafeArea(.all)
     }
 }
+
+struct Background_Previews: PreviewProvider {
+    static var previews: some View {
+        Background(topColor: .backgroundAccent, bottomColor: .background)
+        Background(topColor: .backgroundAccent, bottomColor: .background)
+            .preferredColorScheme(.dark)
+    }
+}
