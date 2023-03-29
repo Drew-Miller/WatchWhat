@@ -10,19 +10,15 @@ import Foundation
 @MainActor
 class HomeViewModel: ObservableObject {
     @Published private(set) var page: Int?
-    @Published private(set) var categories: [MovieCategory] = [MovieCategory]()
+    @Published private(set) var categories: [Category] = [Category]()
 
     func loadData() async {
         await fetchData()
     }
 
     private func fetchData() async {
-        Networking.apollo.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
-            guard let data = try? result.get().data else { return }
-                        
-            self.categories = data.discover.results.map {
-                return MovieCategory(data: $0.__data)
-            }
+        Networking.shared.DiscoverQuery { categories in
+            self.categories = categories
         }
     }
 }

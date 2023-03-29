@@ -12,8 +12,8 @@ class MovieDetailViewModel: ObservableObject {
     @Published private(set) var movie: MovieDetails?
     // @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
     @Published private(set) var trailers: [Video]? // fetched through videos
-    @Published private(set) var recommendations: [Movie]?
-    @Published private(set) var similar: [Movie]?
+    @Published private(set) var recommendations: [Item]?
+    @Published private(set) var similar: [Item]?
     @Published private(set) var stream: [Provider]?
     @Published private(set) var webUrl: String?
     
@@ -69,7 +69,7 @@ class MovieDetailViewModel: ObservableObject {
             }
                         
             self.recommendations = data.recommendations.results.map {
-                Movie(data: $0.__data)
+                return Item.fromMovie(data: $0.__data)
             }
         }
     }
@@ -82,7 +82,7 @@ class MovieDetailViewModel: ObservableObject {
             }
                         
             self.similar = data.similar.results.map {
-                return Movie(data: $0.__data)
+                return Item.fromMovie(data: $0.__data)
             }
         }
     }

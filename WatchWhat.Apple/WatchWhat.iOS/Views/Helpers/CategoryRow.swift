@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryRow: View {
     let categoryName: String
-    let items: [Movie]
+    let items: [Item]
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -30,11 +30,10 @@ struct CategoryRow: View {
 }
 
 struct CategoryRow_Previews: PreviewProvider {
-    @Published static var movies: [Movie] = load("movies")
-    
     static var previews: some View {
-        CategoryRow(categoryName: "Category", items: CategoryRow_Previews.movies)
-        CategoryRow(categoryName: "Category", items: CategoryRow_Previews.movies)
+        let category: Category = load("category.json")
+        CategoryRow(categoryName: category.title, items: category.items)
+        CategoryRow(categoryName: category.title, items: category.items)
             .preferredColorScheme(.dark)
     }
 }

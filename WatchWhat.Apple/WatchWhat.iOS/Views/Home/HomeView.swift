@@ -26,7 +26,7 @@ struct HomeView: View {
         // Movies
         LazyVStack(alignment: .leading, spacing: 24) {
             ForEach(viewModel.categories, id: \.self) { category in
-                CategoryRow(categoryName: category.title, items: category.movies)
+                CategoryRow(categoryName: category.title, items: category.items)
             }
         }
         .task {
@@ -47,6 +47,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
+        let category: Category = load("category.json")
         HomeView()
         HomeView()
             .preferredColorScheme(.dark)

@@ -50,9 +50,11 @@ class NetworkInterceptorsProvider: DefaultInterceptorProvider {
 }
 
 class Networking {
-    static let apollo: ApolloClient = Networking.initApollo()
+    static var shared = Networking()
     
-    private static func initApollo() -> ApolloClient {
+    private lazy var apollo: ApolloClient = Networking.shared.initApollo()
+    
+    private func initApollo() -> ApolloClient {
         let endpointURL = Configuration.baseURL
         let store = ApolloStore()
         let interceptorProvider = NetworkInterceptorsProvider(
@@ -63,5 +65,34 @@ class Networking {
             interceptorProvider: interceptorProvider, endpointURL: endpointURL
         )
         return ApolloClient(networkTransport: networkTransport, store: store)
+    }
+    
+    func DiscoverQuery(completion: @escaping ([Category]) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            let categories = data.discover.results.map {
+                return Category.fromMovieCategory(data: $0.__data)
+            }
+            
+            completion(categories)
+        }
+    }
+    
+    func SearchQuery(query: String, page: Int, completion: @escaping ([Category]) -> Void) {
+        let pageNullable = GraphQLNullable<Int>(integerLiteral: page)
+
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            self.page = data.searchMovies.page
+            self.totalPages = data.searchMovies.total_pages
+            self.totalResults = data.searchMovies.total_results
+            self.results = data.searchMovies.results.map {
+                return Item.fromMovie(data: $0.__data)
+            }
+            
+            completion(categories)
+        }
     }
 }

@@ -12,7 +12,7 @@ class SearchViewModel: ObservableObject {
     @Published private(set) var page: Int?
     @Published private(set) var totalPages: Int?
     @Published private(set) var totalResults: Int?
-    @Published private(set) var results: [Movie] = [Movie]()
+    @Published private(set) var results: [Item] = [Item]()
 
     func loadData(query: String, page: Int = 1) async {
         await fetchData(query: query, page: page)
@@ -28,7 +28,7 @@ class SearchViewModel: ObservableObject {
             self.totalPages = data.searchMovies.total_pages
             self.totalResults = data.searchMovies.total_results
             self.results = data.searchMovies.results.map {
-                return Movie(data: $0.__data)
+                return Item.fromMovie(data: $0.__data)
             }
         }
     }

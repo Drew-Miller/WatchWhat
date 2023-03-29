@@ -1,4 +1,4 @@
-query Search($query: String!, $page: Int) {
+query MovieSearch($query: String!, $page: Int) {
   searchMovies(query: $query, page: $page) {
     page,
     total_pages,

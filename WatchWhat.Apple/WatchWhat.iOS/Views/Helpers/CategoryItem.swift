@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CategoryItem: View {
     let app = AppState.shared
-    let item: Movie
+    let item: Item
     
     var body: some View {
         VStack() {
-            Poster(imageUrl: item.poster_path, width: 224.0)
+            Poster(imageUrl: item.posterPath, width: 224.0)
             
             Text(item.title)
                 .font(.body)
