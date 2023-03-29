@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @StateObject var viewModel = SearchViewModel()
     @Binding var searchValue: String
-        
+    
     var body: some View {
         ZStack {
             ScrollView {

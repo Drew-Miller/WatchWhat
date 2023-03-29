@@ -15,9 +15,9 @@ extension Array {
     }
 }
 
-struct SearchBarView: View {
+struct SearchBar: View {
     @Binding var text: String
-    let placeHolder = "What're you searching for?"
+    var placeHolder: String = "What're you searching for?"
     
     var displayText: String {
         if !text.isEmpty {
@@ -43,12 +43,12 @@ struct SearchBarView: View {
 }
 
 
-struct SearchBarView_Previews: PreviewProvider {
+struct SearchBar_Previews: PreviewProvider {
     @State static var text = "Dark Knight"
     
     static var previews: some View {
-        SearchBarView(text: $text)
-        SearchBarView(text: $text)
+        SearchBar(text: $text)
+        SearchBar(text: $text)
             .preferredColorScheme(.dark)
     }
 }

@@ -10,8 +10,7 @@ import SwiftUI
 struct Poster: View {
     @StateObject var viewModel = UrlImageViewModel()
     let imageUrl: String?
-    var width: CGFloat = .infinity
-    var height: CGFloat = .infinity
+    var width: CGFloat = UIScreen.main.bounds.width
     
     var body: some View {
         Group {
@@ -19,18 +18,15 @@ struct Poster: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: width, height: height)
+                    .frame(width: width)
             } else {
                 Image(systemName: "popcorn.fill")
                     .renderingMode(.original)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: width, height: height)
+                    .frame(width: width)
             }
         }
-//        .onAppear {
-//            load()
-//        }
         .task(id: imageUrl) {
             load()
         }
