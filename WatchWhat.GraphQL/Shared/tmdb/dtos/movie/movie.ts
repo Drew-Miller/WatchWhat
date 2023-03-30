@@ -1,6 +1,4 @@
-import { Company } from "../company";
-import { Genre } from "../genre";
-import { SpokenLanguages } from "../spoken-languages";
+import { Company, Genre, SpokenLanguages } from "../.";
 
 // This property is likely a collection group.
 // belongs_to_collection: any | null,

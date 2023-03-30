@@ -58,4 +58,23 @@ export class AppErrors {
       }
     }
   );
+
+
+  public static API_CONTROLLER_FAILED: CreateGraphQLError = (source: string) => new GraphQLError(
+    `${source} Controller is not defined.`, {
+      extensions: {
+        code: "",
+        http: {status: StatusCodes.FAILED_DEPENDENCY }
+      }
+    }
+  );
+
+  public static REGION_NOT_FOUND: CreateGraphQLError = (region: string) => new GraphQLError(
+    `${region} does not exist.`, {
+      extensions: {
+        code: "",
+        http: {status: StatusCodes.BAD_REQUEST }
+      }
+    }
+  );
 }

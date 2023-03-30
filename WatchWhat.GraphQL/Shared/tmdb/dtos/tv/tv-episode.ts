@@ -1,4 +1,4 @@
-import { Crew } from "../credits"
+import { Crew } from "../."
 
 export type TVEpsiode = {
   air_date: string
