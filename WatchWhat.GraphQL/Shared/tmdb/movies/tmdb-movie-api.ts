@@ -1,18 +1,42 @@
 import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
-import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Region, Results, Trailer, ReleaseDate, MovieRelated, Recommendation } from "./dtos";
-import { TmdbAPIBase, TmdbAPIOptions } from "./tmdb-base-api";
+import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Region, Results, Trailer, ReleaseDate, MovieRelated, Recommendation } from "./movies/dtos";
 
-export class TmdbAPI extends TmdbAPIBase {
-  apiName: string;
-  apiVersion: string;
-  apiKey: string;
-  readAccessToken: string;
-  sessionId?: string;
+export type TmdbAPIOptions = DataSourceConfig & {
+  apiVersion: string,
+  apiKey: string,
+  readAccessToken: string,
+  baseURL: string,
+  sessionId?: string
+};
+
+export class TmdbAPI extends RESTDataSource {
+  private apiVersion: string;
+  private apiKey: string;
+  private readAccessToken: string;
+  private sessionId?: string;
 
   constructor(options: TmdbAPIOptions) {
     super(options);
+
+    if (!options.baseURL) {
+      throw AppErrors.BASE_URL_FAILED("TmdbAPI");
+    }
+
+    if (!options.apiKey) {
+      throw AppErrors.API_KEY_FAILED("TmdbAPI");
+    }
+
+    if (!options.readAccessToken) {
+      throw AppErrors.READ_ACCESS_TOKEN_FAILED("TmdbAPI");
+    }
+
+    this.baseURL = options.baseURL;
+    this.apiVersion = options.apiVersion;
+    this.apiKey = encodeURIComponent(options.apiKey);
+    this.readAccessToken = options.readAccessToken;
+    this.sessionId = options.sessionId;
   }
 
 

@@ -10,6 +10,10 @@ export type Error = {
 type CreateGraphQLError = (source: string) => GraphQLError;
 
 export class AppErrors {
+
+
+  // Initialization Errors
+
   public static BASE_URL_FAILED: CreateGraphQLError = (source: string) => new GraphQLError(
     `${source} Base url is not defined.`, {
       extensions: {
@@ -39,6 +43,15 @@ export class AppErrors {
 
   public static API_KEY_FAILED: CreateGraphQLError = (source: string) => new GraphQLError(
     `${source} API_KEY is not defined.`, {
+      extensions: {
+        code: "",
+        http: {status: StatusCodes.FAILED_DEPENDENCY }
+      }
+    }
+  );
+
+  public static CONFIG_FAILED: CreateGraphQLError = (source: string) => new GraphQLError(
+    `${source} CONFIG is not defined.`, {
       extensions: {
         code: "",
         http: {status: StatusCodes.FAILED_DEPENDENCY }

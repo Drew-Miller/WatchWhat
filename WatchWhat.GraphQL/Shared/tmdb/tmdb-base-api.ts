@@ -2,10 +2,27 @@ import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
 import { Credits, Genre, GroupedMovies, Movie, MovieDetails, PaginatedResults, Provider, ProviderDisplay, WatchProviders, Region, Results, Trailer, ReleaseDate, MovieRelated, Recommendation } from "./dtos";
-import { TmdbAPIBase, TmdbAPIOptions } from "./tmdb-base-api";
 
-export class TmdbAPI extends TmdbAPIBase {
-  apiName: string;
+export interface ITmdbAPI {
+  apiName: string
+  apiVersion: string;
+  apiKey: string;
+  readAccessToken: string;
+  sessionId?: string;
+}
+
+export interface ITmdbMediaAPI extends ITmdbAPI {
+  media: MediaType
+}
+
+export type TmdbAPIOptions = DataSourceConfig & ITmdbAPI & {
+  baseURL: string
+};
+
+export type TmdbMediaAPIOptions = TmdbAPIOptions & ITmdbMediaAPI;
+
+export abstract class TmdbAPIBase extends RESTDataSource implements ITmdbAPI {
+  apiName: string
   apiVersion: string;
   apiKey: string;
   readAccessToken: string;
@@ -13,49 +30,52 @@ export class TmdbAPI extends TmdbAPIBase {
 
   constructor(options: TmdbAPIOptions) {
     super(options);
+
+    this.apiName = options.apiName ?? "TmdbAPI";
+
+    if (!options.baseURL) {
+      throw AppErrors.BASE_URL_FAILED(this.apiName);
+    }
+
+    if (!options.apiKey) {
+      throw AppErrors.API_KEY_FAILED(this.apiName);
+    }
+
+    if (!options.readAccessToken) {
+      throw AppErrors.READ_ACCESS_TOKEN_FAILED(this.apiName);
+    }
+
+    this.baseURL = options.baseURL;
+    this.apiVersion = options.apiVersion;
+    this.apiKey = encodeURIComponent(options.apiKey);
+    this.readAccessToken = options.readAccessToken;
+    this.sessionId = options.sessionId;
   }
+}
 
+export abstract class TmdbMediaAPIBase extends TmdbAPIBase implements ITmdbMediaAPI {
+  apiName: string
+  apiVersion: string;
+  apiKey: string;
+  readAccessToken: string;
+  media: MediaType;
+  sessionId?: string;
 
-  // Custom methods
+  constructor(options: TmdbMediaAPIOptions) {
+    super(options);
 
-  async popularMoviesGrouped(): Promise<GroupedMovies> {
-    const data = await this.popularMovies().then(popularMovies => {
-      const group: GroupedMovies = {
-        id: 0,
-        title: "Popular",
-        movies: popularMovies.results
-      }
+    if (!options.media) {
+      throw AppErrors.CONFIG_FAILED(`${this.apiName} -> Media`);
+    }
 
-      return group
-    });
-
-    return data;
-  }
-
-  async moviesByGenresGrouped(): Promise<GroupedMovies[]> {
-    const genres = await this.genres();
-
-    const promises = genres.map(genre => this.moviesByGenre([genre.id])
-      .then(pagedMovies => {
-        const group: GroupedMovies = {
-          id: genre.id,
-          title: genre.name,
-          movies: pagedMovies.results
-        }
-
-        return group;
-      })
-    );
-
-    const data: GroupedMovies[] = await Promise.all(promises);
-    return data;
+    this.media = options.media;
   }
 
 
   // The Movie DB API
 
-  async popularMovies(page: number = 1) {
-    const data = await this.get(`/${this.apiVersion}/movie/popular`, {
+  async popular(page: number = 1) {
+    const data = await this.get(`/${this.apiVersion}/${this.media}/popular`, {
       params: {
         page: page.toString()
       }
@@ -63,9 +83,8 @@ export class TmdbAPI extends TmdbAPIBase {
     return data;
   }
 
-  async searchMovies(query: string, page: number = 1) {
-    console.log(encodeURIComponent("The Dark Knight"));
-    const data = await this.get(`/${this.apiVersion}/search/movie`, {
+  async search(query: string, page: number = 1) {
+    const data = await this.get(`/${this.apiVersion}/search/${this.media}`, {
       params: {
         api_key: this.apiKey,
         query,
