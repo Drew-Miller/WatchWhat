@@ -1,4 +1,10 @@
-export type Cast = {
+export type Credits = {
+  cast: Cast[],
+  crew: Crew[],
+  id: number
+};
+
+type Cast = {
   adult: boolean
   gender: number
   id: number
@@ -12,7 +18,7 @@ export type Cast = {
   order: number
 };
 
-export type Crew = {
+type Crew = {
   job: string
   department: string
   credit_id: string
@@ -25,9 +31,3 @@ export type Crew = {
   popularity: number
   profile_path?: string
 }
-
-export type Credits = {
-  cast: Cast[],
-  crew: Crew[],
-  id: number
-};

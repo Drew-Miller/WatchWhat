@@ -1,6 +1,7 @@
-import { Crew } from "../."
+import { Crew } from "./crew"
+import { GuestStar } from "./guest-star"
 
-export type TVEpsiode = {
+export type TVEpisode = {
   air_date: string
   crew: Crew[]
   episode_number: number
@@ -14,18 +15,4 @@ export type TVEpsiode = {
   still_path: string
   vote_average: number
   vote_count: number
-}
-
-type GuestStar = {
-  character: string
-  credit_id: string
-  order: number
-  adult: boolean
-  gender: number
-  id: number
-  known_for_department: string
-  name: string
-  original_name: string
-  popularity: number
-  profile_path?: string
 }

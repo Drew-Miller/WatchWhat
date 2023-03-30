@@ -1,9 +1,9 @@
 import { KeyValueCache } from "@apollo/utils.keyvaluecache";
 import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
-import { ContentRatings, TV, TVResult } from "./dtos/tv";
+import { ContentRatings, TV, TVResult, TVSeason } from "./dtos/tv";
 import { Movie, MovieResult, ReleaseDates } from "./dtos/movie";
-import { AllProviders, Credits, Genre, Page, Providers, Regions } from "./dtos";
+import { AllProviders, Credits, Genre, Page, Providers, Regions, Video } from "./dtos";
 
 export type TmdbAPIOptions = DataSourceConfig & {
   apiVersion: string,
@@ -135,7 +135,7 @@ export class TmdbAPI extends RESTDataSource {
   }
 
   async movieVideos(id: number) {
-    const data = await this.get<Page<MovieResult>>(`{this.apiVersion}/movie/${id}/videos`);
+    const data = await this.get<Page<Video>>(`{this.apiVersion}/movie/${id}/videos`);
     return data;
   }
 
@@ -194,7 +194,7 @@ export class TmdbAPI extends RESTDataSource {
   }
 
   async tvVideos(id: number) {
-    const data = await this.get<Page<TVResult>>(`{this.apiVersion}/tv/${id}/videos`);
+    const data = await this.get<Page<Video>>(`{this.apiVersion}/tv/${id}/videos`);
     return data;
   }
 
@@ -221,8 +221,43 @@ export class TmdbAPI extends RESTDataSource {
     return contentRating;
   }
 
+
+  // TV Seasons
+
+  async season(id: number, season: number) {
+    const data = await this.get<TVSeason>(`{this.apiVersion}/tv/${id}/season/${season}`);
+    return data;
+  }
+
+  async seasonVideos(id: number, season: number) {
+    const data = await this.get<Page<Video>>(`{this.apiVersion}/tv/${id}/season/${season}/videos`);
+    return data;
+  }
+
+  async seasonCredits(id: number, season: number) {
+    const data = await this.get<Credits>(`{this.apiVersion}/tv/${id}/season/${season}/credits`);
+    return data;
+  }
   
 
+  // TV Episodes
+
+  async episode(id: number, season: number, episode: number) {
+    const data = await this.get<TVSeason>(`{this.apiVersion}/tv/${id}/season/${season}/episode/${episode}`);
+    return data;
+  }
+
+  async episodeVideos(id: number, season: number, episode: number) {
+    const data = await this.get<Page<Video>>(`{this.apiVersion}/tv/${id}/season/${season}/episode/${episode}/videos`);
+    return data;
+  }
+
+  async episodeCredits(id: number, season: number, episode: number) {
+    const data = await this.get<Credits>(`{this.apiVersion}/tv/${id}/season/${season}/episode/${episode}/credits`);
+    return data;
+  }
+
+  
   override willSendRequest(_path: string, request: AugmentedRequest) {
     request.headers['Authorization'] = `Bearer ${this.readAccessToken}`
   }
