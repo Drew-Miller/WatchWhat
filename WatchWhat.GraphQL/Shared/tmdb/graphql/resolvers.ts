@@ -134,17 +134,16 @@ export const tmdbResolvers = {
     },
     allProviders: async (_: any, req: { media: MediaType, region: string }, { tmdbAPI }: TmdbContext) => {
       const data = await tmdbAPI.allProviders(req.media);
-      return {
-        id: data.id,
-        results: data.results.map(result => {
-          const display_priority = result.display_priorities[req.region];
-          const ret: Provider & { display_priority: number } = {
-            ...result,
-            display_priority
-          };
-          return ret;
-        })
-      }
+      const results = data.results.map(result => {
+        const display_priority = result.display_priorities[req.region];
+        const ret: Provider & { display_priority: number } = {
+          ...result,
+          display_priority
+        };
+        return ret;
+      })
+
+      return results;
     },
     regions: async (_: any, __: any, { tmdbAPI }: TmdbContext) => {
       return tmdbAPI.regions();

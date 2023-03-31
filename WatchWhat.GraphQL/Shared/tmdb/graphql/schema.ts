@@ -4,20 +4,20 @@ type Query {
 
   # TMDB
   
-  trending(media: String!, time: String!): [MediaResult!]!
-  discover(media: String!, params: DiscoverParams): [MediaResult!]!
-  search(media: String!, params: SearchParams!): [MediaResult!]!
-  popular(media: String!, params: PopularParams): Page<MediaResult>!
-  similar(media: String!, id: Int!): Page<MediaResult>!
-  recommendations(media: String!, id: Int!): Page<MediaResult>!
+  trending(media: String!, time: String!): PageMedia!
+  discover(media: String!, params: DiscoverParams): PageMedia!
+  search(media: String!, params: SearchParams!): PageMedia!
+  popular(media: String!, params: PopularParams): PageMedia!
+  similar(media: String!, id: Int!): PageMedia!
+  recommendations(media: String!, id: Int!): PageMedia!
 
-  videos(media: String!, id: Int!): Page<Video>!
+  videos(media: String!, id: Int!): PageVideo!
   credits(media: String!, id: Int!): Credits!
   providers(media: String!, id: Int!, region: String!): ProviderTypes!
 
   genres(media: String!): [Genre!]!
-  allProviders(media: String!): AllProviders!
-  regions(): [Region!]!
+  allProviders(media: String!): [Provider!]!
+  regions: [Region!]!
 
   # Movies
 
@@ -28,12 +28,12 @@ type Query {
   tv(id: Int!): TV
 }
 
-type DiscoverParams {
+input DiscoverParams {
   page: Int
   genreIds: [Int!]
 }
 
-type SearchParams {
+input SearchParams {
   language: String
   query: String!
   page: Int
@@ -41,7 +41,7 @@ type SearchParams {
   region: String
 }
 
-type PopularParams {
+input PopularParams {
   page: Int
   region: String
 }
@@ -50,10 +50,16 @@ type PopularParams {
 # TMDB Types #
 ##############
 
-type Page<T> {
+type PageMedia {
   page: Int!
   total_pages: Int!
-  results: [T!]!
+  results: [MediaResult!]!
+}
+
+type PageVideo {
+  page: Int!
+  total_pages: Int!
+  results: [Video!]!
 }
 
 type Genre {
@@ -63,20 +69,6 @@ type Genre {
 
 # Providers #
 #############
-
-type AllProviders {
-  id: Int!
-  results: [Provider & {
-    display_priority: Int!
-  }!]!
-}
-
-type Providers {
-  id: Int!
-  results: {
-    [key: String]: ProviderTypes!
-  }
-}
 
 type ProviderTypes {
   link: String!
@@ -116,7 +108,7 @@ type MediaResult {
   name: String!
   overview: String!
   poster_path: String
-  release_date: Date
+  release_date: String
   mediaType: String!
 }
 
@@ -208,7 +200,7 @@ type SpokenLanguages {
 
 type Videos {
   id: Int!
-  results: [Trailer!]!
+  results: [Video!]!
 }
 
 type Video {
