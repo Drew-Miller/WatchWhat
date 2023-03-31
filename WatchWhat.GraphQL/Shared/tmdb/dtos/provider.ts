@@ -1,12 +1,13 @@
 // All Global Providers
 export type AllProviders = {
   id: number,
-  results: {
-    // Display priorities in each country for the provider
-    display_priorities: {
-      [country: string]: number
-    }
-  } & Provider []
+  results: Result[]
+};
+
+type Result = Provider & {
+  display_priorities: {
+    [country: string]: number
+  }
 };
 
 // A Movie/TV Show providers in each country

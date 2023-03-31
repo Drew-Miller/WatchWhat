@@ -1,8 +1,9 @@
-import { Context } from "@azure/functions";
 import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateHandler } from "@as-integrations/azure-functions";
-import { MyContext, resolvers, typeDefs } from "../Shared/graphql";
+import { Context } from "@azure/functions";
+import { MyContext } from "./context";
 import { TmdbAPI, TmdbAPIOptions } from "../Shared/tmdb";
+import { tmdbResolvers, tmdbTypeDefs } from "../Shared/tmdb/graphql";
 import { WatchmodeAPI, WatchmodeAPIOptions } from "../Shared/watchmode";
 import { WatchWhatAPI, WatchWhatAPIOptions } from "../Shared/watchwhat";
 
@@ -17,8 +18,8 @@ const { WATCHWHAT_BASE_URL, WATCHWHAT_FUNCTION_KEY } = process.env;
 
 // Apollo Server setup
 const server = new ApolloServer<MyContext>({
-  typeDefs,
-  resolvers,
+  typeDefs: tmdbTypeDefs,
+  resolvers: tmdbResolvers,
   csrfPrevention: true,
   cache: "bounded"
 });

@@ -1,4 +1,4 @@
-export const typeDefs = `#graphql
+export const tmdbTypeDefs = `#graphql
 
 type Query {
 
@@ -63,6 +63,13 @@ type Genre {
 
 # Providers #
 #############
+
+type AllProviders {
+  id: Int!
+  results: [Provider & {
+    display_priority: Int!
+  }!]!
+}
 
 type Providers {
   id: Int!

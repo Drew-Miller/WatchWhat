@@ -1,5 +1,5 @@
 import { AppErrors } from '../../errors';
-import { Credits, Movie, Page, ProviderTypes, TV, Video } from '../dtos';
+import { Credits, Movie, Page, Provider, ProviderTypes, TV, Video } from '../dtos';
 import { MediaResult, MediaType, MixedMedia } from '../media';
 import { TmdbContext } from './context';
 
@@ -12,7 +12,7 @@ type TVRated = TV & {
 };
 
 // The GraphQL schema
-const resolvers = {
+export const tmdbResolvers = {
   Query: {
 
     // Media Results
@@ -134,7 +134,17 @@ const resolvers = {
     },
     allProviders: async (_: any, req: { media: MediaType, region: string }, { tmdbAPI }: TmdbContext) => {
       const data = await tmdbAPI.allProviders(req.media);
-      
+      return {
+        id: data.id,
+        results: data.results.map(result => {
+          const display_priority = result.display_priorities[req.region];
+          const ret: Provider & { display_priority: number } = {
+            ...result,
+            display_priority
+          };
+          return ret;
+        })
+      }
     },
     regions: async (_: any, __: any, { tmdbAPI }: TmdbContext) => {
       return tmdbAPI.regions();
@@ -182,5 +192,3 @@ function mediaPage(page: Page<MixedMedia>) {
   }
   return result;
 }
-
-export { resolvers };
