@@ -53,12 +53,14 @@ input PopularParams {
 type PageMedia {
   page: Int!
   total_pages: Int!
+  total_results: Int!
   results: [MediaResult!]!
 }
 
 type PageVideo {
   page: Int!
   total_pages: Int!
+  total_results: Int!
   results: [Video!]!
 }
 

@@ -33,7 +33,7 @@ export class WatchWhatAPI extends RESTDataSource {
   }
 
   async authenticated(): Promise<string> {
-    const data = await this.post<string>(`/api/authenticated`);
+    const data = await this.get<string>(`/api/authenticated`);
     return data;
   }
 

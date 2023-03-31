@@ -1,46 +1,54 @@
+import { Context } from "@azure/functions";
 import { initializeApp, App, cert, deleteApp, getApp, ServiceAccount } from "firebase-admin/app";
-import { Logs } from "./logger";
-import { createServiceAccount, getServiceAccount } from "./service-account";
+import { BlobServiceClient } from "@azure/storage-blob";
+import { parseSnakeCaseJSON, streamToBuffer } from "./util";
 
-/*
-  This could be optimized in the future.
-  Each request reads the file from the storage account and downloads it as string.
-  Saving and reading from the file in Node.js would be ideal.
- */
+const { BLOB_CONNECTION, CONTAINER_NAME, FIREBASE_KEY } = process.env;
+
 export class Firebase {
-  private static firebaseApp: App;
-  
-  static async getFirebaseApp() {
-    if (Firebase.firebaseApp) {
-      return Firebase.firebaseApp;
-    }
-    
-    let serviceAccount: ServiceAccount;
-    try {
-      const key = await getServiceAccount();
-      serviceAccount = createServiceAccount(key);
-    } catch (error) {
-      Logs.shared.error(error);
-      throw error;
-    }
-    
-    try {
-      return Firebase.firebaseApp = initializeApp({
-        credential: cert(serviceAccount)
-      });
-    } catch(error) {
-      Logs.shared.error(error);
-    }
+  private firebaseApp: App;
+  private context: Context;
 
-    try {
-      return Firebase.firebaseApp = getApp();
-    } catch(error) {
-      Logs.shared.error(error);
-      throw error;
+  constructor(context: Context) {
+    this.context = context;
+    if (!BLOB_CONNECTION) {
+      throw this.context.res.status(500).send("Blob Connection not found.");
+    }
+    if (!CONTAINER_NAME) {
+      throw this.context.res.status(500).send("Container Name not found.");
+    }
+    if (!FIREBASE_KEY) {
+      throw this.context.res.status(500).send("Firebase Key not found.");
     }
   }
   
-  static deleteFirebaseApp() {
-    deleteApp(Firebase.firebaseApp);
+  async getApp() {    
+    const serviceAccount = await this.getServiceAccount();
+
+    try {
+      return this.firebaseApp = initializeApp({
+        credential: cert(serviceAccount)
+      });
+    } catch {
+      return this.firebaseApp = getApp();
+    }
+  }
+  
+  deleteApp() {
+    deleteApp(this.firebaseApp);
+  }
+
+  private async getServiceAccount(): Promise<ServiceAccount> {
+    const blobServiceClient = BlobServiceClient.fromConnectionString(BLOB_CONNECTION);
+    const containerClient = blobServiceClient.getContainerClient(CONTAINER_NAME);
+    const blobClient = containerClient.getBlobClient(FIREBASE_KEY);
+    const downloadResponse = await blobClient.download();
+
+    const downloaded = await streamToBuffer(downloadResponse.readableStreamBody);
+
+    const firebaseKey = downloaded.toString();
+    const json = parseSnakeCaseJSON(firebaseKey);
+    const serviceAccount: ServiceAccount = json as ServiceAccount;
+    return serviceAccount;
   }
 }
