@@ -21,15 +21,15 @@ class SearchViewModel: ObservableObject {
     private func fetchData(query: String, page: Int) async {
         let pageNullable = GraphQLNullable<Int>(integerLiteral: page)
         
-        Networking.apollo.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
-            guard let data = try? result.get().data else { return }
-                        
-            self.page = data.searchMovies.page
-            self.totalPages = data.searchMovies.total_pages
-            self.totalResults = data.searchMovies.total_results
-            self.results = data.searchMovies.results.map {
-                return Item.fromMovie(data: $0.__data)
-            }
-        }
+//        Networking.apollo.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
+//            guard let data = try? result.get().data else { return }
+//                        
+//            self.page = data.searchMovies.page
+//            self.totalPages = data.searchMovies.total_pages
+//            self.totalResults = data.searchMovies.total_results
+//            self.results = data.searchMovies.results.map {
+//                return Item.fromMovie(data: $0.__data)
+//            }
+//        }
     }
 }

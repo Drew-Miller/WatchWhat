@@ -79,20 +79,17 @@ class Networking {
         }
     }
     
-    func SearchQuery(query: String, page: Int, completion: @escaping ([Category]) -> Void) {
-        let pageNullable = GraphQLNullable<Int>(integerLiteral: page)
-
-        Networking.shared.apollo.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
-            guard let data = try? result.get().data else { return }
-                        
-            self.page = data.searchMovies.page
-            self.totalPages = data.searchMovies.total_pages
-            self.totalResults = data.searchMovies.total_results
-            self.results = data.searchMovies.results.map {
-                return Item.fromMovie(data: $0.__data)
-            }
-            
-            completion(categories)
-        }
-    }
+//    func SearchQuery(query: String, page: Int, completion: @escaping ([MovieItem]) -> Void) {
+//        let pageNullable = GraphQLNullable<Int>(integerLiteral: page)
+//
+//        Networking.shared.apollo.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
+//            guard let data = try? result.get().data else { return }
+//                        
+//            let results = data.searchMovies.results.map {
+//                return Item.fromMovie(data: $0.__data)
+//            }
+//            
+//            completion(result)
+//        }
+//    }
 }
