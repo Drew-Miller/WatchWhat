@@ -6,6 +6,8 @@ import { TmdbAPI, TmdbAPIOptions } from "../Shared/tmdb";
 import { tmdbResolvers, tmdbTypeDefs } from "../Shared/tmdb/graphql";
 import { WatchmodeAPI, WatchmodeAPIOptions } from "../Shared/watchmode";
 import { WatchWhatAPI, WatchWhatAPIOptions } from "../Shared/watchwhat";
+import { typeDefs } from "./schema";
+import { resolvers } from "./resolvers";
 
 // TMDB Variables
 const { TMDB_BASE_URL, TMDB_API_VERSION, TMDB_API_KEY, TMDB_READ_ACCESS_TOKEN } = process.env;
@@ -18,8 +20,8 @@ const { WATCHWHAT_BASE_URL, WATCHWHAT_FUNCTION_KEY } = process.env;
 
 // Apollo Server setup
 const server = new ApolloServer<MyContext>({
-  typeDefs: tmdbTypeDefs,
-  resolvers: tmdbResolvers,
+  typeDefs: [typeDefs, tmdbTypeDefs],
+  resolvers: [resolvers, tmdbResolvers],
   csrfPrevention: true,
   cache: "bounded"
 });
