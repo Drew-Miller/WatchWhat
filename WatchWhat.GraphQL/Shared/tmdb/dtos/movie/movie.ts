@@ -1,4 +1,4 @@
-import { Company, Genre, SpokenLanguages } from "../.";
+import { Company, Genre, SpokenLanguage } from "../.";
 
 // This property is likely a collection group.
 // belongs_to_collection: any | null,
@@ -20,7 +20,7 @@ export type Movie = {
   release_date?: Date,
   revenue: number,
   runtime: number,
-  spoken_languages: SpokenLanguages[],
+  spoken_languages: SpokenLanguage[],
   status: string,
   tagline: string,
   title: string,

@@ -77,4 +77,13 @@ export class AppErrors {
       }
     }
   );
+
+  public static IS_NOT_MEDIA: CreateGraphQLError = () => new GraphQLError(
+    `Could not convert to Media.`, {
+      extensions: {
+        code: "",
+        http: {status: StatusCodes.BAD_REQUEST }
+      }
+    }
+  );
 }

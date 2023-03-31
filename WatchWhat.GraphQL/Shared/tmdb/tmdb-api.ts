@@ -4,6 +4,7 @@ import { AppErrors } from "../errors";
 import { ContentRatings, TV, TVResult, TVSeason } from "./dtos/tv";
 import { Movie, MovieResult, ReleaseDates } from "./dtos/movie";
 import { AllProviders, Credits, Genre, Page, Providers, Regions, Video } from "./dtos";
+import { MediaType, MixedMedia } from "./media";
 
 export type TmdbAPIOptions = DataSourceConfig & {
   apiVersion: string,
@@ -12,12 +13,6 @@ export type TmdbAPIOptions = DataSourceConfig & {
   baseURL: string,
   sessionId?: string
 };
-
-type MediaType =
-  | "tv"
-  | "movie";
-
-type MixedMedia = MovieResult | TVResult;
 
 export class TmdbAPI extends RESTDataSource {
   private apiVersion: string;
@@ -50,7 +45,7 @@ export class TmdbAPI extends RESTDataSource {
   // TMDB API
 
   async trending(media: MediaType | "all", time: "day" | "week") {
-    const data = await this.get<MixedMedia[]>(`{this.apiVersion}/trending/${media}/${time}?api_key=${encodeURIComponent(this.apiKey)}`);
+    const data = await this.get<Page<MixedMedia>>(`{this.apiVersion}/trending/${media}/${time}?api_key=${encodeURIComponent(this.apiKey)}`);
     return data;
   }
 
@@ -59,7 +54,7 @@ export class TmdbAPI extends RESTDataSource {
     page?: number,
     genreIds?: number[]
   }) {
-    const data = await this.get<MixedMedia[]>(`{this.apiVersion}/discover/${media}`, {
+    const data = await this.get<Page<MixedMedia>>(`{this.apiVersion}/discover/${media}`, {
       params: {
         with_genres: params?.genreIds.join(','),
         page: params?.page.toString()
@@ -76,7 +71,7 @@ export class TmdbAPI extends RESTDataSource {
     includeAdult?: boolean,
     region?: string
   }) {
-    const data = await this.get<MixedMedia[]>(`{this.apiVersion}/search/${media}?api_key=${encodeURIComponent(this.apiKey)}`, {
+    const data = await this.get<Page<MixedMedia>>(`{this.apiVersion}/search/${media}?api_key=${encodeURIComponent(this.apiKey)}`, {
       params: {
         language: params.language,
         query: params.query,
@@ -93,7 +88,7 @@ export class TmdbAPI extends RESTDataSource {
     return data;
   }
 
-  async providers(media: MediaType) {
+  async allProviders(media: MediaType) {
     const data = await this.get<AllProviders>(`{this.apiVersion}/watch/providers/${media}?api_key=${encodeURIComponent(this.apiKey)}`);
     return data;
   }
@@ -102,7 +97,6 @@ export class TmdbAPI extends RESTDataSource {
     const data = await this.get<Regions[]>(`{this.apiVersion}/watch/providers/regions?api_key=${encodeURIComponent(this.apiKey)}`);
     return data;
   }
-
 
   // Movies
 
@@ -124,7 +118,7 @@ export class TmdbAPI extends RESTDataSource {
     return data;
   }
 
-  async moviesSimilar(id: number) {
+  async movieSimilar(id: number) {
     const data = await this.get<Page<MovieResult>>(`{this.apiVersion}/movie/${id}/similar`);
     return data;
   }

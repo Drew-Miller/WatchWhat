@@ -9,7 +9,7 @@ export type TVResult = {
   overview: string
   popularity: number
   poster_path?: string
-  first_air_date: string
+  first_air_date: Date
   name: string
   vote_average: number
   vote_count: number

@@ -53,11 +53,9 @@ export default startServerAndCreateHandler(server, {
     };
 
     return {
-      dataSources: {
-        tmdbAPI: new TmdbAPI(tmdbOptions),
-        watchmodeAPI: new WatchmodeAPI(watchmodeOptions),
-        watchWhatAPI: new WatchWhatAPI(watchWhatOptions)
-      }
+      tmdbAPI: new TmdbAPI(tmdbOptions),
+      watchmodeAPI: new WatchmodeAPI(watchmodeOptions),
+      watchWhatAPI: new WatchWhatAPI(watchWhatOptions)
     };
   }
 });
