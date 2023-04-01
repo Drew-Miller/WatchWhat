@@ -75,7 +75,7 @@ export class TmdbAPI extends RESTDataSource {
       params: {
         language: params.language,
         query: params.query,
-        page: params.page.toString(),
+        page: params.page?.toString(),
         include_adult: params.includeAdult?.toString(),
         region: params.region
       }
@@ -84,8 +84,8 @@ export class TmdbAPI extends RESTDataSource {
   }
 
   async genres(media: MediaType) {
-    const data = await this.get<Genre[]>(`${this.apiVersion}/genre/${media}`);
-    return data;
+    const data = await this.get<{ genres: Genre[] }>(`${this.apiVersion}/genre/${media}/list`);
+    return data.genres;
   }
 
   async allProviders(media: MediaType) {
@@ -94,8 +94,8 @@ export class TmdbAPI extends RESTDataSource {
   }
 
   async regions() {
-    const data = await this.get<Regions[]>(`${this.apiVersion}/watch/providers/regions?api_key=${encodeURIComponent(this.apiKey)}`);
-    return data;
+    const data = await this.get<{ results: Regions[] }>(`${this.apiVersion}/watch/providers/regions?api_key=${encodeURIComponent(this.apiKey)}`);
+    return data.results;
   }
 
   // Movies
@@ -139,7 +139,7 @@ export class TmdbAPI extends RESTDataSource {
   }
 
   async movieProviders(id: number, region: string) {
-    const data = await this.get<Providers>(`${this.apiVersion}/movie/${id}/providers`);
+    const data = await this.get<Providers>(`${this.apiVersion}/movie/${id}/watch/providers`);
     const providers = data.results;
     if (region in providers) {
       return providers[region];

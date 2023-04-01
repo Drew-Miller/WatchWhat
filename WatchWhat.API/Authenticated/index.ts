@@ -13,7 +13,6 @@ const httpTrigger: AzureFunction = async function (
     const firebase = new Firebase(context);
     const auth = new FirebaseAuth(firebase, context);
     const idToken: DecodedIdToken = await auth.getUid(token);
-    const idToken2: DecodedIdToken = await auth.getUid(token);
     firebase.deleteApp();
     context.res.status(200).json(idToken.uid);
   } else {

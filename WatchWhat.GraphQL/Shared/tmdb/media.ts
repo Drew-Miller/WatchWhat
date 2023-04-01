@@ -30,6 +30,7 @@ export class MediaResult {
       this.poster_path = tv.poster_path;
       this.release_date = tv.first_air_date;
       this.mediaType = "tv";
+      return
     } else if ("title" in media) {
       let movie: MovieResult = media;
       this.adult = movie.adult;
@@ -41,6 +42,7 @@ export class MediaResult {
       this.poster_path = movie.poster_path;
       this.release_date = movie.release_date;
       this.mediaType = "movie";
+      return
     }
 
     throw AppErrors.IS_NOT_MEDIA;

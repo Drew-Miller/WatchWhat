@@ -29,12 +29,20 @@ export class Firebase {
         credential: cert(serviceAccount)
       });
     } catch {
-      return this.firebaseApp = getApp();
+      try {
+        return this.firebaseApp = getApp();
+      } catch(error) {
+        throw this.context.res.status(500).send(error)
+      }
     }
   }
   
   deleteApp() {
-    deleteApp(this.firebaseApp);
+    try {
+      deleteApp(this.firebaseApp);
+    } catch(error) {
+      throw this.context.res.status(500).send(error)
+    }
   }
 
   private async getServiceAccount(): Promise<ServiceAccount> {

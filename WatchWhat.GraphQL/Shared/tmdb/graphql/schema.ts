@@ -58,9 +58,7 @@ type PageMedia {
 }
 
 type PageVideo {
-  page: Int!
-  total_pages: Int!
-  total_results: Int!
+  id: Int!
   results: [Video!]!
 }
 
@@ -80,7 +78,7 @@ type ProviderTypes {
 }
 
 type Provider {
-  display_priority: Int!
+  display_priority: Int
   logo_path: String
   provider_name: String!
   provider_id: Int!
@@ -151,29 +149,70 @@ type Movie {
 type TV {
   adult: Boolean!
   backdrop_path: String
-  budget: Int!
+  content_rating: String!
+  created_by: [CreatedBy!]!
+  episode_run_time: [Int!]!
+  first_air_date: String!
   genres: [Genre!]!
   homepage: String!
   id: Int!
-  imdb_id: String!
-  mpaa_rating: String!
+  in_production: Boolean!
+  languages: [String!]!
+  last_air_date: String!
+  last_episode_to_air: Episode
+  name: String!
+  next_episode_to_air: Episode
+  networks: [Company!]!
+  number_of_episodes: Int!
+  number_of_seasons: Int
+  origin_country: [String!]!
   original_language: String!
-  original_title: String!
+  original_name: String!
   overview: String!
   popularity: Float!
   poster_path: String
   production_companies: [Company!]!
   production_countries: [Country!]!
-  release_date: String!
-  revenue: Int!
-  runtime: Int!
+  seasons: [Season!]!
   spoken_languages: [SpokenLanguages!]!
   status: String!
   tagline: String!
-  title: String!
-  video: Boolean!
+  type: String!
   vote_average: Float!
   vote_count: Int!
+}
+
+type CreatedBy {
+  id: Int!
+  credit_id: String!
+  name: String!
+  gender: Int!
+  profile_path: String!
+}
+
+type Episode {
+  id: Int!
+  name: String!
+  overview: String!
+  vote_average: Float!
+  vote_count: Int!
+  air_date: String!
+  episode_number: String!
+  production_code: String!
+  runtime: Int!
+  season_number: Int!
+  show_id: Int!
+  still_path: String!
+}
+
+type Season {
+  air_date: String!
+  episode_count: Int!
+  id: Int!
+  name: String!
+  overview: String!
+  poster_path: String
+  season_number: Int!
 }
 
 # Production #
