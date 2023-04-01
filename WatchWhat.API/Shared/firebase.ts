@@ -24,7 +24,6 @@ export class Firebase {
   
   async getApp() {    
     const serviceAccount = await this.getServiceAccount();
-
     try {
       return this.firebaseApp = initializeApp({
         credential: cert(serviceAccount)
@@ -39,16 +38,20 @@ export class Firebase {
   }
 
   private async getServiceAccount(): Promise<ServiceAccount> {
-    const blobServiceClient = BlobServiceClient.fromConnectionString(BLOB_CONNECTION);
-    const containerClient = blobServiceClient.getContainerClient(CONTAINER_NAME);
-    const blobClient = containerClient.getBlobClient(FIREBASE_KEY);
-    const downloadResponse = await blobClient.download();
-
-    const downloaded = await streamToBuffer(downloadResponse.readableStreamBody);
-
-    const firebaseKey = downloaded.toString();
-    const json = parseSnakeCaseJSON(firebaseKey);
-    const serviceAccount: ServiceAccount = json as ServiceAccount;
-    return serviceAccount;
+    try {
+      const blobServiceClient = BlobServiceClient.fromConnectionString(BLOB_CONNECTION);
+      const containerClient = blobServiceClient.getContainerClient(CONTAINER_NAME);
+      const blobClient = containerClient.getBlobClient(FIREBASE_KEY);
+      const downloadResponse = await blobClient.download();
+  
+      const downloaded = await streamToBuffer(downloadResponse.readableStreamBody);
+  
+      const firebaseKey = downloaded.toString();
+      const json = parseSnakeCaseJSON(firebaseKey);
+      const serviceAccount: ServiceAccount = json as ServiceAccount;
+      return serviceAccount;
+    } catch(error) {
+      throw this.context.res.status(500).send(error);
+    }
   }
 }

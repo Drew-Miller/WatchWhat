@@ -1,7 +1,8 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { getAuth } from "firebase-admin/auth";
 import { parseBearer } from "../Shared/util";
 import { Firebase } from "../Shared/firebase";
+import { FirebaseAuth } from "../Shared/firebase-auth";
+import { DecodedIdToken } from "firebase-admin/auth";
 
 const httpTrigger: AzureFunction = async function (
   context: Context,
@@ -10,19 +11,11 @@ const httpTrigger: AzureFunction = async function (
   const token = parseBearer(req.headers["authorization"]);
   if (token) {
     const firebase = new Firebase(context);
-    const app = await firebase.getApp();
-
-    let uid: string;
-    try {
-      const decodedToken = await getAuth(app).verifyIdToken(token); 
-      uid = decodedToken.uid; 
-    } catch (error) {
-      firebase.deleteApp();
-      context.res.status(401).send(error);
-    }
-
+    const auth = new FirebaseAuth(firebase, context);
+    const idToken: DecodedIdToken = await auth.getUid(token);
+    const idToken2: DecodedIdToken = await auth.getUid(token);
     firebase.deleteApp();
-    context.res.status(200).json(uid);
+    context.res.status(200).json(idToken.uid);
   } else {
     context.res.status(401).send("No auth token was provided.");
   }
