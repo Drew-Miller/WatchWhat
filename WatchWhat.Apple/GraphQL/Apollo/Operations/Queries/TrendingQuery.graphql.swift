@@ -4,13 +4,13 @@
 @_exported import ApolloAPI
 
 public extension WatchWhatSchema {
-  class DiscoverQuery: GraphQLQuery {
-    public static let operationName: String = "Discover"
+  class TrendingQuery: GraphQLQuery {
+    public static let operationName: String = "Trending"
     public static let document: ApolloAPI.DocumentType = .notPersisted(
       definition: .init(
         #"""
-        query Discover($media: String!, $params: DiscoverParams) {
-          discover(media: $media, params: $params) {
+        query Trending($media: String!, $time: String!) {
+          trending(media: $media, time: $time) {
             __typename
             page
             total_pages
@@ -32,19 +32,19 @@ public extension WatchWhatSchema {
       ))
 
     public var media: String
-    public var params: GraphQLNullable<DiscoverParams>
+    public var time: String
 
     public init(
       media: String,
-      params: GraphQLNullable<DiscoverParams>
+      time: String
     ) {
       self.media = media
-      self.params = params
+      self.time = time
     }
 
     public var __variables: Variables? { [
       "media": media,
-      "params": params
+      "time": time
     ] }
 
     public struct Data: WatchWhatSchema.SelectionSet {
@@ -53,18 +53,18 @@ public extension WatchWhatSchema {
 
       public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("discover", Discover.self, arguments: [
+        .field("trending", Trending.self, arguments: [
           "media": .variable("media"),
-          "params": .variable("params")
+          "time": .variable("time")
         ]),
       ] }
 
-      public var discover: Discover { __data["discover"] }
+      public var trending: Trending { __data["trending"] }
 
-      /// Discover
+      /// Trending
       ///
       /// Parent Type: `PageMedia`
-      public struct Discover: WatchWhatSchema.SelectionSet {
+      public struct Trending: WatchWhatSchema.SelectionSet {
         public let __data: DataDict
         public init(data: DataDict) { __data = data }
 
@@ -79,7 +79,7 @@ public extension WatchWhatSchema {
         public var total_pages: Int { __data["total_pages"] }
         public var results: [Result] { __data["results"] }
 
-        /// Discover.Result
+        /// Trending.Result
         ///
         /// Parent Type: `MediaResult`
         public struct Result: WatchWhatSchema.SelectionSet {

@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let PaginatedMovies = Object(
-    typename: "PaginatedMovies",
+  static let CreatedBy = Object(
+    typename: "CreatedBy",
     implementedInterfaces: []
   )
 }

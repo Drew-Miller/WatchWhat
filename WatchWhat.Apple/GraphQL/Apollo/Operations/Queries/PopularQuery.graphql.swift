@@ -4,13 +4,13 @@
 @_exported import ApolloAPI
 
 public extension WatchWhatSchema {
-  class DiscoverQuery: GraphQLQuery {
-    public static let operationName: String = "Discover"
+  class PopularQuery: GraphQLQuery {
+    public static let operationName: String = "Popular"
     public static let document: ApolloAPI.DocumentType = .notPersisted(
       definition: .init(
         #"""
-        query Discover($media: String!, $params: DiscoverParams) {
-          discover(media: $media, params: $params) {
+        query Popular($media: String!, $params: PopularParams) {
+          popular(media: $media, params: $params) {
             __typename
             page
             total_pages
@@ -32,11 +32,11 @@ public extension WatchWhatSchema {
       ))
 
     public var media: String
-    public var params: GraphQLNullable<DiscoverParams>
+    public var params: GraphQLNullable<PopularParams>
 
     public init(
       media: String,
-      params: GraphQLNullable<DiscoverParams>
+      params: GraphQLNullable<PopularParams>
     ) {
       self.media = media
       self.params = params
@@ -53,18 +53,18 @@ public extension WatchWhatSchema {
 
       public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("discover", Discover.self, arguments: [
+        .field("popular", Popular.self, arguments: [
           "media": .variable("media"),
           "params": .variable("params")
         ]),
       ] }
 
-      public var discover: Discover { __data["discover"] }
+      public var popular: Popular { __data["popular"] }
 
-      /// Discover
+      /// Popular
       ///
       /// Parent Type: `PageMedia`
-      public struct Discover: WatchWhatSchema.SelectionSet {
+      public struct Popular: WatchWhatSchema.SelectionSet {
         public let __data: DataDict
         public init(data: DataDict) { __data = data }
 
@@ -79,7 +79,7 @@ public extension WatchWhatSchema {
         public var total_pages: Int { __data["total_pages"] }
         public var results: [Result] { __data["results"] }
 
-        /// Discover.Result
+        /// Popular.Result
         ///
         /// Parent Type: `MediaResult`
         public struct Result: WatchWhatSchema.SelectionSet {

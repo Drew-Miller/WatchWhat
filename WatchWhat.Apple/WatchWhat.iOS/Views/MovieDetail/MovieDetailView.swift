@@ -11,7 +11,7 @@ struct MovieDetailView: View {
     @Environment(\.openURL) private var openURL
     @StateObject var viewModel = MovieDetailViewModel()
     let id: Int
-    var movie: MovieDetails {
+    var movie: Movie {
         return viewModel.movie!
     }
     

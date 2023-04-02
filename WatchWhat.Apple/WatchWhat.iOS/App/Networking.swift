@@ -56,7 +56,8 @@ class Networking {
     
     private func initApollo() -> ApolloClient {
         let endpointURL = Configuration.baseURL
-        let store = ApolloStore()
+        let cache = InMemoryNormalizedCache()
+        let store = ApolloStore(cache: cache)
         let interceptorProvider = NetworkInterceptorsProvider(
             interceptors: [TokenInterceptor()],
             store: store
@@ -67,29 +68,95 @@ class Networking {
         return ApolloClient(networkTransport: networkTransport, store: store)
     }
     
-    func DiscoverQuery(completion: @escaping ([Category]) -> Void) {
-        Networking.shared.apollo.fetch(query: WatchWhatSchema.DiscoverQuery()) { result in
+    func WebURL(id: Int, providerName: String, completion: @escaping (String) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.WebURLQuery(tmdbId: id, titleType: "movie", sourceName: providerName)) { result in
             guard let data = try? result.get().data else { return }
-                        
-            let categories = data.discover.results.map {
-                return Category.fromMovieCategory(data: $0.__data)
-            }
-            
-            completion(categories)
+
+            completion(data.webUrl)
         }
     }
     
-//    func SearchQuery(query: String, page: Int, completion: @escaping ([MovieItem]) -> Void) {
-//        let pageNullable = GraphQLNullable<Int>(integerLiteral: page)
-//
-//        Networking.shared.apollo.fetch(query: WatchWhatSchema.SearchQuery(query: query, page: pageNullable)) { result in
-//            guard let data = try? result.get().data else { return }
-//                        
-//            let results = data.searchMovies.results.map {
-//                return Item.fromMovie(data: $0.__data)
-//            }
-//            
-//            completion(result)
-//        }
-//    }
+    func TrendingQuery(completion: @escaping ([Media]) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.TrendingQuery(media: "movie", time: "day")) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            let trending = data.trending.results.map {
+                return Media(data: $0.__data)
+            }
+
+            completion(trending)
+        }
+    }
+    
+    func PopularQuery(completion: @escaping ([Media]) -> Void) {
+        let params = WatchWhatSchema.PopularParams(page: 1, region: "US")
+        let nullable = GraphQLNullable<WatchWhatSchema.PopularParams>(params)
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.PopularQuery(media: "movie", params: nullable)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            let popular = data.popular.results.map {
+                return Media(data: $0.__data)
+            }
+
+            completion(popular)
+        }
+    }
+    
+    func DiscoverQuery(completion: @escaping ([Media]) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.DiscoverQuery(media: "movie", params: nil)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            let discover = data.discover.results.map {
+                return Media(data: $0.__data)
+            }
+
+            completion(discover)
+        }
+    }
+    
+    func SearchQuery(query: String, completion: @escaping ([Media]) -> Void) {
+        let params = WatchWhatSchema.SearchParams(query: query)
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.SearchQuery(media: "movie", params: params)) { result in
+            guard let data = try? result.get().data else { return }
+                        
+            let search = data.search.results.map {
+                return Media(data: $0.__data)
+            }
+
+            completion(search)
+        }
+    }
+    
+    func MovieQuery(id: Int, completion: @escaping (Movie) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.MovieQuery(movieId: id)) { result in
+            guard let data = try? result.get().data else { return }
+
+            let movie = Movie(data: data.movie.__data)
+            completion(movie)
+        }
+    }
+    
+    func SimilarQuery(media: String!, id: Int, completion:  @escaping ([Media]) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.SimilarQuery(media: media, id: id)) { result in
+            guard let data = try? result.get().data else { return }
+
+            let similar: [Media] = data.similar.results.map {
+                return Media(data: $0.__data)
+            }
+            
+            completion(similar)
+        }
+    }
+    
+    func VideosQuery(media: String!, id: Int, completion:  @escaping ([Video]) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.VideosQuery(media: media, id: id)) { result in
+            guard let data = try? result.get().data else { return }
+
+            let videos = data.videos.results.map {
+                return Video(data: $0.__data)
+            }
+            
+            completion(videos)
+        }
+    }
 }

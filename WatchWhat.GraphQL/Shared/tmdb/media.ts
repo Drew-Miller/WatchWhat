@@ -16,7 +16,7 @@ export class MediaResult {
   overview: string
   poster_path?: string
   release_date?: Date
-  mediaType: MediaType
+  media_type: MediaType
 
   constructor(media: TVResult | MovieResult) {
     if ("name" in  media) {
@@ -29,7 +29,7 @@ export class MediaResult {
       this.overview = tv.overview;
       this.poster_path = tv.poster_path;
       this.release_date = tv.first_air_date;
-      this.mediaType = "tv";
+      this.media_type = "tv";
       return
     } else if ("title" in media) {
       let movie: MovieResult = media;
@@ -41,7 +41,7 @@ export class MediaResult {
       this.overview = movie.overview;
       this.poster_path = movie.poster_path;
       this.release_date = movie.release_date;
-      this.mediaType = "movie";
+      this.media_type = "movie";
       return
     }
 

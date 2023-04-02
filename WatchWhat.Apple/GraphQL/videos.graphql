@@ -1,0 +1,17 @@
+query Videos($media: String!, $id: Int!) {
+  videos(media: $media, id: $id) {
+    id
+    results {
+      id
+      iso_639_1
+      iso_3166_1
+      key
+      name
+      official
+      published_at
+      site
+      size
+      type
+    }
+  }
+}

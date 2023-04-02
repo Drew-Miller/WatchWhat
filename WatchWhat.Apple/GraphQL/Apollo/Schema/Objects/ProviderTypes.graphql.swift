@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let Cast = Object(
-    typename: "Cast",
+  static let ProviderTypes = Object(
+    typename: "ProviderTypes",
     implementedInterfaces: []
   )
 }

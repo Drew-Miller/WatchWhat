@@ -10,15 +10,12 @@ import Foundation
 @MainActor
 class HomeViewModel: ObservableObject {
     @Published private(set) var page: Int?
-    @Published private(set) var categories: [Category] = [Category]()
+    @Published private(set) var trending: [Media] = [Media]()
+    @Published private(set) var discover: [Media] = [Media]()
 
     func loadData() async {
-        await fetchData()
-    }
-
-    private func fetchData() async {
-        Networking.shared.DiscoverQuery { categories in
-            self.categories = categories
+        Networking.shared.DiscoverQuery { discover in
+            self.discover = discover
         }
     }
 }

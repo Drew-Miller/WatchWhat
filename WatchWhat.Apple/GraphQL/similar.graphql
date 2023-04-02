@@ -11,7 +11,7 @@ query Similar($media: String!, $id: Int!) {
       overview
       poster_path
       release_date
-      mediaType
+      media_type
     }
   }
 }

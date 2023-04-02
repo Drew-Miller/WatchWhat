@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let Recommendation = Object(
-    typename: "Recommendation",
+  static let Season = Object(
+    typename: "Season",
     implementedInterfaces: []
   )
 }

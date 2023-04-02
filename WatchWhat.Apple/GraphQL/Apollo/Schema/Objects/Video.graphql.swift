@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let WatchProviders = Object(
-    typename: "WatchProviders",
+  static let Video = Object(
+    typename: "Video",
     implementedInterfaces: []
   )
 }

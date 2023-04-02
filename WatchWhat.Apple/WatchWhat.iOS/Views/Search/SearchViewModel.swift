@@ -12,7 +12,7 @@ class SearchViewModel: ObservableObject {
     @Published private(set) var page: Int?
     @Published private(set) var totalPages: Int?
     @Published private(set) var totalResults: Int?
-    @Published private(set) var results: [Item] = [Item]()
+    @Published private(set) var results: [Media] = [Media]()
 
     func loadData(query: String, page: Int = 1) async {
         await fetchData(query: query, page: page)

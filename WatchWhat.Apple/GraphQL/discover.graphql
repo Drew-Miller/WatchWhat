@@ -11,7 +11,7 @@ query Discover($media: String!, $params: DiscoverParams) {
       overview
       poster_path
       release_date
-      mediaType
+      media_type
     }
   }
 }

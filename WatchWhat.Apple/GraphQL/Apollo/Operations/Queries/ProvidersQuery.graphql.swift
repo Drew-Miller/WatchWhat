@@ -4,13 +4,13 @@
 @_exported import ApolloAPI
 
 public extension WatchWhatSchema {
-  class WatchMovieQuery: GraphQLQuery {
-    public static let operationName: String = "WatchMovie"
+  class ProvidersQuery: GraphQLQuery {
+    public static let operationName: String = "Providers"
     public static let document: ApolloAPI.DocumentType = .notPersisted(
       definition: .init(
         #"""
-        query WatchMovie($movieId: Int!, $region: String!) {
-          watchMovie(movieId: $movieId, region: $region) {
+        query Providers($media: String!, $id: Int!, $region: String!) {
+          providers(media: $media, id: $id, region: $region) {
             __typename
             link
             buy {
@@ -39,19 +39,23 @@ public extension WatchWhatSchema {
         """#
       ))
 
-    public var movieId: Int
+    public var media: String
+    public var id: Int
     public var region: String
 
     public init(
-      movieId: Int,
+      media: String,
+      id: Int,
       region: String
     ) {
-      self.movieId = movieId
+      self.media = media
+      self.id = id
       self.region = region
     }
 
     public var __variables: Variables? { [
-      "movieId": movieId,
+      "media": media,
+      "id": id,
       "region": region
     ] }
 
@@ -61,22 +65,23 @@ public extension WatchWhatSchema {
 
       public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Query }
       public static var __selections: [ApolloAPI.Selection] { [
-        .field("watchMovie", WatchMovie.self, arguments: [
-          "movieId": .variable("movieId"),
+        .field("providers", Providers.self, arguments: [
+          "media": .variable("media"),
+          "id": .variable("id"),
           "region": .variable("region")
         ]),
       ] }
 
-      public var watchMovie: WatchMovie { __data["watchMovie"] }
+      public var providers: Providers { __data["providers"] }
 
-      /// WatchMovie
+      /// Providers
       ///
-      /// Parent Type: `WatchProviders`
-      public struct WatchMovie: WatchWhatSchema.SelectionSet {
+      /// Parent Type: `ProviderTypes`
+      public struct Providers: WatchWhatSchema.SelectionSet {
         public let __data: DataDict
         public init(data: DataDict) { __data = data }
 
-        public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.WatchProviders }
+        public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.ProviderTypes }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("link", String.self),
           .field("buy", [Buy]?.self),
@@ -89,7 +94,7 @@ public extension WatchWhatSchema {
         public var rent: [Rent]? { __data["rent"] }
         public var flatrate: [Flatrate]? { __data["flatrate"] }
 
-        /// WatchMovie.Buy
+        /// Providers.Buy
         ///
         /// Parent Type: `Provider`
         public struct Buy: WatchWhatSchema.SelectionSet {
@@ -98,19 +103,19 @@ public extension WatchWhatSchema {
 
           public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Provider }
           public static var __selections: [ApolloAPI.Selection] { [
-            .field("display_priority", Int.self),
+            .field("display_priority", Int?.self),
             .field("logo_path", String?.self),
             .field("provider_name", String.self),
             .field("provider_id", Int.self),
           ] }
 
-          public var display_priority: Int { __data["display_priority"] }
+          public var display_priority: Int? { __data["display_priority"] }
           public var logo_path: String? { __data["logo_path"] }
           public var provider_name: String { __data["provider_name"] }
           public var provider_id: Int { __data["provider_id"] }
         }
 
-        /// WatchMovie.Rent
+        /// Providers.Rent
         ///
         /// Parent Type: `Provider`
         public struct Rent: WatchWhatSchema.SelectionSet {
@@ -119,19 +124,19 @@ public extension WatchWhatSchema {
 
           public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Provider }
           public static var __selections: [ApolloAPI.Selection] { [
-            .field("display_priority", Int.self),
+            .field("display_priority", Int?.self),
             .field("logo_path", String?.self),
             .field("provider_name", String.self),
             .field("provider_id", Int.self),
           ] }
 
-          public var display_priority: Int { __data["display_priority"] }
+          public var display_priority: Int? { __data["display_priority"] }
           public var logo_path: String? { __data["logo_path"] }
           public var provider_name: String { __data["provider_name"] }
           public var provider_id: Int { __data["provider_id"] }
         }
 
-        /// WatchMovie.Flatrate
+        /// Providers.Flatrate
         ///
         /// Parent Type: `Provider`
         public struct Flatrate: WatchWhatSchema.SelectionSet {
@@ -140,13 +145,13 @@ public extension WatchWhatSchema {
 
           public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.Provider }
           public static var __selections: [ApolloAPI.Selection] { [
-            .field("display_priority", Int.self),
+            .field("display_priority", Int?.self),
             .field("logo_path", String?.self),
             .field("provider_name", String.self),
             .field("provider_id", Int.self),
           ] }
 
-          public var display_priority: Int { __data["display_priority"] }
+          public var display_priority: Int? { __data["display_priority"] }
           public var logo_path: String? { __data["logo_path"] }
           public var provider_name: String { __data["provider_name"] }
           public var provider_id: Int { __data["provider_id"] }

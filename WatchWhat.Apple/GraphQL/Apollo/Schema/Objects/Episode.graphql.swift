@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let Credits = Object(
-    typename: "Credits",
+  static let Episode = Object(
+    typename: "Episode",
     implementedInterfaces: []
   )
 }

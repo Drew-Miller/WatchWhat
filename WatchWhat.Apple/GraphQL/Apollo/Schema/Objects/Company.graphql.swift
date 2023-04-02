@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension WatchWhatSchema.Objects {
-  static let Similar = Object(
-    typename: "Similar",
+  static let Company = Object(
+    typename: "Company",
     implementedInterfaces: []
   )
 }

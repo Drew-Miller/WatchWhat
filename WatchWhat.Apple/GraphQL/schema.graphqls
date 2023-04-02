@@ -15,8 +15,8 @@ type Query {
   genres(media: String!): [Genre!]!
   allProviders(media: String!): [Provider!]!
   regions: [Region!]!
-  movie(id: Int!): Movie
-  tv(id: Int!): TV
+  movie(id: Int!): Movie!
+  tv(id: Int!): TV!
 }
 
 input DiscoverParams {
@@ -90,7 +90,7 @@ type MediaResult {
   overview: String!
   poster_path: String
   release_date: String
-  mediaType: String!
+  media_type: String!
 }
 
 type Movie {

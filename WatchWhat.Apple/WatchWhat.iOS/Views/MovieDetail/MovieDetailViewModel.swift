@@ -9,20 +9,18 @@ import Foundation
 
 @MainActor
 class MovieDetailViewModel: ObservableObject {
-    @Published private(set) var movie: MovieDetails?
+    @Published private(set) var movie: Movie?
     // @Published private(set) var credits: MovieExtrasQuery.Data.Credits?
     @Published private(set) var trailers: [Video]? // fetched through videos
-    @Published private(set) var recommendations: [Item]?
-    @Published private(set) var similar: [Item]?
+    @Published private(set) var recommendations: [Media]?
+    @Published private(set) var similar: [Media]?
     @Published private(set) var stream: [Provider]?
     @Published private(set) var webUrl: String?
     
     func openWebUrl(id: Int, providerName: String) async {
-//        Networking.apollo.fetch(query: WatchWhatSchema.WebURLQuery(tmdbId: id, titleType: "movie", sourceName: providerName)) { result in
-//            guard let data = try? result.get().data else { return }
-//
-//            self.webUrl = data.webUrl
-//        }
+        Networking.shared.WebURL(id: id, providerName: providerName) { webUrl in
+            self.webUrl = webUrl
+        }
     }
     
     func loadData(id: Int, region: String?) async {
@@ -36,14 +34,9 @@ class MovieDetailViewModel: ObservableObject {
     }
 
     private func fetchMovie(id: Int) async {
-//        Networking.apollo.fetch(query: WatchWhatSchema.MovieQuery(id: id)) { result in
-//            guard let data = try? result.get().data else {
-//                self.movie = nil
-//                return
-//            }
-//
-//            self.movie = MovieDetails(data: data.movie.__data)
-//        }
+        Networking.shared.MovieQuery(id: id) { movie in
+            self.movie = movie
+        }
     }
     
     private func fetchTrailers(id: Int) async {

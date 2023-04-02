@@ -1,5 +1,5 @@
-query Popular($media: String!) {
-  popular(media: $media) {
+query Popular($media: String!, $params: PopularParams) {
+  popular(media: $media, params: $params) {
     page
     total_pages
     results {
@@ -11,7 +11,7 @@ query Popular($media: String!) {
       overview
       poster_path
       release_date
-      mediaType
+      media_type
     }
   }
 }

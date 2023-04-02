@@ -32,25 +32,21 @@ public extension WatchWhatSchema {
     public static func objectType(forTypename typename: String) -> Object? {
       switch typename {
       case "Query": return WatchWhatSchema.Objects.Query
-      case "MovieDetails": return WatchWhatSchema.Objects.MovieDetails
-      case "Genre": return WatchWhatSchema.Objects.Genre
-      case "ProductionCompany": return WatchWhatSchema.Objects.ProductionCompany
-      case "SpokenLanguages": return WatchWhatSchema.Objects.SpokenLanguages
-      case "Credits": return WatchWhatSchema.Objects.Credits
-      case "Cast": return WatchWhatSchema.Objects.Cast
-      case "Crew": return WatchWhatSchema.Objects.Crew
-      case "TrailerResults": return WatchWhatSchema.Objects.TrailerResults
-      case "Trailer": return WatchWhatSchema.Objects.Trailer
-      case "PaginatedSimilar": return WatchWhatSchema.Objects.PaginatedSimilar
-      case "Similar": return WatchWhatSchema.Objects.Similar
-      case "PaginatedRecommendation": return WatchWhatSchema.Objects.PaginatedRecommendation
-      case "Recommendation": return WatchWhatSchema.Objects.Recommendation
-      case "Discover": return WatchWhatSchema.Objects.Discover
-      case "GroupedMovies": return WatchWhatSchema.Objects.GroupedMovies
       case "Movie": return WatchWhatSchema.Objects.Movie
-      case "PaginatedMovies": return WatchWhatSchema.Objects.PaginatedMovies
-      case "WatchProviders": return WatchWhatSchema.Objects.WatchProviders
+      case "Genre": return WatchWhatSchema.Objects.Genre
+      case "Company": return WatchWhatSchema.Objects.Company
+      case "Country": return WatchWhatSchema.Objects.Country
+      case "SpokenLanguages": return WatchWhatSchema.Objects.SpokenLanguages
+      case "PageVideo": return WatchWhatSchema.Objects.PageVideo
+      case "Video": return WatchWhatSchema.Objects.Video
+      case "PageMedia": return WatchWhatSchema.Objects.PageMedia
+      case "MediaResult": return WatchWhatSchema.Objects.MediaResult
+      case "ProviderTypes": return WatchWhatSchema.Objects.ProviderTypes
       case "Provider": return WatchWhatSchema.Objects.Provider
+      case "TV": return WatchWhatSchema.Objects.TV
+      case "CreatedBy": return WatchWhatSchema.Objects.CreatedBy
+      case "Episode": return WatchWhatSchema.Objects.Episode
+      case "Season": return WatchWhatSchema.Objects.Season
       default: return nil
       }
     }

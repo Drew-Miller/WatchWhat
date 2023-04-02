@@ -9,13 +9,13 @@ import SwiftUI
 
 struct CategoryItem: View {
     let app = AppState.shared
-    let item: Item
+    let item: Media
     
     var body: some View {
         VStack() {
-            Poster(imageUrl: item.posterPath, width: 224.0)
+            Poster(imageUrl: item.poster_path, width: 224.0)
             
-            Text(item.title)
+            Text(item.name)
                 .font(.body)
                 .foregroundColor(.text)
                 .padding(.top, 6)

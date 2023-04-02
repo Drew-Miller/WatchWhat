@@ -21,11 +21,11 @@ type Query {
 
   # Movies
 
-  movie(id: Int!): Movie
+  movie(id: Int!): Movie!
 
   # TV
 
-  tv(id: Int!): TV
+  tv(id: Int!): TV!
 }
 
 input DiscoverParams {
@@ -109,7 +109,7 @@ type MediaResult {
   overview: String!
   poster_path: String
   release_date: String
-  mediaType: String!
+  media_type: String!
 }
 
 ### Movie ###
