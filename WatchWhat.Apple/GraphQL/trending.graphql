@@ -1,5 +1,5 @@
-query Discover($media: String!, $params: DiscoverParams) {
-  discover(media: $media, params: $params) {
+query Trending($media: String!, $time: String!) {
+  trending(media: $media, time: $time) {
     page
     total_pages
     results {

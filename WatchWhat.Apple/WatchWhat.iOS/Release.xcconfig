@@ -9,6 +9,8 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 SIMPLE_SLASH=/
+
 BASE_URL=https:$(SIMPLE_SLASH)/watchwhat-graphql.azurewebsites.net
 EMULATOR=""
 EMULATOR_PORT=""
+OFFLINE=false

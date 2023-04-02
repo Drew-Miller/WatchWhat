@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Landmarks/Landmarks.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:/Users/drewmiller/Developer/Xcode/WatchWhat/WatchWhat.Apple/WatchWhat.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,5 +1,5 @@
-query WatchMovie($movieId: Int!, $region: String!) {
-  watchMovie(movieId: $movieId, region: $region) {
+query Providers($media: String!, $id: Int!, $region: String!) {
+  providers(media: $media, id: $id, region: $region) {
     link
     buy {
       display_priority

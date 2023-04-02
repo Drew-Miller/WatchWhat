@@ -15,13 +15,16 @@
 		56012BB929B832DB00E2E5A9 /* WatchWhatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */; };
 		56012BBB29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */; };
 		56012BCB29B8353E00E2E5A9 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 56012BCA29B8353E00E2E5A9 /* Apollo */; };
+		56565F9529D8FA1D00ACA1EE /* trending.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 56565F9429D8FA1D00ACA1EE /* trending.graphql */; };
+		56565F9729D8FA5800ACA1EE /* popular.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 56565F9629D8FA5800ACA1EE /* popular.graphql */; };
+		56565F9929D8FA8700ACA1EE /* tv.graphql in Sources */ = {isa = PBXBuildFile; fileRef = 56565F9829D8FA8700ACA1EE /* tv.graphql */; };
 		5687D20229C8193F00383AB4 /* movie.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DB29C8193F00383AB4 /* movie.graphql */; };
 		5687D20329C8193F00383AB4 /* schema.graphqls in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DC29C8193F00383AB4 /* schema.graphqls */; };
-		5687D20429C8193F00383AB4 /* movie-extras.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DD29C8193F00383AB4 /* movie-extras.graphql */; };
+		5687D20429C8193F00383AB4 /* similar.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DD29C8193F00383AB4 /* similar.graphql */; };
 		5687D20529C8193F00383AB4 /* discover.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DE29C8193F00383AB4 /* discover.graphql */; };
-		5687D20629C8193F00383AB4 /* movie-search.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DF29C8193F00383AB4 /* movie-search.graphql */; };
+		5687D20629C8193F00383AB4 /* search.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1DF29C8193F00383AB4 /* search.graphql */; };
 		5687D20729C8193F00383AB4 /* weburl.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1E029C8193F00383AB4 /* weburl.graphql */; };
-		5687D20829C8193F00383AB4 /* watch-movie.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1E129C8193F00383AB4 /* watch-movie.graphql */; };
+		5687D20829C8193F00383AB4 /* providers.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 5687D1E129C8193F00383AB4 /* providers.graphql */; };
 		5687D20A29C8210400383AB4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5687D20929C8210400383AB4 /* GoogleService-Info.plist */; };
 		5687D20F29C82C5900383AB4 /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D20E29C82C5900383AB4 /* AuthenticatedView.swift */; };
 		5687D21129C82C6600383AB4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687D21029C82C6600383AB4 /* AuthenticationView.swift */; };
@@ -128,14 +131,18 @@
 		56012BB429B832DB00E2E5A9 /* WatchWhatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WatchWhatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		56012BB829B832DB00E2E5A9 /* WatchWhatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITests.swift; sourceTree = "<group>"; };
 		56012BBA29B832DB00E2E5A9 /* WatchWhatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchWhatUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		56012BC729B832EF00E2E5A9 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
+		56012BC729B832EF00E2E5A9 /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		56565F9429D8FA1D00ACA1EE /* trending.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = trending.graphql; sourceTree = "<group>"; };
+		56565F9629D8FA5800ACA1EE /* popular.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = popular.graphql; sourceTree = "<group>"; };
+		56565F9829D8FA8700ACA1EE /* tv.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = tv.graphql; sourceTree = "<group>"; };
+		56565F9A29D9079100ACA1EE /* Offline.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Offline.xcconfig; sourceTree = "<group>"; };
 		5687D1DB29C8193F00383AB4 /* movie.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = movie.graphql; sourceTree = "<group>"; };
 		5687D1DC29C8193F00383AB4 /* schema.graphqls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
-		5687D1DD29C8193F00383AB4 /* movie-extras.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "movie-extras.graphql"; sourceTree = "<group>"; };
+		5687D1DD29C8193F00383AB4 /* similar.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = similar.graphql; sourceTree = "<group>"; };
 		5687D1DE29C8193F00383AB4 /* discover.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = discover.graphql; sourceTree = "<group>"; };
-		5687D1DF29C8193F00383AB4 /* movie-search.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "movie-search.graphql"; sourceTree = "<group>"; };
+		5687D1DF29C8193F00383AB4 /* search.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = search.graphql; sourceTree = "<group>"; };
 		5687D1E029C8193F00383AB4 /* weburl.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = weburl.graphql; sourceTree = "<group>"; };
-		5687D1E129C8193F00383AB4 /* watch-movie.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "watch-movie.graphql"; sourceTree = "<group>"; };
+		5687D1E129C8193F00383AB4 /* providers.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = providers.graphql; sourceTree = "<group>"; };
 		5687D20929C8210400383AB4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5687D20B29C829E100383AB4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5687D20E29C82C5900383AB4 /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
@@ -271,7 +278,8 @@
 				56C2353229BBB3900010A733 /* TODO.md */,
 				5687D20929C8210400383AB4 /* GoogleService-Info.plist */,
 				5687D20B29C829E100383AB4 /* Info.plist */,
-				56012BC729B832EF00E2E5A9 /* Local.xcconfig */,
+				56565F9A29D9079100ACA1EE /* Offline.xcconfig */,
+				56012BC729B832EF00E2E5A9 /* Development.xcconfig */,
 				56C2349B29BAE5F30010A733 /* Release.xcconfig */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
@@ -315,12 +323,15 @@
 				56DE676B29CA88810064D9F5 /* Apollo */,
 				5687D1DC29C8193F00383AB4 /* schema.graphqls */,
 				56DE676929CA86190064D9F5 /* authenticated.graphql */,
-				5687D1DE29C8193F00383AB4 /* discover.graphql */,
-				5687D1DB29C8193F00383AB4 /* movie.graphql */,
-				5687D1DD29C8193F00383AB4 /* movie-extras.graphql */,
-				5687D1DF29C8193F00383AB4 /* movie-search.graphql */,
 				5687D1E029C8193F00383AB4 /* weburl.graphql */,
-				5687D1E129C8193F00383AB4 /* watch-movie.graphql */,
+				56565F9429D8FA1D00ACA1EE /* trending.graphql */,
+				5687D1DE29C8193F00383AB4 /* discover.graphql */,
+				56565F9629D8FA5800ACA1EE /* popular.graphql */,
+				5687D1DF29C8193F00383AB4 /* search.graphql */,
+				5687D1DB29C8193F00383AB4 /* movie.graphql */,
+				56565F9829D8FA8700ACA1EE /* tv.graphql */,
+				5687D1DD29C8193F00383AB4 /* similar.graphql */,
+				5687D1E129C8193F00383AB4 /* providers.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -625,12 +636,12 @@
 			files = (
 				5687D20729C8193F00383AB4 /* weburl.graphql in Resources */,
 				5687D20529C8193F00383AB4 /* discover.graphql in Resources */,
-				5687D20429C8193F00383AB4 /* movie-extras.graphql in Resources */,
-				5687D20829C8193F00383AB4 /* watch-movie.graphql in Resources */,
+				5687D20429C8193F00383AB4 /* similar.graphql in Resources */,
+				5687D20829C8193F00383AB4 /* providers.graphql in Resources */,
 				56DB7AA229D0CED900180F47 /* .gitignore in Resources */,
 				56012BA529B832DA00E2E5A9 /* Preview Assets.xcassets in Resources */,
 				56C1AC2B29D4A5BC0030D9EE /* category.json in Resources */,
-				5687D20629C8193F00383AB4 /* movie-search.graphql in Resources */,
+				5687D20629C8193F00383AB4 /* search.graphql in Resources */,
 				5687D20229C8193F00383AB4 /* movie.graphql in Resources */,
 				5687D20A29C8210400383AB4 /* GoogleService-Info.plist in Resources */,
 				56012BA229B832DA00E2E5A9 /* Assets.xcassets in Resources */,
@@ -679,6 +690,7 @@
 				56DE67AF29CA88810064D9F5 /* SchemaConfiguration.swift in Sources */,
 				569ED36D29C68D1B0022F396 /* Video.swift in Sources */,
 				56DE679F29CA88810064D9F5 /* MovieDetails.graphql.swift in Sources */,
+				56565F9529D8FA1D00ACA1EE /* trending.graphql in Sources */,
 				56DE679129CA88810064D9F5 /* SearchQuery.graphql.swift in Sources */,
 				56DE679B29CA88810064D9F5 /* WatchProviders.graphql.swift in Sources */,
 				56E5A9BC29D2742800DD2F78 /* AppState.swift in Sources */,
@@ -713,6 +725,7 @@
 				56C233F929B973B60010A733 /* HomeViewModel.swift in Sources */,
 				56DE67AD29CA88810064D9F5 /* ProductionCompany.graphql.swift in Sources */,
 				56012B9E29B832D900E2E5A9 /* WatchWhatApp.swift in Sources */,
+				56565F9929D8FA8700ACA1EE /* tv.graphql in Sources */,
 				56C2353329BBB3900010A733 /* TODO.md in Sources */,
 				56DE679D29CA88810064D9F5 /* PaginatedSimilar.graphql.swift in Sources */,
 				5687D21D29C8C35300383AB4 /* SearchBar.swift in Sources */,
@@ -723,6 +736,7 @@
 				56C2344229BA8EF00010A733 /* CategoryRow.swift in Sources */,
 				56C233FB29B97DB70010A733 /* Background.swift in Sources */,
 				569ED2F329BD98AC0022F396 /* MovieDetails.swift in Sources */,
+				56565F9729D8FA5800ACA1EE /* popular.graphql in Sources */,
 				569F74A729C79F3D00D25EA4 /* CategoryItem.swift in Sources */,
 				56C2354029BBE1960010A733 /* SearchViewModel.swift in Sources */,
 				56DE679E29CA88810064D9F5 /* Movie.graphql.swift in Sources */,
@@ -768,7 +782,7 @@
 /* Begin XCBuildConfiguration section */
 		56012BBC29B832DB00E2E5A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56012BC729B832EF00E2E5A9 /* Local.xcconfig */;
+			baseConfigurationReference = 56012BC729B832EF00E2E5A9 /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -905,6 +919,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -938,6 +953,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1032,6 +1048,143 @@
 			};
 			name = Release;
 		};
+		56565F9B29D90A9500ACA1EE /* Offline */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56565F9A29D9079100ACA1EE /* Offline.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_SOURCE_FILE_NAMES = (
+					"*.graphql",
+					TODO.md,
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Offline;
+		};
+		56565F9C29D90A9500ACA1EE /* Offline */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchWhat.iOS/Preview Content\"";
+				DEVELOPMENT_TEAM = HKP37D8GG4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WatchWhat.iOS/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = WatchWhat.iOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Offline;
+		};
+		56565F9D29D90A9500ACA1EE /* Offline */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKP37D8GG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = HeyBabe.WatchWhatTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WatchWhat.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WatchWhat";
+			};
+			name = Offline;
+		};
+		56565F9E29D90A9500ACA1EE /* Offline */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HKP37D8GG4;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = HeyBabe.WatchWhatUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WatchWhat;
+			};
+			name = Offline;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1039,6 +1192,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56012BBC29B832DB00E2E5A9 /* Debug */,
+				56565F9B29D90A9500ACA1EE /* Offline */,
 				56012BBD29B832DB00E2E5A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1048,6 +1202,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56012BBF29B832DB00E2E5A9 /* Debug */,
+				56565F9C29D90A9500ACA1EE /* Offline */,
 				56012BC029B832DB00E2E5A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1057,6 +1212,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56012BC229B832DB00E2E5A9 /* Debug */,
+				56565F9D29D90A9500ACA1EE /* Offline */,
 				56012BC329B832DB00E2E5A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1066,6 +1222,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				56012BC529B832DB00E2E5A9 /* Debug */,
+				56565F9E29D90A9500ACA1EE /* Offline */,
 				56012BC629B832DB00E2E5A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

@@ -1,5 +1,5 @@
-query Discover($media: String!, $params: DiscoverParams) {
-  discover(media: $media, params: $params) {
+query Search($media: String!, $params: SearchParams!) {
+  search(media: $media, params: $params) {
     page
     total_pages
     results {

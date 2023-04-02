@@ -1,6 +1,9 @@
-## API Calls
-Discover options
-Trending
-Popular
+Offline
 
-## GraphQL
+UILaunchScreen
+
+Home Page (Apple Music Recently Added)
+
+Authorization Flow
+
+Scroll Hide Header

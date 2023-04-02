@@ -56,4 +56,8 @@ enum Configuration {
     static var originalImgUrlStr: String {
         return "https://image.tmdb.org/t/p/original"
     }
+    
+    static var offline: Bool {
+        return try! Bool(FromBundle.value(for: "offline"))!
+    }
 }

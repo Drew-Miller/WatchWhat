@@ -1,0 +1,97 @@
+query TV($tvId: Int!) {
+  tv(id: $tvId) {
+    adult
+    backdrop_path
+    content_rating
+    created_by {
+      id
+      credit_id
+      name
+      gender
+      profile_path
+    }
+    episode_run_time
+    first_air_date
+    genres {
+      id
+      name
+    }
+    homepage
+    id
+    in_production
+    languages
+    last_air_date
+    last_episode_to_air {
+      id
+      name
+      overview
+      vote_average
+      vote_count
+      air_date
+      episode_number
+      production_code
+      runtime
+      season_number
+      show_id
+      still_path
+    }
+    name
+    next_episode_to_air {
+      id
+      name
+      overview
+      vote_average
+      vote_count
+      air_date
+      episode_number
+      production_code
+      runtime
+      season_number
+      show_id
+      still_path
+    }
+    networks {
+      id
+      logo_path
+      name
+      origin_country
+    }
+    number_of_episodes
+    number_of_seasons
+    origin_country
+    original_language
+    original_name
+    overview
+    popularity
+    poster_path
+    production_companies {
+      id
+      logo_path
+      name
+      origin_country
+    }
+    production_countries {
+      iso_3166_1
+      name
+    }
+    seasons {
+      air_date
+      episode_count
+      id
+      name
+      overview
+      poster_path
+      season_number
+    }
+    spoken_languages {
+      english_name
+      iso_639_1
+      name
+    }
+    status
+    tagline
+    type
+    vote_average
+    vote_count
+  }
+}

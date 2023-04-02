@@ -1,5 +1,5 @@
-query Discover($media: String!, $params: DiscoverParams) {
-  discover(media: $media, params: $params) {
+query Similar($media: String!, $id: Int!) {
+  similar(media: $media, id: $id) {
     page
     total_pages
     results {

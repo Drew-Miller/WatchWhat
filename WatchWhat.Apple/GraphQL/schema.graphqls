@@ -2,55 +2,76 @@ type Query {
   ping: String!
   health: String!
   authenticated: String!
-  discover: Discover!
-  webUrl(tmdbId: Int!, titleType: String, sourceName: String!): String!
+  webUrl(tmdbId: Int!, titleType: String!, sourceName: String!): String!
+  trending(media: String!, time: String!): PageMedia!
+  discover(media: String!, params: DiscoverParams): PageMedia!
+  search(media: String!, params: SearchParams!): PageMedia!
+  popular(media: String!, params: PopularParams): PageMedia!
+  similar(media: String!, id: Int!): PageMedia!
+  recommendations(media: String!, id: Int!): PageMedia!
+  videos(media: String!, id: Int!): PageVideo!
+  credits(media: String!, id: Int!): Credits!
+  providers(media: String!, id: Int!, region: String!): ProviderTypes!
+  genres(media: String!): [Genre!]!
+  allProviders(media: String!): [Provider!]!
   regions: [Region!]!
-  movieProviders(region: String): [Provider!]!
-  watchMovie(movieId: Int!, region: String!): WatchProviders!
-  popularMovies(page: Int): PaginatedMovies!
-  searchMovies(query: String!, page: Int): PaginatedMovies!
-  genres: [Genre!]!
-  moviesByGenre(genreIds: [Int], page: Int): PaginatedMovies!
-  movie(id: Int!): MovieDetails!
-  credits(id: Int!): Credits!
-  videos(id: Int!): TrailerResults!
-  similar(id: Int!): PaginatedSimilar!
-  recommendations(id: Int!): PaginatedRecommendation!
+  movie(id: Int!): Movie
+  tv(id: Int!): TV
 }
 
-type Discover {
-  results: [GroupedMovies!]!
+input DiscoverParams {
+  page: Int
+  genreIds: [Int!]
 }
 
-type GroupedMovies {
+input SearchParams {
+  language: String
+  query: String!
+  page: Int
+  includeAdult: Boolean
+  region: String
+}
+
+input PopularParams {
+  page: Int
+  region: String
+}
+
+type PageMedia {
+  page: Int!
+  total_pages: Int!
+  total_results: Int!
+  results: [MediaResult!]!
+}
+
+type PageVideo {
   id: Int!
-  title: String!
-  movies: [Movie!]!
+  results: [Video!]!
 }
 
-type Region {
-  iso_3166_1: String
-  english_name: String
-  native_name: String
+type Genre {
+  id: Int!
+  name: String!
 }
 
-type Provider {
-  display_priority: Int!
-  logo_path: String
-  provider_name: String!
-  provider_id: Int!
-}
-
-type WatchProviders {
+type ProviderTypes {
   link: String!
   buy: [Provider!]
   rent: [Provider!]
   flatrate: [Provider!]
 }
 
-type Genre {
-  id: Int!
-  name: String!
+type Provider {
+  display_priority: Int
+  logo_path: String
+  provider_name: String!
+  provider_id: Int!
+}
+
+type Region {
+  iso_3166_1: String
+  english_name: String
+  native_name: String
 }
 
 type PaginatedMovies {
@@ -60,24 +81,19 @@ type PaginatedMovies {
   total_results: Int!
 }
 
-type Movie {
+type MediaResult {
   adult: Boolean!
   backdrop_path: String
   genre_ids: [Int!]!
   id: Int!
-  original_language: String!
-  original_title: String!
+  name: String!
   overview: String!
-  popularity: Float!
   poster_path: String
-  release_date: String!
-  title: String!
-  video: Boolean!
-  vote_average: Float!
-  vote_count: Int!
+  release_date: String
+  mediaType: String!
 }
 
-type MovieDetails {
+type Movie {
   adult: Boolean!
   backdrop_path: String
   budget: Int!
@@ -91,8 +107,8 @@ type MovieDetails {
   overview: String!
   popularity: Float!
   poster_path: String
-  production_companies: [ProductionCompany!]!
-  production_countries: [ProductionCountry!]!
+  production_companies: [Company!]!
+  production_countries: [Country!]!
   release_date: String!
   revenue: Int!
   runtime: Int!
@@ -105,14 +121,83 @@ type MovieDetails {
   vote_count: Int!
 }
 
-type ProductionCompany {
+type TV {
+  adult: Boolean!
+  backdrop_path: String
+  content_rating: String!
+  created_by: [CreatedBy!]!
+  episode_run_time: [Int!]!
+  first_air_date: String!
+  genres: [Genre!]!
+  homepage: String!
+  id: Int!
+  in_production: Boolean!
+  languages: [String!]!
+  last_air_date: String!
+  last_episode_to_air: Episode
+  name: String!
+  next_episode_to_air: Episode
+  networks: [Company!]!
+  number_of_episodes: Int!
+  number_of_seasons: Int
+  origin_country: [String!]!
+  original_language: String!
+  original_name: String!
+  overview: String!
+  popularity: Float!
+  poster_path: String
+  production_companies: [Company!]!
+  production_countries: [Country!]!
+  seasons: [Season!]!
+  spoken_languages: [SpokenLanguages!]!
+  status: String!
+  tagline: String!
+  type: String!
+  vote_average: Float!
+  vote_count: Int!
+}
+
+type CreatedBy {
+  id: Int!
+  credit_id: String!
+  name: String!
+  gender: Int!
+  profile_path: String!
+}
+
+type Episode {
+  id: Int!
+  name: String!
+  overview: String!
+  vote_average: Float!
+  vote_count: Int!
+  air_date: String!
+  episode_number: String!
+  production_code: String!
+  runtime: Int!
+  season_number: Int!
+  show_id: Int!
+  still_path: String!
+}
+
+type Season {
+  air_date: String!
+  episode_count: Int!
+  id: Int!
+  name: String!
+  overview: String!
+  poster_path: String
+  season_number: Int!
+}
+
+type Company {
   id: Int!
   logo_path: String
   name: String!
   origin_country: String!
 }
 
-type ProductionCountry {
+type Country {
   iso_3166_1: String!
   name: String!
 }
@@ -121,6 +206,30 @@ type SpokenLanguages {
   english_name: String!
   iso_639_1: String!
   name: String!
+}
+
+type Videos {
+  id: Int!
+  results: [Video!]!
+}
+
+type Video {
+  id: String!
+  iso_639_1: String!
+  iso_3166_1: String!
+  key: String!
+  name: String
+  official: Boolean!
+  published_at: String!
+  site: String!
+  size: Int!
+  type: String!
+}
+
+type Credits {
+  cast: [Cast!]!
+  crew: [Crew!]!
+  id: Int!
 }
 
 type Cast {
@@ -150,89 +259,4 @@ type Crew {
   original_name: String!
   popularity: Float!
   profile_path: String
-}
-
-type Credits {
-  cast: [Cast!]!
-  crew: [Crew!]!
-  id: Int!
-}
-
-type TrailerResults {
-  id: Int!
-  results: [Trailer!]!
-}
-
-type Trailer {
-  id: String!
-  iso_639_1: String!
-  iso_3166_1: String!
-  key: String!
-  name: String
-  official: Boolean!
-  published_at: String!
-  site: String!
-  size: Int!
-  type: String!
-}
-
-type Recommendation {
-  adult: Boolean!
-  backdrop_path: String
-  genre_ids: [Int!]!
-  id: Int!
-  media_type: String!
-  original_language: String!
-  original_title: String!
-  overview: String!
-  popularity: Float!
-  poster_path: String
-  release_date: String!
-  title: String!
-  video: Boolean!
-  vote_average: Float!
-}
-
-type PaginatedRecommendation {
-  page: Int!
-  results: [Recommendation!]!
-  total_pages: Int!
-  total_results: Int!
-}
-
-type Similar {
-  adult: Boolean!
-  backdrop_path: String
-  genre_ids: [Int!]!
-  id: Int!
-  original_language: String!
-  original_title: String!
-  overview: String!
-  popularity: Float!
-  poster_path: String
-  release_date: String!
-  title: String!
-  video: Boolean!
-  vote_average: Float!
-}
-
-type PaginatedSimilar {
-  page: Int!
-  results: [Similar!]!
-  total_pages: Int!
-  total_results: Int!
-}
-
-type Source {
-  source_id: Int
-  name: String!
-  type: String!
-  region: String!
-  ios_url: String
-  android_url: String
-  web_url: String!
-  format: Int!
-  price: Int
-  seasons: Int
-  episodes: Int
 }
