@@ -23,7 +23,7 @@ struct CategoryItem: View {
                 .truncationMode(.tail)
         }
         .onTapGesture {
-            app.movieSelected(item.id)
+            app.mediaSelected(item.media_type, item.id)
         }
     }
 }

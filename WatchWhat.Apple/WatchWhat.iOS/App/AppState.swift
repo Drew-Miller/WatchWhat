@@ -9,14 +9,14 @@ import Foundation
 import Combine
 import SwiftUI
 
-struct SelectedId: Codable {
-    let media: MediaType
-    let id: Int
-    
+struct SelectedId: Codable, RawRepresentable {
     enum CodingKeys: String, CodingKey {
         case media
         case id
     }
+    
+    let media: MediaType
+    let id: Int
     
     init(media: MediaType, id: Int) {
         self.media = media
@@ -34,26 +34,51 @@ struct SelectedId: Codable {
         try container.encode(media, forKey: .media)
         try container.encode(id, forKey: .id)
     }
+    
+    init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8) else {
+            return nil
+        }
+        do {
+            let decoder = JSONDecoder()
+            self = try decoder.decode(SelectedId.self, from: data)
+        } catch {
+            print("Failed to decode SelectedId from raw value: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    var rawValue: String {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(self)
+            return String(data: data, encoding: .utf8) ?? ""
+        } catch {
+            print("Failed to encode SelectedId to raw value: \(error.localizedDescription)")
+            return ""
+        }
+    }
 }
+
 
 enum AppView: Int {
     case home           = 0
     case movies         = 1
     case tv             = 2
     case search         = 3
-    case movieDetails   = 4
+    case details   = 4
 }
 
 extension String {
     static let defaultKeys = UserDefaultKeys()
     
     class UserDefaultKeys {
-        let token: String = "token"
-        let view: String = "view"
-        let previousView: String = "previousView"
-        let selectedId: String = "selectedId"
-        let presentingLoginScreen: String = "presentingLoginScreen"
-        let searchValue: String = "searchValue"
+        let token: String                   = "token"
+        let view: String                    = "view"
+        let previousView: String            = "previousView"
+        let selectedId: String              = "selectedId"
+        let presentingLoginScreen: String   = "presentingLoginScreen"
+        let searchValue: String             = "searchValue"
     }
 }
 
@@ -68,7 +93,7 @@ class AppState: ObservableObject {
     @AppStorage(.defaultKeys.view) private(set) var view: AppView = .home
     @AppStorage(.defaultKeys.previousView) private(set) var previousView: AppView = .home
     
-    @AppStorage(.defaultKeys.selectedId) private(set) var selectedId: SelectedId? = SelectedId(media: .movie, id: 0)
+    @AppStorage(.defaultKeys.selectedId) private(set) var selectedId: SelectedId?
     @Published private(set) var selectedIds: [SelectedId] = [SelectedId]()
     
     static let shared: AppState = AppState()
@@ -102,14 +127,14 @@ class AppState: ObservableObject {
         self.setView(self.previousView)
     }
     
-    func movieSelected(_ media: MediaType, _ id: Int) {
+    func mediaSelected(_ media: MediaType, _ id: Int) {
         selectedIds.append(SelectedId(media: media, id: id))
-        setView(.movieDetails)
+        setView(.details)
     }
     
     private func navigate(_ view: AppView) {
         // Default navigation
-        if view == AppView.movieDetails && selectedIds.count == 0 {
+        if view == AppView.details && selectedIds.count == 0 {
             self.view = .home
             return
         }

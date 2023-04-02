@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum MediaType: String, Codable {
-    case movie = "movie"
-    case tv = "tv"
+public enum MediaType: String, Codable {
+    case movie  = "movie"
+    case tv     = "tv"
 }
 
 public struct MediaPage: Codable {
@@ -37,7 +37,7 @@ public struct Media: Hashable, Codable {
     public let overview: String
     public let poster_path: String?
     public let release_date: String?
-    public let media_type: String
+    public let media_type: MediaType
         
     public init(data: DataDict) {
         self.adult = data["adult"]
@@ -48,6 +48,11 @@ public struct Media: Hashable, Codable {
         self.overview = data["overview"]
         self.poster_path = data["poster_path"]
         self.release_date = data["release_date"]
-        self.media_type = data["media_type"]
+        
+        if let media_type = MediaType(rawValue: data["media_type"]) {
+            self.media_type = media_type
+        } else {
+            self.media_type = .movie
+        }
     }
 }

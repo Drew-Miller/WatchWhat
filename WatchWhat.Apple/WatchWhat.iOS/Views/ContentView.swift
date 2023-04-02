@@ -23,21 +23,25 @@ struct ContentView: View {
                     HomeView()
                 case .search:
                     SearchView(searchValue: $app.searchValue)
-                case .movieDetails:
-                    if let movieId = app.movieId  {
-                        MovieDetailView(id: movieId)
-                            .transition(.move(edge: .trailing))
+                case .details:
+                    if let selectedId = app.selectedId  {
+                        switch selectedId.media {
+                        case .movie:
+                            MovieDetailView(id: selectedId.id)
+                                .transition(.move(edge: .trailing))
+                        case .tv:
+                            // Change this to TV
+                            MovieDetailView(id: selectedId.id)
+                                .transition(.move(edge: .trailing))
+                        default:
+                            returning
+                        }
+                        
                     } else {
-                        Text("Returning...")
-                            .onAppear {
-                                app.navigatePrevious()
-                            }
+                        returning
                     }
                 default:
-                    Text("Returning...")
-                        .onAppear {
-                            app.navigatePrevious()
-                        }
+                    returning
                 }
             }
         }
@@ -45,6 +49,13 @@ struct ContentView: View {
             UserProfileView()
                 .environmentObject(viewModel)
         }
+    }
+    
+    var returning: some View {
+        Text("Returning...")
+            .onAppear {
+                app.navigatePrevious()
+            }
     }
 }
 
