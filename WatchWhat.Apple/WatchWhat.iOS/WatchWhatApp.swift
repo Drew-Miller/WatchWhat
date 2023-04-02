@@ -23,15 +23,6 @@ struct WatchWhatApp: App {
                     SplashView()
                 }
             }
-            .preferredColorScheme(.dark)
-            .onAppear {
-                // Sets the wait time, should be based on performance
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation {
-                        self.isActive = true
-                    }
-                }
-            }
         }
     }
 }

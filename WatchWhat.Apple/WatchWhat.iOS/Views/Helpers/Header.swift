@@ -22,11 +22,7 @@ struct Header: View {
             
             Spacer()
             
-            if colorScheme == .dark {
-                Image("logo-white-no-background").brandLogo(size: 140)
-            } else {
-                Image("logo-color-no-background").brandLogo(size: 140)
-            }
+            Image("logo").brandLogo(size: 140)
 
             Spacer()
             

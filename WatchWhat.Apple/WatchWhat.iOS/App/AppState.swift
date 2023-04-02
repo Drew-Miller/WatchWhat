@@ -9,16 +9,30 @@ import Foundation
 import Combine
 import SwiftUI
 
-extension String {
-    static let defaultKeys = UserDefaultKeys()
+struct SelectedId: Codable {
+    let media: MediaType
+    let id: Int
     
-    class UserDefaultKeys {
-        let token: String = "token"
-        let view: String = "view"
-        let previousView: String = "previousView"
-        let movieId: String = "movieId"
-        let presentingLoginScreen: String = "presentingLoginScreen"
-        let searchValue: String = "searchValue"
+    enum CodingKeys: String, CodingKey {
+        case media
+        case id
+    }
+    
+    init(media: MediaType, id: Int) {
+        self.media = media
+        self.id = id
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.media = try container.decode(MediaType.self, forKey: .media)
+        self.id = try container.decode(Int.self, forKey: .id)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(media, forKey: .media)
+        try container.encode(id, forKey: .id)
     }
 }
 
@@ -30,32 +44,46 @@ enum AppView: Int {
     case movieDetails   = 4
 }
 
+extension String {
+    static let defaultKeys = UserDefaultKeys()
+    
+    class UserDefaultKeys {
+        let token: String = "token"
+        let view: String = "view"
+        let previousView: String = "previousView"
+        let selectedId: String = "selectedId"
+        let presentingLoginScreen: String = "presentingLoginScreen"
+        let searchValue: String = "searchValue"
+    }
+}
+
 @MainActor
 class AppState: ObservableObject {
     // App State is initialized here.
     // Using AppStorage attributes in views will override the default app view.
     @AppStorage(.defaultKeys.token) private(set) var token: String?
-    @AppStorage(.defaultKeys.view) private(set) var view: AppView = .home
-    @AppStorage(.defaultKeys.previousView) private(set) var previousView: AppView = .home
-    @AppStorage(.defaultKeys.movieId) private(set) var movieId: Int?
     @AppStorage(.defaultKeys.presentingLoginScreen) var presentingLoginScreen: Bool = false
     @AppStorage(.defaultKeys.searchValue) var searchValue: String = ""
     
-    @Published private(set) var movieIds: [Int] = [Int]()
+    @AppStorage(.defaultKeys.view) private(set) var view: AppView = .home
+    @AppStorage(.defaultKeys.previousView) private(set) var previousView: AppView = .home
+    
+    @AppStorage(.defaultKeys.selectedId) private(set) var selectedId: SelectedId? = SelectedId(media: .movie, id: 0)
+    @Published private(set) var selectedIds: [SelectedId] = [SelectedId]()
     
     static let shared: AppState = AppState()
     
     private var cancellables = Set<AnyCancellable>()
 
     private init() {
-        $movieIds
+        $selectedIds
         .sink {
             guard $0.count != 0 else {
-                self.movieId = nil
+                self.selectedId = nil
                 return
             }
             
-            self.movieId = $0.last
+            self.selectedId = $0.last
         }
         .store(in: &cancellables)
     }
@@ -66,22 +94,22 @@ class AppState: ObservableObject {
     }
     
     func navigatePrevious() {
-        guard movieIds.count == 0 else {
-            movieIds.removeLast()
+        guard selectedIds.count == 0 else {
+            selectedIds.removeLast()
             return
         }
         
         self.setView(self.previousView)
     }
     
-    func movieSelected(_ id: Int) {
-        movieIds.append(id)
+    func movieSelected(_ media: MediaType, _ id: Int) {
+        selectedIds.append(SelectedId(media: media, id: id))
         setView(.movieDetails)
     }
     
     private func navigate(_ view: AppView) {
         // Default navigation
-        if view == AppView.movieDetails && movieIds.count == 0 {
+        if view == AppView.movieDetails && selectedIds.count == 0 {
             self.view = .home
             return
         }

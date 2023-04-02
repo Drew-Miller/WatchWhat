@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum MediaType: String, Codable {
+    case movie = "movie"
+    case tv = "tv"
+}
+
 public struct MediaPage: Codable {
     public let page: Int
     public let total_pages: Int

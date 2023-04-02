@@ -66,6 +66,7 @@
 		5691777429D96E10002608B5 /* DiscoverParams.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691775329D96E10002608B5 /* DiscoverParams.graphql.swift */; };
 		5691777529D96E10002608B5 /* SchemaMetadata.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691775429D96E10002608B5 /* SchemaMetadata.graphql.swift */; };
 		5691777629D96E10002608B5 /* WatchWhatSchema.graphql.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5691775529D96E10002608B5 /* WatchWhatSchema.graphql.swift */; };
+		5691777829D9FCD5002608B5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5691777729D9FCD4002608B5 /* Launch Screen.storyboard */; };
 		569ED2F129BD7F3B0022F396 /* ProviderLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569ED2F029BD7F3B0022F396 /* ProviderLogo.swift */; };
 		569F74A729C79F3D00D25EA4 /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F74A629C79F3D00D25EA4 /* CategoryItem.swift */; };
 		569F74F029C7DA6C00D25EA4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 569F74EF29C7DA6C00D25EA4 /* FirebaseAnalytics */; };
@@ -198,6 +199,7 @@
 		5691775329D96E10002608B5 /* DiscoverParams.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverParams.graphql.swift; sourceTree = "<group>"; };
 		5691775429D96E10002608B5 /* SchemaMetadata.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchemaMetadata.graphql.swift; sourceTree = "<group>"; };
 		5691775529D96E10002608B5 /* WatchWhatSchema.graphql.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchWhatSchema.graphql.swift; sourceTree = "<group>"; };
+		5691777729D9FCD4002608B5 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		569ED2F029BD7F3B0022F396 /* ProviderLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderLogo.swift; sourceTree = "<group>"; };
 		569F74A629C79F3D00D25EA4 /* CategoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		569F74F529C8089800D25EA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				56012BC729B832EF00E2E5A9 /* Development.xcconfig */,
 				56C2349B29BAE5F30010A733 /* Release.xcconfig */,
 				56012B9D29B832D900E2E5A9 /* WatchWhatApp.swift */,
+				5691777729D9FCD4002608B5 /* Launch Screen.storyboard */,
 				56012BA129B832DA00E2E5A9 /* Assets.xcassets */,
 				56012BA329B832DA00E2E5A9 /* Preview Content */,
 				56E5A9BD29D38F2100DD2F78 /* App */,
@@ -685,6 +688,7 @@
 				5687D20729C8193F00383AB4 /* weburl.graphql in Resources */,
 				5687D20529C8193F00383AB4 /* discover.graphql in Resources */,
 				56FCA15A29D94F0900DA0712 /* Search.json in Resources */,
+				5691777829D9FCD5002608B5 /* Launch Screen.storyboard in Resources */,
 				5687D20429C8193F00383AB4 /* similar.graphql in Resources */,
 				56FCA15729D94F0900DA0712 /* Genres.json in Resources */,
 				5687D20829C8193F00383AB4 /* providers.graphql in Resources */,
@@ -979,6 +983,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1013,6 +1018,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1188,6 +1194,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

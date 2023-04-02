@@ -25,6 +25,7 @@ struct HomeView: View {
     var content: some View {
         // Movies
         LazyVStack(alignment: .leading, spacing: 24) {
+            CategoryRow(categoryName: "Popular", items: viewModel.popular)
             CategoryRow(categoryName: "Trending", items: viewModel.trending)
             CategoryRow(categoryName: "Discover", items: viewModel.discover)
         }

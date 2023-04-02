@@ -21,7 +21,7 @@ class SearchViewModel: ObservableObject {
         return searchPage?.total_results
     }
     var results: [Media] {
-        return searchPage?.results ?? []
+        return searchPage?.results ?? [Media]()
     }
 
     func loadData(query: String, page: Int = 1) async {

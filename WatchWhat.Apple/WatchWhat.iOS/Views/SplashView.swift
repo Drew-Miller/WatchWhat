@@ -11,20 +11,12 @@ struct SplashView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        ZStack {
-            Background(topColor: .background, bottomColor: .background)
-
-            VStack {
-                Spacer()
-                
-                if colorScheme == .dark {
-                    Image("logo-white-no-background").brandLogo(size: 300)
-                } else {
-                    Image("logo-color-no-background").brandLogo(size: 300)
-                }
-                
-                Spacer()
-            }
+        VStack {
+            Spacer()
+            
+            Image("logo").brandLogo(size: 300)
+            
+            Spacer()
         }
     }
 }
