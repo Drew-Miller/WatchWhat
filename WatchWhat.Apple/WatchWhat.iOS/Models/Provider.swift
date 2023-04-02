@@ -7,6 +7,25 @@
 
 import Foundation
 
+/// Parent Type: `ProviderTypes`
+public struct Providers: WatchWhatSchema.SelectionSet {
+  public let __data: DataDict
+  public init(data: DataDict) { __data = data }
+
+  public static var __parentType: ApolloAPI.ParentType { WatchWhatSchema.Objects.ProviderTypes }
+  public static var __selections: [ApolloAPI.Selection] { [
+    .field("link", String.self),
+    .field("buy", [Provider]?.self),
+    .field("rent", [Provider]?.self),
+    .field("flatrate", [Provider]?.self),
+  ] }
+
+  public var link: String { __data["link"] }
+  public var buy: [Provider]? { __data["buy"] }
+  public var rent: [Provider]? { __data["rent"] }
+  public var flatrate: [Provider]? { __data["flatrate"] }
+}
+
 public struct Provider: WatchWhatSchema.SelectionSet {
   public let __data: DataDict
   public init(data: DataDict) { __data = data }

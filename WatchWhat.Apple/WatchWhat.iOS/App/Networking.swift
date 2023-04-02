@@ -114,14 +114,12 @@ class Networking {
         }
     }
     
-    func SearchQuery(query: String, completion: @escaping ([Media]) -> Void) {
+    func SearchQuery(query: String, completion: @escaping (MediaPage) -> Void) {
         let params = WatchWhatSchema.SearchParams(query: query)
         Networking.shared.apollo.fetch(query: WatchWhatSchema.SearchQuery(media: "movie", params: params)) { result in
             guard let data = try? result.get().data else { return }
                         
-            let search = data.search.results.map {
-                return Media(data: $0.__data)
-            }
+            let search = MediaPage(data: data.search.__data, results: data.search.results.map { $0.__data })
 
             completion(search)
         }
@@ -157,6 +155,16 @@ class Networking {
             }
             
             completion(videos)
+        }
+    }
+    
+    func ProvidersQuery(media: String!, id: Int!, region: String!, completion: @escaping (Providers) -> Void) {
+        Networking.shared.apollo.fetch(query: WatchWhatSchema.ProvidersQuery(media: media, id: id, region: region)) { result in
+            guard let data = try? result.get().data else { return }
+
+            let providers = Providers(data: data.providers.__data)
+            
+            completion(providers) 
         }
     }
 }

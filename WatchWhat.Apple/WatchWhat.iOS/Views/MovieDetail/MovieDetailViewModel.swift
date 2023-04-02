@@ -27,7 +27,6 @@ class MovieDetailViewModel: ObservableObject {
         await [
             fetchMovie(id: id),
             fetchTrailers(id: id),
-            fetchRecommendations(id: id),
             fetchSimilar(id: id),
             fetchWatchProviders(id: id, region: !(region ?? "").isEmpty ? region! : "US")
         ]
@@ -40,58 +39,28 @@ class MovieDetailViewModel: ObservableObject {
     }
     
     private func fetchTrailers(id: Int) async {
-//        Networking.apollo.fetch(query: WatchWhatSchema.VideosQuery(id: id)) { result in
-//            guard let data = try? result.get().data else {
-//                self.trailers = nil
-//                return
-//            }
-//
-//            self.trailers = data.videos.results.filter {
-//                $0.official && $0.name!.lowercased().contains("trailer")
-//            }.map {
-//                return Video(data: $0.__data)
-//            }
-//        }
-    }
-    
-    private func fetchRecommendations(id: Int) async {
-//        Networking.apollo.fetch(query: WatchWhatSchema.RecommendationsQuery(id: id)) { result in
-//            guard let data = try? result.get().data else {
-//                self.recommendations = nil
-//                return
-//            }
-//
-//            self.recommendations = data.recommendations.results.map {
-//                return Item.fromMovie(data: $0.__data)
-//            }
-//        }
+        Networking.shared.VideosQuery(media: "movie", id: id) { result in
+            self.trailers = result.filter {
+                $0.official && $0.name!.lowercased().contains("trailer")
+            }.map {
+                return Video(data: $0.__data)
+            }
+        }
     }
     
     private func fetchSimilar(id: Int) async {
-//        Networking.apollo.fetch(query: WatchWhatSchema.SimilarQuery(id: id)) { result in
-//            guard let data = try? result.get().data else {
-//                self.similar = nil
-//                return
-//            }
-//
-//            self.similar = data.similar.results.map {
-//                return Item.fromMovie(data: $0.__data)
-//            }
-//        }
+        Networking.shared.SimilarQuery(media: "movie", id: id) { result in
+            self.similar = result
+        }
     }
     
     private func fetchWatchProviders(id: Int, region: String) async {
-//        Networking.apollo.fetch(query: WatchWhatSchema.WatchMovieQuery(movieId: id, region: region)) { result in
-//            guard let data = try? result.get().data else {
-//                self.stream = nil
-//                return
-//            }
-//                        
-//            if let flatrate = data.watchMovie.flatrate {
-//                self.stream = flatrate.map {
-//                    Provider(data: $0.__data)
-//                }
-//            }
-//        }
+        Networking.shared.ProvidersQuery(media: "movie", id: id, region: region) { result in
+            if let flatrate = result.flatrate {
+                self.stream = flatrate.map {
+                    Provider(data: $0.__data)
+                }
+            }
+        }
     }
 }

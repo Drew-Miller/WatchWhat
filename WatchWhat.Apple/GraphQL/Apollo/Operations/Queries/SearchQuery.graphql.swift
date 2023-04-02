@@ -14,6 +14,7 @@ public extension WatchWhatSchema {
             __typename
             page
             total_pages
+            total_results
             results {
               __typename
               adult
@@ -72,11 +73,13 @@ public extension WatchWhatSchema {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("page", Int.self),
           .field("total_pages", Int.self),
+          .field("total_results", Int.self),
           .field("results", [Result].self),
         ] }
 
         public var page: Int { __data["page"] }
         public var total_pages: Int { __data["total_pages"] }
+        public var total_results: Int { __data["total_results"] }
         public var results: [Result] { __data["results"] }
 
         /// Search.Result

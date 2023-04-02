@@ -2,6 +2,7 @@ query Search($media: String!, $params: SearchParams!) {
   search(media: $media, params: $params) {
     page
     total_pages
+    total_results
     results {
       adult
       backdrop_path
