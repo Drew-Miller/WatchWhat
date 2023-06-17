@@ -1,7 +1,7 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import { parseBearer } from "../../shared/util";
-import { Firebase } from "../../shared/firebase";
-import { FirebaseAuth } from "../../shared/firebase-auth";
+import { parseBearer } from "../shared/util";
+import { Firebase } from "../shared/firebase";
+import { FirebaseAuth } from "../shared/firebase-auth";
 import { DecodedIdToken } from "firebase-admin/auth";
 
 const httpTrigger: AzureFunction = async function (

@@ -1,6 +1,6 @@
 import { describe, expect, test, beforeEach } from "@jest/globals";
 import { Context, HttpRequest } from "@azure/functions";
-import httpTrigger from "../../src/functions/health/index";
+import httpTrigger from "../../health/index";
 
 describe("Hello World", () => {
   let context: Context;
