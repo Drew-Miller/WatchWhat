@@ -1,5 +1,4 @@
-import { KeyValueCache } from "@apollo/utils.keyvaluecache";
-import { AugmentedRequest, DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
+import { DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
 import { AppErrors } from "../errors";
 import { Source } from "./dtos";
 

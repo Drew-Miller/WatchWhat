@@ -15,6 +15,9 @@
 		{
 			"name": "WatchWhat.Apple",
 			"path": "WatchWhat.Apple"
+		},
+		{
+			"path": "WatchWhat.Web"
 		}
 	],
 	"settings": {
