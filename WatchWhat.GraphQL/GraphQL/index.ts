@@ -1,8 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateHandler } from "@as-integrations/azure-functions";
 import { Context } from "@azure/functions";
-import { readFileSync } from 'fs';
-import { join } from "path";
+import { loadFiles } from "graphql-import-files";
 
 import { WatchWhatContext } from "./context";
 import { resolvers } from "./resolvers/resolvers";
@@ -20,7 +19,7 @@ const { WATCHMODE_BASE_URL, WATCHMODE_API_VERSION, WATCHMODE_API_KEY } = process
 // WatchWhat Variables
 const { WATCHWHAT_BASE_URL, WATCHWHAT_FUNCTION_KEY } = process.env;
 
-const typeDefs = readFileSync(join(__dirname, './typeDefs/schema.graphql'), { encoding: 'utf-8' });
+const typeDefs = loadFiles("**/schemas/**/*.{graphql,gql}");
 
 // Apollo Server setup
 const server = new ApolloServer<WatchWhatContext>({
