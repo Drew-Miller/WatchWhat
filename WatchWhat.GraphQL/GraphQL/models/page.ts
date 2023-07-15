@@ -1,6 +1,7 @@
 import { Page as PageDto } from "../../Shared/tmdb/dtos";
 
 export class Page<T> {
+  __typename = "Page";
   page: number;
   totalPages: number;
   totalResults: number;
