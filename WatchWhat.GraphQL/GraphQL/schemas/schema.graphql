@@ -16,7 +16,7 @@ type Watchable {
   id: Int!
   imdbId: String!
   title: String!
-  rating: String!
+  rating: String
   mediaType: String!
   backdropPath: String!
   posterPath: String!

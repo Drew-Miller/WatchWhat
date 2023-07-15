@@ -8,7 +8,7 @@ const resolvers = {
     ping: () => 'pong',
 
     trending: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
-      const data = await tmdbAPI.trending("all", "day");
+      const data = await tmdbAPI.trending("all", "day", req.page);
       const page = pageMapper.fromMediaResult(data);
       return page;
     }
@@ -34,16 +34,17 @@ const resolvers = {
     rating: async (parent: Watchable, __: any, { tmdbAPI }: WatchWhatContext) => {
       switch (parent.mediaType) {
         case "movie":
-          const movie = await tmdbAPI.movie(parent.id);
-          return movie.imdb_id
+          const rating = await tmdbAPI.movieRating(parent.id, "US");
+          return rating;
         case "tv":
-          return "TV RATING";
+          const contentRating = await tmdbAPI.tvContentRating(parent.id, "US");
+          return contentRating.rating;
       }
     },
 
     imdbId: async (parent: Watchable, __: any, { tmdbAPI }: WatchWhatContext) => {
       const externalIds = await tmdbAPI.externalIds(parent.id, parent.mediaType);
-      return externalIds.imdb_id
+      return externalIds.imdb_id;
     }
   }
 };

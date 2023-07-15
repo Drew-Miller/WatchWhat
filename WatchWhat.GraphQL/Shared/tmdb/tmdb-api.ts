@@ -64,9 +64,9 @@ export class TmdbAPI extends RESTDataSource {
     return data;
   }
 
-  async trending(media: MediaType | "all", time: "day" | "week") {
+  async trending(media: MediaType | "all", time: "day" | "week", page: number = 1) {
     const data = await this.get<Page<MediaResult>>(
-      `${this.apiVersion}/trending/${media}/${time}?api_key=${this.apiKey}`
+      `${this.apiVersion}/trending/${media}/${time}?api_key=${this.apiKey}&page=${page}`
     );
     return data;
   }
@@ -88,6 +88,7 @@ export class TmdbAPI extends RESTDataSource {
         },
       }
     );
+    
     return data;
   }
 
@@ -178,7 +179,7 @@ export class TmdbAPI extends RESTDataSource {
     // throw AppErrors.REGION_NOT_FOUND(region);
   }
 
-  async movieReleaseDates(id: number, region: string) {
+  async movieReleaseDate(id: number, region: string) {
     const data = await this.get<ReleaseDates>(
       `${this.apiVersion}/movie/${id}/release_dates`
     );
@@ -189,6 +190,12 @@ export class TmdbAPI extends RESTDataSource {
       // throw AppErrors.REGION_NOT_FOUND(region);
     }
     return releaseDate;
+  }
+
+  async movieRating(id: number, region: string) {
+    const releaseDate = await this.movieReleaseDate(id, region);
+    const certification = releaseDate.release_dates.map(x => x.certification).filter(rating => !!rating)[0];
+    return certification;
   }
 
   // TV
@@ -248,7 +255,7 @@ export class TmdbAPI extends RESTDataSource {
     // throw AppErrors.REGION_NOT_FOUND(region);
   }
 
-  async tvContentRatings(id: number, region: string) {
+  async tvContentRating(id: number, region: string) {
     const data = await this.get<ContentRatings>(
       `${this.apiVersion}/tv/${id}/content_ratings`
     );
