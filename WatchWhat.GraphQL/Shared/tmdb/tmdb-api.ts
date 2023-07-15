@@ -6,6 +6,7 @@ import {
 import {
   AllProviders,
   Credits,
+  ExternalIds,
   Genre,
   MediaResult,
   MediaType,
@@ -43,6 +44,26 @@ export class TmdbAPI extends RESTDataSource {
 
   // TMDB API
 
+  async search(media: MediaType | "multi", params: {
+    language?: string,
+    query: string,
+    page?: number,
+    includeAdult?: boolean,
+    region?: string
+  }) {
+    const getRequest = {
+      params: {
+        language: params.language,
+        query: params.query,
+        page: params.page?.toString(),
+        include_adult: params.includeAdult?.toString(),
+        region: params.region
+      }
+    };
+    const data = await this.get<Page<MediaResult>>(`${this.apiVersion}/search/${media}?api_key=${this.apiKey}`, );
+    return data;
+  }
+
   async trending(media: MediaType | "all", time: "day" | "week") {
     const data = await this.get<Page<MediaResult>>(
       `${this.apiVersion}/trending/${media}/${time}?api_key=${this.apiKey}`
@@ -70,27 +91,6 @@ export class TmdbAPI extends RESTDataSource {
     return data;
   }
 
-  // Customizable
-  async search(media: MediaType | "multi", params: {
-    language?: string,
-    query: string,
-    page?: number,
-    includeAdult?: boolean,
-    region?: string
-  }) {
-    const getRequest = {
-      params: {
-        language: params.language,
-        query: params.query,
-        page: params.page?.toString(),
-        include_adult: params.includeAdult?.toString(),
-        region: params.region
-      }
-    };
-    const data = await this.get<Page<MediaResult>>(`${this.apiVersion}/search/${media}?api_key=${this.apiKey}`, );
-    return data;
-  }
-
   async genres(media: MediaType) {
     const data = await this.get<{ genres: Genre[] }>(
       `${this.apiVersion}/genre/${media}/list`
@@ -110,6 +110,13 @@ export class TmdbAPI extends RESTDataSource {
       `${this.apiVersion}/watch/providers/regions?api_key=${this.apiKey}`
     );
     return data.results;
+  }
+
+  async externalIds(id: number, media: MediaType) {
+    const data = await this.get<ExternalIds>(
+      `${this.apiVersion}/${media}/${id}/external_ids?api_key=${this.apiKey}`
+    );
+    return data;
   }
 
   // Movies

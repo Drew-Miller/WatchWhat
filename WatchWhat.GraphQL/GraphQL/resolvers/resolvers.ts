@@ -31,17 +31,19 @@ const resolvers = {
   },
   
   Watchable: {
-    rating: (parent: Watchable) => {
+    rating: async (parent: Watchable, __: any, { tmdbAPI }: WatchWhatContext) => {
       switch (parent.mediaType) {
         case "movie":
-          return "MOVIE RATING";
+          const movie = await tmdbAPI.movie(parent.id);
+          return movie.imdb_id
         case "tv":
           return "TV RATING";
       }
     },
 
-    tmdbId: (parent: Watchable) => {
-      return 1;
+    imdbId: async (parent: Watchable, __: any, { tmdbAPI }: WatchWhatContext) => {
+      const externalIds = await tmdbAPI.externalIds(parent.id, parent.mediaType);
+      return externalIds.imdb_id
     }
   }
 };

@@ -1,6 +1,7 @@
 export * from "./company";
 export * from "./country";
 export * from "./credits";
+export * from "./external-ids";
 export * from "./genre";
 export * from "./media-result";
 export * from "./media-type";

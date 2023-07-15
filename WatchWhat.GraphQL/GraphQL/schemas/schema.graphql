@@ -14,7 +14,7 @@ union Pageable = Watchable
 
 type Watchable {
   id: Int!
-  tmdbId: Int!
+  imdbId: String!
   title: String!
   rating: String!
   mediaType: String!
