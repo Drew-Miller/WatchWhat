@@ -1,9 +1,9 @@
 import { TmdbAPI } from "../Shared/tmdb";
-import { TmdbContext } from "../Shared/tmdb/graphql/context";
 import { WatchmodeAPI } from "../Shared/watchmode";
 import { WatchWhatAPI } from "../Shared/watchwhat";
 
-export type MyContext = TmdbContext & {
+export type WatchWhatContext = {
+  tmdbAPI: TmdbAPI,
   watchmodeAPI: WatchmodeAPI,
   watchWhatAPI: WatchWhatAPI
 };

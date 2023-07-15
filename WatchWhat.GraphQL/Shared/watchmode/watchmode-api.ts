@@ -1,5 +1,4 @@
 import { DataSourceConfig, RESTDataSource } from '@apollo/datasource-rest';
-import { AppErrors } from "../errors";
 import { Source } from "./dtos";
 
 export type WatchmodeAPIOptions = DataSourceConfig & {
@@ -15,14 +14,6 @@ export class WatchmodeAPI extends RESTDataSource {
 
   constructor(options: WatchmodeAPIOptions) {
     super(options);
-
-    if (!options.baseURL) {
-      throw AppErrors.BASE_URL_FAILED("WatchmodeAPI");
-    }
-
-    if (!options.apiKey) {
-      throw AppErrors.API_KEY_FAILED("WatchmodeAPI");
-    }
 
     this.baseURL = options.baseURL;
     this.apiVersion = options.apiVersion;

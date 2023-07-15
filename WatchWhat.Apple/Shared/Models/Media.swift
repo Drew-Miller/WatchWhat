@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MediaType: String, Codable {
+enum MediaFormat: String, Codable {
     case movie  = "movie"
     case tv     = "tv"
 }
@@ -23,6 +23,6 @@ struct Media: Hashable, Codable {
     let id: Int
     let name: String
     let poster: String?
-    let type: MediaType
+    let type: MediaFormat
     var favorite: Bool = false
 }

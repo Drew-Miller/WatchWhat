@@ -1,13 +1,15 @@
 import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateHandler } from "@as-integrations/azure-functions";
 import { Context } from "@azure/functions";
-import { MyContext } from "./context";
+import { readFileSync } from 'fs';
+import { join } from "path";
+
+import { WatchWhatContext } from "./context";
+import { resolvers } from "./resolvers/resolvers";
+
 import { TmdbAPI, TmdbAPIOptions } from "../Shared/tmdb";
-import { tmdbResolvers, tmdbTypeDefs } from "../Shared/tmdb/graphql";
 import { WatchmodeAPI, WatchmodeAPIOptions } from "../Shared/watchmode";
 import { WatchWhatAPI, WatchWhatAPIOptions } from "../Shared/watchwhat";
-import { typeDefs } from "./schema";
-import { resolvers } from "./resolvers";
 
 // TMDB Variables
 const { TMDB_BASE_URL, TMDB_API_VERSION, TMDB_API_KEY, TMDB_READ_ACCESS_TOKEN } = process.env;
@@ -18,10 +20,12 @@ const { WATCHMODE_BASE_URL, WATCHMODE_API_VERSION, WATCHMODE_API_KEY } = process
 // WatchWhat Variables
 const { WATCHWHAT_BASE_URL, WATCHWHAT_FUNCTION_KEY } = process.env;
 
+const typeDefs = readFileSync(join(__dirname, './typeDefs/schema.graphql'), { encoding: 'utf-8' });
+
 // Apollo Server setup
-const server = new ApolloServer<MyContext>({
-  typeDefs: [typeDefs, tmdbTypeDefs],
-  resolvers: [resolvers, tmdbResolvers],
+const server = new ApolloServer<WatchWhatContext>({
+  typeDefs: [typeDefs],
+  resolvers: [resolvers],
   csrfPrevention: true,
   cache: "bounded"
 });

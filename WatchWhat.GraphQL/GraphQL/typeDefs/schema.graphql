@@ -1,0 +1,26 @@
+type Query {
+  ping: String!
+  trending(page: Int): [Watchable!]!
+}
+
+type Page {
+  page: Int!
+  totalPages: Int!
+  totalResults: Int!
+  results: [Pageable!]!
+}
+
+union Pageable = Watchable
+
+type Watchable {
+  id: Int!
+  tmdbId: Int!
+  title: String!
+  rating: String!
+  mediaType: String!
+  backdropPath: String!
+  posterPath: String!
+  genreIds: [Int!]!
+  releaseDate: String!
+  voteAverage: Float!
+}
