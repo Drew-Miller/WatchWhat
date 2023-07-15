@@ -2,6 +2,7 @@ import { MovieResult } from "../../Shared/tmdb/dtos/movie";
 import { TVResult } from "../../Shared/tmdb/dtos/tv";
 
 export class Watchable {
+  __typename = "Watchable";
   id: number;
   title: string;
   mediaType: "movie" | "tv";

@@ -1,6 +1,6 @@
 type Query {
   ping: String!
-  trending(page: Int): [Watchable!]!
+  trending(page: Int): Page!
 }
 
 type Page {
