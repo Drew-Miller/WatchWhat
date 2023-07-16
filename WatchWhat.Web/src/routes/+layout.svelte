@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.css';
+	import '../../static/app.css';
 
 	type MovieCategory = {
 		title: string;
@@ -589,28 +589,27 @@
 
 	<main class="flex-grow overflow-x-auto p-4">
 		<!-- Main content (Rows of movie cards) -->
-		{#each movieCategories as category}
-			<h2 class="text-xl font-bold mb-4">{category.title}</h2>
-			<div class="flex space-x-4 overflow-x-auto">
-				{#each category.movies as movie}
-					<div class="w-64 bg-gray-100 rounded-lg p-4">
-						<!-- Replace the image, title, release date, and rating with movie data -->
-						{#if movie.posterPath}
-							<img src="movie-poster.jpg" class="w-full h-48 object-cover rounded-lg mb-2" />
-						{:else}
-							<img src="moviePlaceholder.jpb" alt="Placeholder" />
-						{/if}
-
-						<h3 class="text-lg font-semibold mb-1">{movie.title}</h3>
-						<p class="text-gray-500 text-sm">Release Date: {movie.releaseDate.toLocaleDateString()}</p>
-						<div class="flex items-center">
-							<span class="text-yellow-500">⭐</span>
-							<span class="ml-1">{movie.voteAverage}</span>
-						</div>
-					</div>
-				{/each}
-			</div>
-		{/each}
+    {#each movieCategories as movieCategory}
+      <h2 class="text-2xl font-bold">{movieCategory.title}</h2>
+      <div class="movie-category flex items-center space-x-4 overflow-x-auto py-4">
+        <div class="flex space-x-4">
+          {#each movieCategory.movies as movie}
+            <div class="movie-card w-64 p-4 bg-white rounded-md shadow-md">
+              {#if movie.posterPath}
+                <img class="w-full h-48 object-cover rounded-md" src={movie.posterPath} alt={movie.title} />
+              {:else}
+                <img class="w-full h-48 object-cover rounded-md" src="./movie-placeholder.jpg" alt="Placeholder" />
+              {/if}
+              <div class="mt-2">
+                <h3 class="text-lg font-bold">{movie.title}</h3>
+                <p class="text-sm">Release Date: {movie.releaseDate.toLocaleDateString()}</p>
+                <p class="text-sm">Vote Average: {movie.voteAverage}</p>
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
+    {/each}
 	</main>
 </div>
 

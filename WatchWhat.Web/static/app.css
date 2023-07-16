@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fadein 2s;
+}
+
+/* Styles for movie cards */
+.movie-card {
+  @apply w-64 p-4 bg-white rounded-md shadow-md;
+  /* Set the width of each movie card and add some spacing */
+  /* You can customize these values based on your design */
+}
+
+/* Styles for the movie category row */
+.movie-category {
+  @apply flex items-center space-x-4 overflow-x-auto py-4;
+  /* Allow horizontal overflow with a scroll bar */
+  /* Prevent movie cards from wrapping to the next line */
+  /* Add padding and spacing between movie cards */
+  /* You can customize these values based on your design */
+}
