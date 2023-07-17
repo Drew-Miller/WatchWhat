@@ -1,10 +1,19 @@
-<p class="leading-24 text-4xl">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at interdum eros. Nunc interdum vitae elit ut auctor. Maecenas et velit felis. Nullam sed turpis ut nisi dictum posuere. Proin et nisi a nulla convallis lacinia vel at tellus. Cras commodo quam at quam venenatis auctor. Etiam varius, sapien ac faucibus laoreet, dolor orci mollis purus, sit amet feugiat enim odio eu ligula. Sed gravida lacus justo, vel dapibus massa iaculis in. Etiam at nisi eu sapien scelerisque consequat a id risus. Nam eu purus in sapien volutpat egestas eu eu est. Pellentesque euismod, erat eu aliquet scelerisque, urna lacus dictum tortor, eu varius velit sapien ut libero. Vivamus vulputate elit ac lectus iaculis, non tincidunt arcu rhoncus. Etiam in nunc vitae risus iaculis fringilla. Proin auctor nisi sit amet lacinia cursus.
+<script lang="ts">
+	import MovieCategoryView from '@components/movie-category.svelte';
+	import type { MovieCategory } from '@models';
+	import { movieStore } from '@stores';
+	import { onDestroy } from 'svelte';
 
-  Suspendisse ac lacinia massa. Sed iaculis eu ex eu rhoncus. Duis quis nisi ut purus facilisis blandit. Fusce mollis libero sit amet massa viverra, vel egestas erat volutpat. Nullam a nisi in massa volutpat tincidunt sit amet vel neque. Nulla facilisi. Aenean in nisi eu ex malesuada aliquam. Mauris in enim augue. Sed cursus, ex eget luctus tristique, risus ex bibendum nulla, nec varius mauris ipsum ac sem. Sed vestibulum erat quis nulla lacinia, vitae ultricies odio scelerisque. Aenean laoreet turpis nec dui ullamcorper, id feugiat arcu bibendum.
+	let movieCategories: MovieCategory[] = [];
 
-  Vestibulum laoreet consectetur erat, in lacinia mauris bibendum vitae. Nulla aliquet quam at tellus malesuada, non fringilla arcu blandit. Proin pharetra velit elit, quis auctor arcu venenatis eget. Sed id massa vitae est fringilla mollis vel eu nulla. Quisque mattis purus turpis, sit amet rhoncus libero euismod ac. Nullam cursus hendrerit nibh eget feugiat. Suspendisse ut felis nisi. Vestibulum nec tortor nec neque tincidunt rhoncus nec vel elit. Sed fermentum risus vel leo varius posuere.
+	const unsubscribe = movieStore.movieCategories.subscribe((data) => {
+		movieCategories = data;
+	});
 
-  Aenean facilisis nulla id massa pharetra laoreet. Maecenas sit amet consequat justo. Sed hendrerit nulla a mauris ultricies, ut congue ipsum bibendum. Vivamus volutpat leo in dui gravida tincidunt. Sed eu est eget erat pellentesque tempor non ac turpis. Curabitur bibendum quam in mi cursus pharetra. Sed euismod volutpat elit vitae laoreet. Sed nec eros arcu. Nunc fermentum metus in sem aliquam, ac fringilla quam scelerisque. Sed non varius elit. Fusce nec odio nec velit luctus volutpat id vel turpis. Vestibulum pharetra eu odio nec tincidunt. Nulla facilisi.
-</p>
+	onDestroy(unsubscribe);
+</script>
 
+<!-- Main content (Rows of movie cards) -->
+{#each movieCategories as movieCategory}
+	<MovieCategoryView {movieCategory} />
+{/each}

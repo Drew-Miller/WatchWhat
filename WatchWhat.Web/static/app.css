@@ -16,18 +16,18 @@ body {
   animation: fadein 2s;
 }
 
-/* Styles for movie cards */
-.movie-card {
-  @apply w-64 p-4 bg-white rounded-md shadow-md;
-  /* Set the width of each movie card and add some spacing */
-  /* You can customize these values based on your design */
+.bg-layer-0 {
+  background-color: #000000;
 }
 
-/* Styles for the movie category row */
-.movie-category {
-  @apply flex items-center space-x-4 overflow-x-auto py-4;
-  /* Allow horizontal overflow with a scroll bar */
-  /* Prevent movie cards from wrapping to the next line */
-  /* Add padding and spacing between movie cards */
-  /* You can customize these values based on your design */
+.bg-layer-1 {
+  background-color: rgb(18, 18, 18);
+}
+
+.bg-layer-2 {
+  background-color: rgb(24, 24, 24);
+}
+
+.text-subtitle {
+  @apply opacity-70;
 }

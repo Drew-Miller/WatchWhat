@@ -19,7 +19,12 @@ const config = {
 			fallback: null,
 			precompress: false,
 			strict: false
-		})
+		}),
+		alias: {
+			"@components": "./src/components",
+			"@stores": "./src/stores",
+			"@models": "./src/models"
+		}
 	}
 };
 
