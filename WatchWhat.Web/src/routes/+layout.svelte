@@ -54,7 +54,7 @@
 		</div>
 	</nav>
 
-	<main class="flex-grow overflow-x-auto rounded-md bg-layer-1 my-4">
+	<main class="flex-grow overflow-x-auto rounded-md bg-layer-1 my-4 w-full">
 		<header class="sticky top-0 bg-layer-1 p-4 shadow-md z-10 transition-opacity opacity-100">
 			<div class="flex items-center justify-end space-x-8">
 				<span class="material-symbols-outlined text-3xl">search</span>
@@ -62,9 +62,7 @@
 			</div>
 		</header>
 
-		<div class="p-4">
-			<slot />
-		</div>
+		<slot />
 
 		<footer class="py-4 text-center">
 			<!-- Footer content (Website name, date, etc.) -->

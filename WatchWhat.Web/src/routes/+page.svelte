@@ -33,4 +33,5 @@
 	const homeQuery = query<{ trending: Page<Movie> }>(TRENDING_QUERY);
 </script>
 
-<MovieCategoryView title="Trending" movies={$homeQuery.data?.trending.results ?? []} />
+<MovieCategoryView title="Trending movies" movies={$homeQuery.data?.trending.results ?? []} />
+<MovieCategoryView title="Trending movies" movies={$homeQuery.data?.trending.results ?? []} />
