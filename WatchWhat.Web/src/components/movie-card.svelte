@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Movie } from "@models";
+	import type { Movie } from "$models";
 
   export let movie: Movie
 </script>
@@ -8,13 +8,13 @@
   {#if movie.posterPath}
     <img
       class="w-full h-48 object-cover rounded-md"
-      src='{movie.posterPath}'
+      
       alt={movie.title}
     />
   {:else}
     <img
       class="w-full h-48 object-cover rounded-md"
-      src="./movie-placeholder.jpg"
+      
       alt="Placeholder"
     />
   {/if}

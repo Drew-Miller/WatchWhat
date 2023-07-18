@@ -1,9 +1,8 @@
-import type { MovieCategory } from "@models";
-import { movieCategories } from "./data";
 import { writable } from "svelte/store";
+import { movieCategories } from "./data";
 
 class MovieStore {
-  movieCategories = writable<MovieCategory[]>(movieCategories);
+  movieCategories = writable(movieCategories);
 }
 
 export const movieStore = new MovieStore();

@@ -1,6 +1,6 @@
-import type { MovieCategory } from "@models";
+import type { Movie } from "$models";
 
-export const movieCategories: MovieCategory[] = [
+export const movieCategories: {title: string, movies: Movie[]}[] = [
   {
     title: 'Action',
     movies: [

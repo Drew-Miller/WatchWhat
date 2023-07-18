@@ -1,10 +1,10 @@
-<script lang="ts">
-	import '../../static/app.css';
+<script>
+	import '../app.scss';
 </script>
 
 <div class="flex h-screen">
 	<nav class="w-[36rem] m-4 space-y-4 flex flex-col">
-		<div class="bg-layer-2 p-4 rounded-md text-subtitle">
+		<div class="bg-layer-1 p-4 rounded-md text-subtitle">
 			<!-- Sidebar content -->
 			<ul class="space-y-2">
 				<li>
@@ -34,17 +34,20 @@
 			</ul>
 		</div>
 
-		<div class="bg-layer-2 p-4 rounded-md flex-1">
+		<div class="bg-layer-1 p-4 rounded-md flex-1">
 			<h2 class="text-lg font-bold mt-8 mb-4">Playlists</h2>
 			<ul class="space-y-2">
 				<li>
-					<a href="#" class="block text-blue-400 hover:text-blue-500">Favorites</a>
+					<a href="/list/favorites" class="block text-blue-400 hover:text-blue-500">Favorites</a>
 				</li>
 				<li>
-					<a href="#" class="block text-blue-400 hover:text-blue-500">Watch Later</a>
+					<a href="/list/watch-later" class="block text-blue-400 hover:text-blue-500">Watch Later</a
+					>
 				</li>
 				<li>
-					<a href="#" class="block text-blue-400 hover:text-blue-500">Suggested By Friends</a>
+					<a href="/list/suggested-by-friends" class="block text-blue-400 hover:text-blue-500"
+						>Suggested By Friends</a
+					>
 				</li>
 				<!-- Add more playlists here... -->
 			</ul>
@@ -65,7 +68,7 @@
 
 		<footer class="py-4 text-center">
 			<!-- Footer content (Website name, date, etc.) -->
-			<p class="text-sm">&copy; 2023 Your Movie Streaming Website. All rights reserved.</p>
+			<p class="text-sm">&#xa9; 2023 Your Movie Streaming Website. All rights reserved.</p>
 		</footer>
 	</main>
 </div>
