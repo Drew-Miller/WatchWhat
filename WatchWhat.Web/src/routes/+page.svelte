@@ -1,21 +1,11 @@
 <script lang="ts">
 	import MovieCategoryView from '$components/movie-category.svelte';
+	import { apolloClient } from '$graphql';
 	import type { Movie, Page } from '$models';
 	import { movieStore } from '$stores';
-	import { ApolloClient, createHttpLink, gql, InMemoryCache } from '@apollo/client/core';
+	import { gql } from '@apollo/client/core';
 	import { onDestroy, onMount } from 'svelte';
 	import { query, setClient } from 'svelte-apollo';
-
-	const link = createHttpLink({
-		// You should use an absolute URL here
-		//uri: import.meta.env.VITE_GRAPHQL_URL,
-		uri: 'http://localhost:7071'
-	});
-
-	const apolloClient = new ApolloClient({
-		link,
-		cache: new InMemoryCache()
-	});
 
 	setClient(apolloClient);
 
@@ -31,6 +21,7 @@
 						title,
 						mediaType,
 						backdropPath,
+						posterPath,
 						voteAverage,
 						releaseDate,
 					}
@@ -39,32 +30,7 @@
 		}
 	`;
 
-	let trendingMovies: Movie[] = [];
-	const trending = query<{ trending: Page<Movie> }>(TRENDING_QUERY);
-
-	onMount(() => {
-		trending.subscribe((payload) => {
-			if (!payload.loading) {
-				trendingMovies = payload.data?.trending?.results ?? [];
-				console.log(trendingMovies);
-			}			
-		});
-	});
-
-	let movieCategories: { title: string; movies: Movie[] }[] = [];
-
-	const unsubscribe = movieStore.movieCategories.subscribe((data) => {
-		movieCategories = data;
-	});
-
-	onDestroy(() => {
-		unsubscribe();
-	});
+	const homeQuery = query<{ trending: Page<Movie> }>(TRENDING_QUERY);
 </script>
 
-<MovieCategoryView title="Trending" movies={trendingMovies} />
-
-<!-- Main content (Rows of movie cards) -->
-{#each movieCategories as movieCategory}
-	<MovieCategoryView title={movieCategory.title} movies={movieCategory.movies} />
-{/each}
+<MovieCategoryView title="Trending" movies={$homeQuery.data?.trending.results ?? []} />

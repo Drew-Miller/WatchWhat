@@ -7,6 +7,13 @@ const resolvers = {
   Query: {
     ping: () => 'pong',
 
+    // popular: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
+    //   const data = await tmdbAPI.popular("all", "day", req.page);
+    //   const page = pageMapper.fromMediaResult(data);
+    //   return page;
+    // }
+
+
     trending: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
       const data = await tmdbAPI.trending("all", "day", req.page);
       const page = pageMapper.fromMediaResult(data);

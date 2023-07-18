@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex h-screen">
-	<nav class="w-[36rem] m-4 space-y-4 flex flex-col">
+	<nav class="w-[16rem] m-4 space-y-4 flex flex-col">
 		<div class="bg-layer-1 p-4 rounded-md text-subtitle">
 			<!-- Sidebar content -->
 			<ul class="space-y-2">
