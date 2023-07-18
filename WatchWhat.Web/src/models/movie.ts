@@ -1,6 +1,6 @@
 export type Movie = {
   title: string;
   posterPath: string;
-  releaseDate: Date;
+  releaseDate: string;
   voteAverage: string;
 };

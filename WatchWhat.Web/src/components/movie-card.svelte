@@ -22,7 +22,7 @@
     <h3 class="text-lg font-bold">{movie.title}</h3>
     <div class="flex justify-between text-subtitle text-xs">
       <p>{movie.voteAverage} ⭐</p>
-      <p>{movie.releaseDate.getFullYear()}</p>
+      <p>{new Date(movie.releaseDate).getFullYear()}</p>
     </div>
   </div>
 </div>

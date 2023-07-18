@@ -40,14 +40,13 @@
 	`;
 
 	let trendingMovies: Movie[] = [];
-	const trending = query<Page<Movie>>(TRENDING_QUERY);
+	const trending = query<{ trending: Page<Movie> }>(TRENDING_QUERY);
 
-	$: trending;
 	onMount(() => {
-		console.log('On Mount');
 		trending.subscribe((payload) => {
 			if (!payload.loading) {
-				trendingMovies = payload.data?.results ?? [];
+				trendingMovies = payload.data?.trending?.results ?? [];
+				console.log(trendingMovies);
 			}			
 		});
 	});
@@ -63,13 +62,7 @@
 	});
 </script>
 
-{#if $trending.loading}
-  <p>Loading...</p>
-{:else if $trending.error}
-  <p>Error: {$trending.error.message}</p>
-{:else}
 <MovieCategoryView title="Trending" movies={trendingMovies} />
-{/if}
 
 <!-- Main content (Rows of movie cards) -->
 {#each movieCategories as movieCategory}
