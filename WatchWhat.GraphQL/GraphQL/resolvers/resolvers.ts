@@ -1,5 +1,7 @@
 import { WatchWhatContext } from '../context';
+import { movieMapper } from '../mappers/movie-mapper';
 import { watchablePageMapper } from '../mappers/watchable-page-mapper';
+import { Movie } from '../models/movie';
 import { Watchable } from '../models/watchable';
 
 // The GraphQL schema
@@ -23,7 +25,18 @@ const resolvers = {
       const data = await tmdbAPI.tvPopular({ page: req.page, region: "US", language: "en" });
       const page = watchablePageMapper.fromTVResult(data);
       return page;
-    }
+    },
+
+    movie: async (_: any, req: { id: number }, { tmdbAPI }: WatchWhatContext) => {
+      const data = await tmdbAPI.movie(req.id);
+      const movie = movieMapper.from(data);
+      return movie;
+    },
+
+    // tv: async (_: any, req: { id: number }, { tmdbAPI }: WatchWhatContext) => {
+    //   const data = await tmdbAPI.tv(req.id);
+    //   return data;
+    // }
 
     // WatchWhatAPI
 
@@ -57,6 +70,18 @@ const resolvers = {
 
     imdbId: async (parent: Watchable, __: any, { tmdbAPI }: WatchWhatContext) => {
       const externalIds = await tmdbAPI.externalIds(parent.id, parent.mediaType);
+      return externalIds.imdb_id;
+    }
+  },
+
+  Movie: {
+    rating: async (parent: Movie, __: any, { tmdbAPI }: WatchWhatContext) => {
+      const rating = await tmdbAPI.movieRating(parent.id, "US");
+      return rating;
+    },
+
+    imdbId: async (parent: Movie, __: any, { tmdbAPI }: WatchWhatContext) => {
+      const externalIds = await tmdbAPI.externalIds(parent.id, "movie");
       return externalIds.imdb_id;
     }
   }

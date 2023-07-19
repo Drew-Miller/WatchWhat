@@ -3,6 +3,7 @@ type Query {
   trending(page: Int): Page!
   popularMovies(page: Int): Page!
   popularTV(page: Int): Page!
+  movie(id: Int): Movie!
 }
 
 type Page {
@@ -18,11 +19,29 @@ type Watchable {
   id: Int!
   imdbId: String
   title: String!
-  rating: String
   mediaType: String!
   backdropPath: String
   posterPath: String!
   genreIds: [Int!]!
+  rating: String
   releaseDate: String!
   voteAverage: Float!
+}
+
+type Movie {
+  id: Int!
+  imdbId: String
+  title: String!
+  overview: String!
+  posterPath: String!
+  backdropPath: String
+  genres: [Genre!]!
+  rating: String
+  releaseDate: String!
+  voteAverage: Float!
+}
+
+type Genre {
+  id: Int!
+  name: String!
 }
