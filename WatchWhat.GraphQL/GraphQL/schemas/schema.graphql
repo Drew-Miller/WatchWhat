@@ -1,6 +1,8 @@
 type Query {
   ping: String!
   trending(page: Int): Page!
+  popularMovies(page: Int): Page!
+  popularTV(page: Int): Page!
 }
 
 type Page {
@@ -14,11 +16,11 @@ union Pageable = Watchable
 
 type Watchable {
   id: Int!
-  imdbId: String!
+  imdbId: String
   title: String!
   rating: String
   mediaType: String!
-  backdropPath: String!
+  backdropPath: String
   posterPath: String!
   genreIds: [Int!]!
   releaseDate: String!

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { Movie } from '$models';
+	import type { Watchable } from '$models';
 	import MovieCardView from './movie-card.svelte';
 
 	export let title: string;
-	export let movies: Movie[]
+	export let movies: Watchable[]
 </script>
 
 <h2 class="text-2xl font-bold m-4">{title}</h2>

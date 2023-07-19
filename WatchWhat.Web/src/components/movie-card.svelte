@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Movie } from "$models";
+	import type { Watchable } from "$models";
 
-  export let movie: Movie
+  export let movie: Watchable
 </script>
 
 <a href="/movie/{movie.id}" class="w-60 bg-layer-2 rounded-md shadow-md hover:bg-zinc-800 hover:cursor-pointer">

@@ -5,7 +5,7 @@ import { Page } from "../models/page";
 import { Watchable } from "../models/watchable";
 import { watchableMapper } from "./watchable-mapper";
 
-class PageMapper {
+class WatchablePageMapper {
   fromMediaResult(data: PageDto<MediaResult>): Page<Watchable> {
     const page = new Page<Watchable>(data);
 
@@ -24,8 +24,32 @@ class PageMapper {
 
     return page;
   }
+
+  fromMovieResult(data: PageDto<MovieResult>): Page<Watchable> {
+    const page = new Page<Watchable>(data);
+
+    const results = data.results.map(result => {
+      return watchableMapper.fromMovieResult(result);
+    });
+
+    page.results = results.filter(x => !!x);
+
+    return page;
+  }
+
+  fromTVResult(data: PageDto<TVResult>): Page<Watchable> {
+    const page = new Page<Watchable>(data);
+
+    const results = data.results.map(result => {
+      return watchableMapper.fromTVResult(result);
+    });
+
+    page.results = results.filter(x => !!x);
+
+    return page;
+  }
 }
 
-const pageMapper = new PageMapper();
+const watchablePageMapper = new WatchablePageMapper();
 
-export { pageMapper };
+export { watchablePageMapper };

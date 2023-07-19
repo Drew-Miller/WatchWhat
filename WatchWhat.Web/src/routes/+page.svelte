@@ -1,17 +1,47 @@
 <script lang="ts">
 	import MovieCategoryView from '$components/movie-category.svelte';
 	import { apolloClient } from '$graphql';
-	import type { Movie, Page } from '$models';
-	import { movieStore } from '$stores';
+	import type { Watchable, Page } from '$models';
 	import { gql } from '@apollo/client/core';
-	import { onDestroy, onMount } from 'svelte';
 	import { query, setClient } from 'svelte-apollo';
 
 	setClient(apolloClient);
 
-	const TRENDING_QUERY = gql`
-		query Trending {
+	const HOME_QUERY = gql`
+		query Home {
 			trending {
+				page,
+				totalPages,
+				totalResults,
+				results {
+					... on Watchable {
+						id,
+						title,
+						mediaType,
+						backdropPath,
+						posterPath,
+						voteAverage,
+						releaseDate,
+					}
+				}
+			},
+			popularMovies {
+				page,
+				totalPages,
+				totalResults,
+				results {
+					... on Watchable {
+						id,
+						title,
+						mediaType,
+						backdropPath,
+						posterPath,
+						voteAverage,
+						releaseDate,
+					}
+				}
+			},
+			popularTV {
 				page,
 				totalPages,
 				totalResults,
@@ -30,8 +60,13 @@
 		}
 	`;
 
-	const homeQuery = query<{ trending: Page<Movie> }>(TRENDING_QUERY);
+	const homeQuery = query<{
+		trending: Page<Watchable>,
+		popularMovies: Page<Watchable>,
+		popularTV: Page<Watchable>,
+	}>(HOME_QUERY);
 </script>
 
-<MovieCategoryView title="Trending movies" movies={$homeQuery.data?.trending.results ?? []} />
-<MovieCategoryView title="Trending movies" movies={$homeQuery.data?.trending.results ?? []} />
+<MovieCategoryView title="Trending movies & TV" movies={$homeQuery.data?.trending.results ?? []} />
+<MovieCategoryView title="Popular movies" movies={$homeQuery.data?.popularMovies.results ?? []} />
+<MovieCategoryView title="Popular TV" movies={$homeQuery.data?.popularTV.results ?? []} />

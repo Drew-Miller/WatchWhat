@@ -80,7 +80,7 @@ export class TmdbAPI extends RESTDataSource {
     }
   ) {
     const data = await this.get<Page<MovieResult>>(
-      `${this.apiVersion}/discover/movie`,
+      `${this.apiVersion}/discover/${media}`,
       {
         params: {
           with_genres: params?.genreIds.join(","),
@@ -200,13 +200,14 @@ export class TmdbAPI extends RESTDataSource {
 
   // TV
 
-  async tvPopular(params?: { page?: number; region?: string }) {
+  async tvPopular(params?: { page?: number; region?: string, language?: string }) {
     const data = await this.get<Page<TVResult>>(
       `${this.apiVersion}/tv/popular?api_key=${this.apiKey}`,
       {
         params: {
           page: params?.page?.toString(),
           region: params?.region,
+          language: params?.language
         },
       }
     );
@@ -255,7 +256,7 @@ export class TmdbAPI extends RESTDataSource {
     // throw AppErrors.REGION_NOT_FOUND(region);
   }
 
-  async tvContentRating(id: number, region: string) {
+  async tvRating(id: number, region: string) {
     const data = await this.get<ContentRatings>(
       `${this.apiVersion}/tv/${id}/content_ratings`
     );
@@ -265,7 +266,7 @@ export class TmdbAPI extends RESTDataSource {
     if (!contentRating) {
       // throw AppErrors.REGION_NOT_FOUND(region);
     }
-    return contentRating;
+    return contentRating?.rating;
   }
 
   // TV Seasons

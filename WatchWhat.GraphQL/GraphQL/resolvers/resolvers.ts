@@ -1,5 +1,5 @@
 import { WatchWhatContext } from '../context';
-import { pageMapper } from '../mappers/page-mapper';
+import { watchablePageMapper } from '../mappers/watchable-page-mapper';
 import { Watchable } from '../models/watchable';
 
 // The GraphQL schema
@@ -7,16 +7,21 @@ const resolvers = {
   Query: {
     ping: () => 'pong',
 
-    // popular: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
-    //   const data = await tmdbAPI.popular("all", "day", req.page);
-    //   const page = pageMapper.fromMediaResult(data);
-    //   return page;
-    // }
-
-
     trending: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
       const data = await tmdbAPI.trending("all", "day", req.page);
-      const page = pageMapper.fromMediaResult(data);
+      const page = watchablePageMapper.fromMediaResult(data);
+      return page;
+    },
+
+    popularMovies: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
+      const data = await tmdbAPI.moviesPopular({ page: req.page, region: "US" });
+      const page = watchablePageMapper.fromMovieResult(data);
+      return page;
+    },
+
+    popularTV: async (_: any, req: { page: number }, { tmdbAPI }: WatchWhatContext) => {
+      const data = await tmdbAPI.tvPopular({ page: req.page, region: "US", language: "en" });
+      const page = watchablePageMapper.fromTVResult(data);
       return page;
     }
 
@@ -40,12 +45,13 @@ const resolvers = {
   Watchable: {
     rating: async (parent: Watchable, __: any, { tmdbAPI }: WatchWhatContext) => {
       switch (parent.mediaType) {
-        case "movie":
+        case "movie": {
           const rating = await tmdbAPI.movieRating(parent.id, "US");
           return rating;
-        case "tv":
-          const contentRating = await tmdbAPI.tvContentRating(parent.id, "US");
-          return contentRating.rating;
+        } case "tv": {
+          const rating = await tmdbAPI.tvRating(parent.id, "US");
+          return rating;
+        }
       }
     },
 
