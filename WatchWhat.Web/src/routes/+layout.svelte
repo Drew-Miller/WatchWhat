@@ -1,7 +1,9 @@
 <script>
 	import '../app.scss';
+	import { page } from '$app/stores';
 </script>
 
+{#if !$page.error}
 <div class="flex h-screen">
 	<nav class="w-[16rem] m-4 space-y-4 flex flex-col">
 		<div class="bg-layer-1 p-4 rounded-md text-subtitle">
@@ -70,6 +72,11 @@
 		</footer>
 	</main>
 </div>
+{:else}
+<div class="flex h-screen">
+	<slot />
+</div>
+{/if}
 
 <style>
 	.nav-link {

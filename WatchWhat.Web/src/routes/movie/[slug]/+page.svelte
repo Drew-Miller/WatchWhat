@@ -59,6 +59,6 @@
 {:else if $movieQuery.error}
 	<li>ERROR: {$movieQuery.error.message}</li>
 {:else if $movieQuery.data?.movie}
-	<li>{movie?.title}</li>
+	<li>{movie.title}</li>
 {/if}
 </ul>
