@@ -8,11 +8,11 @@
 	<img
 		src="404.webp"
 		alt="Cute Cartoon GIF"
-		class="w-64 h-64 object-cover rounded-full mx-auto mb-6"
+		class="w-48 h-48 object-cover rounded-full mx-auto mb-6"
 	/>
 
-	<h1 class="text-4xl font-bold mb-4">Page Not Found</h1>
-	<p class="text-lg mb-8">Something went wrong</p>
+	<h1 class="text-5xl font-bold mb-4">Page Not Available</h1>
+	<p class="mb-8 text-subtitle">Something went wrong, please try again later.</p>
 
 	<a href="/">
 		<button

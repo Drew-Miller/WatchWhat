@@ -3,15 +3,21 @@
 	import WatchableCardView from './watchable-card.svelte';
 
 	export let title: string;
-	export let watchables: Watchable[]
+	export let watchables: Watchable[];
 </script>
 
 <h2 class="text-2xl font-bold m-4">{title}</h2>
 
 <div class="flex items-center overflow-x-auto p-4">
 	<div class="flex space-x-8">
-		{#each watchables as watchable}
-			<WatchableCardView {watchable} />
-		{/each}
+		{#if !watchables.length}
+			{#each Array.from({ length: 20 }) as _, index}
+				<WatchableCardView watchable={undefined} />
+			{/each}
+		{:else}
+			{#each watchables as watchable}
+				<WatchableCardView {watchable} />
+			{/each}
+		{/if}
 	</div>
 </div>

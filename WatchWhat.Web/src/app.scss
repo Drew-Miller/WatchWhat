@@ -12,6 +12,19 @@
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse .75s infinite;
+}
+
 body {
   animation: fadein 2s;
   font-family: 'Dosis', sans-serif;
@@ -27,6 +40,10 @@ body {
 
 .bg-layer-2 {
   background-color: rgb(24, 24, 24);
+}
+
+.bg-layer-3 {
+  background-color: rgb(32, 32, 32);
 }
 
 .bg-hover {
