@@ -1,7 +1,7 @@
 <script lang="ts">
-	import WatchableCategoryView from '$components/watchable/watchable-category.svelte';
+	import WatchableCategory from '$components/watchable/watchable-category.svelte';
 	import { apolloClient } from '$graphql';
-	import type { Watchable, Page } from '$models';
+	import type { Page, Watchable } from '$models';
 	import { gql } from '@apollo/client/core';
 	import { query, setClient } from 'svelte-apollo';
 
@@ -67,6 +67,6 @@
 	}>(HOME_QUERY);
 </script>
 
-<WatchableCategoryView title="Trending movies & TV" watchables={$homeQuery.data?.trending.results ?? []} />
-<WatchableCategoryView title="Popular movies" watchables={$homeQuery.data?.popularMovies.results ?? []} />
-<WatchableCategoryView title="Popular TV" watchables={$homeQuery.data?.popularTV.results ?? []} />
+<WatchableCategory title="Trending movies & TV" watchables={$homeQuery.data?.trending.results ?? []} />
+<WatchableCategory title="Popular movies" watchables={$homeQuery.data?.popularMovies.results ?? []} />
+<WatchableCategory title="Popular TV" watchables={$homeQuery.data?.popularTV.results ?? []} />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Watchable } from '$models';
-	import WatchableCardView from './watchable-card.svelte';
+	import WatchableCard from './watchable-card.svelte';
 
 	export let title: string;
 	export let watchables: Watchable[];
@@ -12,11 +12,11 @@
 	<div class="flex space-x-8">
 		{#if !watchables.length}
 			{#each Array.from({ length: 20 }) as _, index}
-				<WatchableCardView watchable={undefined} />
+				<WatchableCard watchable={undefined} />
 			{/each}
 		{:else}
 			{#each watchables as watchable}
-				<WatchableCardView {watchable} />
+				<WatchableCard {watchable} />
 			{/each}
 		{/if}
 	</div>

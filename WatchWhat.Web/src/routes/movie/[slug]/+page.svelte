@@ -2,13 +2,12 @@
 	import { apolloClient } from '$graphql';
 	import { gql } from '@apollo/client/core';
 	import { query, setClient } from 'svelte-apollo';
-	// import { extractColors } from 'extract-colors'
 	import { getImagePath } from '$util';
 	import type { Movie } from '$models/movie';
+	import { onDestroy } from 'svelte';
+	import ImagePaletteView from '$components/shared/image-palette.svelte';
 
 	export let data: { movieId: number };
-
-	console.log(data);
 
 	setClient(apolloClient);
 
@@ -40,15 +39,13 @@
 
 	let movie: Movie;
 
-	movieQuery.subscribe((payload) => {
+	const unsubscribe = movieQuery.subscribe((payload) => {
 		if (payload.data) {
 			movie = payload.data.movie;
 		}
 	});
 
-	// extractColors(getImagePath(movie.posterPath))
-	// .then(console.log)
-	// .catch(console.error)
+	onDestroy(unsubscribe);
 </script>
 
 {#if $movieQuery.loading}
@@ -56,14 +53,14 @@
 {:else if $movieQuery.error}
 	<p>ERROR: {$movieQuery.error.message}</p>
 {:else if $movieQuery.data?.movie}
+	<ImagePaletteView imageUrl="{getImagePath(movie.posterPath)}" />
+	
 	{#if movie.posterPath}
 		<img
 			class="w-48 h-48 object-cover rounded-t-md"
 			src={getImagePath(movie.posterPath)}
 			alt={movie.title}
 		/>
-	{:else}
-		<img class="w-full h-88 object-cover rounded-t-md" alt="Placeholder" />
 	{/if}
 	<div class="space-y-4 p-4">
 		<h3 class="font-bold">{movie.title}</h3>

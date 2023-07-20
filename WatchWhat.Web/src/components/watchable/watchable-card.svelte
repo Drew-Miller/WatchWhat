@@ -25,12 +25,6 @@
       src="{getImagePath(watchable.posterPath)}"
       alt={watchable.title}
     />
-  {:else}
-    <img
-      class="w-full object-cover rounded-t-md"
-      
-      alt="Placeholder"
-    />
   {/if}
   <div class="space-y-4 p-4">
     <h3 class="font-bold">{watchable.title}</h3>
